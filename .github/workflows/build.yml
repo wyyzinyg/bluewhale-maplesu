@@ -60,16 +60,20 @@ jobs:
           printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
           printf '\n84831b9409646a918e30573bab4c9c91346d8abd\n' > "$SDK/licenses/android-sdk-preview-license"
           echo "licenses 已预写: $(ls "$SDK/licenses")"
-          # provider 构建（jailbreak-providers/build.py）写死 ndk/28.2.13676358；
-          # 缺这个 NDK 会让所有 KMI 模块编译失败并回退原厂载荷（run-9 教训）。
+          # 三个 NDK 都要：
+          #   26.1.10909125  → configureMapleSuPatch / buildModulePolicy 写死（run-20 教训）
+          #   28.2.13676358  → jailbreak-providers/build.py 写死（run-9 教训）
+          #   29.0.14206865  → 兜底（部分脚本按最高版找）
           for pkg in "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" \
                      "platforms;android-36" "build-tools;36.0.0" \
-                     "cmake;3.22.1" "ndk;28.2.13676358" "ndk;29.0.14206865"; do
+                     "cmake;3.22.1" \
+                     "ndk;26.1.10909125" "ndk;28.2.13676358" "ndk;29.0.14206865"; do
             echo "--- install $pkg"
             "$SM" "$pkg" < /dev/null || true
           done
           echo "== platforms =="; ls "$SDK/platforms"
           echo "== ndk =="; ls "$SDK/ndk"
+          test -d "$SDK/ndk/26.1.10909125" || { echo "FATAL: ndk 26.1 未安装"; exit 1; }
           test -d "$SDK/ndk/28.2.13676358" || { echo "FATAL: ndk 28.2 未安装"; exit 1; }
           echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
           echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
