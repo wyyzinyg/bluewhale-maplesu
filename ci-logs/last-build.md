@@ -1,9 +1,102 @@
 # 构建结果
 
-- run: 12  提交: 00252b2f58432c99bd0d753b3bfe35ecb72882cb
+- run: 13  提交: f2f2a27c67f0855655c75bb0e2aeed8c94bfa180
 - 作业结论: failure
 
 ```
+#### provider 子构建日志（CMake 报错常只写在这里）
+===== src/manager/build/jailbreakProviders/build.log =====
+-- The C compiler identification is Clang 19.0.1
+-- The CXX compiler identification is Clang 19.0.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: /usr/bin/python3 (found version "3.14.4") found components: Interpreter 
+-- The ASM compiler identification is Clang with GNU-like command-line
+-- Found assembler: /usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+-- dirtyfrag: android15-6.6 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/maplesu_root.ko
+-- dirtyfrag(product): android12-5.10 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android12-5.10.ko
+-- dirtyfrag(product): android13-5.15 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android13-5.15.ko
+-- dirtyfrag(product): android14-6.1 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android14-6.1.ko
+-- dirtyfrag(product): android15-6.6 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android15-6.6.ko
+-- dirtyfrag(product): android16-6.12 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android16-6.12.ko
+-- dirtyfrag(product): android17-6.18 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android17-6.18.ko
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/build
+[1/39] Building C object lease/CMakeFiles/maplesu-root-consumer.dir/src/lease_contract.c.o
+[2/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/address_space.cpp.o
+[3/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/profile/entry.cpp.o
+[4/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/heap_context.cpp.o
+[5/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/race/pi_race.cpp.o
+[6/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/route_controller.cpp.o
+[7/39] Building CXX object lease/CMakeFiles/maplesu-root-consumer.dir/src/root_consumer.cpp.o
+[8/39] Linking CXX executable lease/libmaplesu_root_consumer.so
+[9/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/route_middleware.cpp.o
+[10/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/race/threads.cpp.o
+[11/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/select_stack_route.cpp.o
+[12/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/tcp_zerocopy_route.cpp.o
+[13/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/payload_builder.cpp.o
+[14/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/multicast_waiter_route.cpp.o
+[15/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/profile/binary.cpp.o
+[16/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/runtime_config.cpp.o
+[17/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/exploit_session.cpp.o
+[18/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/handoff_probe.cpp.o
+[19/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/util.cpp.o
+[20/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/backend/cve_2026_43499_backend.cpp.o
+[21/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/victim_context.cpp.o
+[22/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/native_resource.cpp.o
+[23/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/run_state.cpp.o
+[24/39] Building C object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/__/lease/src/lease_contract.c.o
+[25/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/victim_process.cpp.o
+[26/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/main.cpp.o
+[27/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/maplesu-overlay/src/core/main.cpp.o
+[28/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/maplesu-overlay/src/core/attack/ops.cpp.o
+[29/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-bootstrap.dir/__/lease/src/lease_contract.c.o
+[30/39] Generating product-stage/splicehelper
+[31/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/handoff.cpp.o
+[32/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-bootstrap.dir/adapter/bootstrap.c.o
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:3812:13: warning: unused function 'handover_sha256_hex' [-Wunused-function]
+ 3812 | static void handover_sha256_hex(const unsigned char digest[32], char out[HANDOVER_HEX + 1]) {
+      |             ^~~~~~~~~~~~~~~~~~~
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:4110:12: warning: unused function 'handover_file_contains' [-Wunused-function]
+ 4110 | static int handover_file_contains(const char *path, const char *needle) {
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:4171:12: warning: unused function 'handover_wait_for_carrier' [-Wunused-function]
+ 4171 | static int handover_wait_for_carrier(int ultra, const char *attempt, const char *boot) {
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.
+[33/39] Building ASM object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/libcxx.S.o
+[34/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/frontend.cpp.o
+[35/39] Linking C executable jailbreak-product/libmaplesu_dirtyfrag_bootstrap.so
+[36/39] Linking CXX executable ghostlock/libmaplesu_ghostlock_provider.so
+[37/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/elf_parser.c.o
+[38/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/exp.c.o
+[39/39] Linking C executable jailbreak-product/libdfroot.so
+error: no matching package named `anyhow` found
+location searched: crates.io index
+required by package `ghostlock-extract v0.1.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native)`
+note: offline mode (via `--offline`) can sometimes cause surprising resolution failures
+help: if this error is too confusing you may wish to retry without `--offline`
+Traceback (most recent call last):
+  File "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/build_extractor.py", line 93, in <module>
+    build(args.ndk.resolve(), args.output.resolve())
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/build_extractor.py", line 67, in build
+    subprocess.run(command, env=env, check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/home/runner/.cargo/bin/cargo', '+stable', 'build', '--offline', '--locked', '--release', '--target', 'aarch64-linux-android', '--target-dir', '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/extractor/cargo', '--manifest-path', '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native/Cargo.toml']' returned non-zero exit status 101.
+#### 主构建日志尾
 上游体积: 703M
 改好 manager/build.gradle.kts
 改好 manager/build.gradle.kts
@@ -128,7 +221,7 @@ Requirement already satisfied: pip in /usr/lib/python3/dist-packages (25.1.1)
 Collecting pip
   Downloading pip-26.3-py3-none-any.whl.metadata (4.6 kB)
 Downloading pip-26.3-py3-none-any.whl (2.0 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 138.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 73.5 MB/s eta 0:00:00
 Installing collected packages: pip
 Successfully installed pip-26.3
 + python3 -m pip install pyelftools==0.32 unicorn==2.1.4
@@ -139,7 +232,7 @@ Collecting unicorn==2.1.4
   Downloading unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
 Downloading pyelftools-0.32-py3-none-any.whl (188 kB)
 Downloading unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.4 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 135.7 MB/s  0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 126.4 MB/s  0:00:00
 Installing collected packages: pyelftools, unicorn
 
 Successfully installed pyelftools-0.32 unicorn-2.1.4
@@ -202,24 +295,31 @@ w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/buil
 > Task :manager:checkProviderTracelessInvariants
 TRACELESS INVARIANTS OK checks=26 points=19
 
-> Task :libsu-service:compileReleaseAidl
-> Task :libsu-service:generateReleaseResources
-> Task :libsu-service:packageReleaseResources
-> Task :libsu-service:processReleaseNavigationResources
 > Task :installer-core:compileJava
 > Task :installer-core:processResources NO-SOURCE
 > Task :installer-core:classes
 > Task :installer-core:jar
+> Task :libsu-service:generateReleaseResources
+> Task :libsu-service:packageReleaseResources
+> Task :libsu-service:processReleaseNavigationResources
+> Task :libsu-service:compileReleaseAidl
 > Task :image-core:compileJava
 > Task :image-core:processResources
 > Task :image-core:classes
 > Task :image-core:jar
 > Task :libsu-service:javaPreCompileRelease
-> Task :libsu-service:parseReleaseLocalResources
 > Task :libsu-service:extractReleaseSupportedLocales
-> Task :libsu-service:generateReleaseRFile
 > Task :libsu-service:prepareReleaseArtProfile
+> Task :libsu-service:mapReleaseSourceSetPaths
+> Task :libsu-service:parseReleaseLocalResources
+> Task :libsu-service:compileReleaseLibraryResources
+> Task :libsu-service:writeReleaseAarMetadata
+> Task :libsu-service:extractDeepLinksRelease
+> Task :libsu-service:generateReleaseAssets UP-TO-DATE
+> Task :libsu-service:generateReleaseRFile
+> Task :libsu-service:mergeReleaseAssets
 > Task :libsu-service:compileReleaseKotlin NO-SOURCE
+> Task :libsu-service:processReleaseManifest
 
 > Task :libsu-service:compileReleaseJavaWithJavac
 Java compiler version 21 has deprecated support for compiling with source/target version 8.
@@ -240,21 +340,14 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :libsu-service:mergeReleaseGeneratedProguardFiles
 > Task :libsu-service:exportReleaseConsumerProguardFiles
 > Task :libsu-service:processReleaseJavaRes NO-SOURCE
-> Task :libsu-service:mapReleaseSourceSetPaths
+> Task :libsu-service:extractProguardFiles
 > Task :libsu-service:bundleLibRuntimeToJarRelease
 > Task :libsu-service:bundleLibCompileToJarRelease
-> Task :libsu-service:compileReleaseLibraryResources
-> Task :libsu-service:createFullJarRelease
-> Task :libsu-service:writeReleaseAarMetadata
-> Task :libsu-service:extractDeepLinksRelease
-> Task :libsu-service:generateReleaseAssets UP-TO-DATE
-> Task :libsu-service:mergeReleaseAssets
-> Task :libsu-service:extractProguardFiles
-> Task :libsu-service:prepareLintJarForPublish
-> Task :libsu-service:processReleaseManifest
-> Task :libsu-service:checkReleaseAarMetadata
 > Task :libsu-service:generateReleaseLintVitalModel
+> Task :libsu-service:createFullJarRelease
+> Task :libsu-service:prepareLintJarForPublish
 > Task :libsu-service:generateReleaseLintModel
+> Task :libsu-service:checkReleaseAarMetadata
 > Task :libsu-service:extractDeepLinksForAarRelease
 > Task :libsu-service:extractReleaseAnnotations
 > Task :libsu-service:mergeReleaseConsumerProguardFiles
@@ -290,6 +383,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 1m 22s
+BUILD FAILED in 1m 14s
 44 actionable tasks: 44 executed
 ```
