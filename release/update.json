@@ -1,0 +1,22 @@
+{
+  "versionCode": 32735,
+  "versionName": "3.19.0-bw",
+  "apkUrl": "https://bluewhale-release-bluewhale-update-d8e0r9wc21f00b8.webapps.tcloudbase.com/bluewhale-manager-v3.19.0-bw-32735.apk",
+  "downloadUrl": "https://bluewhale-release-bluewhale-update-d8e0r9wc21f00b8.webapps.tcloudbase.com/bluewhale-manager-v3.19.0-bw-32735.apk",
+  "changelog": "蓝色大肥鱼 3.19.0-bw（32735）\n\n这版把「蓝鱼自己的东西」找回来，顺手把界面里剩下的上游字样清掉。\n\n1. 更新通道回到蓝鱼自己\n- 3.18.x 的「检查更新」还指着上游 MapleSU 的 GitHub releases，点开会跳到别人的仓库。\n- 这版改成读蓝鱼自己的 update.json：CloudBase 主站优先，GitHub raw 兜底，再兜底才走旧格式。\n\n2. 界面文案总清\n- 安装页、迁移页、市场、工作模式名里残留的 MapleSU 已全部换成蓝鱼口径；\n  MapleSU_Ultra → 蓝鱼 Ultra、MapleSU_Normal → 蓝鱼 Normal、MapleSU 市场 → 蓝鱼市场、迁移到 MapleSU → 迁移到蓝鱼。\n- 「枫叶」相关措辞统一成「粒子」；关于页的上游致谢与 GPL 许可保留原样。\n\n3. 没有丢的东西\n- 图标、启动页（蓝鱼女仆）、Soter authority、诊断导出、seccomp 提示、ko 加载链路全部沿用 3.18.2。\n- 3.18.2 撤掉的两层特效（飘落 / 巨魔雨）保持关闭，设置更干净。\n\n已知\n- 首页信息架构仍是上游的状态卡 + 入口，下一步才重排。\n- 「无 root 能力中心」（Shizuku/Dhizuku）还没接。",
+  "publishedAt": "2026-11-26T22:10:23+08:00",
+  "forceUpdate": true,
+  "sha256": "e0f9d3ce2486afb1e92769d142264b1211b81542914ec29eea85228318e73d9e",
+  "size": 48577467,
+  "signatureAlgorithm": "Ed25519",
+  "signedFields": "versionCode,versionName,downloadUrl,sha256,size",
+  "signature": "xxj0oYjKsC3na4RepkLfSaKvImO7ruZslifhzJXNivxJUq+5zoG6q94HuHNxfvKMaapqiDBcRrfv4b9WNd7QBw==",
+  "assets": [
+    {
+      "name": "bluewhale-manager-v3.19.0-bw-32735.apk",
+      "browser_download_url": "https://bluewhale-release-bluewhale-update-d8e0r9wc21f00b8.webapps.tcloudbase.com/bluewhale-manager-v3.19.0-bw-32735.apk",
+      "size": 48577467,
+      "sha256": "e0f9d3ce2486afb1e92769d142264b1211b81542914ec29eea85228318e73d9e"
+    }
+  ]
+}
