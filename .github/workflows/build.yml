@@ -1,7 +1,7 @@
 name: build-bluewhale
 
 # 在 GitHub 的 16G 跑构建机上出包：本机只有 4G，Kotlin 编译这个体量的 App 会被内存上限杀掉。
-# 构建日志始终作为 Release 资产发布（成功失败都发），方便直接用 curl 读。
+# 构建日志通过 Contents API 写回 ci-logs/last-build.md（GITHUB_TOKEN 提交不会触发新 workflow）。
 on:
   workflow_dispatch:
   push:
@@ -88,19 +88,38 @@ jobs:
             tail -600 build.log 2>/dev/null || echo "(无 build.log)";
             echo '```';
           } > ci-logs/last-build.md
+          wc -c ci-logs/last-build.md
 
-      - name: 发布日志与 APK（始终发布日志）
+      - name: 日志写回仓库（Contents API）
         if: always()
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_NO: ${{ github.run_number }}
+        run: |
+          set -uo pipefail
+          [ -f ci-logs/last-build.md ] || exit 0
+          B64=$(base64 -w0 ci-logs/last-build.md)
+          API="https://api.github.com/repos/$REPO/contents/ci-logs/last-build.md"
+          SHA=$(curl -s -H "Authorization: Bearer $TOKEN" "$API?ref=main" \
+            | python3 -c "import sys,json;print(json.load(sys.stdin).get('sha',''))" 2>/dev/null || true)
+          if [ -n "$SHA" ]; then EXTRA=",\"sha\":\"$SHA\""; else EXTRA=""; fi
+          printf '{"message":"ci: 构建日志 run %s","content":"%s","branch":"main"%s}' \
+            "$RUN_NO" "$B64" "$EXTRA" > /tmp/payload.json
+          curl -s -X PUT -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
+            "$API" -d @/tmp/payload.json | head -c 300
+
+      - name: 发布 APK（成功才发）
+        if: success()
         uses: softprops/action-gh-release@v2
         with:
           tag_name: bw-${{ github.run_number }}
-          name: BlueWhale run ${{ github.run_number }} (${{ job.status }})
+          name: BlueWhale ${{ github.run_number }}
           body: |
             蓝色大肥鱼 · MapleSU 基座构建
             - 包名 com.blue.whale.mask
             - 版本 3.17.0-bw
-            - 附件里 build.log 是完整构建日志；有 APK 时是未签名包，本地用 bluewhale-release.p12 签名后安装
+            - 未签名包，本地用 bluewhale-release.p12 签名后安装
           files: |
-            ci-logs/last-build.md
             out/*.apk
             out/SHA256SUMS.txt
