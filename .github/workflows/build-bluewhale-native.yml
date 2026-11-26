@@ -137,6 +137,11 @@ jobs:
           test -d "$SDK/ndk/29.0.14206865" || { echo "FATAL: ndk 29 未安装"; exit 1; }
           test -d "$SDK/build-tools/37.0.0" || { echo "FATAL: build-tools 37 未安装"; exit 1; }
           test -d "$SDK/platforms/android-37" || test -d "$SDK/platforms/android-37.0" || { echo "FATAL: platform 37 未安装"; exit 1; }
+          # AGP 的 compileSdk 37 会找 platforms/android-37；sdkmanager 实际装出的目录是 android-37.0。
+          if [ -d "$SDK/platforms/android-37.0" ] && [ ! -e "$SDK/platforms/android-37" ]; then
+            ln -s "$SDK/platforms/android-37.0" "$SDK/platforms/android-37"
+          fi
+          echo "== installed platforms =="; ls -d "$SDK/platforms/"* 2>/dev/null || true
           echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
           echo "CMAKE_BIN=$SDK/cmake/3.22.1/bin/cmake" >> "$GITHUB_ENV"
           echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
@@ -205,21 +210,31 @@ jobs:
         run: |
           set -euo pipefail
           cd src
+          set -o pipefail
           ./gradlew --no-daemon --max-workers=4 \
             --dependency-verification=off \
+            --stacktrace \
             -PbluewhaleSkipSdkVerify=true \
             -PmaplesuPython="$(command -v python3)" \
             -PmaplesuUltraviderNdk="$ANDROID_HOME/ndk/29.0.14206865" \
             -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
-            :manager:assembleRelease
+            :manager:assembleRelease 2>&1 | tee /tmp/gradle.log
 
-      - name: 失败时打印 jailbreak 构建日志
+      - name: 失败时打印 jailbreak 与 Gradle 日志
         if: failure()
         run: |
+          mkdir -p out
+          echo "== java =="
+          java -version 2>&1 || true
+          echo "== gradle version =="
+          (cd src && ./gradlew --version) 2>&1 | head -30 || true
           echo "== jailbreakProviders/build.log =="
           cat src/manager/build/jailbreakProviders/build.log 2>/dev/null || true
           echo "== jailbreakProviders/build.json =="
           cat src/manager/build/jailbreakProviders/build.json 2>/dev/null || true
+          echo "== gradle tail =="
+          tail -120 /tmp/gradle.log 2>/dev/null || true
+          cp /tmp/gradle.log out/gradle.log 2>/dev/null || true
 
       - name: 生成构建回执（解压后统计 6 个 ko 的包名）
         if: always()
