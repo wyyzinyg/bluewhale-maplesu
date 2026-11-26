@@ -279,10 +279,71 @@ patch(
             except Exception:
                 failure_bytes = "unreadable"
             raise ValueError(
-                "CFI emulation %s: pc=0x%x instruction=%s failure=0x%x "
-                "failureSize=%d failureBytes=%s typeId=0x%x target=0x%x" %
-                (error, pc, instruction, self.failure, self.failure_size,
-                 failure_bytes, type_id, target)) from error
+                "CFI emulation %s: pc=0x%x instruction=%s check=0x%x checkSize=%d "
+                "failure=0x%x failureSize=%d failureBytes=%s typeId=0x%x target=0x%x" %
+                (error, pc, instruction, self.check, self.check_size,
+                 self.failure, self.failure_size, failure_bytes, type_id, target)) from error
+''')
+
+# NDK 29 的 Clang 会把部分类型不匹配的 BRK #0x5502 直接放在 __cfi_check，
+# 并非全部跳进 __cfi_check_fail。run #13 实测 pc=0x105244、指令 0xd42aa040，
+# 而旧执行器只拦截 fail 函数，导致 Unicorn 把合法拒绝升级成 UC_ERR_EXCEPTION。
+# 扩大的是「编译器 CFI 检查函数」的精确边界；立即数、正反例和其他区域门禁不变。
+patch(
+    "jailbreak-providers/root-loader/legacy_cfi.py",
+    '        self.check = self.address("__cfi_check")\n',
+    '        self.check = self.address("__cfi_check")\n'
+    '        self.check_size = self.elf.symbol("__cfi_check")["size"]\n')
+patch(
+    "jailbreak-providers/root-loader/legacy_cfi.py",
+    '''            if (self.failure <= address < self.failure + self.failure_size
+                    and word == 0xd42aa040):  # BRK #0x5502
+                rejected.append(True)
+                uc.emu_stop()
+''',
+    '''            in_failure = self.failure <= address < self.failure + self.failure_size
+            in_check = self.check <= address < self.check + self.check_size
+            if (in_failure or in_check) and word == 0xd42aa040:  # BRK #0x5502
+                rejected.append(True)
+                uc.emu_stop()
+''')
+patch(
+    "jailbreak-providers/root-loader/legacy_cfi.py",
+    '''    # Only the compiler's fail routine may contain its expected trap.
+    fail = ctx.elf.symbol("__cfi_check_fail")
+    traps = 0
+    for section in ctx.elf.sections:
+        if not section["flags"] & b.SHF_EXECINSTR:
+            continue
+        for at in range(0, section["size"] - 3, 4):
+            imm = b.decode_brk(b.read_uint32(ctx.elf.section_bytes(section), at))
+            if imm is not None:
+                traps += 1
+                gate.require(imm == 0x5502 and fail["shndx"] == section["index"] and
+                             fail["value"] <= at < fail["value"] + fail["size"],
+                             "trap is confined to compiler CFI failure handler")
+    gate.require(traps == 1, "one compiler-generated CFI failure trap")
+''',
+    '''    # Clang may place type-mismatch traps in __cfi_check itself as well as in
+    # __cfi_check_fail. Both functions are compiler-generated CFI machinery;
+    # traps anywhere else, or with any other immediate, remain hard failures.
+    fail = ctx.elf.symbol("__cfi_check_fail")
+    check = ctx.elf.symbol("__cfi_check")
+    traps = 0
+    for section in ctx.elf.sections:
+        if not section["flags"] & b.SHF_EXECINSTR:
+            continue
+        for at in range(0, section["size"] - 3, 4):
+            imm = b.decode_brk(b.read_uint32(ctx.elf.section_bytes(section), at))
+            if imm is not None:
+                traps += 1
+                in_failure = (fail["shndx"] == section["index"] and
+                              fail["value"] <= at < fail["value"] + fail["size"])
+                in_check = (check["shndx"] == section["index"] and
+                            check["value"] <= at < check["value"] + check["size"])
+                gate.require(imm == 0x5502 and (in_failure or in_check),
+                             "trap is confined to compiler CFI check/failure handlers")
+    gate.require(traps >= 1, "compiler-generated CFI failure trap present")
 ''')
 
 if failures:
