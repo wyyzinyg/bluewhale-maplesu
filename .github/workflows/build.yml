@@ -88,7 +88,7 @@ jobs:
           fi
           # l3 模块在 gradle 之前就要用 Kotlin 宿主编译（tools/specgen），它按 gradle 缓存布局找
           # kotlin-stdlib / kotlin-compiler-embeddable / kotlinx-serialization 等 15 个 jar（run-18 教训）。
-          # 上游自带 prepare_host_dependencies.py，直接按锁文件落到 ~/.gradle。
+          # 上游自带 prepare_host_dependencies.py（overlay 已给它加 4 次重试），直接按锁文件落到 ~/.gradle。
           python3 "$GITHUB_WORKSPACE/src/tools/prepare_host_dependencies.py" \
             --lock "$GITHUB_WORKSPACE/src/tools/host-jvm-dependencies.json" \
             --gradle-user-home "$HOME/.gradle"
@@ -151,7 +151,8 @@ jobs:
           SHA=$(curl -s -H "Authorization: Bearer $TOKEN" "$API?ref=main" \
             | python3 -c "import sys,json;print(json.load(sys.stdin).get('sha',''))" 2>/dev/null || true)
           if [ -n "$SHA" ]; then EXTRA=",\"sha\":\"$SHA\""; else EXTRA=""; fi
-          printf '{"message":"ci: 构建日志 run %s","content":"%s","branch":"main"%s}' \
+          # [skip ci]：日志回写不应再触发下一轮构建，否则每次 run 结束都会自动拉起新 run。
+          printf '{"message":"ci: 构建日志 run %s [skip ci]","content":"%s","branch":"main"%s}' \
             "$RUN_NO" "$B64" "$EXTRA" > /tmp/payload.json
           curl -s -X PUT -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
             "$API" -d @/tmp/payload.json | head -c 300
