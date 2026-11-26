@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <group android:name="bw_whale_icon"
+        android:scaleX="0.58" android:scaleY="0.58"
+        android:translateX="22.7" android:translateY="22.7">
+        <!-- tail -->
+        <path android:fillColor="#0A347F"
+            android:pathData="M24,57 C16,57 12,51 14,45 C18,49 22,50 27,50 Z" />
+        <path android:fillColor="#0A347F"
+            android:pathData="M24,61 C16,62 12,67 15,73 C18,69 22,67 27,66 Z" />
+        <!-- body -->
+        <path android:fillColor="#165DFF"
+            android:pathData="M22,58 C22,44 34,34 52,34 C70,34 82,44 82,58 C82,70 68,78 52,78 C36,78 22,70 22,58 Z" />
+        <!-- belly -->
+        <path android:fillColor="#E8F3FF"
+            android:pathData="M34,58 C34,50 42,47 52,47 C62,47 70,51 70,58 C70,65 62,69 52,69 C42,69 34,65 34,58 Z" />
+        <!-- maid headband -->
+        <path android:fillColor="#FFFFFF"
+            android:pathData="M33,38 C40,29 52,27 63,33 C68,35 72,39 74,43 C62,38 47,37 33,38 Z" />
+        <path android:fillColor="#FFFFFF"
+            android:pathData="M36,36 C37,31 41,29 45,31 C47,35 45,38 41,39 Z" />
+        <path android:fillColor="#FFFFFF"
+            android:pathData="M59,33 C62,29 66,29 69,32 C69,36 66,38 62,38 Z" />
+        <!-- eyes -->
+        <path android:fillColor="#0A347F"
+            android:pathData="M42,54 C44,54 46,55.8 46,58 C46,60.2 44,62 42,62 C39.8,62 38,60.2 38,58 C38,55.8 39.8,54 42,54 Z" />
+        <path android:fillColor="#0A347F"
+            android:pathData="M62,54 C64,54 66,55.8 66,58 C66,60.2 64,62 62,62 C59.8,62 58,60.2 58,58 C58,55.8 59.8,54 62,54 Z" />
+        <!-- blush -->
+        <path android:fillColor="#FFB7C9" android:fillAlpha="0.7"
+            android:pathData="M33,63 C35,62 38,63 38,65 C38,67 35,68 33,67 C31,66 31,64 33,63 Z" />
+        <path android:fillColor="#FFB7C9" android:fillAlpha="0.7"
+            android:pathData="M66,63 C68,62 71,63 71,65 C71,67 68,68 66,67 C64,66 64,64 66,63 Z" />
+        <!-- water -->
+        <path android:strokeColor="#E8F3FF" android:strokeWidth="3"
+            android:strokeLineCap="round" android:pathData="M56,28 L58,20" />
+        <path android:strokeColor="#E8F3FF" android:strokeWidth="3"
+            android:strokeLineCap="round" android:pathData="M58,21 C62,18 66,18 69,21" />
+    </group>
+</vector>
