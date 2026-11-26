@@ -1,0 +1,88 @@
+name: artifact-bridge
+
+on:
+  workflow_run:
+    workflows: ["build-bluewhale-native"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "要取产物的 native run id"
+        required: true
+  push:
+    paths:
+      - ".artifact-trigger/**"
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  bridge:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: 取本仓库
+        uses: actions/checkout@v4
+
+      - name: 下载 native 产物
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ github.event.workflow_run.id || inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifact
+
+      - name: 找 APK 并上传到临时直链
+        id: upload
+        run: |
+          set -euo pipefail
+          APK=$(find artifact -type f -name '*.apk' | head -1 || true)
+          if [ -z "$APK" ]; then
+            echo "没有 APK，跳过上传"
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "found=true" >> "$GITHUB_OUTPUT"
+          NAME=$(basename "$APK")
+          SIZE=$(stat -c%s "$APK")
+          SHA=$(sha256sum "$APK" | awk '{print $1}')
+          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id }}"
+          BIN="bw32737-${RUN_ID}"
+          echo "上传 $NAME ($SIZE bytes) 到 filebin bin=$BIN"
+          RESP=$(curl -sS --retry 3 --retry-delay 2 -X POST \
+            --data-binary @"$APK" \
+            -H "filename: $NAME" \
+            "https://filebin.net/${BIN}/${NAME}")
+          echo "$RESP" | head -c 300
+          URL="https://filebin.net/${BIN}/${NAME}"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          echo "size=$SIZE" >> "$GITHUB_OUTPUT"
+          printf '%s\n%s\n%s\n' "$URL" "$SHA" "$SIZE" > /tmp/apk-link.txt
+
+      - name: 把直链写回仓库
+        if: ${{ steps.upload.outputs.found == 'true' }}
+        run: |
+          set -euo pipefail
+          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id }}"
+          mkdir -p .ci-logs
+          {
+            echo "run=$RUN_ID"
+            echo "url=${{ steps.upload.outputs.url }}"
+            echo "sha256=${{ steps.upload.outputs.sha }}"
+            echo "size=${{ steps.upload.outputs.size }}"
+          } > ".ci-logs/apk-${RUN_ID}.txt"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ".ci-logs/apk-${RUN_ID}.txt"
+          git commit -m "ci: apk link for run ${RUN_ID}" || true
+          git push || true
+
+      - name: 上传链接日志
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-link-${{ github.run_number }}
+          path: /tmp/apk-link.txt
+          if-no-files-found: warn
