@@ -172,6 +172,50 @@ if prov.is_file():
         print("修好 build.py: 附加 KMI 的 L3 失败回传主日志")
     else:
         failures.append("jailbreak-providers/build.py: L3 failure transcript 锚点未命中")
+
+    # 诊断阶段跑完所有附加 KMI 再统一返回失败，避免首个候选遮住后续独立故障。
+    # 不改变发布语义：任何一个候选失败，最终仍返回非零且不产出合格包。
+    l3_product_old = '''    modules = {}
+    for family, candidate in contracts.items():
+        result = {}
+        directory = output if candidate == contract else output / L3_DIR / "per-kmi" / family
+        directory.mkdir(parents=True, exist_ok=True)
+        rc = build_root_l3_single(directory, ndk, result, candidate)
+        if rc or result["l3"].get("state") != "BUILT":
+            report["l3"] = result["l3"]
+            return rc
+        modules[family] = result["l3"]["module"]
+    report["l3"] = {"state": "BUILT", "module": modules[kmi_of(selected["kernelRelease"])],
+                    "modules": modules}
+    return 0
+'''
+    l3_product_new = '''    modules = {}
+    failed = {}
+    first_rc = 0
+    for family, candidate in contracts.items():
+        result = {}
+        directory = output if candidate == contract else output / L3_DIR / "per-kmi" / family
+        directory.mkdir(parents=True, exist_ok=True)
+        rc = build_root_l3_single(directory, ndk, result, candidate)
+        if rc or result["l3"].get("state") != "BUILT":
+            failed[family] = result["l3"]
+            first_rc = first_rc or (rc or 3)
+            continue
+        modules[family] = result["l3"]["module"]
+    if failed:
+        first_family = next(iter(failed))
+        report["l3"] = failed[first_family]
+        report["l3"]["failures"] = failed
+        return first_rc
+    report["l3"] = {"state": "BUILT", "module": modules[kmi_of(selected["kernelRelease"])],
+                    "modules": modules}
+    return 0
+'''
+    if src.count(l3_product_old) == 1:
+        src = src.replace(l3_product_old, l3_product_new)
+        print("修好 build.py: L3 全 KMI 诊断后统一失败")
+    else:
+        failures.append("jailbreak-providers/build.py: L3 product loop 锚点未命中")
     prov.write_text(src, encoding="utf-8")
 else:
     failures.append("缺文件: jailbreak-providers/build.py")
@@ -342,7 +386,11 @@ patch(
                 in_check = (check["shndx"] == section["index"] and
                             check["value"] <= at < check["value"] + check["size"])
                 gate.require(imm == 0x5502 and (in_failure or in_check),
-                             "trap is confined to compiler CFI check/failure handlers")
+                             "trap is confined to compiler CFI check/failure handlers",
+                             "section=%s offset=0x%x imm=0x%x check=(%d,0x%x,%d) "
+                             "fail=(%d,0x%x,%d)" %
+                             (section["name"], at, imm, check["shndx"], check["value"],
+                              check["size"], fail["shndx"], fail["value"], fail["size"]))
     gate.require(traps >= 1, "compiler-generated CFI failure trap present")
 ''')
 
