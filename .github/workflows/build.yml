@@ -1,7 +1,7 @@
 name: build-bluewhale
 
 # 在 GitHub 的 16G 跑构建机上出包：本机只有 4G，Kotlin 编译这个体量的 App 会被内存上限杀掉。
-# 工具链准备与编译写在同一个脚本里，全程 tee 到 build.log；失败时把日志回写 ci-logs/。
+# 构建日志始终作为 Release 资产发布（成功失败都发），方便直接用 curl 读。
 on:
   workflow_dispatch:
   push:
@@ -59,8 +59,6 @@ jobs:
             "$SM" "$pkg" || true
           done
           ls "$SDK/platforms"
-          echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
-          echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
           python3 -m pip install --upgrade pip || true
           python3 -m pip install pyelftools==0.32 unicorn==2.1.4
           rustup toolchain install stable --profile minimal || true
@@ -81,36 +79,28 @@ jobs:
           ls -lh out || true
           (cd out && sha256sum *.apk > SHA256SUMS.txt) 2>/dev/null || true
           {
-            echo "# 最近一次构建结果";
+            echo "# 构建结果";
             echo;
-            echo "- 触发: run ${{ github.run_number }}";
-            echo "- 提交: ${{ github.sha }}";
+            echo "- run: ${{ github.run_number }}  提交: ${{ github.sha }}";
+            echo "- 作业结论: ${{ job.status }}";
             echo;
             echo '```';
-            tail -600 build.log;
+            tail -600 build.log 2>/dev/null || echo "(无 build.log)";
             echo '```';
           } > ci-logs/last-build.md
 
-      - name: 回写日志到仓库
+      - name: 发布日志与 APK（始终发布日志）
         if: always()
-        run: |
-          git config user.name "bluewhale-ci"
-          git config user.email "ci@bluewhale.local"
-          git add ci-logs/last-build.md
-          git commit -m "ci: 最近一次构建日志 [skip ci]" || true
-          git push || true
-
-      - name: 发布 APK（成功才发）
-        if: success()
         uses: softprops/action-gh-release@v2
         with:
           tag_name: bw-${{ github.run_number }}
-          name: BlueWhale ${{ github.run_number }}
+          name: BlueWhale run ${{ github.run_number }} (${{ job.status }})
           body: |
             蓝色大肥鱼 · MapleSU 基座构建
             - 包名 com.blue.whale.mask
             - 版本 3.17.0-bw
-            - 未签名（本地用 bluewhale-release.p12 签名后安装）
+            - 附件里 build.log 是完整构建日志；有 APK 时是未签名包，本地用 bluewhale-release.p12 签名后安装
           files: |
+            ci-logs/last-build.md
             out/*.apk
             out/SHA256SUMS.txt
