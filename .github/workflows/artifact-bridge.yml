@@ -29,7 +29,7 @@ jobs:
       - name: 下载 native 产物
         uses: actions/download-artifact@v4
         with:
-          run-id: ${{ github.event.workflow_run.id || inputs.run_id }}
+          run-id: ${{ github.event.workflow_run.id || inputs.run_id || '45910686673' }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: artifact
 
@@ -44,13 +44,13 @@ jobs:
             exit 0
           fi
           echo "found=true" >> "$GITHUB_OUTPUT"
-          NAME=$(basename "$APK")
+          NAME="$(basename "$APK").bin"
           SIZE=$(stat -c%s "$APK")
           SHA=$(sha256sum "$APK" | awk '{print $1}')
-          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id }}"
+          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id || '45910686673' }}"
           BIN="bw32737-${RUN_ID}"
           echo "上传 $NAME ($SIZE bytes) 到 filebin bin=$BIN"
-          RESP=$(curl -sS --retry 3 --retry-delay 2 -X POST \
+          RESP=$(curl --fail -sS --retry 3 --retry-delay 2 -X POST \
             --data-binary @"$APK" \
             -H "filename: $NAME" \
             "https://filebin.net/${BIN}/${NAME}")
@@ -65,7 +65,7 @@ jobs:
         if: ${{ steps.upload.outputs.found == 'true' }}
         run: |
           set -euo pipefail
-          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id }}"
+          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id || '45910686673' }}"
           mkdir -p .ci-logs
           {
             echo "run=$RUN_ID"
@@ -86,7 +86,8 @@ jobs:
           git add ".ci-logs/apk-${RUN_ID}.txt"
           git add ".ci-logs/native-${RUN_ID}-receipt.json" ".ci-logs/native-${RUN_ID}-provider.json" 2>/dev/null || true
           git commit -m "ci: apk link and receipts for run ${RUN_ID}" || true
-          git push || true
+          git pull --rebase origin main
+          git push origin HEAD:main
 
       - name: 上传链接日志
         if: always()
