@@ -96,7 +96,7 @@ patch(
 # 上游开发者在 Windows 上开发，build.py 里有两处 Windows 假设会让 Linux/CI 必挂：
 #   a) cmake/ninja 可执行名写死 .exe  → FileNotFoundError
 #   b) ir spec 记录里存反斜杠路径      → Linux 当文件名，报 “missing generated spec” 并退出 3
-# 这里改成按 os.name 选后缀，并归一反斜杠，两个平台的原始行为都保留。
+# 这里改成按 os.name 选后缀，并归一反斜杠（另加 basename 回退，防目录前缀与预期不符）。
 prov = ROOT / "jailbreak-providers/build.py"
 if prov.is_file():
     src = prov.read_text(encoding="utf-8")
@@ -109,11 +109,24 @@ if prov.is_file():
         src = src.replace("cmake.with_name('ninja.exe')",
                           "cmake.with_name('ninja.exe' if os.name == 'nt' else 'ninja')")
         print("修好 build.py: ninja 可执行名跨平台")
-    if 'spec_path = Path(record["spec"])' in src:
-        src = src.replace(
-            'spec_path = Path(record["spec"])',
-            'spec_path = Path(record["spec"].replace("\\\\", "/"))')
-        print("修好 build.py: ir spec 路径反斜杠归一")
+
+    spec_pat_dq = 'spec_path = Path(record["spec"])'
+    spec_pat_sq = "spec_path = Path(record['spec'])"
+    spec_new = (
+        'spec_path = Path(record["spec"].replace("\\\\", "/"))\n'
+        '        if not spec_path.is_file() and not spec_path.is_absolute():\n'
+        '            _alt = ROOT / "ir-loader" / "specs" / spec_path.name\n'
+        '            if _alt.is_file():\n'
+        '                spec_path = _alt')
+    if spec_pat_dq in src:
+        src = src.replace(spec_pat_dq, spec_new)
+        print("修好 build.py: ir spec 路径反斜杠归一（带 basename 回退）")
+    elif spec_pat_sq in src:
+        src = src.replace(spec_pat_sq, spec_new)
+        print("修好 build.py: ir spec 路径反斜杠归一（单引号版）")
+    else:
+        failures.append("jailbreak-providers/build.py: 未找到 ir spec 路径行（上游可能已变）")
+
     if not src.lstrip().startswith("import os") and "\nimport os\n" not in src:
         lines = src.splitlines()
         first = next((i for i, l in enumerate(lines)
@@ -126,8 +139,6 @@ if prov.is_file():
         failures.append("jailbreak-providers/build.py: cmake 硬编码未替换")
     if "cmake.with_name('ninja.exe')" in src:
         failures.append("jailbreak-providers/build.py: ninja 硬编码未替换")
-    if 'spec_path = Path(record["spec"])' in src:
-        failures.append("jailbreak-providers/build.py: ir spec 路径未归一")
     prov.write_text(src, encoding="utf-8")
 else:
     failures.append("缺文件: jailbreak-providers/build.py")
