@@ -43,6 +43,7 @@ jobs:
           exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
           python3 overlay/apply_bluewhale.py src
           python3 overlay/patch_runtime_targets.py src
+          python3 overlay/patch_brand_skin_tail.py src
 
       - uses: actions/setup-java@v4
         with:
@@ -171,7 +172,7 @@ jobs:
           body: |
             蓝色大肥鱼 · MapleSU 基座构建
             - 包名 com.blue.whale.mask
-            - 版本 3.17.0-bw
+            - 版本 3.18.0-bw
             - 未签名包，本地用 bluewhale-release.p12 签名后安装
           files: |
             out/*.apk
