@@ -15,7 +15,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          set -uo pipefail
+          set +e
           mkdir -p src out
           curl -sSL -o /tmp/maplesu.tar.gz https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/ff3aa44850ea22717fa811a17831155a85f43445
           tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
