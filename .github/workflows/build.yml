@@ -56,7 +56,7 @@ jobs:
           printf '\n84831b9409646a918e30573bab4c9c91346d8abd\n' > "$SDK/licenses/android-sdk-preview-license"
           echo "licenses 已预写: $(ls "$SDK/licenses")"
           # provider 构建（jailbreak-providers/build.py）写死 ndk/28.2.13676358；
-          # 缺这个 NDK 会让所有 KMI 模块编译失败并回退原厂载荷，最终 task 退出 1（run-9 教训）。
+          # 缺这个 NDK 会让所有 KMI 模块编译失败并回退原厂载荷（run-9 教训）。
           for pkg in "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" \
                      "platforms;android-36" "build-tools;36.0.0" \
                      "cmake;3.22.1" "ndk;28.2.13676358" "ndk;29.0.14206865"; do
@@ -70,9 +70,17 @@ jobs:
           echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
           python3 -m pip install --upgrade pip || true
           python3 -m pip install pyelftools==0.32 unicorn==2.1.4
-          rustup toolchain install stable --profile minimal || true
           export PATH="$HOME/.cargo/bin:$PATH"
+          rustup toolchain install stable --profile minimal || true
           rustc --version || true
+          # ghostlock 的 Rust 提取器用 `cargo build --offline --locked` 构建（run-13 教训）；
+          # 空缓存下 --offline 必然找不到 crate，先联网把依赖落到 ~/.cargo，再交给离线构建。
+          rustup target add aarch64-linux-android --toolchain stable || true
+          EXTRACTOR="$GITHUB_WORKSPACE/src/jailbreak-providers/ghostlock/extractor-native/Cargo.toml"
+          if [ -f "$EXTRACTOR" ]; then
+            cargo fetch --manifest-path "$EXTRACTOR" || { echo "FATAL: cargo fetch 失败"; exit 1; }
+            ls "$HOME/.cargo/registry" || true
+          fi
           python3 --version
           cd src
           ./gradlew --no-daemon --max-workers=4 \
@@ -97,7 +105,7 @@ jobs:
             echo "- 作业结论: ${{ job.status }}";
             echo;
             echo '```';
-            echo "#### provider 子构建日志（CMake 报错常只写在这里）";
+            echo "#### provider 子构建日志（CMake/cargo 报错常只写在这里）";
             find src -name "build.log" -size -4M 2>/dev/null | head -3 | while read -r f; do
               echo "===== $f =====";
               tail -120 "$f";
