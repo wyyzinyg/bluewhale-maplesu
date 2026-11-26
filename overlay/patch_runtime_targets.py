@@ -128,6 +128,20 @@ if product.is_file():
 else:
     failures.append("缺文件: tools/specgen/specgen/product.py")
 
+# —— 5. 开关落进项目 gradle.properties（省得每次命令行传） ——
+props = ROOT / "gradle.properties"
+switch_line = "bluewhaleSkipUltraBridge=true"
+if props.is_file():
+    text = props.read_text(encoding="utf-8")
+    if switch_line not in text:
+        props.write_text(text.rstrip("\n") + "\n" + switch_line + "\n", encoding="utf-8")
+        print("改好 gradle.properties: 落 bluewhaleSkipUltraBridge")
+    else:
+        print("已改过 gradle.properties: bluewhaleSkipUltraBridge")
+else:
+    props.write_text(switch_line + "\n", encoding="utf-8")
+    print("新建 gradle.properties: bluewhaleSkipUltraBridge")
+
 if failures:
     print("\n修补失败：", file=sys.stderr)
     for item in failures:
