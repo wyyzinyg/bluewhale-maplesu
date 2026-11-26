@@ -1,0 +1,50 @@
+{
+  "schema": "bluewhale-build-receipt/1",
+  "generatedAt": "2026-11-26T23:44:33+0000",
+  "commit": "296dbab870d9e52384f51728b77ef4bba13b0095",
+  "ciRunId": "45910686673",
+  "versionCode": 32737,
+  "versionName": "3.20.1-bw",
+  "apk": {
+    "path": "src/manager/build/outputs/apk/release/manager-release-unsigned.apk",
+    "size": 44111139,
+    "sha256": "4ca8ae8b4fe3410beb0343e2cba6358f99355ed7d0163453010d60f25df58b92",
+    "certSha256": ""
+  },
+  "native": {
+    "libksudSha256": "aa071a7d4162278cae8f2f1eae952020c74ef4324cdb80e353f75a87b917bb67",
+    "libksudSize": 21541112,
+    "kmis": [
+      {
+        "kmi": "android17-6.18",
+        "newPackageCount": 0,
+        "oldPackageCount": 0,
+        "koSha256": "84007e2eb0a6d82632bc1a0e86dca0fc13c843dbb5feccabc1eb5182733bd563",
+        "size": 417192
+      },
+      {
+        "kmi": "À\u0000\u000eCannot",
+        "newPackageCount": 0,
+        "oldPackageCount": 0,
+        "koSha256": "a782e2b083ac631a02ec0c9afa30d8983eb9bf11017cd7cd042a06be90d9e675",
+        "size": 608896
+      }
+    ],
+    "soOldPackageCount": 0
+  },
+  "gates": {
+    "buildChain": false,
+    "verifyPayload": false,
+    "unitTests": false,
+    "deviceRoot": false,
+    "homeUi": false
+  },
+  "channels": {
+    "cloudbase": "",
+    "cloudbaseBrand": "",
+    "githubRaw": "",
+    "tiana": ""
+  },
+  "notes": "",
+  "elapsedSeconds": 11.2
+}
