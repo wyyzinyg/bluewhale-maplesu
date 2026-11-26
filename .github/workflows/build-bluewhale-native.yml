@@ -91,9 +91,17 @@ jobs:
           ident['expectedSize'] = 1355
           ident['expectedHash'] = '863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581'
           ident['expectedNote'] = 'BlueWhale release cert DER (1355 bytes)'
+          # 6 支补丁改了 applied 树，但上游 manifest 里的 applied.treeSha256 还是旧值；
+          # gen_payload.py 会因此直接拒绝，必须在构建前重算。
+          import sys
+          sys.path.insert(0, 'src/third_party/kernelsu/scripts')
+          import ksu_common as C
+          m['applied']['treeSha256'] = C.tree_sha256(C.APPLIED_DIR)
+          m['applied']['fileCount'] = len(C.iter_tree_files(C.APPLIED_DIR))
           open('src/third_party/kernelsu/manifest.json', 'w', encoding='utf-8').write(
               json.dumps(m, ensure_ascii=False, indent=2) + '\n')
           print('identity ok:', ident['packageName'], ident['expectedSize'], ident['expectedHash'][:16])
+          print('appliedTreeSha256:', m['applied']['treeSha256'], 'files:', m['applied']['fileCount'])
           PY
 
       - name: 安装构建工具链（NDK 29 / cmake / Rust 1.99.1 / libclang）
