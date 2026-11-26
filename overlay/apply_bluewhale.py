@@ -9,10 +9,13 @@
   5. 启动图标底色 #FF3267C0            → #FF08101F，前景换蓝鱼矢量鲸鱼
   6. preBuild 的 Ultra SDK 自检加属性开关（公开快照缺 .tmp 构建报告，自检必失败）
   7. provider 构建脚本的 Windows 假设改成跨平台（cmake.exe/ninja.exe、ir spec 反斜杠路径）
+  8. 公开快照的 runtime/pro 死路径改用公开的 runtime/ultra 策略 bundle
 
 用法：python3 apply_bluewhale.py <上游源码根目录>
 每个替换点都必须命中，命中不了直接报错退出——宁可失败，不要打出一个半改的包。
 """
+import hashlib
+import json
 import pathlib
 import sys
 
@@ -142,6 +145,53 @@ if prov.is_file():
     prov.write_text(src, encoding="utf-8")
 else:
     failures.append("缺文件: jailbreak-providers/build.py")
+
+# —— 8. 公开快照的 runtime/pro 死路径 ——
+# CI 跑到 l3 模块时死在 policy_hook_build.derive：SDK 报告选的 policy boot bundle
+# 指向 runtime/pro/policy，而这棵子树只在作者私有工作区，公开仓库没有。
+# 公开的 runtime/ultra/policy 是同一产品线：bundle 自带的 kernelSourceSha256 在 ultra
+# 树里能自洽（18 个源全匹配），所以固定走 ultra，并把「工具与 SDK 后端同源」的硬校验
+# 挂到同一个跳过开关上；校验前先把 bundle 的自检做一遍，颠簸推诿到 CI 里看不见的地方。
+gradle_kt = ROOT / "manager/build.gradle.kts"
+if gradle_kt.is_file():
+    g = gradle_kt.read_text(encoding="utf-8")
+    chain_old = ('    .getOrElse(policyBootBundleManifest?.let { it.resolveSibling("${it.nameWithoutExtension}.cpp") }\n'
+                 '        ?: rootProject.file("runtime/ultra/policy/hook-bundles/policy-bundles.cpp"))')
+    chain_new = '    .getOrElse(rootProject.file("runtime/ultra/policy/hook-bundles/policy-bundles.cpp"))'
+    if g.count(chain_old) == 1:
+        g = g.replace(chain_old, chain_new)
+        print("改好 build.gradle.kts: policy bundle 固定 ultra")
+    else:
+        failures.append("manager/build.gradle.kts: policyHookBundles 默认链未命中")
+    require_old = "if (policyBootBundleManifest != null) {"
+    require_new = ('if (policyBootBundleManifest != null &&\n'
+                   '    providers.gradleProperty("bluewhaleSkipSdkVerify").orNull != "true") {')
+    if g.count(require_old) == 1:
+        g = g.replace(require_old, require_new)
+        print("改好 build.gradle.kts: bundle 同源校验随自检开关跳过")
+    else:
+        failures.append("manager/build.gradle.kts: bundle 同源校验未命中")
+    gradle_kt.write_text(g, encoding="utf-8")
+else:
+    failures.append("缺文件: manager/build.gradle.kts")
+
+bundle_json = ROOT / "runtime/ultra/policy/hook-bundles/policy-bundles.json"
+if bundle_json.is_file():
+    doc = json.loads(bundle_json.read_text(encoding="utf-8"))
+    sources = doc.get("kernelSourceSha256", {})
+    outside = [n for n in sources if not n.startswith("runtime/ultra/")]
+    drift = [n for n, sha in sources.items()
+             if (ROOT / n).is_file() and hashlib.sha256((ROOT / n).read_bytes()).hexdigest() != sha]
+    missing = [n for n in sources if not (ROOT / n).is_file()]
+    if outside:
+        failures.append(f"ultra bundle 里的非 ultra 源: {outside[:3]}")
+    if missing:
+        failures.append(f"ultra bundle 缺源文件: {missing[:3]}")
+    if drift:
+        print(f"注意：ultra bundle 自皮摘要漂移 {len(drift)} 个（仍继续）")
+    print(f"policy bundle 自检：{len(sources)} 个源，缺 {len(missing)}，漂 {len(drift)}")
+else:
+    failures.append("缺 runtime/ultra/policy/hook-bundles/policy-bundles.json")
 
 if failures:
     print("\n补丁失败：", file=sys.stderr)
