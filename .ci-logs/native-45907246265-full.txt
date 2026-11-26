@@ -1,0 +1,377 @@
+run=45907246265
+inspect	Set up job	﻿2026-11-26T22:50:03.6696080Z Current runner version: '2.338.2'
+inspect	Set up job	2026-11-26T22:50:03.6717468Z ##[group]Runner Image Provisioner
+inspect	Set up job	2026-11-26T22:50:03.6718195Z Hosted Compute Agent
+inspect	Set up job	2026-11-26T22:50:03.6718607Z Version: 20261111.635
+inspect	Set up job	2026-11-26T22:50:03.6718991Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+inspect	Set up job	2026-11-26T22:50:03.6719483Z Build Date: 2026-11-11T01:49:01Z
+inspect	Set up job	2026-11-26T22:50:03.6719902Z Worker ID: {5cddedd7-cad3-402c-a770-70d4bd48805c}
+inspect	Set up job	2026-11-26T22:50:03.6720321Z Region: westus2
+inspect	Set up job	2026-11-26T22:50:03.6720751Z Cloud: Azure
+inspect	Set up job	2026-11-26T22:50:03.6721086Z ##[endgroup]
+inspect	Set up job	2026-11-26T22:50:03.6722118Z ##[group]Operating System
+inspect	Set up job	2026-11-26T22:50:03.6722507Z Ubuntu
+inspect	Set up job	2026-11-26T22:50:03.6722830Z 26.04.1
+inspect	Set up job	2026-11-26T22:50:03.6723253Z LTS
+inspect	Set up job	2026-11-26T22:50:03.6723574Z ##[endgroup]
+inspect	Set up job	2026-11-26T22:50:03.6723943Z ##[group]Runner Image
+inspect	Set up job	2026-11-26T22:50:03.6724629Z Image: ubuntu-26.04
+inspect	Set up job	2026-11-26T22:50:03.6725009Z Version: 20261116.202.1
+inspect	Set up job	2026-11-26T22:50:03.6725687Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.202/images/ubuntu/Ubuntu2604-Readme.md
+inspect	Set up job	2026-11-26T22:50:03.6726774Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.202
+inspect	Set up job	2026-11-26T22:50:03.6727359Z ##[endgroup]
+inspect	Set up job	2026-11-26T22:50:03.6728525Z ##[group]GITHUB_TOKEN Permissions
+inspect	Set up job	2026-11-26T22:50:03.6730078Z Actions: read
+inspect	Set up job	2026-11-26T22:50:03.6730435Z Contents: write
+inspect	Set up job	2026-11-26T22:50:03.6730900Z Metadata: read
+inspect	Set up job	2026-11-26T22:50:03.6731240Z ##[endgroup]
+inspect	Set up job	2026-11-26T22:50:03.6732773Z Secret source: Actions
+inspect	Set up job	2026-11-26T22:50:03.6733467Z Cache mode: write
+inspect	Set up job	2026-11-26T22:50:03.6733900Z Prepare workflow directory
+inspect	Set up job	2026-11-26T22:50:03.7160199Z Prepare all required actions
+inspect	Set up job	2026-11-26T22:50:03.7197704Z Getting action download info
+inspect	Set up job	2026-11-26T22:50:04.0392520Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+inspect	Set up job	2026-11-26T22:50:04.1961329Z Complete job name: inspect
+inspect	Run actions/checkout@v4	﻿2026-11-26T22:50:04.2823807Z ##[group]Run actions/checkout@v4
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2824566Z with:
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2824832Z   repository: wyyzinyg/bluewhale-maplesu
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2827067Z   token: ***
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2827317Z   ssh-strict: true
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2827579Z   ssh-user: git
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2827841Z   persist-credentials: true
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2828130Z   clean: true
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2828394Z   sparse-checkout-cone-mode: true
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2828695Z   fetch-depth: 1
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2828949Z   fetch-tags: false
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2829203Z   show-progress: true
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2829465Z   lfs: false
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2829708Z   submodules: false
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2829969Z   set-safe-directory: true
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2830261Z   allow-unsafe-pr-checkout: false
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.2830644Z ##[endgroup]
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5813630Z Syncing repository: wyyzinyg/bluewhale-maplesu
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5815348Z ##[group]Getting Git version info
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5816060Z Working directory is '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5816822Z [command]/usr/bin/git version
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5827280Z git version 2.56.1
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5841579Z ##[endgroup]
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5852157Z Temporarily overriding HOME='/home/runner/work/_temp/134d29f2-4ed9-4f00-9263-fa09accf481a' before making global git config changes
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5855992Z Adding repository directory to the temporary git global config as a safe directory
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.5857017Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6256310Z Deleting the contents of '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6259973Z ##[group]Initializing the repository
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6265070Z [command]/usr/bin/git init /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6775996Z hint: Using 'master' as the name for the initial branch. This default branch name
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6776843Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6777660Z hint: to use in all of your new repositories, which will suppress this warning,
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6778083Z hint: call:
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6778326Z hint:
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6778655Z hint: 	git config --global init.defaultBranch <name>
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6779020Z hint:
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6779358Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6779891Z hint: 'development'. The just-created branch can be renamed via this command:
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6780315Z hint:
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6780562Z hint: 	git branch -m <name>
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6780840Z hint:
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6781207Z hint: Disable this message with "git config set advice.defaultBranchName false"
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6786657Z Initialized empty Git repository in /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/.git/
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.6797415Z [command]/usr/bin/git remote add origin https://github.com/wyyzinyg/bluewhale-maplesu
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.7246416Z ##[endgroup]
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.7247171Z ##[group]Disabling automatic garbage collection
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.7250459Z [command]/usr/bin/git config --local gc.auto 0
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.7735282Z ##[endgroup]
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.7735831Z ##[group]Setting up auth
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.7741236Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.7774111Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.8160066Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.8189173Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.8428595Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.8459537Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.8693513Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.9808174Z ##[endgroup]
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.9808857Z ##[group]Fetching the repository
+inspect	Run actions/checkout@v4	2026-11-26T22:50:04.9822666Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a095cdfe89c90dc910cd48aa37f814b26b05cbb8:refs/remotes/origin/main
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4596336Z From https://github.com/wyyzinyg/bluewhale-maplesu
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4597798Z  * [new ref]         a095cdfe89c90dc910cd48aa37f814b26b05cbb8 -> origin/main
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4601008Z ##[endgroup]
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4602216Z ##[group]Determining the checkout info
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4603763Z ##[endgroup]
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4606289Z [command]/usr/bin/git sparse-checkout disable
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4659404Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4689944Z ##[group]Checking out the ref
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4692761Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4893748Z Switched to a new branch 'main'
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4896238Z branch 'main' set up to track 'origin/main'.
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4903289Z ##[endgroup]
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4950353Z [command]/usr/bin/git log -1 --format=%H
+inspect	Run actions/checkout@v4	2026-11-26T22:50:05.4976725Z a095cdfe89c90dc910cd48aa37f814b26b05cbb8
+inspect	Build and inspect the pinned legacy L3 module	﻿2026-11-26T22:50:05.5209111Z ##[group]Run set +e
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5209995Z ^[[36;1mset +e^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5210636Z ^[[36;1mmkdir -p src out^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5212202Z ^[[36;1mcurl -sSL -o /tmp/maplesu.tar.gz https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/ff3aa44850ea22717fa811a17831155a85f43445^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5214077Z ^[[36;1mtar xzf /tmp/maplesu.tar.gz -C src --strip-components=1^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5215501Z ^[[36;1mpython3 overlay/apply_bluewhale.py src^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5216518Z ^[[36;1mpython3 overlay/patch_runtime_targets.py src^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5217576Z ^[[36;1mpython3 overlay/patch_brand_skin_tail.py src^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5218611Z ^[[36;1mpython3 overlay/patch_bluewhale_320.py src^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5219671Z ^[[36;1mpython3 overlay/patch_bluewhale_321.py src^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5220726Z ^[[36;1mSDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5221782Z ^[[36;1mSM="$SDK/cmdline-tools/latest/bin/sdkmanager"^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5222904Z ^[[36;1m[ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5224044Z ^[[36;1mmkdir -p "$SDK/licenses"^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5226416Z ^[[36;1mprintf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5228719Z ^[[36;1m"$SM" "ndk;29.0.14206865" < /dev/null^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5229575Z ^[[36;1mNDK="$SDK/ndk/29.0.14206865"^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5230556Z ^[[36;1mpython3 -m pip install pyelftools==0.32 unicorn==2.1.4^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5231567Z ^[[36;1mmkdir -p .ci-logs^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5232350Z ^[[36;1mLOG=.ci-logs/legacy-l3-inspect.txt^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5233194Z ^[[36;1m{^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5234120Z ^[[36;1m  python3 src/jailbreak-providers/root-loader/build_root_module.py \^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5235516Z ^[[36;1m    --module maplesu_l3 --ndk-dir "$NDK" --out-dir out/l3 \^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5236891Z ^[[36;1m    --contract src/jailbreak-providers/root-loader/contracts/family-5.10.json^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5238098Z ^[[36;1m  echo "builderExit=$?"^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5239073Z ^[[36;1m  cat out/l3/verify-build.txt || true^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5240326Z ^[[36;1m  OBJDUMP=$(find "$NDK/toolchains/llvm/prebuilt" -name llvm-objdump -type f | head -1)^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5241994Z ^[[36;1m  READELF=$(find "$NDK/toolchains/llvm/prebuilt" -name llvm-readelf -type f | head -1)^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5243412Z ^[[36;1m  for f in out/l3/staging/maplesu_l3.ko out/l3/cfi-check.elf; do^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5244467Z ^[[36;1m    echo "===== $f ====="^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5245242Z ^[[36;1m    "$READELF" -SW -sW "$f" || true^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5246298Z ^[[36;1m    "$OBJDUMP" -d --start-address=0x1fc0 --stop-address=0x2070 "$f" || true^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5247615Z ^[[36;1m    "$OBJDUMP" -d --start-address=0x5000 --stop-address=0x5260 "$f" || true^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5248633Z ^[[36;1m  done^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5249207Z ^[[36;1m} > "$LOG" 2>&1^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5249937Z ^[[36;1mgit config user.name 'github-actions[bot]'^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5251123Z ^[[36;1mgit config user.email '41898282+github-actions[bot]@users.noreply.github.com'^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5252274Z ^[[36;1mgit add "$LOG"^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5253240Z ^[[36;1mgit diff --cached --quiet || git commit -m 'ci: inspect legacy L3 trap owner'^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5254562Z ^[[36;1mgit push origin HEAD:main^[[0m
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5288991Z shell: /usr/bin/bash -e {0}
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5289699Z env:
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5296855Z   GH_TOKEN: ***
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:05.5297438Z ##[endgroup]
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7815351Z 改好 manager/build.gradle.kts
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7815946Z 改好 manager/build.gradle.kts
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7816287Z 改好 manager/build.gradle.kts
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7816729Z 改好 manager/src/main/res/values/maplesu_strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7817294Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7818373Z 插入 BLUEWHALE_KEY_COLOR 常量
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7818746Z 改好 manager/src/main/res/values/colors.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7819105Z 移除位图 drawable-xxhdpi
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7819468Z 移除位图 drawable-hdpi
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7819743Z 移除位图 drawable-mdpi
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7820010Z 移除位图 drawable-xxxhdpi
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7820301Z 移除位图 drawable-xhdpi
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7820556Z 放入矢量图标
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7821092Z 改好 manager/build.gradle.kts
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7821463Z 修好 build.py: cmake 可执行名跨平台
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7821777Z 修好 build.py: ninja 可执行名跨平台
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7822121Z 修好 build.py: ir spec 路径反斜杠归一（带 basename 回退）
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7822512Z 修好 build.py: L3 构建保留完整门禁日志
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7822862Z 修好 build.py: 附加 KMI 的 L3 失败回传主日志
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7823198Z 修好 build.py: L3 全 KMI 诊断后统一失败
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7823555Z 改好 build.gradle.kts: policy bundle 固定 ultra
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7823950Z 改好 build.gradle.kts: bundle 同源校验随自检开关跳过
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7824481Z policy bundle 自检：18 个源，缺 0，漂 0
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7824906Z 修好 prepare_host_dependencies.py: 插入 _retry_urlopen
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7825332Z 修好 prepare_host_dependencies.py: 下载走重试
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7825724Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7826126Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7826520Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7826963Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7827254Z 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:42.7827414Z 蓝鱼品牌化补丁已全部应用。
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3595104Z 改好 build.gradle.kts: runtime 目标集按开关决定 bridge
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3595569Z 改好 manager/build.gradle.kts: @get:InputFile abstract val ultraBridgeLibrary: 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3595923Z 改好 manager/build.gradle.kts: ultraBridgeLibrary.get().asFile.copyTo(jniDirect
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3596257Z 改好 manager/build.gradle.kts: ultraBridgeLibrary.set(runtimeBuild.map { it.fil
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3596538Z 改好 build.gradle.kts: bridge 不再作为硬性输出
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3596768Z 改好 product.py: cached_jar 缺缓存时从 Maven 补拉
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3597035Z 改好 build.gradle.kts: Ultra claim 门槛随跳过开关放行
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3597253Z 改好 gradle.properties: 落 bluewhaleSkipUltraBridge
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3597564Z 改好 manager/src/main/AndroidManifest.xml: android:authorities="dev.maplesu.manager.soter"
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3598035Z 改好 manager/src/main/java/dev/maplesu/manager/soter/SoterTargetProvider.kt: const val AUTHORITY = "dev.maplesu.manager.soter
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3598457Z 还原蓝鱼图标与启动页位图: 6 个文件，与 3.16 逐字节一致
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3598781Z 改好 manager/src/main/res/mipmap-anydpi/ic_launcher.xml: <foreground android:drawable="@drawable/ic_launc
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3599199Z 改好 manager/src/main/res/values/colors.xml: <color name="ic_launcher_background">#FF08101F</
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3599588Z 改好 manager/src/main/res/values/colors.xml: <color name="ic_splash_background">#FF774F6F</co
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3599975Z 改好 manager/src/main/res/values/themes.xml: <item name="windowSplashScreenBackground">@color
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3600369Z 改好 manager/src/main/res/values/themes.xml: <item name="windowSplashScreenAnimatedIcon">@dra
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3600777Z 改好 manager/src/main/res/values-night/themes.xml: <item name="windowSplashScreenBackground">@color
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3601229Z 改好 manager/src/main/res/values-night/themes.xml: <item name="windowSplashScreenAnimatedIcon">@dra
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3601529Z 还原启动页: ic_app_brand 位图 + 白底 + 主题指向
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3601924Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt: get() = if (ThemeLock.ENABLED) ThemeLock.THEME_M
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3602384Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: init {
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3602649Z         prefs.registerOnSharedPreferenceC
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3602975Z 改好 manager/src/main/java/com/maplesu/core/ui/util/AppearancePrefsPolicy.kt: "snow_enabled" to enabled,
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3603424Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if ((skin.appliedScene && uiState.snowEnabled) |
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3604351Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeBetaBanner.kt: internal const val MAPLESU_FEEDBACK_URL = "https
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3604818Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: Text(
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3605073Z             text = aboutCommunityText(stri
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3605459Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: AdvisorWallMiuix(Modifier.padding(top = 4.dp))
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3606088Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: kind = BrandBannerKind.MAPLE,
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3606538Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: Text(
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3606805Z             text = aboutCommunityText(stri
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3607199Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: AdvisorWallMaterial(Modifier.padding(top = 4.dp)
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3607726Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: kind = BrandBannerKind.MAPLE,
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3608153Z 改好 manager/src/main/res/values/themes.xml: <style name="Theme.KernelSU" parent="android:The
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3608531Z 改好 manager/src/main/res/values/themes.xml: <item name="android:windowLightStatusBar">true</
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3608910Z 改好 manager/src/main/res/values/themes.xml: <item name="android:windowLightNavigationBar">tr
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.3609279Z 改好 manager/src/main/res/values/colors.xml: <color name="maple_window_background">#FFF7F7F7<
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4734289Z 改好 manager/src/main/res/values-night/colors.xml: <color name="maple_window_background">#FF000000<
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4734897Z 改好 manager/build.gradle.kts: versionCode = 32731
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4735250Z 改好 manager/build.gradle.kts: versionName = "3.17.0-bw"
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4735839Z 改好 manager/src/main/res/values/maplesu_release_strings.xml: <string name="home_public_beta_notice">公测版本非正式版本
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4736564Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_title">About MapleSU</
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4737194Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_entry_summary">Develop
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4737832Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_overview">Overview: an
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4738504Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_overview_plain">Overvi
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4739164Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_developers">Developer:
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4739830Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_title">关于 MapleSU</str
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4740516Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_entry_summary">开发者、开源致
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4741198Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_overview">简介：一款 Androi
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4741876Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_overview_plain">简介：一款 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4742539Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_developers">开发者：MapleA
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4743184Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_failed">Env
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4743884Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_timeout_sum
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4744693Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_failed_summ
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4745362Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_unconfirmed
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4746086Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_failed">环境检
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4747061Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_timeout_sum
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4747788Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_failed_summ
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4748527Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_unconfirmed
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4749396Z 改好 manager/src/main/res/values/strings_workmode.xml: <string name="work_mode_superuser_unresolved">Th
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4750079Z 改好 manager/src/main/res/values-zh-rCN/strings_workmode.xml: <string name="work_mode_superuser_unresolved">还没
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4750812Z 改好 manager/src/main/res/values-zh-rCN/strings_workmode.xml: <string name="work_mode_superuser_unavailable">当
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4751511Z 改好 manager/src/main/res/values/maplesu_strings.xml: <string name="module_load_failed">Failed to load
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4752211Z 改好 manager/src/main/res/values-zh-rCN/maplesu_strings.xml: <string name="module_load_failed">加载模块失败，请重试</st
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4752736Z 品牌皮肤已应用：深色默认 + 去枫叶 + 蓝鱼文案
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4753041Z 构建期修补已全部应用。
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4753778Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt: appearance.getBoolean("snow_enabled", true)
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4754806Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: 2 处 AppearancePreferences.INTRO_COMIC, t
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4755665Z 改好 manager/src/main/java/com/maplesu/core/ui/util/AppearancePrefsPolicy.kt: "snow_enabled" to false,
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4756505Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_appearance_summary">界面风格 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4757199Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_fall_title">枫叶飘落</string>
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4757850Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_fall_summary">让枫叶轻轻飘落，可随时
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4758517Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_appearance_summary">Style
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4759169Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_fall_title">Falling maple
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4760000Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_fall_summary">Gentle fall
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4760643Z 改好 manager/src/main/res/values-zh-rCN/maplesu_strings.xml: <string name="maplesu_backend_version">Maple
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4761324Z 改好 manager/src/main/res/values/maplesu_strings.xml: <string name="maplesu_backend_version">Maple
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4762087Z 改好 manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialogMaterial.kt: internal fun BrandDialogMaterial(
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4762598Z     kind: 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4763153Z 改好 manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialogMaterial.kt: icon = { BrandBanner(kind = kind, accent = M
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4763724Z 文案统一完成: 346 条
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4763959Z 文案总清已应用，版本 3.18.1-bw (32733)。
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4764347Z 删掉启动页上游人物位图: 5 个
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4764743Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if (uiState.snowEnabled) {
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4765435Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if (skin.appliedScene && uiState.trollRainEnab
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4766376Z 删掉 manager/src/main/java/com/maplesu/core/ui/screen/settings/AppearanceSettingsBody.kt: AppearanceGroup(stringResource(R.string.theme_section_effect
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4767512Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: .putBoolean("snow_enabled", false).apply()
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4768331Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_appearance_summary">界面风格 · 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4769022Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_appearance_summary">Style ·
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4769530Z 改好 manager/build.gradle.kts: versionCode = 32733
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4769902Z 改好 manager/build.gradle.kts: versionName = "3.18.1-bw"
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4770390Z 特效收口已应用，版本 3.18.2-bw (32734)。
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4770739Z 更新通道 → 蓝鱼 update.json（CloudBase 主站 + GitHub raw 兜底）
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4771058Z 文案总清：改写 35 个资源文件
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4771261Z 版本 → 3.19.0-bw / 32735
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4771471Z 3.19.0 收口已应用。
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.4771674Z 皮肤收尾已应用。
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5303505Z 版本 → 3.20.0-bw / 32736
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5305698Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 内测横幅移到 InfoCard 之前（状态卡前置）
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5306263Z 无 Root 口径：改写 19 个资源文件
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5306744Z 改好 manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdate.kt: 更新通道加 Tiana 备用镜像位（默认留空=跳过）
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5307100Z 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5307221Z 3.20.0 补丁已应用：改动 22 个文件。
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5307489Z   · manager/build.gradle.kts
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5307841Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5308278Z   · manager/src/main/res/values/hook_environment_strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5308697Z   · manager/src/main/res/values/jailbreak_logs.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5309021Z   · manager/src/main/res/values/jailbreak_workmode.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5309352Z   · manager/src/main/res/values/maplesu_93260.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5309692Z   · manager/src/main/res/values/maplesu_jailbreak.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5310011Z   · manager/src/main/res/values/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5310335Z   · manager/src/main/res/values-fr/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5310643Z   · manager/src/main/res/values-in/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5310943Z   · manager/src/main/res/values-tr/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5311246Z   · manager/src/main/res/values-vi/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5311624Z   · manager/src/main/res/values-zh-rCN/hook_environment_strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5312049Z   · manager/src/main/res/values-zh-rCN/hook_su_strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5390313Z   · manager/src/main/res/values-zh-rCN/jailbreak_logs.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5390696Z   · manager/src/main/res/values-zh-rCN/jailbreak_workmode.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5390961Z   · manager/src/main/res/values-zh-rCN/maplesu_93260.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5391206Z   · manager/src/main/res/values-zh-rCN/maplesu_jailbreak.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5391444Z   · manager/src/main/res/values-zh-rCN/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5391667Z   · manager/src/main/res/values-zh-rHK/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5391895Z   · …… 其余 2 个
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5631433Z 改好 third_party/kernelsu/manifest.json: 身份 / sources / checks / 摘要 共 7 处包名
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5631863Z 改好 third_party/kernelsu/applied/kernel/Kbuild: KSU_MANAGER_PACKAGE 默认值
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5632188Z 改好 third_party/kernelsu/applied/kernel/Kbuild: KSU_PACKAGE_NAME 的 .pr 变体
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5632502Z 改好 third_party/kernelsu/applied/userspace/ksud/build.rs: ksud 的包名兜底默认值
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5632869Z 改好 third_party/kernelsu/applied/userspace/ksud/src/late_load.rs: late-load 重启管理器的 Activity
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5633156Z 版本 → 3.20.1-bw / 32737
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5633775Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 内测横幅移到 About7kCard 之后（首屏不再出现）
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5634331Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 加「无 Root 模式」入口卡与参数
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5634743Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt: 计算并传入无 Root 入口可见性
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5635200Z 改好 manager/src/main/res/values/strings.xml: 加 home_no_root_entry_*
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5635493Z 改好 manager/src/main/res/values-zh-rCN/strings.xml: 加 home_no_root_entry_*
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5635802Z 改好 manager/src/main/res/values-zh-rHK/strings.xml: 加 home_no_root_entry_*
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5635965Z 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5636057Z 3.20.1 补丁已应用：改动 10 个文件。
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5636249Z   · third_party/kernelsu/manifest.json
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5636458Z   · third_party/kernelsu/applied/kernel/Kbuild
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5636692Z   · third_party/kernelsu/applied/userspace/ksud/build.rs
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5636945Z   · third_party/kernelsu/applied/userspace/ksud/src/late_load.rs
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5637188Z   · manager/build.gradle.kts
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5637413Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5637704Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5637944Z   · manager/src/main/res/values/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5638161Z   · manager/src/main/res/values-zh-rCN/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:50.5638378Z   · manager/src/main/res/values-zh-rHK/strings.xml
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:52.9627217Z Loading package information...                                                  
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:53.0241384Z Loading local repository...                                                     
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:53.0241979Z [                                       ] 3% Loading local repository...        
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.0060653Z [                                       ] 3% Fetch remote repository...         
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.4106137Z [=                                      ] 3% Fetch remote repository...         
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.4676356Z [=                                      ] 4% Fetch remote repository...         
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.4940553Z [=                                      ] 5% Fetch remote repository...         
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.5237346Z [==                                     ] 5% Fetch remote repository...         
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.5635539Z [==                                     ] 6% Fetch remote repository...         
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.6885521Z [==                                     ] 7% Fetch remote repository...         
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.6910483Z [==                                     ] 7% Computing updates...               
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.6965393Z [===                                    ] 8% Computing updates...               
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.7014495Z [===                                    ] 10% Computing updates...              
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.7015250Z [=======================================] 100% Computing updates...             
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.7016049Z 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:54.9900970Z Defaulting to user installation because normal site-packages is not writeable
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.2489215Z Collecting pyelftools==0.32
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.2840615Z   Downloading pyelftools-0.32-py3-none-any.whl.metadata (372 bytes)
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.3211029Z Collecting unicorn==2.1.4
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.3291999Z   Downloading unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.3511888Z Downloading pyelftools-0.32-py3-none-any.whl (188 kB)
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.3720990Z Downloading unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.4 MB)
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.5719834Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 83.9 MB/s eta 0:00:00
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.7008676Z Installing collected packages: pyelftools, unicorn
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.9602606Z 
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:50:55.9610978Z Successfully installed pyelftools-0.32 unicorn-2.1.4
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:51:39.6770024Z [main 6fccd08] ci: inspect legacy L3 trap owner
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:51:39.6770773Z  1 file changed, 276 insertions(+)
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:51:39.6771052Z  create mode 100644 .ci-logs/legacy-l3-inspect.txt
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:51:41.0052103Z To https://github.com/wyyzinyg/bluewhale-maplesu
+inspect	Build and inspect the pinned legacy L3 module	2026-11-26T22:51:41.0052566Z    a095cdf..6fccd08  HEAD -> main
+inspect	Post Run actions/checkout@v4	﻿2026-11-26T22:51:41.0178949Z Post job cleanup.
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.0763063Z [command]/usr/bin/git version
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.0799598Z git version 2.56.1
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.0825765Z Temporarily overriding HOME='/home/runner/work/_temp/4207ee56-cb4e-4548-8b83-3923c325fe40' before making global git config changes
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.0826750Z Adding repository directory to the temporary git global config as a safe directory
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.0829746Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.0868237Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.0903246Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.1188668Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.1223898Z http.https://github.com/.extraheader
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.1226938Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.1265001Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.1521364Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+inspect	Post Run actions/checkout@v4	2026-11-26T22:51:41.1553904Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+inspect	Complete job	﻿2026-11-26T22:51:41.1942072Z Cleaning up orphan processes
+inspect	Complete job	2026-11-26T22:51:41.2212490Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
