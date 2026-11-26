@@ -86,6 +86,12 @@ jobs:
             cargo fetch --manifest-path "$EXTRACTOR" || { echo "FATAL: cargo fetch 失败"; exit 1; }
             ls "$HOME/.cargo/registry" || true
           fi
+          # l3 模块在 gradle 之前就要用 Kotlin 宿主编译（tools/specgen），它按 gradle 缓存布局找
+          # kotlin-stdlib / kotlin-compiler-embeddable / kotlinx-serialization 等 15 个 jar（run-18 教训）。
+          # 上游自带 prepare_host_dependencies.py，直接按锁文件落到 ~/.gradle。
+          python3 "$GITHUB_WORKSPACE/src/tools/prepare_host_dependencies.py" \
+            --lock "$GITHUB_WORKSPACE/src/tools/host-jvm-dependencies.json" \
+            --gradle-user-home "$HOME/.gradle"
           python3 --version
           cd src
           ./gradlew --no-daemon --max-workers=4 \
