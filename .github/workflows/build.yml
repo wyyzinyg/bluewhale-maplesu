@@ -47,18 +47,23 @@ jobs:
           echo "== java =="; java -version
           SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
           echo "SDK=$SDK"; ls "$SDK" || true
-          ls "$SDK/cmdline-tools" || true
           SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
           if [ ! -x "$SM" ]; then SM=$(find "$SDK" -name sdkmanager -type f | head -1); fi
           echo "SM=$SM"
-          yes | "$SM" --licenses || true
+          # 预先接受标准 license：sdkmanager 在非 tty 环境会因交互提示挂住（run-8 教训）
+          mkdir -p "$SDK/licenses"
+          printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
+          printf '\n84831b9409646a918e30573bab4c9c91346d8abd\n' > "$SDK/licenses/android-sdk-preview-license"
+          echo "licenses 已预写: $(ls "$SDK/licenses")"
           for pkg in "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" \
                      "platforms;android-36" "build-tools;36.0.0" \
                      "cmake;3.22.1" "ndk;26.1.10909125"; do
             echo "--- install $pkg"
-            "$SM" "$pkg" || true
+            "$SM" "$pkg" < /dev/null || true
           done
           ls "$SDK/platforms"
+          echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
           python3 -m pip install --upgrade pip || true
           python3 -m pip install pyelftools==0.32 unicorn==2.1.4
           rustup toolchain install stable --profile minimal || true
