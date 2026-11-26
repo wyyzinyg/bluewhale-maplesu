@@ -119,7 +119,7 @@ jobs:
           print('appliedTreeSha256:', m['applied']['treeSha256'], 'files:', m['applied']['fileCount'])
           PY
 
-      - name: 安装构建工具链（NDK 29 / cmake / Rust 1.99.1 / libclang）
+      - name: 安装构建工具链（NDK 26/29 / cmake / Rust 1.99.1 / libclang）
         run: |
           set -euo pipefail
           sudo apt-get update
@@ -136,10 +136,12 @@ jobs:
           printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
           # 别一次塞多个包：其中任何一个名字不存在都会让整条 sdkmanager 退出 1。
           # API 37 的平台包名是 platforms;android-37.0（没有 platforms;android-37）。
-          for pkg in "ndk;29.0.14206865" "cmake;3.22.1" "platforms;android-37.0" "build-tools;37.0.0"; do
+          for pkg in "ndk;26.1.10909125" "ndk;29.0.14206865" "cmake;3.22.1" "platforms;android-37.0" "build-tools;37.0.0"; do
             echo "--- install $pkg"
             "$SM" "$pkg" < /dev/null || true
           done
+          # runtime/patch/policy/module-tools 仍按上游固定使用 NDK 26；provider 单独使用 NDK 29。
+          test -d "$SDK/ndk/26.1.10909125" || { echo "FATAL: ndk 26 未安装"; exit 1; }
           test -d "$SDK/ndk/29.0.14206865" || { echo "FATAL: ndk 29 未安装"; exit 1; }
           test -d "$SDK/build-tools/37.0.0" || { echo "FATAL: build-tools 37 未安装"; exit 1; }
           test -d "$SDK/platforms/android-37" || test -d "$SDK/platforms/android-37.0" || { echo "FATAL: platform 37 未安装"; exit 1; }

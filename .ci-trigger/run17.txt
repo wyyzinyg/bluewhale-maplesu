@@ -1,0 +1,2 @@
+run=17
+fix=install-upstream-ndk26
