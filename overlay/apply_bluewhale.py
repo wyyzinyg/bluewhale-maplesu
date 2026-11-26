@@ -153,6 +153,25 @@ if prov.is_file():
         print("修好 build.py: L3 构建保留完整门禁日志")
     else:
         failures.append("jailbreak-providers/build.py: L3 --quiet 行未命中")
+
+    # 附加 KMI 的失败日志位于各自的 per-kmi 嵌套目录，主 build.log 只看到 6.6
+    # 成功记录。把真实失败候选和 transcript 同步到 Gradle 主日志，仍保持 fail-closed。
+    l3_failure_anchor = '''    if result.returncode:
+        transcript = (result.stdout or "") + (result.stderr or "")
+'''
+    l3_failure_log = '''    if result.returncode:
+        transcript = (result.stdout or "") + (result.stderr or "")
+        child_transcript = l3_dir / "verify-build.txt"
+        print("MAPLESU L3 FAILURE contract=%s exitCode=%s" % (contract, result.returncode))
+        if child_transcript.is_file():
+            print("== L3 transcript: %s ==" % child_transcript)
+            print(child_transcript.read_text(encoding="utf-8", errors="replace")[-30000:])
+'''
+    if src.count(l3_failure_anchor) == 1:
+        src = src.replace(l3_failure_anchor, l3_failure_log)
+        print("修好 build.py: 附加 KMI 的 L3 失败回传主日志")
+    else:
+        failures.append("jailbreak-providers/build.py: L3 failure transcript 锚点未命中")
     prov.write_text(src, encoding="utf-8")
 else:
     failures.append("缺文件: jailbreak-providers/build.py")
