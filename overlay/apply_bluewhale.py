@@ -261,6 +261,30 @@ if phd.is_file():
 else:
     failures.append("缺文件: tools/prepare_host_dependencies.py")
 
+# —— 10. legacy CFI 主机反例失败时保留真实指令证据 ——
+# 只增强错误报告，不改变正反例、BRK 立即数或任何 PASS/FAIL 判定。
+patch(
+    "jailbreak-providers/root-loader/legacy_cfi.py",
+    "        machine.emu_start(self.check, self.return_address, count=512)\n",
+    '''        try:
+            machine.emu_start(self.check, self.return_address, count=512)
+        except self.uc.UcError as error:
+            pc = machine.reg_read(r.UC_ARM64_REG_PC)
+            try:
+                instruction = "0x%08x" % int.from_bytes(machine.mem_read(pc, 4), "little")
+            except Exception:
+                instruction = "unreadable"
+            try:
+                failure_bytes = machine.mem_read(self.failure, max(self.failure_size, 16)).hex()
+            except Exception:
+                failure_bytes = "unreadable"
+            raise ValueError(
+                "CFI emulation %s: pc=0x%x instruction=%s failure=0x%x "
+                "failureSize=%d failureBytes=%s typeId=0x%x target=0x%x" %
+                (error, pc, instruction, self.failure, self.failure_size,
+                 failure_bytes, type_id, target)) from error
+''')
+
 if failures:
     print("\n补丁失败：", file=sys.stderr)
     for item in failures:

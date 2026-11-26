@@ -1,0 +1,3 @@
+build=32737
+skip_lkm=false
+purpose=diagnose-legacy-cfi-trap
