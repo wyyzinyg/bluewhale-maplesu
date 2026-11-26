@@ -31,7 +31,7 @@ if kt.is_file():
     if hits == 1:
         kt.write_text(text.replace(old, new), encoding="utf-8")
         print("改好 build.gradle.kts: runtime 只构建发布所需目标（跳过 ultra 探针）")
-    elif '"--target", "maplesu-runtime"' in text:
+    elif "maplesu_ultra_bridge" in text:
         print("已改过 build.gradle.kts: runtime 目标集")
     else:
         failures.append(f"manager/build.gradle.kts: runtime 构建目标行未命中（{hits} 处）")
@@ -65,7 +65,7 @@ if product.is_file():
         '            except Exception as error:  # noqa: BLE001\n'
         '                last = error\n'
         '                time.sleep(10)\n'
-        '        raise RuntimeError("ULTRA_HOST_DEPENDENCY_MISSING:" + artifact + "（" + url + "）" + str(last))')
+        '        raise RuntimeError("ULTRA_HOST_DEPENDENCY_MISSING:" + artifact + str(last))')
     hits = src.count(anchor)
     if hits == 1:
         product.write_text(src.replace(anchor, replacement), encoding="utf-8")
