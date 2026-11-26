@@ -1,6 +1,7 @@
 name: build-bluewhale
 
 # 在 GitHub 的 16G 跑构建机上出包：本机只有 4G，Kotlin 编译这个体量的 App 会被内存上限杀掉。
+# 失败时也会把 build.log 发到 Release，方便在没有登录态的环境里读日志。
 on:
   workflow_dispatch:
   push:
@@ -25,54 +26,64 @@ jobs:
             https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/refs/heads/main
           mkdir -p src
           tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
-          echo "上游体积: $(du -sh src | cut -f1)"
+          echo "上游体积: $(du -sh src | cut -f1)" | tee -a build.log
 
       - name: 应用蓝鱼品牌化补丁
-        run: python3 overlay/apply_bluewhale.py src
+        run: python3 overlay/apply_bluewhale.py src 2>&1 | tee -a build.log
 
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
 
+      - uses: android-actions/setup-android@v3
+
       - name: 补齐 Android SDK 组件
         run: |
-          set -euo pipefail
+          set -uo pipefail
           SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
-          echo "SDK=$SDK"
-          yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
-          "$SDK/cmdline-tools/latest/bin/sdkmanager" \
-            "platforms;android-36" "build-tools;36.0.0" \
-            "cmake;3.22.1" "ndk;26.1.10909125" >/dev/null
+          echo "SDK=$SDK" | tee -a build.log
+          echo "已有 platforms: $(ls "$SDK/platforms" 2>/dev/null | tr '\n' ' ')" | tee -a build.log
+          for pkg in "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" \
+                     "platforms;android-36" "build-tools;36.0.0" \
+                     "cmake;3.22.1" "ndk;26.1.10909125"; do
+            echo "--- install $pkg" | tee -a build.log
+            yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" "$pkg" 2>&1 | tail -3 | tee -a build.log || true
+          done
+          ls "$SDK/platforms" | tee -a build.log
           echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
           echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
 
-      - name: Python 依赖 + Rust（module-tools 需要）
+      - name: Python 依赖 + Rust
         run: |
+          set -euo pipefail
           python3 -m pip install --upgrade pip >/dev/null
           python3 -m pip install pyelftools==0.32 unicorn==2.1.4
           rustup toolchain install stable --profile minimal
-          rustc --version
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+          rustc --version | tee -a build.log
 
       - name: 编译 release（R8）
         working-directory: src
         run: |
-          set -euo pipefail
+          set -o pipefail
           ./gradlew --no-daemon --max-workers=4 \
             --dependency-verification=off \
             -PbluewhaleSkipSdkVerify=true \
             -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
-            :manager:assembleRelease
+            :manager:assembleRelease 2>&1 | tee -a "$GITHUB_WORKSPACE/build.log"
 
       - name: 收集产物
+        if: always()
         run: |
-          set -euo pipefail
           mkdir -p out
-          find src/manager/build/outputs/apk -name "*.apk" -print -exec cp {} out/ \;
-          ls -lh out
-          cd out && sha256sum *.apk > SHA256SUMS.txt && cat SHA256SUMS.txt
+          find src/manager/build/outputs/apk -name "*.apk" -print -exec cp {} out/ \; || true
+          ls -lh out || true
+          (cd out && sha256sum *.apk > SHA256SUMS.txt) 2>/dev/null || true
+          echo "===== build.log 末尾 ====="; tail -60 build.log || true
 
-      - name: 发布到 Release
+      - name: 发布到 Release（成功或失败都发日志）
+        if: always()
         uses: softprops/action-gh-release@v2
         with:
           tag_name: bw-${{ github.run_number }}
@@ -83,5 +94,6 @@ jobs:
             - 版本 3.17.0-bw
             - 未签名（本地用 bluewhale-release.p12 签名后安装）
           files: |
+            build.log
             out/*.apk
             out/SHA256SUMS.txt
