@@ -8,6 +8,7 @@
   4. 默认主色     未设置(0)            → #2856D8（深海军蓝）
   5. 启动图标底色 #FF3267C0            → #FF08101F，前景换蓝鱼矢量鲸鱼
   6. preBuild 的 Ultra SDK 自检加属性开关（公开快照缺 .tmp 构建报告，自检必失败）
+  7. provider 构建脚本的 cmake/ninja 可执行名改成跨平台（上游写死 .exe，Linux 必挂）
 
 用法：python3 apply_bluewhale.py <上游源码根目录>
 每个替换点都必须命中，命中不了直接报错退出——宁可失败，不要打出一个半改的包。
@@ -90,6 +91,35 @@ patch(
     "val skipUltraSdkIdentityVerify = providers.gradleProperty(\"bluewhaleSkipSdkVerify\").orNull == \"true\"\n"
     "tasks.named(\"preBuild\") { if (!skipUltraSdkIdentityVerify) dependsOn(verifyUltraSdkIdentity) }",
 )
+
+# —— 7. provider 构建脚本的跨平台修正 ——
+# 上游开发者在 Windows 上开发，build.py 把 cmake 可执行名写死成 cmake.exe / ninja.exe，
+# 在 Linux/CI 上必然 FileNotFoundError，导致 buildJailbreakProviders 整条失败。
+# 这里改成按 os.name 选后缀，两个平台的原始行为都保留。
+prov = ROOT / "jailbreak-providers/build.py"
+if prov.is_file():
+    src = prov.read_text(encoding="utf-8")
+    if 'args.sdk / "cmake/3.22.1/bin/cmake.exe"' in src:
+        src = src.replace(
+            'args.sdk / "cmake/3.22.1/bin/cmake.exe"',
+            'args.sdk / ("cmake/3.22.1/bin/cmake.exe" if os.name == "nt" else "cmake/3.22.1/bin/cmake")')
+        print("修好 build.py: cmake 可执行名跨平台")
+    if "cmake.with_name('ninja.exe')" in src:
+        src = src.replace("cmake.with_name('ninja.exe')",
+                          "cmake.with_name('ninja.exe' if os.name == 'nt' else 'ninja')")
+        print("修好 build.py: ninja 可执行名跨平台")
+    if not src.lstrip().startswith("import os") and "\nimport os\n" not in src:
+        lines = src.splitlines()
+        first = next((i for i, l in enumerate(lines)
+                      if l.startswith("import ") or l.startswith("from ")), 0)
+        lines.insert(first, "import os")
+        src = "\n".join(lines) + "\n"
+        print("修好 build.py: 补 import os")
+    if "cmake.exe" in src.replace('if os.name == "nt" else', ''):
+        failures.append("jailbreak-providers/build.py: 仍有未修正的 cmake.exe 引用")
+    prov.write_text(src, encoding="utf-8")
+else:
+    failures.append("缺文件: jailbreak-providers/build.py")
 
 if failures:
     print("\n补丁失败：", file=sys.stderr)
