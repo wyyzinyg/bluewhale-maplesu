@@ -1,0 +1,241 @@
+run=45912736915
+bridge	Set up job	﻿2026-11-26T23:44:56.2050043Z Current runner version: '2.338.2'
+bridge	Set up job	2026-11-26T23:44:56.2081819Z ##[group]Runner Image Provisioner
+bridge	Set up job	2026-11-26T23:44:56.2082926Z Hosted Compute Agent
+bridge	Set up job	2026-11-26T23:44:56.2083746Z Version: 20261111.635
+bridge	Set up job	2026-11-26T23:44:56.2084510Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+bridge	Set up job	2026-11-26T23:44:56.2085551Z Build Date: 2026-11-11T01:49:01Z
+bridge	Set up job	2026-11-26T23:44:56.2086440Z Worker ID: {b0dad4bd-3ba4-412a-8e0d-a4aa74f50c1d}
+bridge	Set up job	2026-11-26T23:44:56.2087330Z Region: westus3
+bridge	Set up job	2026-11-26T23:44:56.2088111Z Cloud: Azure
+bridge	Set up job	2026-11-26T23:44:56.2088769Z ##[endgroup]
+bridge	Set up job	2026-11-26T23:44:56.2091069Z ##[group]Operating System
+bridge	Set up job	2026-11-26T23:44:56.2091945Z Ubuntu
+bridge	Set up job	2026-11-26T23:44:56.2092600Z 26.04.1
+bridge	Set up job	2026-11-26T23:44:56.2093249Z LTS
+bridge	Set up job	2026-11-26T23:44:56.2093877Z ##[endgroup]
+bridge	Set up job	2026-11-26T23:44:56.2094536Z ##[group]Runner Image
+bridge	Set up job	2026-11-26T23:44:56.2095365Z Image: ubuntu-26.04
+bridge	Set up job	2026-11-26T23:44:56.2096064Z Version: 20261122.9.1
+bridge	Set up job	2026-11-26T23:44:56.2097417Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261122.9/images/ubuntu/Ubuntu2604-Readme.md
+bridge	Set up job	2026-11-26T23:44:56.2099765Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261122.9
+bridge	Set up job	2026-11-26T23:44:56.2101075Z ##[endgroup]
+bridge	Set up job	2026-11-26T23:44:56.2102543Z ##[group]GITHUB_TOKEN Permissions
+bridge	Set up job	2026-11-26T23:44:56.2104795Z Actions: read
+bridge	Set up job	2026-11-26T23:44:56.2105506Z Contents: write
+bridge	Set up job	2026-11-26T23:44:56.2106246Z Metadata: read
+bridge	Set up job	2026-11-26T23:44:56.2106958Z ##[endgroup]
+bridge	Set up job	2026-11-26T23:44:56.2109640Z Secret source: Actions
+bridge	Set up job	2026-11-26T23:44:56.2110878Z Cache mode: write
+bridge	Set up job	2026-11-26T23:44:56.2111703Z Prepare workflow directory
+bridge	Set up job	2026-11-26T23:44:56.2431110Z Prepare all required actions
+bridge	Set up job	2026-11-26T23:44:56.2470739Z Getting action download info
+bridge	Set up job	2026-11-26T23:44:56.5200911Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+bridge	Set up job	2026-11-26T23:44:56.6446445Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+bridge	Set up job	2026-11-26T23:44:57.2489201Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+bridge	Set up job	2026-11-26T23:44:57.4537961Z Complete job name: bridge
+bridge	取本仓库	﻿2026-11-26T23:44:57.5257830Z ##[group]Run actions/checkout@v4
+bridge	取本仓库	2026-11-26T23:44:57.5258713Z with:
+bridge	取本仓库	2026-11-26T23:44:57.5259294Z   repository: wyyzinyg/bluewhale-maplesu
+bridge	取本仓库	2026-11-26T23:44:57.5262932Z   token: ***
+bridge	取本仓库	2026-11-26T23:44:57.5263331Z   ssh-strict: true
+bridge	取本仓库	2026-11-26T23:44:57.5263719Z   ssh-user: git
+bridge	取本仓库	2026-11-26T23:44:57.5264108Z   persist-credentials: true
+bridge	取本仓库	2026-11-26T23:44:57.5264616Z   clean: true
+bridge	取本仓库	2026-11-26T23:44:57.5265025Z   sparse-checkout-cone-mode: true
+bridge	取本仓库	2026-11-26T23:44:57.5265476Z   fetch-depth: 1
+bridge	取本仓库	2026-11-26T23:44:57.5265854Z   fetch-tags: false
+bridge	取本仓库	2026-11-26T23:44:57.5266242Z   show-progress: true
+bridge	取本仓库	2026-11-26T23:44:57.5266650Z   lfs: false
+bridge	取本仓库	2026-11-26T23:44:57.5267025Z   submodules: false
+bridge	取本仓库	2026-11-26T23:44:57.5267409Z   set-safe-directory: true
+bridge	取本仓库	2026-11-26T23:44:57.5267845Z   allow-unsafe-pr-checkout: false
+bridge	取本仓库	2026-11-26T23:44:57.5268505Z ##[endgroup]
+bridge	取本仓库	2026-11-26T23:44:57.8075158Z Syncing repository: wyyzinyg/bluewhale-maplesu
+bridge	取本仓库	2026-11-26T23:44:57.8077037Z ##[group]Getting Git version info
+bridge	取本仓库	2026-11-26T23:44:57.8077749Z Working directory is '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+bridge	取本仓库	2026-11-26T23:44:57.8078868Z [command]/usr/bin/git version
+bridge	取本仓库	2026-11-26T23:44:57.8079610Z git version 2.56.1
+bridge	取本仓库	2026-11-26T23:44:57.8092284Z ##[endgroup]
+bridge	取本仓库	2026-11-26T23:44:57.8107310Z Temporarily overriding HOME='/home/runner/work/_temp/fdac2a4a-ee24-451a-98a2-7aa21cbcd0a9' before making global git config changes
+bridge	取本仓库	2026-11-26T23:44:57.8109512Z Adding repository directory to the temporary git global config as a safe directory
+bridge	取本仓库	2026-11-26T23:44:57.8113040Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+bridge	取本仓库	2026-11-26T23:44:57.8471376Z Deleting the contents of '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+bridge	取本仓库	2026-11-26T23:44:57.8475604Z ##[group]Initializing the repository
+bridge	取本仓库	2026-11-26T23:44:57.8480637Z [command]/usr/bin/git init /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+bridge	取本仓库	2026-11-26T23:44:57.8577794Z hint: Using 'master' as the name for the initial branch. This default branch name
+bridge	取本仓库	2026-11-26T23:44:57.8579527Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+bridge	取本仓库	2026-11-26T23:44:57.8580884Z hint: to use in all of your new repositories, which will suppress this warning,
+bridge	取本仓库	2026-11-26T23:44:57.8581594Z hint: call:
+bridge	取本仓库	2026-11-26T23:44:57.8581979Z hint:
+bridge	取本仓库	2026-11-26T23:44:57.8582713Z hint: 	git config --global init.defaultBranch <name>
+bridge	取本仓库	2026-11-26T23:44:57.8583626Z hint:
+bridge	取本仓库	2026-11-26T23:44:57.8584220Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+bridge	取本仓库	2026-11-26T23:44:57.8585415Z hint: 'development'. The just-created branch can be renamed via this command:
+bridge	取本仓库	2026-11-26T23:44:57.8586474Z hint:
+bridge	取本仓库	2026-11-26T23:44:57.8587105Z hint: 	git branch -m <name>
+bridge	取本仓库	2026-11-26T23:44:57.8587833Z hint:
+bridge	取本仓库	2026-11-26T23:44:57.8588709Z hint: Disable this message with "git config set advice.defaultBranchName false"
+bridge	取本仓库	2026-11-26T23:44:57.8590788Z Initialized empty Git repository in /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/.git/
+bridge	取本仓库	2026-11-26T23:44:57.8595716Z [command]/usr/bin/git remote add origin https://github.com/wyyzinyg/bluewhale-maplesu
+bridge	取本仓库	2026-11-26T23:44:57.8646668Z ##[endgroup]
+bridge	取本仓库	2026-11-26T23:44:57.8647992Z ##[group]Disabling automatic garbage collection
+bridge	取本仓库	2026-11-26T23:44:57.8649967Z [command]/usr/bin/git config --local gc.auto 0
+bridge	取本仓库	2026-11-26T23:44:57.8688164Z ##[endgroup]
+bridge	取本仓库	2026-11-26T23:44:57.8689984Z ##[group]Setting up auth
+bridge	取本仓库	2026-11-26T23:44:57.8694704Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+bridge	取本仓库	2026-11-26T23:44:57.8746619Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+bridge	取本仓库	2026-11-26T23:44:57.9103940Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+bridge	取本仓库	2026-11-26T23:44:57.9137468Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+bridge	取本仓库	2026-11-26T23:44:57.9380484Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+bridge	取本仓库	2026-11-26T23:44:57.9414529Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+bridge	取本仓库	2026-11-26T23:44:57.9661642Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+bridge	取本仓库	2026-11-26T23:44:57.9699021Z ##[endgroup]
+bridge	取本仓库	2026-11-26T23:44:57.9700053Z ##[group]Fetching the repository
+bridge	取本仓库	2026-11-26T23:44:57.9707175Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +296dbab870d9e52384f51728b77ef4bba13b0095:refs/remotes/origin/main
+bridge	取本仓库	2026-11-26T23:44:58.7539768Z From https://github.com/wyyzinyg/bluewhale-maplesu
+bridge	取本仓库	2026-11-26T23:44:58.7541380Z  * [new ref]         296dbab870d9e52384f51728b77ef4bba13b0095 -> origin/main
+bridge	取本仓库	2026-11-26T23:44:58.7544662Z ##[endgroup]
+bridge	取本仓库	2026-11-26T23:44:58.7545834Z ##[group]Determining the checkout info
+bridge	取本仓库	2026-11-26T23:44:58.7547220Z ##[endgroup]
+bridge	取本仓库	2026-11-26T23:44:58.7548450Z [command]/usr/bin/git sparse-checkout disable
+bridge	取本仓库	2026-11-26T23:44:58.7594650Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+bridge	取本仓库	2026-11-26T23:44:58.7630544Z ##[group]Checking out the ref
+bridge	取本仓库	2026-11-26T23:44:58.7633014Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+bridge	取本仓库	2026-11-26T23:44:58.7873198Z Switched to a new branch 'main'
+bridge	取本仓库	2026-11-26T23:44:58.7876179Z branch 'main' set up to track 'origin/main'.
+bridge	取本仓库	2026-11-26T23:44:58.7883588Z ##[endgroup]
+bridge	取本仓库	2026-11-26T23:44:58.7926648Z [command]/usr/bin/git log -1 --format=%H
+bridge	取本仓库	2026-11-26T23:44:58.7950799Z 296dbab870d9e52384f51728b77ef4bba13b0095
+bridge	下载 native 产物	﻿2026-11-26T23:44:58.8311587Z ##[group]Run actions/download-artifact@v4
+bridge	下载 native 产物	2026-11-26T23:44:58.8312721Z with:
+bridge	下载 native 产物	2026-11-26T23:44:58.8313459Z   run-id: 45910686673
+bridge	下载 native 产物	2026-11-26T23:44:58.8322754Z   github-token: ***
+bridge	下载 native 产物	2026-11-26T23:44:58.8323556Z   path: artifact
+bridge	下载 native 产物	2026-11-26T23:44:58.8324333Z   merge-multiple: false
+bridge	下载 native 产物	2026-11-26T23:44:58.8325244Z   repository: wyyzinyg/bluewhale-maplesu
+bridge	下载 native 产物	2026-11-26T23:44:58.8326232Z ##[endgroup]
+bridge	下载 native 产物	2026-11-26T23:44:58.9650774Z Fetching artifact list for workflow run 45910686673 in repository wyyzinyg/bluewhale-maplesu
+bridge	下载 native 产物	2026-11-26T23:44:58.9731763Z (node:2357) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+bridge	下载 native 产物	2026-11-26T23:44:58.9735225Z (Use `node --trace-deprecation ...` to show where the warning was created)
+bridge	下载 native 产物	2026-11-26T23:44:58.9945563Z (node:2357) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+bridge	下载 native 产物	2026-11-26T23:44:59.3355891Z Found 1 artifact(s)
+bridge	下载 native 产物	2026-11-26T23:44:59.3359850Z No input name, artifact-ids or pattern filtered specified, downloading all artifacts
+bridge	下载 native 产物	2026-11-26T23:44:59.3362108Z An extra directory with the artifact name will be created for each download
+bridge	下载 native 产物	2026-11-26T23:44:59.3363969Z Preparing to download the following artifacts:
+bridge	下载 native 产物	2026-11-26T23:44:59.3366966Z - bluewhale-native-17 (ID: 15160877775, Size: 42877797, Expected Digest: sha256:e7aa2eb2f853c612130f1fe39508821a7e027dd530c10f30a3c7593fa1184349)
+bridge	下载 native 产物	2026-11-26T23:44:59.3398961Z Downloading artifact '15160877775' from 'wyyzinyg/bluewhale-maplesu'
+bridge	下载 native 产物	2026-11-26T23:44:59.7639316Z Redirecting to blob download url: https://productionresultssa1.blob.core.windows.net/actions-results/a2df7baf-2d4e-8df0-be73-9457d5db0773/workflow-job-run-0548815a-94f8-51e7-94e4-1b560bb3cf73/artifacts/331ac6a50c92826603c83ba039fb6c9013625093ab150ada9106e4b3d5af001a.zip
+bridge	下载 native 产物	2026-11-26T23:44:59.7640638Z Starting download of artifact to: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/artifact/bluewhale-native-17
+bridge	下载 native 产物	2026-11-26T23:45:00.0441006Z (node:2357) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+bridge	下载 native 产物	2026-11-26T23:45:01.7086394Z SHA256 digest of downloaded artifact is e7aa2eb2f853c612130f1fe39508821a7e027dd530c10f30a3c7593fa1184349
+bridge	下载 native 产物	2026-11-26T23:45:01.7087114Z Artifact download completed successfully.
+bridge	下载 native 产物	2026-11-26T23:45:01.7087464Z Total of 1 artifact(s) downloaded
+bridge	下载 native 产物	2026-11-26T23:45:01.7090764Z Download artifact has finished successfully
+bridge	找 APK 并上传到临时直链	﻿2026-11-26T23:45:01.7292419Z ##[group]Run set -euo pipefail
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7292775Z ^[[36;1mset -euo pipefail^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7293117Z ^[[36;1mAPK=$(find artifact -type f -name '*.apk' | head -1 || true)^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7293422Z ^[[36;1mif [ -z "$APK" ]; then^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7293662Z ^[[36;1m  echo "没有 APK，跳过上传"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7293906Z ^[[36;1m  echo "found=false" >> "$GITHUB_OUTPUT"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7294146Z ^[[36;1m  exit 0^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7294307Z ^[[36;1mfi^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7294490Z ^[[36;1mecho "found=true" >> "$GITHUB_OUTPUT"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7294752Z ^[[36;1mNAME=$(basename "$APK")^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7294981Z ^[[36;1mSIZE=$(stat -c%s "$APK")^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7295215Z ^[[36;1mSHA=$(sha256sum "$APK" | awk '{print $1}')^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7295469Z ^[[36;1mRUN_ID="45910686673"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7295688Z ^[[36;1mBIN="bw32737-${RUN_ID}"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7295936Z ^[[36;1mecho "上传 $NAME ($SIZE bytes) 到 filebin bin=$BIN"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7296263Z ^[[36;1mRESP=$(curl -sS --retry 3 --retry-delay 2 -X POST \^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7296585Z ^[[36;1m  --data-binary @"$APK" \^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7296801Z ^[[36;1m  -H "filename: $NAME" \^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7297059Z ^[[36;1m  "https://filebin.net/${BIN}/${NAME}")^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7297311Z ^[[36;1mecho "$RESP" | head -c 300^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7297545Z ^[[36;1mURL="https://filebin.net/${BIN}/${NAME}"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7297809Z ^[[36;1mecho "url=$URL" >> "$GITHUB_OUTPUT"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7298076Z ^[[36;1mecho "sha=$SHA" >> "$GITHUB_OUTPUT"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7298549Z ^[[36;1mecho "size=$SIZE" >> "$GITHUB_OUTPUT"^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7298856Z ^[[36;1mprintf '%s\n%s\n%s\n' "$URL" "$SHA" "$SIZE" > /tmp/apk-link.txt^[[0m
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7333082Z shell: /usr/bin/bash -e {0}
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7333348Z ##[endgroup]
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:01.7809559Z 上传 manager-release-unsigned.apk (44111139 bytes) 到 filebin bin=bw32737-45910686673
+bridge	找 APK 并上传到临时直链	2026-11-26T23:45:08.5574028Z Illegal file extension
+bridge	把直链写回仓库	﻿2026-11-26T23:45:08.5646535Z ##[group]Run set -euo pipefail
+bridge	把直链写回仓库	2026-11-26T23:45:08.5646817Z ^[[36;1mset -euo pipefail^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5647022Z ^[[36;1mRUN_ID="45910686673"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5647226Z ^[[36;1mmkdir -p .ci-logs^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5647425Z ^[[36;1m{^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5647584Z ^[[36;1m  echo "run=$RUN_ID"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5647930Z ^[[36;1m  echo "url=https://filebin.net/bw32737-45910686673/manager-release-unsigned.apk"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5648406Z ^[[36;1m  echo "sha256=4ca8ae8b4fe3410beb0343e2cba6358f99355ed7d0163453010d60f25df58b92"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5648770Z ^[[36;1m  echo "size=44111139"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5648982Z ^[[36;1m} > ".ci-logs/apk-${RUN_ID}.txt"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5649503Z ^[[36;1mRECEIPT=$(find artifact -type f -name 'build-receipt.json' | head -1 || true)^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5649992Z ^[[36;1mPROVIDER=$(find artifact -type f -path '*/jailbreakProviders/build.json' | head -1 || true)^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5650374Z ^[[36;1mif [ -n "$RECEIPT" ]; then^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5650678Z ^[[36;1m  cp "$RECEIPT" ".ci-logs/native-${RUN_ID}-receipt.json"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5650944Z ^[[36;1mfi^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5651124Z ^[[36;1mif [ -n "$PROVIDER" ]; then^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5651385Z ^[[36;1m  cp "$PROVIDER" ".ci-logs/native-${RUN_ID}-provider.json"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5651640Z ^[[36;1mfi^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5651835Z ^[[36;1mgit config user.name "github-actions[bot]"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5652188Z ^[[36;1mgit config user.email "41898282+github-actions[bot]@users.noreply.github.com"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5652549Z ^[[36;1mgit add ".ci-logs/apk-${RUN_ID}.txt"^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5652961Z ^[[36;1mgit add ".ci-logs/native-${RUN_ID}-receipt.json" ".ci-logs/native-${RUN_ID}-provider.json" 2>/dev/null || true^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5653454Z ^[[36;1mgit commit -m "ci: apk link and receipts for run ${RUN_ID}" || true^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5653748Z ^[[36;1mgit push || true^[[0m
+bridge	把直链写回仓库	2026-11-26T23:45:08.5682760Z shell: /usr/bin/bash -e {0}
+bridge	把直链写回仓库	2026-11-26T23:45:08.5682984Z ##[endgroup]
+bridge	把直链写回仓库	2026-11-26T23:45:08.6123957Z [main ec36adc] ci: apk link and receipts for run 45910686673
+bridge	把直链写回仓库	2026-11-26T23:45:08.6124531Z  3 files changed, 1842 insertions(+)
+bridge	把直链写回仓库	2026-11-26T23:45:08.6124909Z  create mode 100644 .ci-logs/apk-45910686673.txt
+bridge	把直链写回仓库	2026-11-26T23:45:08.6125390Z  create mode 100644 .ci-logs/native-45910686673-provider.json
+bridge	把直链写回仓库	2026-11-26T23:45:08.6125899Z  create mode 100644 .ci-logs/native-45910686673-receipt.json
+bridge	把直链写回仓库	2026-11-26T23:45:09.4455785Z To https://github.com/wyyzinyg/bluewhale-maplesu
+bridge	把直链写回仓库	2026-11-26T23:45:09.4456406Z  ! [rejected]        main -> main (fetch first)
+bridge	把直链写回仓库	2026-11-26T23:45:09.4456759Z error: failed to push some refs to 'https://github.com/wyyzinyg/bluewhale-maplesu'
+bridge	把直链写回仓库	2026-11-26T23:45:09.4467979Z hint: Updates were rejected because the remote contains work that you do not
+bridge	把直链写回仓库	2026-11-26T23:45:09.4468707Z hint: have locally. This is usually caused by another repository pushing to
+bridge	把直链写回仓库	2026-11-26T23:45:09.4469259Z hint: the same ref. If you want to integrate the remote changes, use
+bridge	把直链写回仓库	2026-11-26T23:45:09.4469612Z hint: 'git pull' before pushing again.
+bridge	把直链写回仓库	2026-11-26T23:45:09.4469977Z hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+bridge	上传链接日志	﻿2026-11-26T23:45:09.4545218Z ##[group]Run actions/upload-artifact@v4
+bridge	上传链接日志	2026-11-26T23:45:09.4545462Z with:
+bridge	上传链接日志	2026-11-26T23:45:09.4545631Z   name: apk-link-10
+bridge	上传链接日志	2026-11-26T23:45:09.4545819Z   path: /tmp/apk-link.txt
+bridge	上传链接日志	2026-11-26T23:45:09.4546019Z   if-no-files-found: warn
+bridge	上传链接日志	2026-11-26T23:45:09.4546212Z   compression-level: 6
+bridge	上传链接日志	2026-11-26T23:45:09.4546400Z   overwrite: false
+bridge	上传链接日志	2026-11-26T23:45:09.4546761Z   include-hidden-files: false
+bridge	上传链接日志	2026-11-26T23:45:09.4546960Z ##[endgroup]
+bridge	上传链接日志	2026-11-26T23:45:09.5998834Z (node:2405) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+bridge	上传链接日志	2026-11-26T23:45:09.5999619Z (Use `node --trace-deprecation ...` to show where the warning was created)
+bridge	上传链接日志	2026-11-26T23:45:09.6043780Z With the provided path, there will be 1 file uploaded
+bridge	上传链接日志	2026-11-26T23:45:09.6080341Z Artifact name is valid!
+bridge	上传链接日志	2026-11-26T23:45:09.6081265Z Root directory input is valid!
+bridge	上传链接日志	2026-11-26T23:45:09.9353686Z Beginning upload of artifact content to blob storage
+bridge	上传链接日志	2026-11-26T23:45:09.9936074Z (node:2405) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+bridge	上传链接日志	2026-11-26T23:45:10.2265102Z Uploaded bytes 253
+bridge	上传链接日志	2026-11-26T23:45:10.2902385Z Finished uploading artifact content to blob storage!
+bridge	上传链接日志	2026-11-26T23:45:10.2903164Z SHA256 digest of uploaded artifact zip is d40f711740af6564b5212bc444717393ec8b43a3f62e17894b545719412e77db
+bridge	上传链接日志	2026-11-26T23:45:10.2903842Z Finalizing artifact upload
+bridge	上传链接日志	2026-11-26T23:45:10.6529838Z Artifact apk-link-10.zip successfully finalized. Artifact ID 15160822071
+bridge	上传链接日志	2026-11-26T23:45:10.6531328Z Artifact apk-link-10 has been successfully uploaded! Final size is 253 bytes. Artifact ID is 15160822071
+bridge	上传链接日志	2026-11-26T23:45:10.6538179Z Artifact download URL: https://github.com/wyyzinyg/bluewhale-maplesu/actions/runs/45912736915/artifacts/15160822071
+bridge	Post 取本仓库	﻿2026-11-26T23:45:10.6714164Z Post job cleanup.
+bridge	Post 取本仓库	2026-11-26T23:45:10.7422465Z [command]/usr/bin/git version
+bridge	Post 取本仓库	2026-11-26T23:45:10.7445108Z git version 2.56.1
+bridge	Post 取本仓库	2026-11-26T23:45:10.7477178Z Temporarily overriding HOME='/home/runner/work/_temp/cc4ab3ef-df45-4e09-8afc-b7bfd569c368' before making global git config changes
+bridge	Post 取本仓库	2026-11-26T23:45:10.7478184Z Adding repository directory to the temporary git global config as a safe directory
+bridge	Post 取本仓库	2026-11-26T23:45:10.7481988Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+bridge	Post 取本仓库	2026-11-26T23:45:10.7518378Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+bridge	Post 取本仓库	2026-11-26T23:45:10.7551576Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+bridge	Post 取本仓库	2026-11-26T23:45:10.7837603Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+bridge	Post 取本仓库	2026-11-26T23:45:10.7866421Z http.https://github.com/.extraheader
+bridge	Post 取本仓库	2026-11-26T23:45:10.7875291Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+bridge	Post 取本仓库	2026-11-26T23:45:10.7931989Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+bridge	Post 取本仓库	2026-11-26T23:45:10.8209346Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+bridge	Post 取本仓库	2026-11-26T23:45:10.8240317Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+bridge	Complete job	﻿2026-11-26T23:45:10.8626307Z Cleaning up orphan processes
+bridge	Complete job	2026-11-26T23:45:10.8915999Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
