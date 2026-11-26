@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      RUN_ID: ${{ github.event.workflow_run.id || '45887198721' }}
+      RUN_ID: ${{ github.event.workflow_run.id || '45912736915' }}
     steps:
       - uses: actions/checkout@v4
       - name: 取完整 job 日志并写回仓库
