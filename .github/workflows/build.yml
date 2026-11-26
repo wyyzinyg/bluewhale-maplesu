@@ -46,7 +46,7 @@ jobs:
           exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
           echo "== java =="; java -version
           SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
-          echo "SDK=$SDK"; ls "$SDK" || true
+          echo "SDK=$SDK"
           SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
           if [ ! -x "$SM" ]; then SM=$(find "$SDK" -name sdkmanager -type f | head -1); fi
           echo "SM=$SM"
@@ -55,13 +55,17 @@ jobs:
           printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
           printf '\n84831b9409646a918e30573bab4c9c91346d8abd\n' > "$SDK/licenses/android-sdk-preview-license"
           echo "licenses 已预写: $(ls "$SDK/licenses")"
+          # provider 构建（jailbreak-providers/build.py）写死 ndk/28.2.13676358；
+          # 缺这个 NDK 会让所有 KMI 模块编译失败并回退原厂载荷，最终 task 退出 1（run-9 教训）。
           for pkg in "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" \
                      "platforms;android-36" "build-tools;36.0.0" \
-                     "cmake;3.22.1" "ndk;26.1.10909125"; do
+                     "cmake;3.22.1" "ndk;28.2.13676358" "ndk;29.0.14206865"; do
             echo "--- install $pkg"
             "$SM" "$pkg" < /dev/null || true
           done
-          ls "$SDK/platforms"
+          echo "== platforms =="; ls "$SDK/platforms"
+          echo "== ndk =="; ls "$SDK/ndk"
+          test -d "$SDK/ndk/28.2.13676358" || { echo "FATAL: ndk 28.2 未安装"; exit 1; }
           echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
           echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
           python3 -m pip install --upgrade pip || true
@@ -69,10 +73,13 @@ jobs:
           rustup toolchain install stable --profile minimal || true
           export PATH="$HOME/.cargo/bin:$PATH"
           rustc --version || true
+          python3 --version
           cd src
           ./gradlew --no-daemon --max-workers=4 \
             --dependency-verification=off \
             -PbluewhaleSkipSdkVerify=true \
+            -PmaplesuPython="$(command -v python3)" \
+            -PmaplesuUltraviderNdk="$SDK/ndk/28.2.13676358" \
             -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
             :manager:assembleRelease
 
@@ -90,7 +97,7 @@ jobs:
             echo "- 作业结论: ${{ job.status }}";
             echo;
             echo '```';
-            tail -600 build.log 2>/dev/null || echo "(无 build.log)";
+            tail -800 build.log 2>/dev/null || echo "(无 build.log)";
             echo '```';
           } > ci-logs/last-build.md
           wc -c ci-logs/last-build.md
