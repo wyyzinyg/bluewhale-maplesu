@@ -1,1 +1,1 @@
-run 3: 32737 + BlueWhale cert pin
+run 4: 32737 + tree hash fix
