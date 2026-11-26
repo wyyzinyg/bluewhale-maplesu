@@ -1,0 +1,56 @@
+name: debug-legacy-l3
+on:
+  push:
+    paths: ['.debug-l3-trigger/**']
+permissions:
+  contents: write
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and inspect the pinned legacy L3 module
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          mkdir -p src out
+          curl -sSL -o /tmp/maplesu.tar.gz https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/ff3aa44850ea22717fa811a17831155a85f43445
+          tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
+          python3 overlay/apply_bluewhale.py src
+          python3 overlay/patch_runtime_targets.py src
+          python3 overlay/patch_brand_skin_tail.py src
+          python3 overlay/patch_bluewhale_320.py src
+          python3 overlay/patch_bluewhale_321.py src
+          SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
+          mkdir -p "$SDK/licenses"
+          printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
+          "$SM" "ndk;29.0.14206865" < /dev/null
+          NDK="$SDK/ndk/29.0.14206865"
+          python3 -m pip install pyelftools==0.32 unicorn==2.1.4
+          mkdir -p .ci-logs
+          LOG=.ci-logs/legacy-l3-inspect.txt
+          {
+            python3 src/jailbreak-providers/root-loader/build_root_module.py \
+              --module maplesu_l3 --ndk-dir "$NDK" --out-dir out/l3 \
+              --contract src/jailbreak-providers/root-loader/contracts/family-5.10.json
+            echo "builderExit=$?"
+            cat out/l3/verify-build.txt || true
+            OBJDUMP=$(find "$NDK/toolchains/llvm/prebuilt" -name llvm-objdump -type f | head -1)
+            READELF=$(find "$NDK/toolchains/llvm/prebuilt" -name llvm-readelf -type f | head -1)
+            for f in out/l3/staging/maplesu_l3.ko out/l3/cfi-check.elf; do
+              echo "===== $f ====="
+              "$READELF" -SW -sW "$f" || true
+              "$OBJDUMP" -d --start-address=0x1fc0 --stop-address=0x2070 "$f" || true
+              "$OBJDUMP" -d --start-address=0x5000 --stop-address=0x5260 "$f" || true
+            done
+          } > "$LOG" 2>&1
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$LOG"
+          git commit -m 'ci: inspect legacy L3 trap owner' || true
+          git pull --rebase origin main
+          git push
