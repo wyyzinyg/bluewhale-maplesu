@@ -115,8 +115,11 @@ if prov.is_file():
         lines.insert(first, "import os")
         src = "\n".join(lines) + "\n"
         print("修好 build.py: 补 import os")
-    if "cmake.exe" in src.replace('if os.name == "nt" else', ''):
-        failures.append("jailbreak-providers/build.py: 仍有未修正的 cmake.exe 引用")
+    # 自检只认「原始硬编码」是否还在：三元表达式里本就该出现 .exe 字样，不能当残留
+    if 'args.sdk / "cmake/3.22.1/bin/cmake.exe"' in src:
+        failures.append("jailbreak-providers/build.py: cmake 硬编码未替换")
+    if "cmake.with_name('ninja.exe')" in src:
+        failures.append("jailbreak-providers/build.py: ninja 硬编码未替换")
     prov.write_text(src, encoding="utf-8")
 else:
     failures.append("缺文件: jailbreak-providers/build.py")
