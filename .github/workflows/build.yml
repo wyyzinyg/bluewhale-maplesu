@@ -1,7 +1,7 @@
 name: build-bluewhale
 
 # 在 GitHub 的 16G 跑构建机上出包：本机只有 4G，Kotlin 编译这个体量的 App 会被内存上限杀掉。
-# 失败时也会把 build.log 发到 Release，方便在没有登录态的环境里读日志。
+# 失败时把 build.log 尾部回写到 ci-logs/last-build.md（带 [skip ci]，不会循环触发）。
 on:
   workflow_dispatch:
   push:
@@ -48,7 +48,7 @@ jobs:
                      "platforms;android-36" "build-tools;36.0.0" \
                      "cmake;3.22.1" "ndk;26.1.10909125"; do
             echo "--- install $pkg" | tee -a build.log
-            yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" "$pkg" 2>&1 | tail -3 | tee -a build.log || true
+            yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" "$pkg" 2>&1 | tail -4 | tee -a build.log || true
           done
           ls "$SDK/platforms" | tee -a build.log
           echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
@@ -76,14 +76,32 @@ jobs:
       - name: 收集产物
         if: always()
         run: |
-          mkdir -p out
-          find src/manager/build/outputs/apk -name "*.apk" -print -exec cp {} out/ \; || true
+          mkdir -p out ci-logs
+          find src/manager/build/outputs/apk -name "*.apk" -exec cp {} out/ \; || true
           ls -lh out || true
           (cd out && sha256sum *.apk > SHA256SUMS.txt) 2>/dev/null || true
-          echo "===== build.log 末尾 ====="; tail -60 build.log || true
+          {
+            echo "# 最近一次构建结果";
+            echo;
+            echo "- 触发: run ${{ github.run_number }}";
+            echo "- 提交: ${{ github.sha }}";
+            echo;
+            echo '```';
+            tail -500 build.log;
+            echo '```';
+          } > ci-logs/last-build.md
 
-      - name: 发布到 Release（成功或失败都发日志）
+      - name: 回写日志到仓库
         if: always()
+        run: |
+          git config user.name "bluewhale-ci"
+          git config user.email "ci@bluewhale.local"
+          git add ci-logs/last-build.md
+          git commit -m "ci: 最近一次构建日志 [skip ci]" || true
+          git push || true
+
+      - name: 发布 APK（成功才发）
+        if: success()
         uses: softprops/action-gh-release@v2
         with:
           tag_name: bw-${{ github.run_number }}
@@ -94,6 +112,5 @@ jobs:
             - 版本 3.17.0-bw
             - 未签名（本地用 bluewhale-release.p12 签名后安装）
           files: |
-            build.log
             out/*.apk
             out/SHA256SUMS.txt
