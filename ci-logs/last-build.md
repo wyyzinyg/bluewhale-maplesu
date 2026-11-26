@@ -1,6 +1,6 @@
 # 构建结果
 
-- run: 32  提交: 7d700c338bbd4182446d4f03d93ebf0f74b90443
+- run: 33  提交: da9499f2eaa8837bed28c41b8862e54589bba624
 - 作业结论: failure
 
 #### 补丁摘要（是否真应用）
@@ -21,7 +21,7 @@
 修好 prepare_host_dependencies.py: 下载走重试
 蓝鱼品牌化补丁已全部应用。
 修补失败：
- - 启动图标还原失败: IncompleteRead(8682852 bytes read, 4649 more expected)
+ - 品牌资产还原失败: IncompleteRead(8686948 bytes read, 553 more expected)
 改好 build.gradle.kts: runtime 目标集按开关决定 bridge
 改好 manager/build.gradle.kts: @get:InputFile abstract val ultraBridgeLibrary: 
 改好 manager/build.gradle.kts: ultraBridgeLibrary.get().asFile.copyTo(jniDirect
@@ -67,7 +67,7 @@ policy bundle 自检：18 个源，缺 0，漂 0
 蓝鱼品牌化补丁已全部应用。
 
 修补失败：
- - 启动图标还原失败: IncompleteRead(8682852 bytes read, 4649 more expected)
+ - 品牌资产还原失败: IncompleteRead(8686948 bytes read, 553 more expected)
 改好 build.gradle.kts: runtime 目标集按开关决定 bridge
 改好 manager/build.gradle.kts: @get:InputFile abstract val ultraBridgeLibrary: 
 改好 manager/build.gradle.kts: ultraBridgeLibrary.get().asFile.copyTo(jniDirect
