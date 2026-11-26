@@ -275,6 +275,156 @@ try:
 except Exception as error:  # noqa: BLE001
     failures.append(f"品牌资产还原失败: {error}")
 
+# —— 9. 蓝鱼品牌皮肤：深色底、去枫叶、去 MapleSU 可见文案 ——
+# 3.17 只换了包名/图标，界面还是上游那套：浅色纸感、枫叶飘落、@MapleSU_Debug_Bot 横幅、
+# “关于 MapleSU”、红色错误条。装上去像把源码直接搬过来。这里改默认外观与可见文案。
+patch_text("manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt", [
+    ('get() = if (ThemeLock.ENABLED) ThemeLock.THEME_MODE else appearance.getInt("color_mode", 0)',
+     'get() = if (ThemeLock.ENABLED) ThemeLock.THEME_MODE else appearance.getInt("color_mode", 2)'),
+])
+patch_text("manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt", [
+    ('    init {\n        prefs.registerOnSharedPreferenceChangeListener(listener)',
+     '    init {\n'
+     '        // 蓝鱼品牌皮肤：已经装过 3.17 的用户也切到深色、关掉枫叶（只跑一次）\n'
+     '        if (!prefs.getBoolean("bw_brand_skin_v1", false)) {\n'
+     '            prefs.edit().putBoolean("bw_brand_skin_v1", true)\n'
+     '                .putBoolean("snow_enabled", false).apply()\n'
+     '            settingRepo.themeMode = 2\n'
+     '            settingRepo.miuixMonet = false\n'
+     '            _uiState.value = readUiState()\n'
+     '        }\n'
+     '        prefs.registerOnSharedPreferenceChangeListener(listener)'),
+])
+patch_text("manager/src/main/java/com/maplesu/core/ui/util/AppearancePrefsPolicy.kt", [
+    ('        "snow_enabled" to enabled,', '        "snow_enabled" to false,'),
+])
+patch_text("manager/src/main/java/com/maplesu/core/ui/MainActivity.kt", [
+    ('if ((skin.appliedScene && uiState.snowEnabled) ||\n                        (!skin.appliedScene && uiMode == UiMode.Miuix && uiState.introComic)) {',
+     'if (uiState.snowEnabled) {'),
+])
+patch_text("manager/src/main/java/com/maplesu/core/ui/screen/home/HomeBetaBanner.kt", [
+    ('internal const val MAPLESU_FEEDBACK_URL = "https://t.me/MapleSU_Debug_Bot"',
+     'internal const val MAPLESU_FEEDBACK_URL = "https://github.com/wyyzinyg/bluewhale-maplesu"'),
+])
+patch_text("manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt", [
+    ('        Text(\n'
+     '            text = aboutCommunityText(stringResource(R.string.about_maple_community), colorScheme.primary),\n'
+     '            modifier = Modifier.fillMaxWidth()\n'
+     '                .background(colorScheme.primary.copy(alpha = 0.08f), RoundedCornerShape(12.dp))\n'
+     '                .padding(12.dp),\n'
+     '            fontSize = 14.sp,\n'
+     '            fontWeight = FontWeight.Medium,\n'
+     '            color = colorScheme.onSurface,\n'
+     '        )\n'
+     '        CreditsMiuix()',
+     '        CreditsMiuix()'),
+    ('        AdvisorWallMiuix(Modifier.padding(top = 4.dp))\n', ''),
+    ('        kind = BrandBannerKind.MAPLE,\n', '        kind = null,\n'),
+])
+patch_text("manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt", [
+    ('        Text(\n'
+     '            text = aboutCommunityText(stringResource(R.string.about_maple_community), MaterialTheme.colorScheme.primary),\n'
+     '            modifier = Modifier.fillMaxWidth()\n'
+     '                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.08f), RoundedCornerShape(12.dp))\n'
+     '                .padding(12.dp),\n'
+     '            style = MaterialTheme.typography.bodyMedium,\n'
+     '            fontWeight = FontWeight.Medium,\n'
+     '        )\n'
+     '        CreditsMaterial()',
+     '        CreditsMaterial()'),
+    ('        AdvisorWallMaterial(Modifier.padding(top = 4.dp))\n', ''),
+    ('        kind = BrandBannerKind.MAPLE,\n', '        kind = null,\n'),
+])
+patch_text("manager/src/main/res/values/themes.xml", [
+    ('<style name="Theme.KernelSU" parent="android:Theme.Material.Light.NoActionBar">',
+     '<style name="Theme.KernelSU" parent="android:Theme.Material.NoActionBar">'),
+    ('<item name="android:windowLightStatusBar">true</item>',
+     '<item name="android:windowLightStatusBar">false</item>'),
+    ('<item name="android:windowLightNavigationBar">true</item>',
+     '<item name="android:windowLightNavigationBar">false</item>'),
+])
+patch_text("manager/src/main/res/values/colors.xml", [
+    ('<color name="maple_window_background">#FFF7F7F7</color>',
+     '<color name="maple_window_background">#FF070B14</color>'),
+])
+patch_text("manager/src/main/res/values-night/colors.xml", [
+    ('<color name="maple_window_background">#FF000000</color>',
+     '<color name="maple_window_background">#FF070B14</color>'),
+])
+patch_text("manager/build.gradle.kts", [
+    ("        versionCode = 32731", "        versionCode = 32732"),
+    ('        versionName = "3.17.0-bw"', '        versionName = "3.18.0-bw"'),
+])
+
+# 文案：横幅 / 关于 / 环境检查 / 超级用户 / 模块
+patch_text("manager/src/main/res/values/maplesu_release_strings.xml", [
+    ('<string name="home_public_beta_notice">公测版本非正式版本，含有不稳定实现，如遇问题请在 @MapleSU_Debug_Bot 反馈</string>',
+     '<string name="home_public_beta_notice">蓝色大肥鱼 · 内测版｜遇到问题请在 GitHub 仓库反馈</string>'),
+])
+patch_text("manager/src/main/res/values/maplesu_about.xml", [
+    ('<string name="about_maple_title">About MapleSU</string>',
+     '<string name="about_maple_title">About BlueWhale</string>'),
+    ('<string name="about_maple_entry_summary">Developers, open-source credits and license</string>',
+     '<string name="about_maple_entry_summary">Version, open-source credits and license</string>'),
+    ('<string name="about_maple_overview">Overview: an Android root manager with two work modes you can switch between.</string>',
+     '<string name="about_maple_overview">Overview: BlueWhale is an Android root manager built on MapleSU; upstream credits and the GPL-3.0 license are kept.</string>'),
+    ('<string name="about_maple_overview_plain">Overview: an Android root manager.</string>',
+     '<string name="about_maple_overview_plain">Overview: an Android root manager built on MapleSU.</string>'),
+    ('<string name="about_maple_developers">Developer: MapleAutumn.</string>',
+     '<string name="about_maple_developers">Maintained by the BlueWhale team · Upstream: MapleSU (MapleAutumn)</string>'),
+])
+patch_text("manager/src/main/res/values-zh-rCN/maplesu_about.xml", [
+    ('<string name="about_maple_title">关于 MapleSU</string>',
+     '<string name="about_maple_title">关于蓝色大肥鱼</string>'),
+    ('<string name="about_maple_entry_summary">开发者、开源致谢与许可</string>',
+     '<string name="about_maple_entry_summary">版本、开源致谢与许可</string>'),
+    ('<string name="about_maple_overview">简介：一款 Android Root 管理器，提供两种工作模式，按需切换。</string>',
+     '<string name="about_maple_overview">简介：蓝色大肥鱼是基于 MapleSU 二次开发的 Android Root 管理器，保留上游署名与 GPL-3.0 许可。</string>'),
+    ('<string name="about_maple_overview_plain">简介：一款 Android Root 管理器。</string>',
+     '<string name="about_maple_overview_plain">简介：一款基于 MapleSU 的 Android Root 管理器。</string>'),
+    ('<string name="about_maple_developers">开发者：MapleAutumn。</string>',
+     '<string name="about_maple_developers">维护：蓝鱼团队 · 上游：MapleSU（MapleAutumn）</string>'),
+])
+patch_text("manager/src/main/res/values/home_environment_check.xml", [
+    ('<string name="home_environment_check_failed">Environment check did not complete</string>',
+     '<string name="home_environment_check_failed">No usable root environment detected</string>'),
+    ('<string name="home_environment_check_timeout_summary">The environment probe timed out. Tap to retry or export diagnostic logs.</string>',
+     '<string name="home_environment_check_timeout_summary">Probe timed out. Tap to retry; finish root setup first if the device is not rooted.</string>'),
+    ('<string name="home_environment_check_failed_summary">The environment probe failed. Tap to retry or export diagnostic logs.</string>',
+     '<string name="home_environment_check_failed_summary">Probe failed. Tap to retry or export diagnostic logs; root may not be set up yet.</string>'),
+    ('<string name="home_environment_check_unconfirmed_summary">The runtime could not be confirmed. Tap to retry or export diagnostic logs.</string>',
+     '<string name="home_environment_check_unconfirmed_summary">Runtime not confirmed yet. Tap to retry; this is expected before root is set up.</string>'),
+])
+patch_text("manager/src/main/res/values-zh-rCN/home_environment_check.xml", [
+    ('<string name="home_environment_check_failed">环境检查未完成</string>',
+     '<string name="home_environment_check_failed">未检测到可用的 root 环境</string>'),
+    ('<string name="home_environment_check_timeout_summary">环境探测已超时。点击重试，或导出诊断日志。</string>',
+     '<string name="home_environment_check_timeout_summary">探测超时了。点重试再探一次；还没 root 的话，先按主页路线完成环境准备。</string>'),
+    ('<string name="home_environment_check_failed_summary">环境探测失败。点击重试，或导出诊断日志。</string>',
+     '<string name="home_environment_check_failed_summary">探测没成功。点重试或导出诊断日志；还没 root 时这是正常现象。</string>'),
+    ('<string name="home_environment_check_unconfirmed_summary">运行环境尚未确认。点击重试，或导出诊断日志。</string>',
+     '<string name="home_environment_check_unconfirmed_summary">运行环境还没确认。点重试；没 root 时先空着是正常的。</string>'),
+])
+patch_text("manager/src/main/res/values/strings_workmode.xml", [
+    ('<string name="work_mode_superuser_unresolved">The current mode is not confirmed yet, so the superuser list is unavailable.</string>',
+     '<string name="work_mode_superuser_unresolved">No root environment yet, so the superuser list stays empty.</string>'),
+])
+patch_text("manager/src/main/res/values-zh-rCN/strings_workmode.xml", [
+    ('<string name="work_mode_superuser_unresolved">还没有确认当前模式，超级用户列表暂不可用</string>',
+     '<string name="work_mode_superuser_unresolved">还没有可用的 root 环境，超级用户列表先空着</string>'),
+    ('<string name="work_mode_superuser_unavailable">当前模式下超级用户列表暂时不可用</string>',
+     '<string name="work_mode_superuser_unavailable">当前模式下暂不提供超级用户列表</string>'),
+])
+patch_text("manager/src/main/res/values/maplesu_strings.xml", [
+    ('<string name="module_load_failed">Failed to load modules. Please try again.</string>',
+     '<string name="module_load_failed">Module service is not ready. Check root status and retry.</string>'),
+])
+patch_text("manager/src/main/res/values-zh-rCN/maplesu_strings.xml", [
+    ('<string name="module_load_failed">加载模块失败，请重试</string>',
+     '<string name="module_load_failed">模块服务还没就绪，确认 root 环境后点重试</string>'),
+])
+print("品牌皮肤已应用：深色默认 + 去枫叶 + 蓝鱼文案")
+
 if failures:
     print("\n修补失败：", file=sys.stderr)
     for item in failures:
