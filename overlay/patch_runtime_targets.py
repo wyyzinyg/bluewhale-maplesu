@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """蓝鱼 · 构建期修补（在上游源码树上就地应用）
 
-修四件事：
+修五件事：
   1. MapleSU runtime 的 CMake 目标集：公开快照里的 Ultra SDK 静态库还是 skroot 时代产物
      （导出 skroot_env:: 符号，0 个 maplesu::sdk::），libmaplesu_ultra_bridge.so 链接必挂。
-     探针不进 APK，桥库由 -PbluewhaleSkipUltraBridge 决定要不要构建。
+     探针不进 APK，桥库由 bluewhaleSkipUltraBridge 决定要不要构建。
   2. provider 构建的 Maven 依赖：tools/specgen 的 cached_jar 只读 Gradle 缓存，而
      buildJailbreakProviders 比依赖解析先执行，缓存里没有 kotlinx-serialization-json
      等 jar，就报 ULTRA_HOST_DEPENDENCY_MISSING（run-23）。缓存里找不到时按 Maven 坐标现拉。
   3. Ultra 桥改成可选输入：跳过时既不构建、也不当成打包必需件。Normal 三条 root 路线不受影响。
   4. bridge 不再作为 buildMapleSuRuntime 的硬性输出声明，否则 Gradle 认为任务永远没产出完。
+  5. Release 的 Ultra claim 世代同样属于专有链路，跳桥时一并放行。
 
 用法：python3 patch_runtime_targets.py <上游源码根目录>
 """
@@ -127,6 +128,27 @@ if product.is_file():
         failures.append(f"tools/specgen/specgen/product.py: cached_jar 未命中（{hits} 处）")
 else:
     failures.append("缺文件: tools/specgen/specgen/product.py")
+
+# —— 6. Release 的 Ultra claim 门槛：没有专有 claim 世代时跳过 ——
+# mergeReleaseAssets 的 doFirst 要求 -PmaplesuUltraClaimDirectory 指向新生成的 claim 世代，
+# 公开快照缺 runtime/pro，也就没有生成 claim 的输入。Normal-only 构建允许跳过。
+if kt.is_file():
+    text = kt.read_text(encoding="utf-8")
+    gate_old = '    doFirst { check(ultraManagerClaimDirectory != null) { "ULTRA_CLAIM_FRESH_GENERATION_REQUIRED" } }'
+    gate_new = ('    doFirst {\n'
+                '        check(ultraManagerClaimDirectory != null ||\n'
+                '            providers.gradleProperty("bluewhaleSkipUltraBridge").orNull == "true") {\n'
+                '            "ULTRA_CLAIM_FRESH_GENERATION_REQUIRED"\n'
+                '        }\n'
+                '    }')
+    hits = text.count(gate_old)
+    if hits == 1:
+        kt.write_text(text.replace(gate_old, gate_new), encoding="utf-8")
+        print("改好 build.gradle.kts: Ultra claim 门槛随跳过开关放行")
+    elif "ULTRA_CLAIM_FRESH_GENERATION_REQUIRED\"" in text:
+        print("已改过 build.gradle.kts: claim 门槛")
+    else:
+        failures.append(f"manager/build.gradle.kts: claim 门槛未命中（{hits} 处）")
 
 # —— 5. 开关落进项目 gradle.properties（省得每次命令行传） ——
 props = ROOT / "gradle.properties"
