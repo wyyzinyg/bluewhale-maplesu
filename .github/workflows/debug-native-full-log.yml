@@ -1,0 +1,36 @@
+name: debug-native-full-log
+
+on:
+  workflow_run:
+    workflows: ["build-bluewhale-native"]
+    types: [completed]
+  push:
+    paths:
+      - ".debug-trigger/**"
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      RUN_ID: ${{ github.event.workflow_run.id || '45867780715' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: 取完整 job 日志并写回仓库
+        run: |
+          set -euo pipefail
+          mkdir -p .ci-logs
+          F=".ci-logs/native-${RUN_ID}-full.txt"
+          {
+            echo "run=$RUN_ID"
+            gh run view "$RUN_ID" --log || true
+          } > "$F"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$F"
+          git commit -m "ci: full native log $RUN_ID" || true
+          git push || true

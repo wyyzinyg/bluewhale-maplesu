@@ -1,0 +1,1 @@
+fetch run 3 full log
