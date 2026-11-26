@@ -31,8 +31,9 @@ jobs:
         run: |
           set -euo pipefail
           exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
+          # 固定到 3.19.0 使用的上游提交，避免 main 漂移导致补丁锚点失效或行为变化。
           curl -sSL -o /tmp/maplesu.tar.gz \
-            https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/refs/heads/main
+            https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/ff3aa44850ea22717fa811a17831155a85f43445
           mkdir -p src
           tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
           echo "上游体积: $(du -sh src | cut -f1)"
@@ -44,6 +45,7 @@ jobs:
           python3 overlay/apply_bluewhale.py src
           python3 overlay/patch_runtime_targets.py src
           python3 overlay/patch_brand_skin_tail.py src
+          python3 overlay/patch_bluewhale_320.py src
 
       - uses: actions/setup-java@v4
         with:
@@ -172,7 +174,7 @@ jobs:
           body: |
             蓝色大肥鱼 · MapleSU 基座构建
             - 包名 com.blue.whale.mask
-            - 版本 3.18.0-bw
+            - 版本以包内 BuildConfig 为准（3.20 线为 3.20.0-bw / 32736）
             - 未签名包，本地用 bluewhale-release.p12 签名后安装
           files: |
             out/*.apk
