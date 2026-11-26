@@ -14,7 +14,7 @@
   6. Soter 内容提供者的 authority 写死了 dev.maplesu.manager.soter，会和官方 MapleSU
      抢授权，安装报 -13（INSTALL_FAILED_CONFLICTING_PROVIDER）。改成蓝鱼自己的 authority。
   7. 品牌资产还原：overlay 会把启动图标和启动页换成矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像，
-     这里从 CloudBase 上的 3.16 APK 取回图标五个密度与启动页位图并改回引用。
+     这里把图标五个密度与启动页位图放回，并把主题同步指回 3.16 的启动页。
 
 用法：python3 patch_runtime_targets.py <上游源码根目录>
 """
@@ -180,25 +180,36 @@ patch_text("manager/src/main/java/dev/maplesu/manager/soter/SoterTargetProvider.
 ])
 
 # —— 8. 品牌资产还原：overlay 把图标换成了矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像 ——
-# 直接从 CloudBase 更新通道上的 3.16 APK 里取原图，避免把二进制塞进仓库。
-# 3.16 APK 的身份（update.json 同源）：size 8687501、sha256 476de708…。
-# run-33 就是 CDN 只给了 8686948 字节（IncompleteRead，差 553 字节）把整轮打挂的，
-# 所以下载必须按大小 + 哈希校验并重试，不能裸 read() 一次定生死。
-ICON_APK_URL = ("https://bluewhale-update-d8e0r9wc21f00b8-1541568372.tcloudbaseapp.com/"
-                "bluewhale-manager-v3.16.0-bw-32730.apk")
-ICON_APK_SIZE = 8687501
-ICON_APK_SHA256 = "476de70854b41f46b5271c01cd334f23780fe6dc6424b54c835fe428cd0f6f8a"
-ICON_MEMBERS = {
-    "mdpi": "res/x5.png",
-    "hdpi": "res/uK.png",
-    "xhdpi": "res/iO.png",
-    "xxhdpi": "res/DR.png",
-    "xxxhdpi": "res/nV.png",
+# 图标与启动页位图是从 3.16 APK 原样抽出来的，挂在独立静态站上（逐字节一致）。
+# 早先直接拉 3.16 APK（8.7MB），但 GitHub runner 每次都在 8682852 字节处被链路截断：
+# run-33 / run-34 的 IncompleteRead 六次重试全停在同一个偏移，不是偶发，是硬截断。
+# 改成分文件取，单个最大 278KB，每个单独校验 size + sha256，坏哪个重试哪个。
+BRAND_BASE = "https://bluewhale-brand-bluewhale-update-d8e0r9wc21f00b8.webapps.tcloudbase.com"
+BRAND_ASSETS = {
+    # 目标路径（相对 src）: (远端文件名, 字节数, sha256)
+    "manager/src/main/res/mipmap-mdpi/ic_launcher_foreground_bluewhale.png":
+        ("ic_launcher_foreground-mdpi.png", 17309,
+         "55ffbf0b0d188e1a60b396a0b7a1b253ca599b6c8853ff1f76a4e746b5d89d14"),
+    "manager/src/main/res/mipmap-hdpi/ic_launcher_foreground_bluewhale.png":
+        ("ic_launcher_foreground-hdpi.png", 35769,
+         "8caa2d7e47c6eb44fb72f7d8f825d61c94530a4990f10610de2b77d7b12fc471"),
+    "manager/src/main/res/mipmap-xhdpi/ic_launcher_foreground_bluewhale.png":
+        ("ic_launcher_foreground-xhdpi.png", 58521,
+         "2718006d18c19ca2481b652d89bd739e9374d62679239b1298762a52f4370b58"),
+    "manager/src/main/res/mipmap-xxhdpi/ic_launcher_foreground_bluewhale.png":
+        ("ic_launcher_foreground-xxhdpi.png", 117077,
+         "cdd71cb47cb4638fb60d8b09f08abff42f02e83d73084eec49f115916b152017"),
+    "manager/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground_bluewhale.png":
+        ("ic_launcher_foreground-xxxhdpi.png", 189659,
+         "ee7bb3c9675710470ac698fe76d57dbb9e9f1893667c8a6ab79d78080eb72208"),
+    "manager/src/main/res/drawable-nodpi/ic_app_brand.png":
+        ("ic_app_brand.png", 278497,
+         "5adebcc7c31950aa9dc40c3583e3e2a245c61025ff06a0baeec14ba5be247337"),
 }
 
 
-def fetch_bytes(url: str, size: int, sha256: str, attempts: int = 6) -> bytes:
-    """整包下载后按大小与哈希校验：短读、脏包都重试，次数用尽才抛错。"""
+def fetch_bytes(url: str, size: int, sha256: str, attempts: int = 5) -> bytes:
+    """取单个小文件：按字节数与 sha256 校验，短读/脏包重试。"""
     import hashlib
     import time
     import urllib.request
@@ -207,7 +218,7 @@ def fetch_bytes(url: str, size: int, sha256: str, attempts: int = 6) -> bytes:
     for attempt in range(1, attempts + 1):
         try:
             request = urllib.request.Request(url, headers={"User-Agent": "bluewhale-ci"})
-            with urllib.request.urlopen(request, timeout=180) as response:
+            with urllib.request.urlopen(request, timeout=60) as response:
                 payload = response.read()
             if len(payload) != size:
                 raise IOError(f"大小不符 {len(payload)} != {size}")
@@ -217,21 +228,18 @@ def fetch_bytes(url: str, size: int, sha256: str, attempts: int = 6) -> bytes:
             return payload
         except Exception as error:  # noqa: BLE001
             last = error
-            print(f"3.16 APK 第 {attempt}/{attempts} 次下载失败: {error}", file=sys.stderr)
-            time.sleep(min(5 * attempt, 30))
-    raise RuntimeError(f"3.16 APK 下载失败（已试 {attempts} 次）: {last}")
+            print(f"{url.rsplit('/', 1)[-1]} 第 {attempt}/{attempts} 次下载失败: {error}",
+                  file=sys.stderr)
+            time.sleep(min(4 * attempt, 20))
+    raise RuntimeError(f"下载失败（已试 {attempts} 次）{url}: {last}")
 
 
 try:
-    import io
-    import zipfile
-
-    archive = zipfile.ZipFile(io.BytesIO(fetch_bytes(ICON_APK_URL, ICON_APK_SIZE, ICON_APK_SHA256)))
-    for density, member in ICON_MEMBERS.items():
-        target = ROOT / f"manager/src/main/res/mipmap-{density}/ic_launcher_foreground_bluewhale.png"
+    for rel, (name, size, sha) in BRAND_ASSETS.items():
+        target = ROOT / rel
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes(archive.read(member))
-    print("还原蓝鱼启动图标: 5 个密度")
+        target.write_bytes(fetch_bytes(f"{BRAND_BASE}/{name}", size, sha))
+    print("还原蓝鱼图标与启动页位图: 6 个文件，与 3.16 逐字节一致")
     patch_text("manager/src/main/res/mipmap-anydpi/ic_launcher.xml", [
         ('<foreground android:drawable="@drawable/ic_launcher_foreground" />',
          '<foreground android:drawable="@mipmap/ic_launcher_foreground_bluewhale" />'),
@@ -245,9 +253,6 @@ try:
     # 启动页：3.16 的 drawable/ic_launcher_splash 就是一个 bitmap(center, @drawable/ic_app_brand)，
     # 主题 windowSplashScreenAnimatedIcon 指向它、底色纯白。3.17 上游改成方块动画 + 品红底，
     # 只换资源不换主题等于没换（主题指向 maplesu_splash_brand），必须两处一起改回。
-    brand = ROOT / "manager/src/main/res/drawable-nodpi/ic_app_brand.png"
-    brand.parent.mkdir(parents=True, exist_ok=True)
-    brand.write_bytes(archive.read("res/lK.png"))
     splash = ROOT / "manager/src/main/res/drawable/ic_launcher_splash.xml"
     splash.write_text(
         '<?xml version="1.0" encoding="utf-8"?>\n'
