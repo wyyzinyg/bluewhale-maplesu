@@ -143,6 +143,16 @@ if prov.is_file():
         failures.append("jailbreak-providers/build.py: cmake 硬编码未替换")
     if "cmake.with_name('ninja.exe')" in src:
         failures.append("jailbreak-providers/build.py: ninja 硬编码未替换")
+
+    # L3 失败时不能让 --quiet 吞掉门禁细节。run_l3 的完整 stdout/stderr 会由
+    # build_root_l3_single 追加到 build.log，失败步骤再回传，方便按真实分支修复。
+    l3_quiet = ('               "--out-dir", str(l3_dir), "--contract", str(contract), "--quiet"] + extra')
+    l3_loud = ('               "--out-dir", str(l3_dir), "--contract", str(contract)] + extra')
+    if src.count(l3_quiet) == 1:
+        src = src.replace(l3_quiet, l3_loud)
+        print("修好 build.py: L3 构建保留完整门禁日志")
+    else:
+        failures.append("jailbreak-providers/build.py: L3 --quiet 行未命中")
     prov.write_text(src, encoding="utf-8")
 else:
     failures.append("缺文件: jailbreak-providers/build.py")
