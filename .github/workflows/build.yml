@@ -8,6 +8,9 @@ on:
     branches: [main]
     tags:
       - "bw-*"
+    # 日志写回本身会以 GITHUB_TOKEN 提交一次；不排除它就会自己触发自己，无限连锁。
+    paths-ignore:
+      - "ci-logs/**"
 
 permissions:
   contents: write
@@ -39,6 +42,7 @@ jobs:
           set -euo pipefail
           exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
           python3 overlay/apply_bluewhale.py src
+          python3 overlay/patch_runtime_targets.py src
 
       - uses: actions/setup-java@v4
         with:
@@ -60,20 +64,16 @@ jobs:
           printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
           printf '\n84831b9409646a918e30573bab4c9c91346d8abd\n' > "$SDK/licenses/android-sdk-preview-license"
           echo "licenses 已预写: $(ls "$SDK/licenses")"
-          # 三个 NDK 都要：
-          #   26.1.10909125  → configureMapleSuPatch / buildModulePolicy 写死（run-20 教训）
-          #   28.2.13676358  → jailbreak-providers/build.py 写死（run-9 教训）
-          #   29.0.14206865  → 兜底（部分脚本按最高版找）
+          # provider 构建（jailbreak-providers/build.py）写死 ndk/28.2.13676358；
+          # 缺这个 NDK 会让所有 KMI 模块编译失败并回退原厂载荷（run-9 教训）。
           for pkg in "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" \
                      "platforms;android-36" "build-tools;36.0.0" \
-                     "cmake;3.22.1" \
-                     "ndk;26.1.10909125" "ndk;28.2.13676358" "ndk;29.0.14206865"; do
+                     "cmake;3.22.1" "ndk;28.2.13676358" "ndk;29.0.14206865"; do
             echo "--- install $pkg"
             "$SM" "$pkg" < /dev/null || true
           done
           echo "== platforms =="; ls "$SDK/platforms"
           echo "== ndk =="; ls "$SDK/ndk"
-          test -d "$SDK/ndk/26.1.10909125" || { echo "FATAL: ndk 26.1 未安装"; exit 1; }
           test -d "$SDK/ndk/28.2.13676358" || { echo "FATAL: ndk 28.2 未安装"; exit 1; }
           echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
           echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
@@ -90,12 +90,6 @@ jobs:
             cargo fetch --manifest-path "$EXTRACTOR" || { echo "FATAL: cargo fetch 失败"; exit 1; }
             ls "$HOME/.cargo/registry" || true
           fi
-          # l3 模块在 gradle 之前就要用 Kotlin 宿主编译（tools/specgen），它按 gradle 缓存布局找
-          # kotlin-stdlib / kotlin-compiler-embeddable / kotlinx-serialization 等 15 个 jar（run-18 教训）。
-          # 上游自带 prepare_host_dependencies.py（overlay 已给它加 4 次重试），直接按锁文件落到 ~/.gradle。
-          python3 "$GITHUB_WORKSPACE/src/tools/prepare_host_dependencies.py" \
-            --lock "$GITHUB_WORKSPACE/src/tools/host-jvm-dependencies.json" \
-            --gradle-user-home "$HOME/.gradle"
           python3 --version
           cd src
           ./gradlew --no-daemon --max-workers=4 \
@@ -155,8 +149,7 @@ jobs:
           SHA=$(curl -s -H "Authorization: Bearer $TOKEN" "$API?ref=main" \
             | python3 -c "import sys,json;print(json.load(sys.stdin).get('sha',''))" 2>/dev/null || true)
           if [ -n "$SHA" ]; then EXTRA=",\"sha\":\"$SHA\""; else EXTRA=""; fi
-          # [skip ci]：日志回写不应再触发下一轮构建，否则每次 run 结束都会自动拉起新 run。
-          printf '{"message":"ci: 构建日志 run %s [skip ci]","content":"%s","branch":"main"%s}' \
+          printf '{"message":"ci: 构建日志 run %s","content":"%s","branch":"main"%s}' \
             "$RUN_NO" "$B64" "$EXTRA" > /tmp/payload.json
           curl -s -X PUT -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
             "$API" -d @/tmp/payload.json | head -c 300
