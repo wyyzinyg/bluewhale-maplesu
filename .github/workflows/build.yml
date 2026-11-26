@@ -12,6 +12,11 @@ on:
 permissions:
   contents: write
 
+# 同一个仓库只跑一轮：新提交直接顶掉旧 run，不用两个 150 分钟的作业互相抢。
+concurrency:
+  group: build-bluewhale
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -104,14 +109,24 @@ jobs:
             echo "- run: ${{ github.run_number }}  提交: ${{ github.sha }}";
             echo "- 作业结论: ${{ job.status }}";
             echo;
+            echo "#### 补丁摘要（是否真应用）";
+            grep -E "改好|修好|插入|注意|补丁|失败" build.log 2>/dev/null | head -40 || echo "(无补丁输出)";
+            echo;
+            echo "#### gradle 失败原因";
+            grep -nE "What went wrong|FAILURE|Caused by|Execution failed|> Task .*FAILED|error:" build.log 2>/dev/null | tail -30 || echo "(无失败行)";
+            echo;
             echo '```';
             echo "#### provider 子构建日志（CMake/cargo 报错常只写在这里）";
+            for j in $(find src/manager/build/jailbreakProviders -maxdepth 2 -name build.json 2>/dev/null | head -4); do
+              echo "--- $j";
+              python3 -c "import json;d=json.load(open('$j'));e=(d.get('ir') or {}).get('error');print(e or json.dumps({k:d.get(k) for k in ('ok','errors','failure')},ensure_ascii=False)[:300])" 2>/dev/null || true;
+            done;
             find src -name "build.log" -size -4M 2>/dev/null | head -3 | while read -r f; do
               echo "===== $f =====";
               tail -120 "$f";
             done;
             echo "#### 主构建日志尾";
-            tail -400 build.log 2>/dev/null || echo "(无 build.log)";
+            tail -500 build.log 2>/dev/null || echo "(无 build.log)";
             echo '```';
           } > ci-logs/last-build.md
           wc -c ci-logs/last-build.md
