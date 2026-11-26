@@ -11,8 +11,7 @@
   - "查看源码"链接改到蓝鱼仓库（上游致谢与 GPL 行保留原文，不动）
   - 版本号收尾：32732/3.18.0-bw → 32733/3.18.1-bw
 
-保留不动的：about_maple_* （关于页上游署名）、含 GPL / MapleAutumn 的句子、
-MapleSU_98260 这种带内核代号的内部标识（另行单独改写成人话）。
+保留不动的：about_maple_* （关于页上游署名）、含 GPL / MapleAutumn 的句子。
 
 用法：python3 patch_brand_text_sweep.py <上游源码根目录>
 """
@@ -51,12 +50,12 @@ def rewrite_file(path: pathlib.Path) -> None:
         new = body
         new = new.replace("https://github.com/FengQiuFQ/MapleSU",
                           "https://github.com/wyyzinyg/bluewhale-maplesu")
-        new = new.replace("MapleSU_98260", "98260").replace("MapleSU_93260", "93260")
+        new = new.replace("MapleSU_98260", token + " 98260")
+        new = new.replace("MapleSU_93260", token + " 93260")
         new = new.replace("MapleSU_", token + " ").replace("MapleSU", token)
         new = new.replace("枫叶飘落", "飘落特效").replace("枫叶大小", "粒子大小")
         new = new.replace("枫叶和图标", "粒子和图标").replace("伴随枫叶轻轻飘落", "伴随粒子轻轻飘落")
         new = new.replace("枫叶", "落叶")
-        new = new.replace("内核方案由 " + token + " 维护", "内核方案沿用上游 MapleSU 的实现")
         if new != body:
             CHANGED += 1
         return match.group(1) + new + match.group(4)
