@@ -82,17 +82,21 @@ internal fun parseManagerRelease(body: String): LatestVersionInfo {
     val apkAssets = (0 until assets.length()).mapNotNull { assets.optJSONObject(it) }
         .filter { it.optString("name").endsWith(".apk") }
     for (asset in apkAssets) {
-        val code = Regex("""v(.+?)_(\\d+)-""").find(asset.optString("name"))
-            ?.groupValues?.get(2)?.toIntOrNull() ?: continue
+        // 蓝鱼资产名 …-bw-32734.apk；KSU 风格 …_50110-release.apk。两种都认。
+        val name = asset.optString("name")
+        val code = name.substringAfterLast("-bw-").substringBefore(".apk").toIntOrNull()
+            ?: name.substringAfterLast('_').substringBefore('-').toIntOrNull()
+            ?: continue
         val url = asset.optString("browser_download_url")
         if (code > 0 && url.isNotBlank()) return LatestVersionInfo(code, url, changelog)
     }
-    val version = Regex("""v?(\\d+)\\.(\\d+)\\.(\\d+)""").matchEntire(release.optString("tag_name"))
-        ?: return LatestVersionInfo()
-    val (major, minor, patch) = version.destructured
-    val parts = listOf(major, minor, patch).map { it.toLongOrNull() ?: return LatestVersionInfo() }
-    if (parts[0] > Int.MAX_VALUE / 10_000 || parts[1] > 99 || parts[2] > 99) return LatestVersionInfo()
-    val code = parts[0] * 10_000 + parts[1] * 100 + parts[2]
+    val parts = release.optString("tag_name").removePrefix("v").split(".")
+    if (parts.size != 3) return LatestVersionInfo()
+    val numbers = parts.map { it.toLongOrNull() ?: return LatestVersionInfo() }
+    if (numbers[0] > Int.MAX_VALUE / 10_000 || numbers[1] > 99 || numbers[2] > 99) {
+        return LatestVersionInfo()
+    }
+    val code = numbers[0] * 10_000 + numbers[1] * 100 + numbers[2]
     if (code !in 1..Int.MAX_VALUE.toLong()) return LatestVersionInfo()
     val asset = apkAssets.firstOrNull { it.optString("browser_download_url").isNotBlank() }
         ?: return LatestVersionInfo()
