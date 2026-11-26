@@ -73,10 +73,19 @@ jobs:
             echo "sha256=${{ steps.upload.outputs.sha }}"
             echo "size=${{ steps.upload.outputs.size }}"
           } > ".ci-logs/apk-${RUN_ID}.txt"
+          RECEIPT=$(find artifact -type f -name 'build-receipt.json' | head -1 || true)
+          PROVIDER=$(find artifact -type f -path '*/jailbreakProviders/build.json' | head -1 || true)
+          if [ -n "$RECEIPT" ]; then
+            cp "$RECEIPT" ".ci-logs/native-${RUN_ID}-receipt.json"
+          fi
+          if [ -n "$PROVIDER" ]; then
+            cp "$PROVIDER" ".ci-logs/native-${RUN_ID}-provider.json"
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ".ci-logs/apk-${RUN_ID}.txt"
-          git commit -m "ci: apk link for run ${RUN_ID}" || true
+          git add ".ci-logs/native-${RUN_ID}-receipt.json" ".ci-logs/native-${RUN_ID}-provider.json" 2>/dev/null || true
+          git commit -m "ci: apk link and receipts for run ${RUN_ID}" || true
           git push || true
 
       - name: 上传链接日志
