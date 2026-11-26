@@ -46,6 +46,8 @@ env:
   KSU_EXPECTED_HASH: "863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581"
   DDK_RELEASE: "20260828"
   RUSTUP_TOOLCHAIN: "1.99.1"
+  # ghostlock/build_extractor.py 默认强制 cargo +stable；显式对齐到上面已安装 Android target 的工具链。
+  MAPLESU_RUST_TOOLCHAIN: "1.99.1"
   CARGO_NET_GIT_FETCH_WITH_CLI: "true"
   KMI_MATRIX: "android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18"
 
@@ -61,7 +63,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p src
-          # P0-3：钉 commit。补丁锚点基于这一版，跟 main 会漂。
+          # P0-3：钉 commit。补丁锚点基于这一版，不能跟着上游 main 漂。
           UPSTREAM_COMMIT=ff3aa44850ea22717fa811a17831155a85f43445
           echo "upstream commit=$UPSTREAM_COMMIT"
           curl -sSL -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${UPSTREAM_COMMIT}"
