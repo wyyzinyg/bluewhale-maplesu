@@ -8,7 +8,11 @@
      这里把签名放宽成可空并在为空时不画横幅。
 
 另外把「降动效策略」里被写死的 snow_enabled=false 还原成跟随 enabled，
-否则设置页的飘落开关点了没反应。最后把整块可见文案交给 patch_brand_text_sweep.py。
+否则设置页的飘落开关点了没反应。
+
+收尾后依次跑：
+  overlay/patch_brand_text_sweep.py  —— 可见文案统一成蓝鱼
+  overlay/patch_kill_effects.py      —— 撤掉飘落/巨魔雨、删上游启动页位图，版本到 3.18.2
 
 用法：python3 patch_brand_skin_tail.py <上游源码根目录>
 """
@@ -97,15 +101,16 @@ patch_text("manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialo
      "        },"),
 ])
 
-# 4. 把整块可见文案（工作模式名、市场、迁移页、安装提示）交给总清脚本
-sweep = pathlib.Path(__file__).with_name("patch_brand_text_sweep.py")
-if sweep.is_file():
+# 4. 把整块可见文案（工作模式名、市场、迁移页、安装提示）交给总清脚本，再撤掉两个特效层
+for extra in ("patch_brand_text_sweep.py", "patch_kill_effects.py"):
+    script = pathlib.Path(__file__).with_name(extra)
+    if not script.is_file():
+        failures.append(f"缺文件: overlay/{extra}")
+        continue
     import runpy
 
-    sys.argv = [str(sweep), str(ROOT)]
-    runpy.run_path(str(sweep), run_name="__main__")
-else:
-    failures.append("缺文件: overlay/patch_brand_text_sweep.py")
+    sys.argv = [str(script), str(ROOT)]
+    runpy.run_path(str(script), run_name="__main__")
 
 if failures:
     print("\n皮肤收尾失败：", file=sys.stderr)
