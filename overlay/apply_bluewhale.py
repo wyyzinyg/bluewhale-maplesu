@@ -368,11 +368,17 @@ patch(
                              "trap is confined to compiler CFI failure handler")
     gate.require(traps == 1, "one compiler-generated CFI failure trap")
 ''',
-    '''    # Clang may place type-mismatch traps in __cfi_check itself as well as in
-    # __cfi_check_fail. Both functions are compiler-generated CFI machinery;
-    # traps anywhere else, or with any other immediate, remain hard failures.
-    fail = ctx.elf.symbol("__cfi_check_fail")
-    check = ctx.elf.symbol("__cfi_check")
+    '''    # Cross-DSO Clang may emit local __cfi_check.<n> functions in addition
+    # to the public dispatcher. Accept only those exact compiler-generated
+    # function symbols; all other code and all other BRK immediates still fail.
+    handlers = [
+        symbol for symbol in ctx.elf.symbols
+        if symbol["type"] == b.STT_FUNC and symbol["shndx"] != 0 and
+        (symbol["name"] in ("__cfi_check", "__cfi_check_fail") or
+         (symbol["name"].startswith("__cfi_check.") and
+          symbol["name"][len("__cfi_check."):].isdigit()))
+    ]
+    gate.require(bool(handlers), "compiler-generated CFI handlers present")
     traps = 0
     for section in ctx.elf.sections:
         if not section["flags"] & b.SHF_EXECINSTR:
@@ -381,16 +387,16 @@ patch(
             imm = b.decode_brk(b.read_uint32(ctx.elf.section_bytes(section), at))
             if imm is not None:
                 traps += 1
-                in_failure = (fail["shndx"] == section["index"] and
-                              fail["value"] <= at < fail["value"] + fail["size"])
-                in_check = (check["shndx"] == section["index"] and
-                            check["value"] <= at < check["value"] + check["size"])
-                gate.require(imm == 0x5502 and (in_failure or in_check),
+                in_handler = any(
+                    handler["shndx"] == section["index"] and
+                    handler["value"] <= at < handler["value"] + handler["size"]
+                    for handler in handlers)
+                gate.require(imm == 0x5502 and in_handler,
                              "trap is confined to compiler CFI check/failure handlers",
-                             "section=%s offset=0x%x imm=0x%x check=(%d,0x%x,%d) "
-                             "fail=(%d,0x%x,%d)" %
-                             (section["name"], at, imm, check["shndx"], check["value"],
-                              check["size"], fail["shndx"], fail["value"], fail["size"]))
+                             "section=%s offset=0x%x imm=0x%x handlers=%s" %
+                             (section["name"], at, imm,
+                              [(h["name"], h["shndx"], h["value"], h["size"])
+                               for h in handlers]))
     gate.require(traps >= 1, "compiler-generated CFI failure trap present")
 ''')
 
