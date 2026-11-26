@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """蓝鱼 · 构建期修补（在上游源码树上就地应用）
 
-修五件事：
+修六件事：
   1. MapleSU runtime 的 CMake 目标集：公开快照里的 Ultra SDK 静态库还是 skroot 时代产物
      （导出 skroot_env:: 符号，0 个 maplesu::sdk::），libmaplesu_ultra_bridge.so 链接必挂。
      探针不进 APK，桥库由 bluewhaleSkipUltraBridge 决定要不要构建。
@@ -11,6 +11,8 @@
   3. Ultra 桥改成可选输入：跳过时既不构建、也不当成打包必需件。Normal 三条 root 路线不受影响。
   4. bridge 不再作为 buildMapleSuRuntime 的硬性输出声明，否则 Gradle 认为任务永远没产出完。
   5. Release 的 Ultra claim 世代同样属于专有链路，跳桥时一并放行。
+  6. Soter 内容提供者的 authority 写死了 dev.maplesu.manager.soter，会和官方 MapleSU
+     抢授权，安装报 -13（INSTALL_FAILED_CONFLICTING_PROVIDER）。改成蓝鱼自己的 authority。
 
 用法：python3 patch_runtime_targets.py <上游源码根目录>
 """
@@ -163,6 +165,17 @@ if props.is_file():
 else:
     props.write_text(switch_line + "\n", encoding="utf-8")
     print("新建 gradle.properties: bluewhaleSkipUltraBridge")
+
+# —— 7. Soter 内容提供者：写死的 dev.maplesu.manager.soter 会和官方 MapleSU 抢授权 ——
+# 装包报 INSTALL_FAILED_CONFLICTING_PROVIDER(-13)：两个不同包名的 App 声明了同一 authority。
+patch_text("manager/src/main/AndroidManifest.xml", [
+    ('android:authorities="dev.maplesu.manager.soter"',
+     'android:authorities="com.blue.whale.mask.soter"'),
+])
+patch_text("manager/src/main/java/dev/maplesu/manager/soter/SoterTargetProvider.kt", [
+    ('const val AUTHORITY = "dev.maplesu.manager.soter"',
+     'const val AUTHORITY = "com.blue.whale.mask.soter"'),
+])
 
 if failures:
     print("\n修补失败：", file=sys.stderr)
