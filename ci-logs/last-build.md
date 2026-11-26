@@ -1,6 +1,6 @@
 # 构建结果
 
-- run: 20  提交: 410f740aa8e394b7e9e4ab7149c3eb2eed2bc312
+- run: 21  提交: 3c63f15e6485543d6c00ebee1cd2cdee068bc0c2
 - 作业结论: failure
 
 #### 补丁摘要（是否真应用）
@@ -22,10 +22,14 @@
 蓝鱼品牌化补丁已全部应用。
 
 #### gradle 失败原因
-2007:> Task :manager:configureMapleSuPatch FAILED
-2021:FAILURE: Build failed with an exception.
-2023:* What went wrong:
-2024:Execution failed for task ':manager:configureMapleSuPatch' (registered in build file 'manager/build.gradle.kts').
+2188:ld.lld: error: undefined symbol: maplesu::sdk::get_sdk_version()
+2191:clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+2196:ld.lld: error: undefined symbol: maplesu::sdk::parse_module_desc_from_zip_file(char const*, char const*, maplesu::sdk::module_desc&)
+2199:clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+2202:> Task :manager:buildMapleSuRuntime FAILED
+2206:FAILURE: Build failed with an exception.
+2208:* What went wrong:
+2209:Execution failed for task ':manager:buildMapleSuRuntime' (registered in build file 'manager/build.gradle.kts').
 
 ```
 #### provider 子构建日志（CMake/cargo 报错常只写在这里）
@@ -38,84 +42,84 @@
 --- src/manager/build/jailbreakProviders/ir/build.json
 {"ok": null, "errors": null, "failure": null}
 ===== src/manager/build/jailbreakProviders/build.log =====
-   Compiling crc32fast v1.5.2
-   Compiling autocfg v1.5.1
-   Compiling petgraph v0.8.3
-   Compiling num-traits v0.2.19
-   Compiling tempfile v3.27.0
-   Compiling alloc-stdlib v0.2.4
+   Compiling rayon-core v1.13.0
+   Compiling utf8parse v0.2.2
    Compiling anstyle-parse v1.0.0
+   Compiling tempfile v3.27.0
+   Compiling num-traits v0.2.19
+   Compiling petgraph v0.8.3
+   Compiling alloc-stdlib v0.2.4
    Compiling regex v1.13.1
    Compiling prost-types v0.14.4
    Compiling serde_derive v1.0.229
    Compiling lzma-sys v0.1.20
+   Compiling protoc-bin-vendored-linux-x86_64 v3.2.0
+   Compiling zstd-safe v7.3.0
+   Compiling protoc-bin-vendored-linux-aarch_64 v3.2.0
+   Compiling anstyle v1.0.14
+   Compiling colorchoice v1.0.5
+   Compiling protoc-bin-vendored-macos-aarch_64 v3.2.0
+   Compiling protoc-bin-vendored-linux-ppcle_64 v3.2.0
+   Compiling portable-atomic v1.15.0
+   Compiling protoc-bin-vendored-macos-x86_64 v3.2.0
+   Compiling anstyle-query v1.1.5
+   Compiling log v0.4.34
+   Compiling protoc-bin-vendored-linux-s390_64 v3.2.0
+   Compiling protoc-bin-vendored-win32 v3.2.0
    Compiling multimap v0.10.1
    Compiling protoc-bin-vendored-linux-x86_32 v3.2.0
    Compiling radium v0.7.0
    Compiling is_terminal_polyfill v1.70.2
    Compiling zmij v1.0.23
-   Compiling protoc-bin-vendored-linux-x86_64 v3.2.0
-   Compiling anstyle v1.0.14
-   Compiling colorchoice v1.0.5
-   Compiling protoc-bin-vendored-linux-aarch_64 v3.2.0
-   Compiling zstd-safe v7.3.0
-   Compiling protoc-bin-vendored-macos-aarch_64 v3.2.0
-   Compiling anstyle-query v1.1.5
-   Compiling protoc-bin-vendored-linux-ppcle_64 v3.2.0
-   Compiling portable-atomic v1.15.0
-   Compiling protoc-bin-vendored-macos-x86_64 v3.2.0
-   Compiling log v0.4.34
-   Compiling protoc-bin-vendored-linux-s390_64 v3.2.0
-   Compiling protoc-bin-vendored-win32 v3.2.0
-   Compiling protoc-bin-vendored v3.2.0
-   Compiling prost-build v0.14.4
    Compiling anstream v1.0.0
-   Compiling brotli-decompressor v5.0.3
+   Compiling prost-build v0.14.4
+   Compiling protoc-bin-vendored v3.2.0
    Compiling terminal_size v0.4.4
-   Compiling crypto-common v0.2.2
+   Compiling brotli-decompressor v5.0.3
    Compiling block-buffer v0.12.1
-   Compiling unicode-width v0.2.2
+   Compiling crypto-common v0.2.2
    Compiling thiserror v2.0.20
    Compiling serde_json v1.0.151
    Compiling clap_lex v1.1.1
-   Compiling strsim v0.11.1
    Compiling tap v1.0.1
+   Compiling strsim v0.11.1
    Compiling libbz2-rs-sys v0.2.5
-   Compiling bzip2 v0.6.1
-   Compiling wyz v0.5.1
-   Compiling clap_builder v4.6.7
+   Compiling unicode-width v0.2.2
    Compiling console v0.16.6
+   Compiling bzip2 v0.6.1
    Compiling rayon v1.12.0
+   Compiling clap_builder v4.6.7
+   Compiling wyz v0.5.1
    Compiling digest v0.11.3
    Compiling brotli v8.0.4
    Compiling payload-extract v0.1.1 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native/vendor/payload-extract)
-   Compiling clap_derive v4.6.7
    Compiling aho-corasick v1.1.5
+   Compiling clap_derive v4.6.7
    Compiling thiserror-impl v2.0.20
    Compiling cpufeatures v0.3.1
-   Compiling simd-adler32 v0.3.10
    Compiling unit-prefix v0.5.2
    Compiling itoa v1.0.18
    Compiling typed-path v0.12.3
+   Compiling simd-adler32 v0.3.10
    Compiling funty v2.0.0
    Compiling adler2 v2.0.1
    Compiling miniz_oxide v0.9.1
-   Compiling zip v8.6.0
    Compiling bitvec v1.1.1
-   Compiling indicatif v0.18.6
    Compiling clap v4.6.7
+   Compiling zip v8.6.0
+   Compiling indicatif v0.18.6
    Compiling sha2 v0.11.0
    Compiling zstd v0.13.3
    Compiling bsdiff-android v0.0.2
    Compiling xz2 v0.1.7
    Compiling yaxpeax-arch v0.3.2
    Compiling memmap2 v0.9.11
-   Compiling lz4_flex v0.14.0
    Compiling hex v0.4.3
+   Compiling lz4_flex v0.14.0
    Compiling yaxpeax-arm v0.5.0
    Compiling flate2 v1.1.10
    Compiling ghostlock-extract v0.1.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native)
-    Finished `release` profile [optimized] target(s) in 52.28s
+    Finished `release` profile [optimized] target(s) in 57.76s
 {
   "module": "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/ir/maplesu_ir.ko",
   "sha256": "68a48bd0ff1abb1e0f4ad50b11889ecbfcdb85b172e8a02af7586834924c8c70",
@@ -163,183 +167,6 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 ===== src/manager/build/jailbreakProviders/l3/per-kmi/android14-6.1/build.log =====
 $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/build_root_module.py --module maplesu_l3 --ndk-dir /usr/local/lib/android/sdk/ndk/28.2.13676358 --out-dir /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/l3/per-kmi/android14-6.1/l3 --contract /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/contracts/family-6.1.json --quiet
 #### 主构建日志尾
-            "sha256": "6b890e5f44c8f0918e0e6a84ada952c6492f0744284b4873c258f7d71ff40cef",
-            "bytes": 91488,
-            "gzip": false,
-            "decodedSha256": "6b890e5f44c8f0918e0e6a84ada952c6492f0744284b4873c258f7d71ff40cef",
-            "decodedBytes": 91488
-          },
-          {
-            "device": "louise_cmd.sh",
-            "asset": "maplesu-93260/payload/root_dispatcher.sh",
-            "sha256": "77d320b92d95798459c00e30b9805eea5574475518ae4dfebbb7806a83032e59",
-            "bytes": 2019,
-            "gzip": false,
-            "decodedSha256": "77d320b92d95798459c00e30b9805eea5574475518ae4dfebbb7806a83032e59",
-            "decodedBytes": 2019
-          },
-          {
-            "device": "probe",
-            "asset": "maplesu-93260/payload/kprobe_trigger.bin",
-            "sha256": "468685e883d9712e89b116e7b1efc34728e52b43259946239fbfaee78813d4dc",
-            "bytes": 257427,
-            "gzip": true,
-            "decodedSha256": "1b7da65023ee4a5015ae120624696d98fc9c962f6bae1cbc9a5294657e6fb40d",
-            "decodedBytes": 1059616
-          },
-          {
-            "device": "PD2546-symbols.json",
-            "asset": "maplesu-93260/payload/kallsyms_6.12.58.bin",
-            "sha256": "ac8f75a03c79ef5017925c35fd9847df38461168cd25373a46eb69511c6000b3",
-            "bytes": 1416457,
-            "gzip": true,
-            "decodedSha256": "8f7238a1e5bf288534b3316806d2c7b7fd1a566778f17041dfb48f3c97e282be",
-            "decodedBytes": 15394695
-          }
-        ]
-      },
-      {
-        "id": "plant-61821-f957accaf563",
-        "engine": "plant",
-        "releases": [
-          "6.18.21-android17-5-gf957accaf563-ab15926176-4k"
-        ],
-        "variant": "CVE-2026-98260-6.18",
-        "kmi": "android17-6.18",
-        "kernelUapi": 6,
-        "pageSize": "4k",
-        "models": [
-          "PYB110",
-          "OnePlus 16"
-        ],
-        "payloadKey": "plant-61821-f957accaf563",
-        "kernelRelease": "6.18.21-android17-5-gf957accaf563-ab15926176-4k",
-        "runner": "plant-61821",
-        "runnerFile": {
-          "asset": "maplesu-93260/plant/plant-61821",
-          "sha256": "e8c2530af2f4cd02d37d043d08ce3246f1aa0909e2814448b8beeab4a99ce460",
-          "bytes": 48184,
-          "gzip": false,
-          "decodedSha256": "e8c2530af2f4cd02d37d043d08ce3246f1aa0909e2814448b8beeab4a99ce460",
-          "decodedBytes": 48184
-        }
-      },
-      {
-        "id": "plant-61821-7fcbffcad3e1",
-        "engine": "plant",
-        "releases": [
-          "6.18.21-android17-5-g7fcbffcad3e1-ab16353812-4k"
-        ],
-        "variant": "CVE-2026-98260-6.18",
-        "kmi": "android17-6.18",
-        "kernelUapi": 6,
-        "pageSize": "4k",
-        "models": [
-          "PYB110",
-          "OnePlus 16"
-        ],
-        "payloadKey": "plant-61821-7fcbffcad3e1",
-        "kernelRelease": "6.18.21-android17-5-g7fcbffcad3e1-ab16353812-4k",
-        "runner": "plant-61821",
-        "runnerFile": {
-          "asset": "maplesu-93260/plant/plant-61821",
-          "sha256": "e8c2530af2f4cd02d37d043d08ce3246f1aa0909e2814448b8beeab4a99ce460",
-          "bytes": 48184,
-          "gzip": false,
-          "decodedSha256": "e8c2530af2f4cd02d37d043d08ce3246f1aa0909e2814448b8beeab4a99ce460",
-          "decodedBytes": 48184
-        }
-      },
-      {
-        "id": "plant-61269-242e1a07f878",
-        "engine": "plant",
-        "releases": [
-          "6.12.69-android16-6-g242e1a07f878-ab15865446-4k"
-        ],
-        "variant": "CVE-2026-98260-6.12.69",
-        "kmi": "android16-6.12",
-        "kernelUapi": 6,
-        "pageSize": "4k",
-        "models": [
-          "PLK110",
-          "OnePlus 15",
-          "PLZ110",
-          "OnePlus 15T",
-          "PMS110",
-          "OnePlus Ace7 Pro",
-          "PYF110",
-          "OnePlus Ace7",
-          "PLR110",
-          "OnePlus Ace6T",
-          "PMB110",
-          "OnePlus Ace6 Ultra",
-          "OPD2513",
-          "OnePlus Pad3 Pro",
-          "OPD2515",
-          "OPPO Pad Mini",
-          "OPD2511",
-          "OPPO Pad 5 Pro",
-          "PMA110",
-          "OPPO Find X9 Ultra",
-          "PLG110",
-          "OPPO Find X9 Pro",
-          "PLJ110",
-          "OPPO Find X9",
-          "PME110EX",
-          "OPPO Find X9s Pro",
-          "PMX110",
-          "OPPO Find X10",
-          "RMX5200",
-          "Realme GT8 Pro",
-          "RMX8899",
-          "Realme Neo8"
-        ],
-        "payloadKey": "plant-61269-242e1a07f878",
-        "kernelRelease": "6.12.69-android16-6-g242e1a07f878-ab15865446-4k",
-        "runner": "plant-61269",
-        "runnerFile": {
-          "asset": "maplesu-93260/plant/plant-61269",
-          "sha256": "440388e7bd4c8cb34437117eec361079216d66eb591abbc9da25ce7fd7ebe901",
-          "bytes": 47216,
-          "gzip": false,
-          "decodedSha256": "440388e7bd4c8cb34437117eec361079216d66eb591abbc9da25ce7fd7ebe901",
-          "decodedBytes": 47216
-        }
-      },
-      {
-        "id": "plant-61269-5fd39602326e",
-        "engine": "plant",
-        "releases": [
-          "6.12.69-android16-6-g5fd39602326e-ab16372235-4k"
-        ],
-        "variant": "CVE-2026-98260-6.12.69",
-        "kmi": "android16-6.12",
-        "kernelUapi": 6,
-        "pageSize": "4k",
-        "models": [
-          "PLK110",
-          "OnePlus 15",
-          "PLZ110",
-          "OnePlus 15T",
-          "PMS110",
-          "OnePlus Ace7 Pro",
-          "PYF110",
-          "OnePlus Ace7",
-          "PLR110",
-          "OnePlus Ace6T",
-          "PMB110",
-          "OnePlus Ace6 Ultra",
-          "OPD2513",
-          "OnePlus Pad3 Pro",
-          "OPD2515",
-          "OPPO Pad Mini",
-          "OPD2511",
-          "OPPO Pad 5 Pro",
-          "PMA110",
-          "OPPO Find X9 Ultra",
-          "PLG110",
-          "OPPO Find X9 Pro",
-          "PLJ110",
           "OPPO Find X9",
           "PME110EX",
           "OPPO Find X9s Pro",
@@ -629,24 +456,201 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
   }
 }
 
-> Task :manager:configureMapleSuPatch FAILED
-CMake Error at /usr/local/lib/android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineSystem.cmake:130 (message):
-  Could not find toolchain file:
-  /usr/local/lib/android/sdk/ndk/26.1.10909125/build/cmake/android.toolchain.cmake
-Call Stack (most recent call first):
-  CMakeLists.txt:2 (project)
+> Task :manager:configureMapleSuPatch
+-- The C compiler identification is Clang 17.0.2
+-- The CXX compiler identification is Clang 17.0.2
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/maplesuPatch
 
+> Task :manager:buildMapleSuPatch
+[1/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64builder.cpp.o
+[2/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64formatter.cpp.o
+[3/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64func.cpp.o
+[4/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64emithelper.cpp.o
+[5/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64instapi.cpp.o
+[6/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64compiler.cpp.o
+[7/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64operand.cpp.o
+[8/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64instdb.cpp.o
+[9/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/archtraits.cpp.o
+[10/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/armformatter.cpp.o
+[11/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/assembler.cpp.o
+[12/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/builder.cpp.o
+[13/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64rapass.cpp.o
+[14/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/codewriter.cpp.o
+[15/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/constpool.cpp.o
+[16/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64assembler.cpp.o
+[17/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/cpuinfo.cpp.o
+[18/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/compiler.cpp.o
+[19/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/emithelper.cpp.o
+[20/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/errorhandler.cpp.o
+[21/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/emitter.cpp.o
+[22/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/environment.cpp.o
+[23/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/emitterutils.cpp.o
+[24/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/codeholder.cpp.o
+[25/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/func.cpp.o
+[26/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/formatter.cpp.o
+[27/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/globals.cpp.o
+[28/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/jitruntime.cpp.o
+[29/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/inst.cpp.o
+[30/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/instdb.cpp.o
+[31/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/funcargscontext.cpp.o
+[32/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/jitallocator.cpp.o
+[33/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/logger.cpp.o
+[34/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/operand.cpp.o
+[35/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/osutils.cpp.o
+[36/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/rastack.cpp.o
+[37/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/support.cpp.o
+[38/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/type.cpp.o
+[39/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/string.cpp.o
+[40/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/target.cpp.o
+[41/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonelist.cpp.o
+[42/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zone.cpp.o
+[43/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonestack.cpp.o
+[44/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonetree.cpp.o
+[45/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonehash.cpp.o
+[46/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/virtmem.cpp.o
+[47/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonevector.cpp.o
+[48/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/ralocal.cpp.o
+[49/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/rapass.cpp.o
+[50/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86builder.cpp.o
+[51/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86compiler.cpp.o
+[52/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86func.cpp.o
+[53/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86emithelper.cpp.o
+[54/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86formatter.cpp.o
+[55/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64BaseInfo.c.o
+[56/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86operand.cpp.o
+[57/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86instdb.cpp.o
+[58/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86instapi.cpp.o
+[59/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64Mapping.c.o
+[60/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64Module.c.o
+[61/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/Mapping.c.o
+[62/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/MCInst.c.o
+[63/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/MCInstrDesc.c.o
+[64/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/MCRegisterInfo.c.o
+[65/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/SStream.c.o
+[66/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64InstPrinter.c.o
+[67/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/cs.c.o
+[68/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/utils.c.o
+[69/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86rapass.cpp.o
+[70/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/cJSON/cJSON.cpp.o
+[71/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86assembler.cpp.o
+[72/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/init_cred_searcher.cpp.o
+[73/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64Disassembler.c.o
+[74/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name.cpp.o
+[75/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_4_6_0.cpp.o
+[76/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_12_0.cpp.o
+[77/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_1_42.cpp.o
+[78/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_1_0.cpp.o
+[79/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_1_60.cpp.o
+[80/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kernel_symbol_finder.cpp.o
+[81/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kernel_version_parser.cpp.o
+[82/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kernel_symbol_proxy.cpp.o
+[83/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_4_0.cpp.o
+[84/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/symbol_analyze.cpp.o
+[85/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/src/patch_safety.cpp.o
+[86/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_audit_log_start.cpp.o
+[87/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_base.cpp.o
+[88/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_avc_denied.cpp.o
+[89/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_current_avc_check.cpp.o
+[90/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_compat_filldir.cpp.o
+[91/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_do_execve.cpp.o
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/patch-engine/upstream/patch_do_execve.cpp:1:12: warning: #pragma once in main file [-Wpragma-once-outside-header]
+<U+FEFF>#pragma once
+                ^
+1 warning generated.
+[92/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_filldir64.cpp.o
+[93/97] Building CXX object CMakeFiles/maplesu-kernel-patch.dir/src/patch_main.cpp.o
+[94/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/src/patch_plan.cpp.o
+[95/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_kernel_root.cpp.o
+[96/97] Linking CXX static library libmaplesu_patch_core.a
+[97/97] Linking CXX executable maplesu-kernel-patch
 
-CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
-CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
--- Configuring incomplete, errors occurred!
+> Task :manager:configureMapleSuRuntime
+-- The CXX compiler identification is Clang 17.0.2
+-- The ASM compiler identification is Clang with GNU-like command-line
+-- Found assembler: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The C compiler identification is Clang 17.0.2
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/maplesuRuntime
+
+> Task :manager:buildMapleSuRuntime
+[1/34] Building CXX object CMakeFiles/maplesu-runtime.dir/src/su_session.cpp.o
+[2/34] Building CXX object CMakeFiles/maplesu_bootstrap.dir/src/su_bootstrap.cpp.o
+[3/34] Building CXX object CMakeFiles/maplesu_bootstrap.dir/src/block_partition_access.cpp.o
+[4/34] Building CXX object CMakeFiles/maplesu_parasite.dir/src/parasite/parasite_loader.cpp.o
+[5/34] Linking CXX shared library libmaplesu_parasite.so
+[6/34] Building CXX object CMakeFiles/maplesu-runtime.dir/src/exec_main.cpp.o
+[7/34] Building CXX object CMakeFiles/maplesu_root_runtime.dir/upstream/src/jni/rootkit_command.cpp.o
+[8/34] Building CXX object CMakeFiles/maplesu_root_runtime.dir/upstream/src/jni/rootkit_fork_helper.cpp.o
+[9/34] Linking CXX static library libmaplesu_root_runtime.a
+[10/34] Building CXX object CMakeFiles/maplesu_bootstrap.dir/src/session_process.cpp.o
+[11/34] Linking CXX shared library libmaplesu_bootstrap.so
+[12/34] Linking CXX executable maplesu-runtime
+[13/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/bridge/module_environment_capture.cpp.o
+[14/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/bridge/installed_helper_readback.cpp.o
+[15/34] Building CXX object CMakeFiles/maplesu-su.dir/src/su_main.cpp.o
+[16/34] Linking CXX executable maplesu-su
+[17/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/policy/backend_publish.cpp.o
+[18/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/policy/module_policy_management.cpp.o
+[19/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/upgrade/executable_publish.cpp.o
+[20/34] Building CXX object CMakeFiles/maplesu-modules.dir/src/module_owner.cpp.o
+[21/34] Linking CXX executable maplesu-modules
+[22/34] Building ASM object CMakeFiles/maplesu_ultra_bridge.dir/ultra/bridge/sdk_syscall.S.o
+[23/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/policy/module_policy_config.cpp.o
+[24/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/bridge/manager_owner_root_probe.cpp.o
+[25/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/third_party/cJSON/cJSON.cpp.o
+[26/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/bridge/uninstall_callback_watchdog.cpp.o
+[27/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/bridge/webui_lifecycle.cpp.o
+[28/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/bridge/sdk_call_scope.cpp.o
+[29/34] Building CXX object CMakeFiles/maplesu-ultra-module.dir/ultra/probe/ultra_module_probe.cpp.o
+[30/34] Building CXX object CMakeFiles/maplesu-ultra-version.dir/ultra/probe/ultra_version_probe.cpp.o
+[31/34] Linking CXX executable maplesu-ultra-version
+FAILED: maplesu-ultra-version 
+: && /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android31 --sysroot=/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O3 -DNDEBUG -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-undefined-version -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments   -Wl,--gc-sections    -Wl,--no-undefined -Wl,--gc-sections -Wl,-z,relro,-z,now CMakeFiles/maplesu-ultra-version.dir/ultra/probe/ultra_version_probe.cpp.o -o maplesu-ultra-version  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a  -lz  -llog  -ldl  -latomic -lm && :
+ld.lld: error: undefined symbol: maplesu::sdk::get_sdk_version()
+>>> referenced by ultra_version_probe.cpp
+>>>               CMakeFiles/maplesu-ultra-version.dir/ultra/probe/ultra_version_probe.cpp.o:(main)
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+[32/34] Building CXX object CMakeFiles/maplesu_ultra_bridge.dir/ultra/bridge/native_lib_ultra.cpp.o
+[33/34] Linking CXX executable maplesu-ultra-module
+FAILED: maplesu-ultra-module 
+: && /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android31 --sysroot=/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O3 -DNDEBUG -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-undefined-version -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments   -Wl,--gc-sections    -Wl,--no-undefined -Wl,--gc-sections -Wl,-z,relro,-z,now CMakeFiles/maplesu-ultra-module.dir/ultra/probe/ultra_module_probe.cpp.o -o maplesu-ultra-module  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a  -lz  -llog  -ldl  -latomic -lm && :
+ld.lld: error: undefined symbol: maplesu::sdk::parse_module_desc_from_zip_file(char const*, char const*, maplesu::sdk::module_desc&)
+>>> referenced by ultra_module_probe.cpp
+>>>               CMakeFiles/maplesu-ultra-module.dir/ultra/probe/ultra_module_probe.cpp.o:(main)
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+> Task :manager:buildMapleSuRuntime FAILED
 
 [Incubating] Problems report is available at: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/build/reports/problems/problems-report.html
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Execution failed for task ':manager:configureMapleSuPatch' (registered in build file 'manager/build.gradle.kts').
+Execution failed for task ':manager:buildMapleSuRuntime' (registered in build file 'manager/build.gradle.kts').
 > Process 'command '/usr/local/lib/android/sdk/cmake/3.22.1/bin/cmake'' finished with non-zero exit value 1
 
 * Try:
@@ -661,6 +665,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 3m 47s
-46 actionable tasks: 46 executed
+BUILD FAILED in 4m 37s
+49 actionable tasks: 49 executed
 ```
