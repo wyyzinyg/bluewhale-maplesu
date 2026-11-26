@@ -1,7 +1,7 @@
 # 构建结果
 
-- run: 36  提交: 3ff45c6fa9b8a667030681e2e9d3179993c29199
-- 作业结论: success
+- run: 37  提交: 4c256be71cebef9de2674d4a056945dfd194d040
+- 作业结论: failure
 
 #### 补丁摘要（是否真应用）
 改好 manager/build.gradle.kts
@@ -37,143 +37,154 @@
 改好 manager/src/main/res/values/themes.xml: <item name="windowSplashScreenAnimatedIcon">@dra
 改好 manager/src/main/res/values-night/themes.xml: <item name="windowSplashScreenBackground">@color
 改好 manager/src/main/res/values-night/themes.xml: <item name="windowSplashScreenAnimatedIcon">@dra
+改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt: get() = if (ThemeLock.ENABLED) ThemeLock.THEME_M
+改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: init {
+改好 manager/src/main/java/com/maplesu/core/ui/util/AppearancePrefsPolicy.kt: "snow_enabled" to enabled,
+改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if ((skin.appliedScene && uiState.snowEnabled) |
+改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeBetaBanner.kt: internal const val MAPLESU_FEEDBACK_URL = "https
+改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: Text(
+改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: AdvisorWallMiuix(Modifier.padding(top = 4.dp))
 
 #### gradle 失败原因
+2577:> Task :manager:compileReleaseKotlin FAILED
+2581:FAILURE: Build failed with an exception.
+2583:* What went wrong:
+2584:Execution failed for task ':manager:compileReleaseKotlin' (registered by plugin 'com.android.internal.application').
 
 #### CMake 错误日志
---- src/manager/build/maplesuRuntime/CMakeFiles/CMakeError.log
-Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
-Android (10552028, +pgo, +bolt, +lto, -mlgo, based on r487747d) clang version 17.0.2 (https://android.googlesource.com/toolchain/llvm-project d9f89f4d16663d5012e5c09495f3b30ece3d2362)
-Target: x86_64-unknown-linux-gnu
-Thread model: posix
-InstalledDir: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin
---- src/manager/build/maplesuRuntime/CMakeFiles/CMakeOutput.log
-    arg [-zrelro] ==> ignore
-    arg [-zmax-page-size=4096] ==> ignore
-    arg [--hash-style=gnu] ==> ignore
-    arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [aarch64linux] ==> ignore
-    arg [-dynamic-linker] ==> ignore
-    arg [/system/bin/linker64] ==> ignore
-    arg [-o] ==> ignore
-    arg [cmTC_281d3] ==> ignore
-    arg [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtbegin_dynamic.o] ==> obj [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtbegin_dynamic.o]
-    arg [-L/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/aarch64] ==> dir [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/aarch64]
-    arg [-L/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31] ==> dir [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31]
-    arg [-L/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android] ==> dir [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android]
-    arg [-L/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib] ==> dir [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+--- src/manager/build/jailbreakProviders/build/CMakeFiles/CMakeOutput.log
+    arg [cmTC_e1977] ==> ignore
+    arg [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtbegin_dynamic.o] ==> obj [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtbegin_dynamic.o]
+    arg [-L/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/aarch64] ==> dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/aarch64]
+    arg [-L/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31] ==> dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31]
+    arg [-L/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android] ==> dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android]
+    arg [-L/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib] ==> dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
     arg [--build-id=sha1] ==> ignore
     arg [--no-undefined-version] ==> ignore
     arg [--fatal-warnings] ==> ignore
     arg [--no-undefined] ==> ignore
-    arg [CMakeFiles/cmTC_281d3.dir/CMakeCCompilerABI.c.o] ==> ignore
-    arg [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/libclang_rt.builtins-aarch64-android.a] ==> lib [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/libclang_rt.builtins-aarch64-android.a]
+    arg [CMakeFiles/cmTC_e1977.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-Bstatic] ==> search static
+    arg [-lc++] ==> lib [c++]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-lm] ==> lib [m]
+    arg [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/libclang_rt.builtins-aarch64-android.a] ==> lib [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/libclang_rt.builtins-aarch64-android.a]
     arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
     arg [-ldl] ==> lib [dl]
     arg [-lc] ==> lib [c]
-    arg [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/libclang_rt.builtins-aarch64-android.a] ==> lib [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/libclang_rt.builtins-aarch64-android.a]
+    arg [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/libclang_rt.builtins-aarch64-android.a] ==> lib [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/libclang_rt.builtins-aarch64-android.a]
     arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
     arg [-ldl] ==> lib [dl]
-    arg [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtend_android.o] ==> obj [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtend_android.o]
-  remove lib [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/libclang_rt.builtins-aarch64-android.a]
-  remove lib [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/libclang_rt.builtins-aarch64-android.a]
-  collapse library dir [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/aarch64] ==> [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/aarch64]
-  collapse library dir [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31] ==> [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31]
-  collapse library dir [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android] ==> [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android]
-  collapse library dir [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib] ==> [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
-  implicit libs: [-l:libunwind.a;dl;c;-l:libunwind.a;dl]
-  implicit objs: [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtbegin_dynamic.o;/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtend_android.o]
-  implicit dirs: [/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/17/lib/linux/aarch64;/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31;/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android;/usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+    arg [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtend_android.o] ==> obj [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtend_android.o]
+  remove lib [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/libclang_rt.builtins-aarch64-android.a]
+  remove lib [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/libclang_rt.builtins-aarch64-android.a]
+  collapse library dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/aarch64] ==> [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/aarch64]
+  collapse library dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31] ==> [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31]
+  collapse library dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android] ==> [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android]
+  collapse library dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib] ==> [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  implicit libs: [c++;m;-l:libunwind.a;dl;c;-l:libunwind.a;dl]
+  implicit objs: [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtbegin_dynamic.o;/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtend_android.o]
+  implicit dirs: [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/aarch64;/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31;/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android;/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
   implicit fwks: []
 
 
+Checking whether the ASM compiler is Clang using "--version" matched "(clang version)":
+Android (13624864, +pgo, +bolt, +lto, +mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/bin
+--- src/manager/build/jailbreakProviders/build/CMakeFiles/CMakeError.log
+Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+Android (13624864, +pgo, +bolt, +lto, +mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/bin
 
 ```
 #### provider 子构建日志（CMake/cargo 报错常只写在这里）
 --- src/manager/build/jailbreakProviders/build.json
 {"ok": null, "errors": null, "failure": null}
---- src/manager/build/jailbreakProviders/extractor/build.json
-{"ok": null, "errors": null, "failure": null}
 --- src/manager/build/jailbreakProviders/root/build.json
 {"ok": null, "errors": null, "failure": null}
---- src/manager/build/jailbreakProviders/l3/build.json
+--- src/manager/build/jailbreakProviders/extractor/build.json
+{"ok": null, "errors": null, "failure": null}
+--- src/manager/build/jailbreakProviders/ir/build.json
 {"ok": null, "errors": null, "failure": null}
 ===== src/manager/build/jailbreakProviders/build.log =====
-   Compiling num-traits v0.2.19
+   Compiling alloc-stdlib v0.2.4
+   Compiling tempfile v3.27.0
    Compiling anstyle-parse v1.0.0
-   Compiling petgraph v0.8.3
-   Compiling prost-types v0.14.4
    Compiling regex v1.13.1
+   Compiling prost-types v0.14.4
    Compiling serde_derive v1.0.229
    Compiling lzma-sys v0.1.20
+   Compiling multimap v0.10.1
+   Compiling protoc-bin-vendored-linux-x86_32 v3.2.0
+   Compiling radium v0.7.0
+   Compiling zmij v1.0.23
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling protoc-bin-vendored-linux-x86_64 v3.2.0
+   Compiling zstd-safe v7.3.0
+   Compiling protoc-bin-vendored-linux-aarch_64 v3.2.0
+   Compiling anstyle v1.0.14
+   Compiling colorchoice v1.0.5
+   Compiling protoc-bin-vendored-macos-aarch_64 v3.2.0
    Compiling protoc-bin-vendored-linux-ppcle_64 v3.2.0
    Compiling portable-atomic v1.15.0
    Compiling protoc-bin-vendored-macos-x86_64 v3.2.0
+   Compiling anstyle-query v1.1.5
    Compiling log v0.4.34
    Compiling protoc-bin-vendored-linux-s390_64 v3.2.0
    Compiling protoc-bin-vendored-win32 v3.2.0
-   Compiling multimap v0.10.1
-   Compiling protoc-bin-vendored-linux-x86_32 v3.2.0
-   Compiling is_terminal_polyfill v1.70.2
-   Compiling radium v0.7.0
-   Compiling zmij v1.0.23
-   Compiling anstyle v1.0.14
-   Compiling protoc-bin-vendored-linux-x86_64 v3.2.0
-   Compiling colorchoice v1.0.5
-   Compiling zstd-safe v7.3.0
-   Compiling protoc-bin-vendored-linux-aarch_64 v3.2.0
-   Compiling protoc-bin-vendored-macos-aarch_64 v3.2.0
-   Compiling anstyle-query v1.1.5
+   Compiling prost-build v0.14.4
    Compiling protoc-bin-vendored v3.2.0
    Compiling anstream v1.0.0
-   Compiling prost-build v0.14.4
    Compiling terminal_size v0.4.4
    Compiling brotli-decompressor v5.0.3
    Compiling crypto-common v0.2.2
    Compiling block-buffer v0.12.1
-   Compiling strsim v0.11.1
-   Compiling tap v1.0.1
-   Compiling libbz2-rs-sys v0.2.5
    Compiling unicode-width v0.2.2
    Compiling thiserror v2.0.20
-   Compiling clap_lex v1.1.1
    Compiling serde_json v1.0.151
-   Compiling clap_builder v4.6.7
-   Compiling console v0.16.6
+   Compiling clap_lex v1.1.1
+   Compiling tap v1.0.1
+   Compiling strsim v0.11.1
+   Compiling libbz2-rs-sys v0.2.5
    Compiling bzip2 v0.6.1
-   Compiling rayon v1.12.0
+   Compiling clap_builder v4.6.7
    Compiling wyz v0.5.1
+   Compiling console v0.16.6
+   Compiling rayon v1.12.0
    Compiling digest v0.11.3
    Compiling brotli v8.0.4
    Compiling payload-extract v0.1.1 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native/vendor/payload-extract)
+   Compiling aho-corasick v1.1.5
    Compiling clap_derive v4.6.7
    Compiling thiserror-impl v2.0.20
-   Compiling aho-corasick v1.1.5
    Compiling cpufeatures v0.3.1
-   Compiling funty v2.0.0
    Compiling adler2 v2.0.1
-   Compiling simd-adler32 v0.3.10
    Compiling unit-prefix v0.5.2
    Compiling itoa v1.0.18
    Compiling typed-path v0.12.3
-   Compiling xz2 v0.1.7
-   Compiling zip v8.6.0
-   Compiling indicatif v0.18.6
+   Compiling simd-adler32 v0.3.10
+   Compiling funty v2.0.0
    Compiling miniz_oxide v0.9.1
-   Compiling clap v4.6.7
+   Compiling zip v8.6.0
    Compiling bitvec v1.1.1
+   Compiling indicatif v0.18.6
+   Compiling clap v4.6.7
    Compiling sha2 v0.11.0
-   Compiling bsdiff-android v0.0.2
    Compiling zstd v0.13.3
+   Compiling bsdiff-android v0.0.2
+   Compiling xz2 v0.1.7
    Compiling yaxpeax-arch v0.3.2
    Compiling memmap2 v0.9.11
-   Compiling hex v0.4.3
    Compiling lz4_flex v0.14.0
+   Compiling hex v0.4.3
    Compiling yaxpeax-arm v0.5.0
    Compiling flate2 v1.1.10
    Compiling ghostlock-extract v0.1.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native)
-    Finished `release` profile [optimized] target(s) in 44.70s
+    Finished `release` profile [optimized] target(s) in 53.64s
 {
   "module": "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/ir/maplesu_ir.ko",
   "sha256": "68a48bd0ff1abb1e0f4ad50b11889ecbfcdb85b172e8a02af7586834924c8c70",
@@ -220,11 +231,114 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-core-jvm/1.11.0/kotlinx-serialization-core-jvm-1.11.0.jar
 补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/2.4.20/kotlin-compiler-embeddable-2.4.20.jar
 补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.11.0/kotlinx-coroutines-core-jvm-1.11.0.jar
-===== src/manager/build/jailbreakProviders/l3/per-kmi/android16-6.12/build.log =====
-$ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/build_root_module.py --module maplesu_l3 --ndk-dir /usr/local/lib/android/sdk/ndk/28.2.13676358 --out-dir /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/l3/per-kmi/android16-6.12/l3 --contract /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/contracts/family-6.12.json --quiet
-===== src/manager/build/jailbreakProviders/l3/per-kmi/android13-5.15/build.log =====
-$ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/build_root_module.py --module maplesu_l3 --ndk-dir /usr/local/lib/android/sdk/ndk/28.2.13676358 --out-dir /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/l3/per-kmi/android13-5.15/l3 --contract /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/contracts/family-5.15.json --quiet
+===== src/manager/build/jailbreakProviders/l3/per-kmi/android17-6.18/build.log =====
+$ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/build_root_module.py --module maplesu_l3 --ndk-dir /usr/local/lib/android/sdk/ndk/28.2.13676358 --out-dir /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/l3/per-kmi/android17-6.18/l3 --contract /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/contracts/family-6.18.json --quiet
+===== src/manager/build/jailbreakProviders/l3/per-kmi/android14-6.1/build.log =====
+$ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/build_root_module.py --module maplesu_l3 --ndk-dir /usr/local/lib/android/sdk/ndk/28.2.13676358 --out-dir /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/l3/per-kmi/android14-6.1/l3 --contract /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/contracts/family-6.1.json --quiet
 #### 主构建日志尾
+[9/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64instdb.cpp.o
+[10/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/archtraits.cpp.o
+[11/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/assembler.cpp.o
+[12/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64rapass.cpp.o
+[13/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/codewriter.cpp.o
+[14/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/arm/a64assembler.cpp.o
+[15/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/builder.cpp.o
+[16/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/codeholder.cpp.o
+[17/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/constpool.cpp.o
+[18/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/emitter.cpp.o
+[19/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/cpuinfo.cpp.o
+[20/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/environment.cpp.o
+[21/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/compiler.cpp.o
+[22/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/errorhandler.cpp.o
+[23/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/emithelper.cpp.o
+[24/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/emitterutils.cpp.o
+[25/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/func.cpp.o
+[26/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/instdb.cpp.o
+[27/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/globals.cpp.o
+[28/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/funcargscontext.cpp.o
+[29/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/inst.cpp.o
+[30/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/logger.cpp.o
+[31/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/jitallocator.cpp.o
+[32/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/formatter.cpp.o
+[33/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/osutils.cpp.o
+[34/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/jitruntime.cpp.o
+[35/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/operand.cpp.o
+[36/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/support.cpp.o
+[37/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/string.cpp.o
+[38/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/target.cpp.o
+[39/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/ralocal.cpp.o
+[40/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/rastack.cpp.o
+[41/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonehash.cpp.o
+[42/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/type.cpp.o
+[43/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zone.cpp.o
+[44/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonestack.cpp.o
+[45/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonelist.cpp.o
+[46/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/virtmem.cpp.o
+[47/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonevector.cpp.o
+[48/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/zonetree.cpp.o
+[49/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/core/rapass.cpp.o
+[50/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86formatter.cpp.o
+[51/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86builder.cpp.o
+[52/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86emithelper.cpp.o
+[53/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86func.cpp.o
+[54/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86compiler.cpp.o
+[55/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64BaseInfo.c.o
+[56/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86operand.cpp.o
+[57/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86instapi.cpp.o
+[58/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86instdb.cpp.o
+[59/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64Module.c.o
+[60/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64Mapping.c.o
+[61/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/Mapping.c.o
+[62/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86rapass.cpp.o
+[63/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/MCInstrDesc.c.o
+[64/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/MCInst.c.o
+[65/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/MCRegisterInfo.c.o
+[66/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/SStream.c.o
+[67/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/utils.c.o
+[68/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/cs.c.o
+[69/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/asmjit2-src/src/asmjit/x86/x86assembler.cpp.o
+[70/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64InstPrinter.c.o
+[71/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/cJSON/cJSON.cpp.o
+[72/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/init_cred_searcher.cpp.o
+[73/97] Building C object CMakeFiles/maplesu_patch_core.dir/upstream/3rdparty/capstone-5.0.7/src/arch/AArch64/AArch64Disassembler.c.o
+[74/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name.cpp.o
+[75/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_4_6_0.cpp.o
+[76/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_12_0.cpp.o
+[77/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_1_0.cpp.o
+[78/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_1_42.cpp.o
+[79/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_1_60.cpp.o
+[80/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kernel_version_parser.cpp.o
+[81/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kernel_symbol_finder.cpp.o
+[82/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kernel_symbol_proxy.cpp.o
+[83/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/kallsyms_lookup_name_6_4_0.cpp.o
+[84/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/analyze/symbol_analyze.cpp.o
+[85/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_base.cpp.o
+[86/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/src/patch_safety.cpp.o
+[87/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_audit_log_start.cpp.o
+[88/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_avc_denied.cpp.o
+[89/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_compat_filldir.cpp.o
+[90/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_do_execve.cpp.o
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/patch-engine/upstream/patch_do_execve.cpp:1:12: warning: #pragma once in main file [-Wpragma-once-outside-header]
+<U+FEFF>#pragma once
+                ^
+1 warning generated.
+[91/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_current_avc_check.cpp.o
+[92/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_filldir64.cpp.o
+[93/97] Building CXX object CMakeFiles/maplesu-kernel-patch.dir/src/patch_main.cpp.o
+[94/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/src/patch_plan.cpp.o
+[95/97] Building CXX object CMakeFiles/maplesu_patch_core.dir/upstream/patch_kernel_root.cpp.o
+[96/97] Linking CXX static library libmaplesu_patch_core.a
+[97/97] Linking CXX executable maplesu-kernel-patch
+
+> Task :manager:configureMapleSuRuntime
+-- The CXX compiler identification is Clang 17.0.2
+-- The ASM compiler identification is Clang with GNU-like command-line
+-- Found assembler: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 -- The C compiler identification is Clang 17.0.2
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -239,14 +353,14 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [1/11] Building CXX object CMakeFiles/maplesu_bootstrap.dir/src/block_partition_access.cpp.o
 [2/11] Building CXX object CMakeFiles/maplesu_parasite.dir/src/parasite/parasite_loader.cpp.o
 [3/11] Linking CXX shared library libmaplesu_parasite.so
-[4/11] Building CXX object CMakeFiles/maplesu-runtime.dir/src/su_session.cpp.o
-[5/11] Building CXX object CMakeFiles/maplesu-runtime.dir/src/exec_main.cpp.o
-[6/11] Building CXX object CMakeFiles/maplesu_bootstrap.dir/src/su_bootstrap.cpp.o
+[4/11] Building CXX object CMakeFiles/maplesu-runtime.dir/src/exec_main.cpp.o
+[5/11] Building CXX object CMakeFiles/maplesu_bootstrap.dir/src/su_bootstrap.cpp.o
+[6/11] Building CXX object CMakeFiles/maplesu-runtime.dir/src/su_session.cpp.o
 [7/11] Building CXX object CMakeFiles/maplesu_bootstrap.dir/src/session_process.cpp.o
 [8/11] Linking CXX shared library libmaplesu_bootstrap.so
-[9/11] Linking CXX executable maplesu-runtime
-[10/11] Building CXX object CMakeFiles/maplesu-su.dir/src/su_main.cpp.o
-[11/11] Linking CXX executable maplesu-su
+[9/11] Building CXX object CMakeFiles/maplesu-su.dir/src/su_main.cpp.o
+[10/11] Linking CXX executable maplesu-su
+[11/11] Linking CXX executable maplesu-runtime
 
 > Task :manager:buildModulePolicy
 -- The C compiler identification is Clang 17.0.2
@@ -271,8 +385,8 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [4/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/constraint.c.o
 [5/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/avtab.c.o
 [6/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/assertion.c.o
-[7/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/context.c.o
-[8/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/context_record.c.o
+[7/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/context_record.c.o
+[8/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/context.c.o
 [9/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/debug.c.o
 [10/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/conditional.c.o
 [11/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/handle.c.o
@@ -282,8 +396,8 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [15/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/hierarchy.c.o
 [16/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/ibendports.c.o
 [17/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/ibpkey_record.c.o
-[18/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/ibpkeys.c.o
-[19/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/iface_record.c.o
+[18/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/iface_record.c.o
+[19/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/ibpkeys.c.o
 [20/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/interfaces.c.o
 [21/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/kernel_to_common.c.o
 [22/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/expand.c.o
@@ -291,8 +405,8 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [24/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/kernel_to_conf.c.o
 [25/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/link.c.o
 [26/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/mls.c.o
-[27/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/module.c.o
-[28/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/node_record.c.o
+[27/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/node_record.c.o
+[28/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/module.c.o
 [29/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/polcaps.c.o
 [30/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/nodes.c.o
 [31/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/policydb_convert.c.o
@@ -303,12 +417,12 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [36/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/policydb_validate.c.o
 [37/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/sidtab.c.o
 [38/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/symtab.c.o
-[39/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/module_to_cil.c.o
-[40/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/policydb.c.o
-[41/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/user_record.c.o
-[42/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/services.c.o
-[43/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/util.c.o
-[44/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/users.c.o
+[39/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/policydb.c.o
+[40/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/module_to_cil.c.o
+[41/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/services.c.o
+[42/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/user_record.c.o
+[43/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/users.c.o
+[44/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/util.c.o
 [45/69] Building CXX object CMakeFiles/maplesu-policy.dir/src/ksu_manager_fd.cpp.o
 [46/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/write.c.o
 [47/69] Linking C static library libmaplesu_sepol.a
@@ -321,8 +435,8 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [54/69] Building CXX object CMakeFiles/maplesu-policy.dir/src/policy_hook_loader.cpp.o
 [55/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_layout.cpp.o
 [56/69] Building CXX object CMakeFiles/maplesu-policy.dir/src/main.cpp.o
-[57/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload_metadata.cpp.o
-[58/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload.cpp.o
+[57/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload.cpp.o
+[58/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload_metadata.cpp.o
 [59/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload_loader.cpp.o
 [60/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload_hook.cpp.o
 [61/69] Building CXX object CMakeFiles/maplesu-module-policy-config-tests.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/module_policy_config.cpp.o
@@ -339,43 +453,43 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 > Task :manager:buildModuleTools
  Downloading crates ...
   Downloaded prost v0.13.5
-  Downloaded prost-derive v0.13.5
   Downloaded either v1.19.0
-  Downloaded memmap2 v0.9.12
+  Downloaded prost-derive v0.13.5
   Downloaded unicode-ident v1.0.27
+  Downloaded memmap2 v0.9.12
   Downloaded syn v3.0.9
   Downloaded libc v0.2.191
    Compiling proc-macro2 v1.0.107
-   Compiling quote v1.0.47
    Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
    Compiling anyhow v1.0.104
    Compiling either v1.19.0
-   Compiling utf8parse v0.2.2
    Compiling libc v0.2.191
    Compiling itertools v0.14.0
+   Compiling utf8parse v0.2.2
    Compiling anstyle-parse v1.0.0
-   Compiling anstyle v1.0.14
-   Compiling bytes v1.12.1
-   Compiling syn v2.0.119
    Compiling anstyle-query v1.1.5
    Compiling colorchoice v1.0.5
    Compiling is_terminal_polyfill v1.70.2
+   Compiling anstyle v1.0.14
+   Compiling syn v2.0.119
+   Compiling bytes v1.12.1
    Compiling anstream v1.0.0
    Compiling syn v3.0.9
    Compiling clap_lex v1.1.1
    Compiling strsim v0.11.1
    Compiling heck v0.5.0
-   Compiling clap_builder v4.6.7
    Compiling memmap2 v0.9.12
+   Compiling clap_builder v4.6.7
    Compiling log v0.4.34
    Compiling prost-derive v0.13.5
-   Compiling prost v0.13.5
    Compiling clap_derive v4.6.7
+   Compiling prost v0.13.5
    Compiling prop-rs v0.2.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/ksu_props/src/crates/prop-rs)
-   Compiling clap v4.6.7
    Compiling prop-rs-android v0.2.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/ksu_props/src/crates/prop-rs-android)
+   Compiling clap v4.6.7
    Compiling maplesu-module-tools v0.2.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/module-tools)
-    Finished `release` profile [optimized] target(s) in 8.59s
+    Finished `release` profile [optimized] target(s) in 12.29s
 {
   "host": "maplesu-tools",
   "abi": "arm64-v8a",
@@ -424,11 +538,11 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 > Task :manager:generateReleaseBuildConfig
 > Task :manager:protobufDummy UP-TO-DATE
 > Task :manager:extractReleaseNativeSymbolTables
-> Task :manager:compileReleaseAidl
 > Task :manager:extractIncludeReleaseProto
 > Task :manager:extractProto
 > Task :manager:extractReleaseProto
 > Task :manager:mergeReleaseNativeDebugMetadata
+> Task :manager:compileReleaseAidl
 > Task :manager:generateReleaseProto
 > Task :manager:generateReleaseResValues
 > Task :manager:extractReleaseSupportedLocales
@@ -450,6 +564,7 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 > Task :manager:extractProguardFiles
 > Task :manager:mergeReleaseStartupProfile
 > Task :manager:generateReleaseAssets UP-TO-DATE
+> Task :manager:processReleaseManifestForPackage
 > Task :manager:mergeReleaseResources
 
 > Task :manager:packagePolicyHooks
@@ -555,7 +670,7 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 {
   "schemaVersion": 1,
   "controlAbi": 2,
-  "generatedAt": "2026-11-26T11:30:48.409131+00:00",
+  "generatedAt": "2026-11-26T12:09:32.585171+00:00",
   "images": [
     {
       "asset": "maplesu/policy-hook/b9991b90faeb15a9305fd19c707e70b9c301058a.ko",
@@ -585,137 +700,33 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 }
 
 > Task :manager:mergeReleaseAssets
+> Task :manager:processReleaseResources
 > Task :manager:extractReleaseVersionControlInfo
 > Task :manager:writeReleaseAppMetadata
 > Task :manager:writeReleaseSigningConfigVersions
-> Task :manager:processReleaseManifestForPackage
 > Task :manager:compressReleaseAssets
-> Task :manager:processReleaseResources
 > Task :manager:compileReleaseKotlin
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/theme/ThemeDocument.kt:52:17 'when' expression over a subject of type 'Any?' is not exhaustive. Add a 'null' or 'else' branch.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/theme/ThemeStore.kt:154:54 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/component/material/SegmentedSettingsItems.kt:62:17 'fun Slider(value: Float, onValueChange: (Float) -> Unit, modifier: Modifier = ..., enabled: Boolean = ..., valueRange: ClosedFloatingPointRange<Float> = ..., steps: Int = ..., onValueChangeFinished: (() -> Unit)? = ..., colors: SliderColors = ..., interactionSource: MutableInteractionSource = ...): Unit' is deprecated. Use the Slider overload that accepts SliderState, onValueChange, and onValueChangeFinished instead.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/screen/host/HiddenFlowComponents.kt:135:58 'fun InputField(query: String, onQueryChange: (String) -> Unit, onSearch: (String) -> Unit, expanded: Boolean, onExpandedChange: (Boolean) -> Unit, modifier: Modifier = ..., enabled: Boolean = ..., placeholder: ComposableFunction0<Unit>? = ..., leadingIcon: ComposableFunction0<Unit>? = ..., trailingIcon: ComposableFunction0<Unit>? = ..., colors: TextFieldColors = ..., interactionSource: MutableInteractionSource? = ...): Unit' is deprecated. Use SearchBarDefaults.InputField with TextFieldState and SearchBarState.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/screen/install/InstallSteps.kt:246:21 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/screen/settings/ThemeComponents.kt:189:59 'fun Slider(value: Float, onValueChange: (Float) -> Unit, modifier: Modifier = ..., enabled: Boolean = ..., valueRange: ClosedFloatingPointRange<Float> = ..., steps: Int = ..., onValueChangeFinished: (() -> Unit)? = ..., colors: SliderColors = ..., interactionSource: MutableInteractionSource = ...): Unit' is deprecated. Use the Slider overload that accepts SliderState, onValueChange, and onValueChangeFinished instead.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/util/KsuCli.kt:694:87 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/util/KsuCli.kt:1660:21 Unnecessary safe call on a non-null receiver of type 'InstallerSnapshot'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt:286:77 Unnecessary safe call on a non-null receiver of type 'Throwable'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/webui/ModuleWebOrigin.kt:6:37 Non-public primary constructor is exposed via the generated 'copy()' method of the 'data' class.
+e: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt:35:16 Null cannot be a value of a non-null type 'BrandBannerKind'.
 
-The generated 'copy()' will change its visibility in future releases.
-
-To suppress the warning do one of the following:
-- Annotate the data class with the '@ConsistentCopyVisibility' annotation.
-- Use the '-Xconsistent-data-class-copy-visibility' compiler flag.
-- Annotate the data class with the '@ExposedCopyVisibility' annotation 
-  (Discouraged, but can be used to keep binary compatibility).
-
-To learn more, see the documentation of the '@ConsistentCopyVisibility' and '@ExposedCopyVisibility' annotations.
-
-This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KT-11914.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/installer/InstallerServiceClient.kt:466:32 Unnecessary safe call on a non-null receiver of type 'ClientResult'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/installer/InstallerServiceClient.kt:467:29 Unnecessary safe call on a non-null receiver of type 'ClientResult'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/installer/NativeInstallTransaction.kt:197:68 Java type mismatch: inferred type is 'String?', but 'String' was expected.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/installer/StockRestoreTargets.kt:133:17 Condition is always 'true'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/jailbreak/GhostlockHandover.kt:98:29 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/jailbreak/GhostlockHandover.kt:100:49 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/jailbreak/IrImages.kt:428:44 'static field CPU_ABI: String!' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/jailbreak/JailbreakLogActions.kt:124:26 'fun rememberModalBottomSheetState(skipPartiallyExpanded: Boolean = ..., confirmValueChange: (SheetValue) -> Boolean = ...): SheetState' is deprecated. Use rememberBottomSheetState with Hidden initial value.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/market/MapleMarketRepository.kt:207:48 The corresponding parameter in the supertype 'Callback' is named 'e'. This may cause problems when calling this function with named arguments.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/modules/LiteScriptModuleBackend.kt:1402:17 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/modules/MapleSuModuleBackend.kt:709:30 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/modules/compat/UltraModuleInstallTransaction.kt:339:29 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/modules/compat/UltraModuleInstallTransaction.kt:339:77 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/MapleSuSupervisedProcess.kt:49:40 Return in function with expression body and without explicit return type. Use block body '{...}' or add an explicit return type. This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KTLC-288.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/MapleSuSupervisedProcess.kt:51:52 Return in function with expression body and without explicit return type. Use block body '{...}' or add an explicit return type. This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KTLC-288.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/MapleSuSupervisedProcess.kt:58:22 Return in function with expression body and without explicit return type. Use block body '{...}' or add an explicit return type. This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KTLC-288.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/NativeSessionProcess.kt:100:25 Return in function with expression body and without explicit return type. Use block body '{...}' or add an explicit return type. This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KTLC-288.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDirectory.kt:195:25 Condition is always 'false'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDirectory.kt:292:21 Condition is always 'false'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDirectoryProvider.kt:542:54 Unnecessary safe call on a non-null receiver of type 'Bundle'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDirectoryProvider.kt:850:25 Unnecessary safe call on a non-null receiver of type 'JailbreakStatus'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/RuntimeDeployment.kt:425:13 Condition is always 'true'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/SuPathWiring.kt:193:69 Java type mismatch: inferred type is 'String?', but 'String' was expected.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/ManagerOwnerRootResult.kt:28:58 'when' expression over a subject of type 'Any?' is not exhaustive. Add a 'null' or 'else' branch.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/RootStatusReport.kt:8:59 'when' expression over a subject of type 'Any?' is not exhaustive. Add a 'null' or 'else' branch.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraAuthorizationResult.kt:32:13 'when' expression over a subject of type 'Any?' is not exhaustive. Add a 'null' or 'else' branch.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraEnvironmentIdentity.kt:413:70 'when' expression over a subject of type 'Any?' is not exhaustive. Add a 'null' or 'else' branch.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraEnvironmentInstaller.kt:449:57 'val id: Long' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraEnvironmentProbe.kt:264:13 Condition is always 'true'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraIdentityBroker.kt:99:52 Unnecessary safe call on a non-null receiver of type 'AuthorizationSnapshot'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraReceipt.kt:75:24 'when' expression over a subject of type 'Any?' is not exhaustive. Add a 'null' or 'else' branch.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraRuntimeClient.kt:458:53 Unnecessary non-null assertion (!!) on a non-null receiver of type 'JSONObject'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraRuntimeClient.kt:460:59 Unnecessary non-null assertion (!!) on a non-null receiver of type 'JSONObject'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraRuntimeClient.kt:556:59 'when' expression over a subject of type 'Any?' is not exhaustive. Add a 'null' or 'else' branch.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraRuntimeClient.kt:592:21 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraInitBootAssets.kt:68:45 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraInitBootTargetResolver.kt:277:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraInitBootTargetResolver.kt:303:42 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraInitBootTargetResolver.kt:390:24 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraInitBootTargetResolver.kt:420:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraInitBootTargetResolver.kt:447:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraInitBootTargetResolver.kt:510:20 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelBuilder.kt:593:24 Redundant creation of Json format. Creating instances for each use can be slow.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelRecipe.kt:644:38 Redundant call of conversion method.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelResidentAbi.kt:191:113 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelResidentAbi.kt:916:67 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Boolean'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelShellcode.kt:1023:36 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Int'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelShellcode.kt:1103:71 Unnecessary non-null assertion (!!) on a non-null receiver of type 'UltraKernelStructOffsets.ObjectValue'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelShellcode.kt:2312:71 Cast is redundant.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelShellcode.kt:2313:72 Cast is redundant.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelShellcode.kt:2316:41 Cast is redundant.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/ultrakernel/UltraKernelShellcode.kt:2316:86 Cast is redundant.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/detect/ModeDetector.kt:137:66 Unnecessary non-null assertion (!!) on a non-null receiver of type 'RootChannelKind'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/migration/HostMigrationFacade.kt:66:33 Cast is redundant.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/migration/MigrationDetector.kt:109:37 Unnecessary safe call on a non-null receiver of type 'FileFact'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/recovery/RecoveryDecision.kt:203:28 Condition is always 'true'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/service/ModeSwitchProgress.kt:92:17 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/service/RootShellControlPlane.kt:117:33 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/snapshot/ControlPlaneModeSwitchSnapshots.kt:168:17 'when' is exhaustive so 'else' is redundant here.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/storage/FileMoveExecutor.kt:168:37 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/storage/FileMoveExecutor.kt:170:45 Java type mismatch: inferred type is 'File?', but 'File' was expected.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/superuser/LiteImplantBackup.kt:60:46 Java type mismatch: inferred type is 'String?', but 'String' was expected.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/superuser/LiteImplantBackup.kt:61:48 Java type mismatch: inferred type is 'String?', but 'String' was expected.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/superuser/LiteImplantBackup.kt:62:47 Java type mismatch: inferred type is 'String?', but 'String' was expected.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/ui/LiteHiddenViewModel.kt:445:43 Unnecessary safe call on a non-null receiver of type 'HiddenDeactivateResult'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/ui/RecoveryMaterial.kt:77:31 Unnecessary safe call on a non-null receiver of type 'RecoveryDecision'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/ui/RecoveryMiuix.kt:82:31 Unnecessary safe call on a non-null receiver of type 'RecoveryDecision'.
-w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/dev/maplesu/manager/workmode/ui/WorkModeSheetMaterial.kt:110:22 'fun rememberModalBottomSheetState(skipPartiallyExpanded: Boolean = ..., confirmValueChange: (SheetValue) -> Boolean = ...): SheetState' is deprecated. Use rememberBottomSheetState with Hidden initial value.
-
-> Task :manager:compileReleaseJavaWithJavac
-Note: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/generated/aidl_source_output_dir/release/out/com/maplesu/core/IKsuInterface.java uses unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-
-> Task :manager:mergeReleaseGeneratedProguardFiles
-> Task :manager:processReleaseJavaRes
-> Task :manager:expandReleaseArtProfileWildcards
-> Task :manager:mergeReleaseJavaResource
-> Task :manager:generateReleaseLintVitalReportModel
-> Task :manager:produceReleaseComposeMapping
-> Task :manager:reportReleaseComposeMappingErrors
-> Task :manager:minifyReleaseWithR8
-> Task :manager:lintVitalAnalyzeRelease
-> Task :manager:mergeReleaseComposeMapping
-> Task :manager:convertShrunkResourcesToBinaryRelease
-> Task :manager:compileReleaseArtProfile
-> Task :manager:optimizeReleaseResources
-
-> Task :manager:lintVitalReportRelease
-Lint found no errors or warnings
-
-454 errors/warnings were listed in the baseline file (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/lint-baseline.xml) but not found in the project; perhaps they have been fixed?
-
-Note: The baseline was created using a different target/variant than it was checked against.
-Creation variant: lint
-Current variant: lintVitalRelease
-
-> Task :manager:lintVitalRelease
-> Task :manager:packageRelease
-> Task :manager:createReleaseApkListingFileRedirect
-> Task :manager:assembleRelease
+> Task :manager:compileReleaseKotlin FAILED
 
 [Incubating] Problems report is available at: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':manager:compileReleaseKotlin' (registered by plugin 'com.android.internal.application').
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.btapi.BuildToolsApiCompilationWork
+   > Kotlin compiler: NULL_FOR_NONNULL_TYPE
+       Kotlin compiler error
+         Null cannot be a value of a non-null type 'BrandBannerKind'.
+         Location: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt:35
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
 
@@ -723,6 +734,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 10m 16s
-111 actionable tasks: 110 executed, 1 from cache
+BUILD FAILED in 6m 54s
+93 actionable tasks: 92 executed, 1 from cache
 ```
