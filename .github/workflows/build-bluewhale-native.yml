@@ -18,6 +18,10 @@ on:
         description: "跳过 LKM 重编，复用上次下载好的 lkm 目录（调试用）"
         type: boolean
         default: false
+  # 临时触发口：只匹配 .ci-trigger/**，用于不登录网页也能启动首跑；跑完可删。
+  push:
+    paths:
+      - ".ci-trigger/**"
 
 permissions:
   contents: read
