@@ -4,6 +4,7 @@ name: build-bluewhale
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     tags:
       - "bw-*"
 
