@@ -1,41 +1,39 @@
 name: debug-native-logs
-
 on:
-  workflow_run:
-    workflows: ["build-bluewhale-native"]
-    types: [completed]
-
+  push:
+    paths: ['.debug-bridge*.txt']
 permissions:
-  contents: write
   actions: read
-
+  contents: write
 jobs:
-  dump:
+  bridge:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: 下载失败运行的 artifact
-        uses: actions/download-artifact@v4
-        with:
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: artifact
-      - name: 把日志写回仓库（只为读日志，不参与发布）
-        run: |
+      - run: |
           set -euo pipefail
-          mkdir -p .ci-logs
-          F=".ci-logs/native-${{ github.event.workflow_run.id }}.txt"
-          {
-            echo "run=${{ github.event.workflow_run.id }} conclusion=${{ github.event.workflow_run.conclusion }}"
-            echo "== files =="
-            find artifact -type f -maxdepth 5 | sort || true
-            for X in $(find artifact -type f \( -name '*.log' -o -name '*.txt' \) | sort); do
-              echo "===== $X"
-              tail -400 "$X" || true
-            done
-          } > "$F"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$F"
-          git commit -m "ci: dump native logs ${GITHUB_RUN_ID}" || true
-          git push || true
+          python3 - <<'PY'
+          import json, urllib.request, pathlib, zipfile, io, os
+          run_id = pathlib.Path('.debug-bridge.txt').read_text().strip()
+          req = urllib.request.Request(f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{run_id}/artifacts', headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN']})
+          items = json.load(urllib.request.urlopen(req))['artifacts']
+          out = pathlib.Path('.ci-logs')
+          out.mkdir(exist_ok=True)
+          for item in items:
+              req = urllib.request.Request(item['archive_download_url'], headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN']})
+              raw = urllib.request.urlopen(req).read()
+              z = zipfile.ZipFile(io.BytesIO(raw))
+              print('FILES', item['name'], z.namelist())
+              for n in z.namelist():
+                  if n in ('build.log', 'build.json', 'gradle.log', 'l3', 'build-receipt.json'):
+                      p = out / (run_id + '-' + n)
+                      p.write_bytes(z.read(n))
+                      print('EXTRACTED', p, len(p.read_bytes()))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .ci-logs
+          git diff --cached --quiet || git commit -m "ci: capture native logs ${GITHUB_RUN_ID}"
+          git push
+        env:
+          GH_TOKEN: ${{ github.token }}
