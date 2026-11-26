@@ -82,12 +82,12 @@ internal fun parseManagerRelease(body: String): LatestVersionInfo {
     val apkAssets = (0 until assets.length()).mapNotNull { assets.optJSONObject(it) }
         .filter { it.optString("name").endsWith(".apk") }
     for (asset in apkAssets) {
-        val code = Regex("v(.+?)_(\\d+)-").find(asset.optString("name"))
+        val code = Regex("""v(.+?)_(\\d+)-""").find(asset.optString("name"))
             ?.groupValues?.get(2)?.toIntOrNull() ?: continue
         val url = asset.optString("browser_download_url")
         if (code > 0 && url.isNotBlank()) return LatestVersionInfo(code, url, changelog)
     }
-    val version = Regex("v?(\\d+)\\.(\\d+)\\.(\\d+)").matchEntire(release.optString("tag_name"))
+    val version = Regex("""v?(\\d+)\\.(\\d+)\\.(\\d+)""").matchEntire(release.optString("tag_name"))
         ?: return LatestVersionInfo()
     val (major, minor, patch) = version.destructured
     val parts = listOf(major, minor, patch).map { it.toLongOrNull() ?: return LatestVersionInfo() }
