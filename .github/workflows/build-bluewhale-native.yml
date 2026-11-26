@@ -140,6 +140,10 @@ jobs:
           echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
           echo "CMAKE_BIN=$SDK/cmake/3.22.1/bin/cmake" >> "$GITHUB_ENV"
           echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
+          # 上游 build.py 把 cmake/ninja 写成了 Windows 的 cmake.exe / ninja.exe；
+          # Linux runner 上补两个同名软链，避免 Gradle 的 buildJailbreakProviders 找不到可执行文件。
+          ln -sf "$SDK/cmake/3.22.1/bin/cmake" "$SDK/cmake/3.22.1/bin/cmake.exe"
+          ln -sf "$SDK/cmake/3.22.1/bin/ninja" "$SDK/cmake/3.22.1/bin/ninja.exe"
           rustup toolchain install 1.99.1 --profile minimal --component rustfmt --target aarch64-linux-android
           cargo fetch --locked --manifest-path src/third_party/kernelsu/applied/Cargo.toml
 
@@ -206,6 +210,14 @@ jobs:
             -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
             :manager:assembleRelease
 
+      - name: 失败时打印 jailbreak 构建日志
+        if: failure()
+        run: |
+          echo "== jailbreakProviders/build.log =="
+          cat src/manager/build/jailbreakProviders/build.log 2>/dev/null || true
+          echo "== jailbreakProviders/build.json =="
+          cat src/manager/build/jailbreakProviders/build.json 2>/dev/null || true
+
       - name: 生成构建回执（解压后统计 6 个 ko 的包名）
         if: always()
         run: |
@@ -239,6 +251,8 @@ jobs:
             /tmp/payload-gate.log
             /tmp/userland.log
             /tmp/jni.log
+            src/manager/build/jailbreakProviders/build.log
+            src/manager/build/jailbreakProviders/build.json
             src/third_party/kernelsu/lkm/*.log
           if-no-files-found: warn
           retention-days: 14
