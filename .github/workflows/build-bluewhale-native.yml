@@ -146,6 +146,9 @@ jobs:
           ln -sf "$SDK/cmake/3.22.1/bin/ninja" "$SDK/cmake/3.22.1/bin/ninja.exe"
           rustup toolchain install 1.99.1 --profile minimal --component rustfmt --target aarch64-linux-android
           cargo fetch --locked --manifest-path src/third_party/kernelsu/applied/Cargo.toml
+          # buildJailbreakProviders 还会编 ghostlock/extractor-native；它用 --offline，
+          # 必须先把这份 Cargo.lock 的依赖抓下来，否则 yaxpeax-arch 会解析失败。
+          cargo fetch --locked --manifest-path src/jailbreak-providers/ghostlock/extractor-native/Cargo.toml
 
       - name: 装 JDK 21（assembleRelease 用）
         uses: actions/setup-java@v4
