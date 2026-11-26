@@ -11,8 +11,9 @@
 否则设置页的飘落开关点了没反应。
 
 收尾后依次跑：
-  overlay/patch_brand_text_sweep.py  —— 可见文案统一成蓝鱼
-  overlay/patch_kill_effects.py      —— 撤掉飘落/巨魔雨、删上游启动页位图，版本到 3.18.2
+  overlay/patch_brand_text_sweep.py     —— 可见文案统一成蓝鱼
+  overlay/patch_kill_effects.py         —— 撤掉飘落/巨魔雨、删上游启动页位图，版本到 3.18.2
+  overlay/patch_bluewhale_release.py    —— 恢复蓝鱼另一个更新通道、文案总清、版本到 3.19.0
 
 用法：python3 patch_brand_skin_tail.py <上游源码根目录>
 """
@@ -101,8 +102,9 @@ patch_text("manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialo
      "        },"),
 ])
 
-# 4. 把整块可见文案（工作模式名、市场、迁移页、安装提示）交给总清脚本，再撤掉两个特效层
-for extra in ("patch_brand_text_sweep.py", "patch_kill_effects.py"):
+# 4. 把整块可见文案（工作模式名、市场、迁移页、安装提示）交给总清脚本，
+#    再撤掉两个特效层，最后恢复蓝鱼自己的更新通道。
+for extra in ("patch_brand_text_sweep.py", "patch_kill_effects.py", "patch_bluewhale_release.py"):
     script = pathlib.Path(__file__).with_name(extra)
     if not script.is_file():
         failures.append(f"缺文件: overlay/{extra}")
