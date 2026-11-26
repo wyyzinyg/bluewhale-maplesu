@@ -14,7 +14,7 @@
   6. Soter 内容提供者的 authority 写死了 dev.maplesu.manager.soter，会和官方 MapleSU
      抢授权，安装报 -13（INSTALL_FAILED_CONFLICTING_PROVIDER）。改成蓝鱼自己的 authority。
   7. 品牌资产还原：overlay 会把启动图标和启动页换成矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像，
-     这里把图标五个密度与启动页位图放回，并把主题同步指回 3.16 的启动页。
+     这里从 CloudBase 上的 3.16 APK 取回图标五个密度与启动页位图并改回引用。
 
 用法：python3 patch_runtime_targets.py <上游源码根目录>
 """
@@ -261,12 +261,16 @@ try:
         '    android:src="@drawable/ic_app_brand" />\n',
         encoding="utf-8",
     )
-    patch_text("manager/src/main/res/values/themes.xml", [
-        ('<item name="windowSplashScreenBackground">@color/maple_window_background</item>',
-         '<item name="windowSplashScreenBackground">@color/ic_splash_background</item>'),
-        ('<item name="windowSplashScreenAnimatedIcon">@drawable/maplesu_splash_brand</item>',
-         '<item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_splash</item>'),
-    ])
+    # 主题有两份：values 与 values-night。只改白天那份，深色模式下启动页仍是上游方块动画
+    # （3.16 的 Starting 主题没有 night 变体，白色蓝鱼图两种模式都一样），两份必须都改。
+    for themes in ("manager/src/main/res/values/themes.xml",
+                   "manager/src/main/res/values-night/themes.xml"):
+        patch_text(themes, [
+            ('<item name="windowSplashScreenBackground">@color/maple_window_background</item>',
+             '<item name="windowSplashScreenBackground">@color/ic_splash_background</item>'),
+            ('<item name="windowSplashScreenAnimatedIcon">@drawable/maplesu_splash_brand</item>',
+             '<item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_splash</item>'),
+        ])
     print("还原启动页: ic_app_brand 位图 + 白底 + 主题指向")
 except Exception as error:  # noqa: BLE001
     failures.append(f"品牌资产还原失败: {error}")
