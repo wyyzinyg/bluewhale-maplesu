@@ -124,6 +124,10 @@ jobs:
           set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y libclang-dev
+          # legacy Clang CFI 的主机侧正/反例由 Unicorn 实际执行；与 build.yml 的已验证依赖钉版一致。
+          python3 -m pip install --upgrade pip
+          python3 -m pip install pyelftools==0.32 unicorn==2.1.4
+          python3 -c 'import importlib.metadata; assert importlib.metadata.version("unicorn") == "2.1.4"'
           SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
           echo "SDK=$SDK"
           SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
