@@ -1,0 +1,189 @@
+name: build-bluewhale-native
+
+# 3.20.1 的门禁：APK 里的 native 载荷必须按新包名重编，否则 32737 只能修首页、修不到 root。
+#
+# 为什么不能只跑 :manager:assembleRelease：
+#   上游把 libksud_ksu.so 作为预编译二进制提交在 manager/src/main/jniLibs/arm64-v8a/，
+#   只跑 assembleRelease 等于原样复制它——manifest/Kbuild/build.rs 的改动不会进去。
+#   所以这里按上游 build-normal.yml 的顺序，先重编 ko（Docker DDK）、再编 ksud、再生成 JNI 与 payload，
+#   最后才 assembleRelease。
+#
+# 首次运行预计 90–150 分钟（6 个 KMI 的 LKM 是主要耗时）。失败时看最后一步上传的日志。
+
+on:
+  # 只手动触发：native 通过验收前不接管主发布，否则同一提交会同时出「旧载荷快速包」和「重编包」。
+  workflow_dispatch:
+    inputs:
+      skip_lkm:
+        description: "跳过 LKM 重编，复用上次下载好的 lkm 目录（调试用）"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-bluewhale-native
+  cancel-in-progress: false
+
+env:
+  # P0-1：build_userland.sh 自己把 KSU_PACKAGE_NAME 默认成 dev.maplesu.manager 并传给 cargo，
+  # 而 ksud/build.rs 只在变量缺失时才写默认值——所以这里必须显式给，否则 ksud 仍是旧包名。
+  KSU_PACKAGE_NAME: "com.blue.whale.mask"
+  DDK_RELEASE: "20260828"
+  RUSTUP_TOOLCHAIN: "1.99.1"
+  CARGO_NET_GIT_FETCH_WITH_CLI: "true"
+  KMI_MATRIX: "android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18"
+
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - name: 取本仓库
+        uses: actions/checkout@v4
+
+      - name: 取上游 MapleSU 源码
+        run: |
+          set -euo pipefail
+          mkdir -p src
+          # P0-3：钉 commit。补丁锚点基于这一版，跟 main 会漂。
+          UPSTREAM_COMMIT=ff3aa44850ea22717fa811a17831155a85f43445
+          echo "upstream commit=$UPSTREAM_COMMIT"
+          curl -sSL -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${UPSTREAM_COMMIT}"
+          tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
+          echo "上游体积: $(du -sh src | cut -f1)"
+
+      - name: 按 6 支收尾链打补丁
+        run: |
+          set -euo pipefail
+          python3 overlay/apply_bluewhale.py src
+          python3 overlay/patch_runtime_targets.py src
+          python3 overlay/patch_brand_skin_tail.py src
+          python3 overlay/patch_bluewhale_320.py src
+          python3 overlay/patch_bluewhale_321.py src
+          python3 overlay/patch_bluewhale_3210.py src
+          echo "== 关键身份确认 =="
+          python3 - <<'PY'
+          import json
+          m = json.load(open('src/third_party/kernelsu/manifest.json'))
+          ident = m['identity']
+          assert ident['packageName'] == ident['managerPackage'] == 'com.blue.whale.mask', ident
+          print('identity ok:', ident['packageName'])
+          PY
+
+      - name: 安装构建工具链（NDK 29 / cmake / Rust 1.99.1 / libclang）
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y libclang-dev
+          SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          echo "SDK=$SDK"
+          SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
+          mkdir -p "$SDK/licenses"
+          printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
+          "$SM" "ndk;29.0.14206865" "cmake;3.22.1" "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" < /dev/null
+          echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
+          echo "CMAKE_BIN=$SDK/cmake/3.22.1/bin/cmake" >> "$GITHUB_ENV"
+          echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
+          rustup toolchain install 1.99.1 --profile minimal --component rustfmt --target aarch64-linux-android
+          cargo fetch --locked --manifest-path src/third_party/kernelsu/applied/Cargo.toml
+
+      - name: 装 JDK 21（assembleRelease 用）
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: 按 KMI 重编内核模块（Docker DDK）
+        if: ${{ !inputs.skip_lkm }}
+        run: |
+          set -euo pipefail
+          cd src
+          for kmi in $KMI_MATRIX; do
+            echo "===== $kmi ====="
+            image="ghcr.io/ylarod/ddk-min:${kmi}-${DDK_RELEASE}"
+            docker pull "$image"
+            bash third_party/kernelsu/scripts/build_lkm.sh --kmi "$kmi" --ddk-image "$image" \
+              2>&1 | tee "third_party/kernelsu/lkm/${kmi}_kernelsu.log"
+            if KMI="$kmi" python3 -c 'import os,sys; sys.path.insert(0,"third_party/kernelsu/scripts"); import ksu_common as C; sys.exit(0 if os.environ["KMI"] in C.COMPATIBILITY_KMI_MATRIX else 1)'; then
+              bash third_party/kernelsu/scripts/build_lkm.sh --kmi "$kmi" --ddk-image "$image" --vr-only \
+                2>&1 | tee "third_party/kernelsu/lkm/${kmi}_maplesu_vr.log"
+            fi
+          done
+          ls -l third_party/kernelsu/lkm/*.ko
+          echo "== ko 里必须已是新包名 =="
+          for ko in third_party/kernelsu/lkm/*.ko; do
+            new=$(grep -a -c "com.blue.whale.mask" "$ko" || true)
+            old=$(grep -a -c "dev.maplesu.manager" "$ko" || true)
+            echo "$(basename "$ko")  新 $new / 旧 $old"
+            [ "$old" = "0" ] || { echo "FATAL: $ko 仍含旧包名"; exit 1; }
+          done
+
+      - name: 重编 ksud 与 JNI，生成并校验 payload
+        env:
+          CARGO_NET_OFFLINE: "true"
+        run: |
+          set -euo pipefail
+          cd src
+          bash third_party/kernelsu/scripts/build_userland.sh --kmi all 2>&1 | tee /tmp/userland.log
+          bash third_party/kernelsu/scripts/build_jni.sh 2>&1 | tee /tmp/jni.log
+          for asset in third_party/kernelsu/artifacts/{ksuinit,maplesu_vrinit} third_party/kernelsu/lkm/*.ko; do
+            [ -f "$asset" ] || continue
+            python3 third_party/kernelsu/scripts/verify_embedded_asset.py --asset "$asset" --deep
+          done
+          TREE=$(python3 -c 'import sys; sys.path.insert(0,"third_party/kernelsu/scripts"); import ksu_common as C; print(C.tree_sha256(C.APPLIED_DIR))')
+          echo "appliedTreeSha256=$TREE"
+          python3 third_party/kernelsu/scripts/gen_payload.py --built-source-tree "$TREE"
+          python3 third_party/kernelsu/scripts/verify_payload.py 2>&1 | tee /tmp/payload-gate.log
+          python3 third_party/kernelsu/scripts/gen_payload.py --check
+
+      - name: 编 release APK
+        run: |
+          set -euo pipefail
+          cd src
+          ./gradlew --no-daemon --max-workers=4 \
+            --dependency-verification=off \
+            -PbluewhaleSkipSdkVerify=true \
+            -PmaplesuPython="$(command -v python3)" \
+            -PmaplesuUltraviderNdk="$ANDROID_HOME/ndk/29.0.14206865" \
+            -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
+            :manager:assembleRelease
+
+      - name: 生成构建回执（解压后统计 6 个 ko 的包名）
+        if: always()
+        run: |
+          set -uo pipefail
+          mkdir -p out
+          APK=$(ls src/manager/build/outputs/apk/release/*.apk 2>/dev/null | head -1 || true)
+          if [ -z "$APK" ]; then echo "没有产物，跳过回执"; exit 0; fi
+          cp "$APK" out/
+          # P0-4：回执当门禁。旧包名残留时这一步必须红，不能让 artifact 继续往下走。
+          python3 tools/bluewhale_receipt.py "$APK" -o out/build-receipt.json
+          python3 - <<'PY'
+          import json, sys
+          receipt = json.load(open("out/build-receipt.json"))
+          so_old = receipt["native"].get("soOldPackageCount", 0)
+          bad = [row for row in receipt["native"]["kmis"] if row["oldPackageCount"] > 0]
+          print(f"soOldPackageCount={so_old}  ko 残留={len(bad)}")
+          if so_old or bad:
+              print("FATAL: native 载荷仍有旧包名，不能发布", file=sys.stderr)
+              sys.exit(1)
+          PY
+          (cd out && sha256sum *.apk > SHA256SUMS.txt) || true
+          head -40 out/build-receipt.json
+
+      - name: 上传产物与回执
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bluewhale-native-${{ github.run_number }}
+          path: |
+            out/
+            /tmp/payload-gate.log
+            /tmp/userland.log
+            /tmp/jni.log
+            src/third_party/kernelsu/lkm/*.log
+          if-no-files-found: warn
+          retention-days: 14
