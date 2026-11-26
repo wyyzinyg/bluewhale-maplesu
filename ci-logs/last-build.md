@@ -1,6 +1,6 @@
 # 构建结果
 
-- run: 51  提交: bb8fd1bd6d20225580eaa55fb4a08b5f849b30d4
+- run: 52  提交: 6abb9619db3663c1d326a94588e35f434f340dc7
 - 作业结论: success
 
 #### 补丁摘要（是否真应用）
@@ -49,7 +49,7 @@
 
 #### CMake 错误日志
 --- src/manager/build/jailbreakProviders/build/CMakeFiles/CMakeOutput.log
-    arg [cmTC_27c98] ==> ignore
+    arg [cmTC_c81f1] ==> ignore
     arg [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtbegin_dynamic.o] ==> obj [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31/crtbegin_dynamic.o]
     arg [-L/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/aarch64] ==> dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/19/lib/linux/aarch64]
     arg [-L/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31] ==> dir [/usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/31]
@@ -59,7 +59,7 @@
     arg [--no-undefined-version] ==> ignore
     arg [--fatal-warnings] ==> ignore
     arg [--no-undefined] ==> ignore
-    arg [CMakeFiles/cmTC_27c98.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_c81f1.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-Bstatic] ==> search static
     arg [-lc++] ==> lib [c++]
     arg [-Bdynamic] ==> search dynamic
@@ -107,80 +107,80 @@ InstalledDir: /usr/local/lib/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebu
 --- src/manager/build/jailbreakProviders/ir/build.json
 {"ok": null, "errors": null, "failure": null}
 ===== src/manager/build/jailbreakProviders/build.log =====
+   Compiling anstyle-parse v1.0.0
    Compiling num-traits v0.2.19
    Compiling petgraph v0.8.3
-   Compiling alloc-stdlib v0.2.4
-   Compiling regex v1.13.1
    Compiling prost-types v0.14.4
+   Compiling regex v1.13.1
    Compiling serde_derive v1.0.229
    Compiling lzma-sys v0.1.20
-   Compiling zstd-safe v7.3.0
-   Compiling protoc-bin-vendored-linux-aarch_64 v3.2.0
-   Compiling anstyle v1.0.14
-   Compiling colorchoice v1.0.5
-   Compiling protoc-bin-vendored-macos-aarch_64 v3.2.0
+   Compiling anstyle-query v1.1.5
    Compiling protoc-bin-vendored-linux-ppcle_64 v3.2.0
    Compiling portable-atomic v1.15.0
    Compiling protoc-bin-vendored-macos-x86_64 v3.2.0
-   Compiling anstyle-query v1.1.5
    Compiling log v0.4.34
    Compiling protoc-bin-vendored-linux-s390_64 v3.2.0
    Compiling protoc-bin-vendored-win32 v3.2.0
    Compiling multimap v0.10.1
    Compiling protoc-bin-vendored-linux-x86_32 v3.2.0
-   Compiling zmij v1.0.23
-   Compiling is_terminal_polyfill v1.70.2
    Compiling radium v0.7.0
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling zmij v1.0.23
    Compiling protoc-bin-vendored-linux-x86_64 v3.2.0
+   Compiling anstyle v1.0.14
+   Compiling colorchoice v1.0.5
+   Compiling protoc-bin-vendored-linux-aarch_64 v3.2.0
+   Compiling zstd-safe v7.3.0
+   Compiling protoc-bin-vendored-macos-aarch_64 v3.2.0
    Compiling protoc-bin-vendored v3.2.0
    Compiling anstream v1.0.0
    Compiling prost-build v0.14.4
    Compiling terminal_size v0.4.4
    Compiling brotli-decompressor v5.0.3
-   Compiling block-buffer v0.12.1
    Compiling crypto-common v0.2.2
+   Compiling block-buffer v0.12.1
+   Compiling strsim v0.11.1
+   Compiling tap v1.0.1
+   Compiling libbz2-rs-sys v0.2.5
+   Compiling unicode-width v0.2.2
    Compiling thiserror v2.0.20
    Compiling serde_json v1.0.151
    Compiling clap_lex v1.1.1
-   Compiling tap v1.0.1
-   Compiling strsim v0.11.1
-   Compiling libbz2-rs-sys v0.2.5
-   Compiling unicode-width v0.2.2
+   Compiling clap_builder v4.6.7
+   Compiling bzip2 v0.6.1
    Compiling console v0.16.6
    Compiling rayon v1.12.0
-   Compiling bzip2 v0.6.1
-   Compiling clap_builder v4.6.7
    Compiling wyz v0.5.1
    Compiling digest v0.11.3
    Compiling brotli v8.0.4
    Compiling payload-extract v0.1.1 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native/vendor/payload-extract)
-   Compiling aho-corasick v1.1.5
    Compiling clap_derive v4.6.7
    Compiling thiserror-impl v2.0.20
+   Compiling aho-corasick v1.1.5
    Compiling cpufeatures v0.3.1
-   Compiling itoa v1.0.18
-   Compiling typed-path v0.12.3
-   Compiling simd-adler32 v0.3.10
    Compiling funty v2.0.0
    Compiling adler2 v2.0.1
+   Compiling simd-adler32 v0.3.10
    Compiling unit-prefix v0.5.2
+   Compiling itoa v1.0.18
+   Compiling typed-path v0.12.3
    Compiling indicatif v0.18.6
-   Compiling miniz_oxide v0.9.1
    Compiling zip v8.6.0
-   Compiling bitvec v1.1.1
-   Compiling clap v4.6.7
    Compiling xz2 v0.1.7
+   Compiling miniz_oxide v0.9.1
+   Compiling bitvec v1.1.1
    Compiling sha2 v0.11.0
-   Compiling yaxpeax-arch v0.3.2
+   Compiling clap v4.6.7
    Compiling bsdiff-android v0.0.2
    Compiling zstd v0.13.3
+   Compiling yaxpeax-arch v0.3.2
    Compiling memmap2 v0.9.11
    Compiling hex v0.4.3
    Compiling lz4_flex v0.14.0
    Compiling yaxpeax-arm v0.5.0
    Compiling flate2 v1.1.10
    Compiling ghostlock-extract v0.1.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native)
-    Finished `release` profile [optimized] target(s) in 44.57s
+    Finished `release` profile [optimized] target(s) in 43.75s
 {
   "module": "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/ir/maplesu_ir.ko",
   "sha256": "68a48bd0ff1abb1e0f4ad50b11889ecbfcdb85b172e8a02af7586834924c8c70",
@@ -232,9 +232,6 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 ===== src/manager/build/jailbreakProviders/l3/per-kmi/android14-6.1/build.log =====
 $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/build_root_module.py --module maplesu_l3 --ndk-dir /usr/local/lib/android/sdk/ndk/28.2.13676358 --out-dir /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/l3/per-kmi/android14-6.1/l3 --contract /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/contracts/family-6.1.json --quiet
 #### 主构建日志尾
--- The C compiler identification is Clang 17.0.2
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
 -- Check for working C compiler: /usr/local/lib/android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
@@ -275,8 +272,8 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [1/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/boolean_record.c.o
 [2/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/avrule_block.c.o
 [3/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/booleans.c.o
-[4/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/avtab.c.o
-[5/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/constraint.c.o
+[4/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/constraint.c.o
+[5/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/avtab.c.o
 [6/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/assertion.c.o
 [7/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/context_record.c.o
 [8/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/context.c.o
@@ -309,13 +306,13 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [35/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/ports.c.o
 [36/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/policydb_validate.c.o
 [37/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/sidtab.c.o
-[38/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/symtab.c.o
-[39/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/policydb.c.o
-[40/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/services.c.o
-[41/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/module_to_cil.c.o
+[38/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/module_to_cil.c.o
+[39/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/symtab.c.o
+[40/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/policydb.c.o
+[41/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/services.c.o
 [42/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/user_record.c.o
-[43/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/util.c.o
-[44/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/users.c.o
+[43/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/users.c.o
+[44/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/util.c.o
 [45/69] Building CXX object CMakeFiles/maplesu-policy.dir/src/ksu_manager_fd.cpp.o
 [46/69] Building C object CMakeFiles/maplesu_sepol.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/.deps/selinux/libsepol/src/write.c.o
 [47/69] Linking C static library libmaplesu_sepol.a
@@ -328,8 +325,8 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 [54/69] Building CXX object CMakeFiles/maplesu-policy.dir/src/policy_hook_loader.cpp.o
 [55/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_layout.cpp.o
 [56/69] Building CXX object CMakeFiles/maplesu-policy.dir/src/main.cpp.o
-[57/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload.cpp.o
-[58/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload_metadata.cpp.o
+[57/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload_metadata.cpp.o
+[58/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload.cpp.o
 [59/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload_loader.cpp.o
 [60/69] Building CXX object CMakeFiles/maplesu-policy.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/kernel_payload_hook.cpp.o
 [61/69] Building CXX object CMakeFiles/maplesu-module-policy-config-tests.dir/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/runtime/ultra/policy/module_policy_config.cpp.o
@@ -345,10 +342,10 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 
 > Task :manager:buildModuleTools
  Downloading crates ...
-  Downloaded prost-derive v0.13.5
-  Downloaded memmap2 v0.9.12
   Downloaded either v1.19.0
   Downloaded prost v0.13.5
+  Downloaded prost-derive v0.13.5
+  Downloaded memmap2 v0.9.12
   Downloaded unicode-ident v1.0.27
   Downloaded syn v3.0.9
   Downloaded libc v0.2.191
@@ -357,14 +354,14 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
    Compiling quote v1.0.47
    Compiling anyhow v1.0.104
    Compiling either v1.19.0
+   Compiling utf8parse v0.2.2
    Compiling libc v0.2.191
    Compiling itertools v0.14.0
-   Compiling utf8parse v0.2.2
    Compiling anstyle-parse v1.0.0
    Compiling anstyle v1.0.14
    Compiling bytes v1.12.1
-   Compiling anstyle-query v1.1.5
    Compiling syn v2.0.119
+   Compiling anstyle-query v1.1.5
    Compiling colorchoice v1.0.5
    Compiling is_terminal_polyfill v1.70.2
    Compiling anstream v1.0.0
@@ -382,7 +379,7 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
    Compiling clap v4.6.7
    Compiling prop-rs-android v0.2.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/ksu_props/src/crates/prop-rs-android)
    Compiling maplesu-module-tools v0.2.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/module-tools)
-    Finished `release` profile [optimized] target(s) in 9.88s
+    Finished `release` profile [optimized] target(s) in 9.23s
 {
   "host": "maplesu-tools",
   "abi": "arm64-v8a",
@@ -431,19 +428,19 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 > Task :manager:generateReleaseBuildConfig
 > Task :manager:protobufDummy UP-TO-DATE
 > Task :manager:extractReleaseNativeSymbolTables
-> Task :manager:compileReleaseAidl
 > Task :manager:extractIncludeReleaseProto
 > Task :manager:extractProto
 > Task :manager:extractReleaseProto
+> Task :manager:compileReleaseAidl
 > Task :manager:mergeReleaseNativeDebugMetadata
 > Task :manager:generateReleaseProto
 > Task :manager:generateReleaseResValues
 > Task :manager:extractReleaseSupportedLocales
 > Task :manager:mapReleaseSourceSetPaths
-> Task :manager:generateReleaseResources
 > Task :manager:generateReleaseLocaleConfig
-> Task :manager:processReleaseNavigationResources
+> Task :manager:generateReleaseResources
 > Task :manager:packageReleaseResources
+> Task :manager:processReleaseNavigationResources
 > Task :manager:javaPreCompileRelease FROM-CACHE
 > Task :manager:parseReleaseLocalResources
 > Task :manager:mergeReleaseArtProfile
@@ -457,7 +454,6 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 > Task :manager:extractProguardFiles
 > Task :manager:mergeReleaseStartupProfile
 > Task :manager:generateReleaseAssets UP-TO-DATE
-> Task :manager:mergeReleaseResources
 
 > Task :manager:packagePolicyHooks
   [kcfi] every prefix already equals this image's compare sites
@@ -492,6 +488,10 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
   "installed": false,
   "fullPolicyHidingAcceptance": false
 }
+
+> Task :manager:mergeReleaseResources
+
+> Task :manager:packagePolicyHooks
   [kcfi] every prefix already equals this image's compare sites
 {
   "passed": true,
@@ -562,7 +562,7 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
 {
   "schemaVersion": 1,
   "controlAbi": 2,
-  "generatedAt": "2026-11-26T15:03:23.071687+00:00",
+  "generatedAt": "2026-11-26T15:23:26.794877+00:00",
   "images": [
     {
       "asset": "maplesu/policy-hook/b9991b90faeb15a9305fd19c707e70b9c301058a.ko",
@@ -591,13 +591,13 @@ $ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jai
   ]
 }
 
-> Task :manager:mergeReleaseAssets
 > Task :manager:processReleaseManifestForPackage
+> Task :manager:mergeReleaseAssets
 > Task :manager:extractReleaseVersionControlInfo
 > Task :manager:writeReleaseAppMetadata
 > Task :manager:writeReleaseSigningConfigVersions
-> Task :manager:compressReleaseAssets
 > Task :manager:processReleaseResources
+> Task :manager:compressReleaseAssets
 > Task :manager:compileReleaseKotlin
 w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/theme/ThemeDocument.kt:52:17 'when' expression over a subject of type 'Any?' is not exhaustive. Add a 'null' or 'else' branch.
 w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/java/com/maplesu/core/theme/ThemeStore.kt:154:54 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
@@ -705,8 +705,8 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :manager:lintVitalAnalyzeRelease
 > Task :manager:mergeReleaseComposeMapping
 > Task :manager:convertShrunkResourcesToBinaryRelease
-> Task :manager:compileReleaseArtProfile
 > Task :manager:optimizeReleaseResources
+> Task :manager:compileReleaseArtProfile
 
 > Task :manager:lintVitalReportRelease
 Lint found no errors or warnings
@@ -730,6 +730,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 11m 20s
+BUILD SUCCESSFUL in 10m 49s
 111 actionable tasks: 110 executed, 1 from cache
 ```
