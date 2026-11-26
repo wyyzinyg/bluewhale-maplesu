@@ -1,7 +1,7 @@
 name: build-bluewhale
 
 # 在 GitHub 的 16G 跑构建机上出包：本机只有 4G，Kotlin 编译这个体量的 App 会被内存上限杀掉。
-# 失败时把 build.log 尾部回写到 ci-logs/last-build.md（带 [skip ci]，不会循环触发）。
+# 工具链准备与编译写在同一个脚本里，全程 tee 到 build.log；失败时把日志回写 ci-logs/。
 on:
   workflow_dispatch:
   push:
@@ -22,56 +22,56 @@ jobs:
       - name: 拉取上游 MapleSU 源码
         run: |
           set -euo pipefail
+          exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
           curl -sSL -o /tmp/maplesu.tar.gz \
             https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/refs/heads/main
           mkdir -p src
           tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
-          echo "上游体积: $(du -sh src | cut -f1)" | tee -a build.log
+          echo "上游体积: $(du -sh src | cut -f1)"
 
       - name: 应用蓝鱼品牌化补丁
-        run: python3 overlay/apply_bluewhale.py src 2>&1 | tee -a build.log
+        run: |
+          set -euo pipefail
+          exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
+          python3 overlay/apply_bluewhale.py src
 
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
 
-      - uses: android-actions/setup-android@v3
-
-      - name: 补齐 Android SDK 组件
+      - name: 工具链 + 编译（单脚本）
         run: |
-          set -uo pipefail
+          set -euxo pipefail
+          exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
+          echo "== java =="; java -version
           SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
-          echo "SDK=$SDK" | tee -a build.log
-          echo "已有 platforms: $(ls "$SDK/platforms" 2>/dev/null | tr '\n' ' ')" | tee -a build.log
+          echo "SDK=$SDK"; ls "$SDK" || true
+          ls "$SDK/cmdline-tools" || true
+          SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          if [ ! -x "$SM" ]; then SM=$(find "$SDK" -name sdkmanager -type f | head -1); fi
+          echo "SM=$SM"
+          yes | "$SM" --licenses || true
           for pkg in "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" \
                      "platforms;android-36" "build-tools;36.0.0" \
                      "cmake;3.22.1" "ndk;26.1.10909125"; do
-            echo "--- install $pkg" | tee -a build.log
-            yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" "$pkg" 2>&1 | tail -4 | tee -a build.log || true
+            echo "--- install $pkg"
+            "$SM" "$pkg" || true
           done
-          ls "$SDK/platforms" | tee -a build.log
+          ls "$SDK/platforms"
           echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
           echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
-
-      - name: Python 依赖 + Rust
-        run: |
-          set -euo pipefail
-          python3 -m pip install --upgrade pip >/dev/null
+          python3 -m pip install --upgrade pip || true
           python3 -m pip install pyelftools==0.32 unicorn==2.1.4
-          rustup toolchain install stable --profile minimal
-          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
-          rustc --version | tee -a build.log
-
-      - name: 编译 release（R8）
-        working-directory: src
-        run: |
-          set -o pipefail
+          rustup toolchain install stable --profile minimal || true
+          export PATH="$HOME/.cargo/bin:$PATH"
+          rustc --version || true
+          cd src
           ./gradlew --no-daemon --max-workers=4 \
             --dependency-verification=off \
             -PbluewhaleSkipSdkVerify=true \
             -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
-            :manager:assembleRelease 2>&1 | tee -a "$GITHUB_WORKSPACE/build.log"
+            :manager:assembleRelease
 
       - name: 收集产物
         if: always()
@@ -87,7 +87,7 @@ jobs:
             echo "- 提交: ${{ github.sha }}";
             echo;
             echo '```';
-            tail -500 build.log;
+            tail -600 build.log;
             echo '```';
           } > ci-logs/last-build.md
 
