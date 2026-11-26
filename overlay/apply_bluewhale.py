@@ -10,6 +10,7 @@
   6. preBuild 的 Ultra SDK 自检加属性开关（公开快照缺 .tmp 构建报告，自检必失败）
   7. provider 构建脚本的 Windows 假设改成跨平台（cmake.exe/ninja.exe、ir spec 反斜杠路径）
   8. 公开快照的 runtime/pro 死路径改用公开的 runtime/ultra 策略 bundle
+  9. prepare_host_dependencies 的 Maven 下载加重试并报出具体 URL
 
 用法：python3 apply_bluewhale.py <上游源码根目录>
 每个替换点都必须命中，命中不了直接报错退出——宁可失败，不要打出一个半改的包。
@@ -192,6 +193,44 @@ if bundle_json.is_file():
     print(f"policy bundle 自检：{len(sources)} 个源，缺 {len(missing)}，漂 {len(drift)}")
 else:
     failures.append("缺 runtime/ultra/policy/hook-bundles/policy-bundles.json")
+
+# —— 9. 宿主编译依赖下载的重试与可诊断性 ——
+# l3 模块的 Kotlin 宿主编译在 gradle 之前按缓存布局找 15 个 jar，由
+# prepare_host_dependencies.py 从 Maven Central 拉。runner 上出现过
+# HOST_JVM_DEPENDENCY_PREPARATION_FAILED:HTTP Error 404（run-19）：Maven 边缘节点偶发
+# 404，错误信息又不带 URL，无从定位。这里把单次 urlopen 换成 4 次重试，失败时把
+# 具体 URL 带进错误信息。
+phd = ROOT / "tools/prepare_host_dependencies.py"
+if phd.is_file():
+    s = phd.read_text(encoding="utf-8")
+    helper = (
+        "def _retry_urlopen(url: str, attempts: int = 4, delay: float = 10.0):\n"
+        "    \"\"\"下载宿主编译用 jar：Maven Central 边缘节点偶发 404，重试并带出具体 URL。\"\"\"\n"
+        "    import time\n"
+        "    last_error = None\n"
+        "    for attempt in range(1, attempts + 1):\n"
+        "        try:\n"
+        "            return urllib.request.urlopen(url, timeout=60)\n"
+        "        except urllib.error.HTTPError as error:\n"
+        "            last_error = error\n"
+        "            if attempt < attempts:\n"
+        "                time.sleep(delay)\n"
+        "    raise ValueError(f\"HOST_JVM_DEPENDENCY_HTTP_{last_error.code}:{url}\") from last_error\n"
+        "\n"
+    )
+    anchor = "def verify(path: Path, record: dict) -> None:\n"
+    if s.count(anchor) == 1 and "_retry_urlopen" not in s:
+        s = s.replace(anchor, helper + anchor)
+        print("修好 prepare_host_dependencies.py: 插入 _retry_urlopen")
+    open_line = "            with urllib.request.urlopen(MAVEN_BASE + relative, timeout=60) as response:\n"
+    if s.count(open_line) == 1:
+        s = s.replace(open_line, "            with _retry_urlopen(MAVEN_BASE + relative) as response:\n")
+        print("修好 prepare_host_dependencies.py: 下载走重试")
+    else:
+        failures.append("tools/prepare_host_dependencies.py: urlopen 行未命中")
+    phd.write_text(s, encoding="utf-8")
+else:
+    failures.append("缺文件: tools/prepare_host_dependencies.py")
 
 if failures:
     print("\n补丁失败：", file=sys.stderr)
