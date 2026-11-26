@@ -1,0 +1,41 @@
+name: debug-native-logs
+
+on:
+  workflow_run:
+    workflows: ["build-bluewhale-native"]
+    types: [completed]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 下载失败运行的 artifact
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifact
+      - name: 把日志写回仓库（只为读日志，不参与发布）
+        run: |
+          set -euo pipefail
+          mkdir -p .ci-logs
+          F=".ci-logs/native-${{ github.event.workflow_run.id }}.txt"
+          {
+            echo "run=${{ github.event.workflow_run.id }} conclusion=${{ github.event.workflow_run.conclusion }}"
+            echo "== files =="
+            find artifact -type f -maxdepth 5 | sort || true
+            for X in $(find artifact -type f \( -name '*.log' -o -name '*.txt' \) | sort); do
+              echo "===== $X"
+              tail -400 "$X" || true
+            done
+          } > "$F"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$F"
+          git commit -m "ci: dump native logs ${GITHUB_RUN_ID}" || true
+          git push || true
