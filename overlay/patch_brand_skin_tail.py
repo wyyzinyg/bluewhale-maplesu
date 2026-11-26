@@ -8,7 +8,7 @@
      这里把签名放宽成可空并在为空时不画横幅。
 
 另外把「降动效策略」里被写死的 snow_enabled=false 还原成跟随 enabled，
-否则设置页的飘落开关点了没反应。
+否则设置页的飘落开关点了没反应。最后把整块可见文案交给 patch_brand_text_sweep.py。
 
 用法：python3 patch_brand_skin_tail.py <上游源码根目录>
 """
@@ -96,6 +96,16 @@ patch_text("manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialo
      "            { BrandBanner(kind = kind, accent = MaterialTheme.colorScheme.primary, soft = false) }\n"
      "        },"),
 ])
+
+# 4. 把整块可见文案（工作模式名、市场、迁移页、安装提示）交给总清脚本
+sweep = pathlib.Path(__file__).with_name("patch_brand_text_sweep.py")
+if sweep.is_file():
+    import runpy
+
+    sys.argv = [str(sweep), str(ROOT)]
+    runpy.run_path(str(sweep), run_name="__main__")
+else:
+    failures.append("缺文件: overlay/patch_brand_text_sweep.py")
 
 if failures:
     print("\n皮肤收尾失败：", file=sys.stderr)
