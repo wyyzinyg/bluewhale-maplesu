@@ -87,7 +87,15 @@ jobs:
           [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
           mkdir -p "$SDK/licenses"
           printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
-          "$SM" "ndk;29.0.14206865" "cmake;3.22.1" "platforms;android-37.0" "platforms;android-37" "build-tools;37.0.0" < /dev/null
+          # 别一次塞多个包：其中任何一个名字不存在都会让整条 sdkmanager 退出 1。
+          # API 37 的平台包名是 platforms;android-37.0（没有 platforms;android-37）。
+          for pkg in "ndk;29.0.14206865" "cmake;3.22.1" "platforms;android-37.0" "build-tools;37.0.0"; do
+            echo "--- install $pkg"
+            "$SM" "$pkg" < /dev/null || true
+          done
+          test -d "$SDK/ndk/29.0.14206865" || { echo "FATAL: ndk 29 未安装"; exit 1; }
+          test -d "$SDK/build-tools/37.0.0" || { echo "FATAL: build-tools 37 未安装"; exit 1; }
+          test -d "$SDK/platforms/android-37" || test -d "$SDK/platforms/android-37.0" || { echo "FATAL: platform 37 未安装"; exit 1; }
           echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
           echo "CMAKE_BIN=$SDK/cmake/3.22.1/bin/cmake" >> "$GITHUB_ENV"
           echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
