@@ -13,8 +13,8 @@
   5. Release 的 Ultra claim 世代同样属于专有链路，跳桥时一并放行。
   6. Soter 内容提供者的 authority 写死了 dev.maplesu.manager.soter，会和官方 MapleSU
      抢授权，安装报 -13（INSTALL_FAILED_CONFLICTING_PROVIDER）。改成蓝鱼自己的 authority。
-  7. 启动图标还原：overlay 会把图标换成矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像，
-     这里从 CloudBase 上的 3.16 APK 取回五个密度的原图并改回引用。
+  7. 品牌资产还原：overlay 会把启动图标和启动页换成矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像，
+     这里从 CloudBase 上的 3.16 APK 取回图标五个密度与启动页位图并改回引用。
 
 用法：python3 patch_runtime_targets.py <上游源码根目录>
 """
@@ -179,8 +179,8 @@ patch_text("manager/src/main/java/dev/maplesu/manager/soter/SoterTargetProvider.
      'const val AUTHORITY = "com.blue.whale.mask.soter"'),
 ])
 
-# —— 8. 启动图标还原：overlay 把图标换成了矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像 ——
-# 直接从 CloudBase 更新通道上的 3.16 APK 里取 5 个密度的原图，避免把二进制塞进仓库。
+# —— 8. 品牌资产还原：overlay 把图标换成了矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像 ——
+# 直接从 CloudBase 更新通道上的 3.16 APK 里取原图，避免把二进制塞进仓库。
 ICON_APK_URL = ("https://bluewhale-update-d8e0r9wc21f00b8-1541568372.tcloudbaseapp.com/"
                 "bluewhale-manager-v3.16.0-bw-32730.apk")
 ICON_MEMBERS = {
@@ -208,9 +208,24 @@ try:
     patch_text("manager/src/main/res/values/colors.xml", [
         ('<color name="ic_launcher_background">#FF08101F</color>',
          '<color name="ic_launcher_background">#FFFFFFFF</color>'),
+        ('<color name="ic_splash_background">#FF774F6F</color>',
+         '<color name="ic_splash_background">#FFFFFFFF</color>'),
     ])
+    # 启动页：3.16 用一张 ic_app_brand 位图（白底蓝鱼），3.17 默认是上游方块动画矢量，一并还原。
+    brand = ROOT / "manager/src/main/res/drawable-nodpi/ic_app_brand.png"
+    brand.parent.mkdir(parents=True, exist_ok=True)
+    brand.write_bytes(archive.read("res/lK.png"))
+    splash = ROOT / "manager/src/main/res/drawable/ic_launcher_splash.xml"
+    splash.write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<bitmap xmlns:android="http://schemas.android.com/apk/res/android"\n'
+        '    android:gravity="center"\n'
+        '    android:src="@drawable/ic_app_brand" />\n',
+        encoding="utf-8",
+    )
+    print("还原启动页: ic_app_brand 位图 + 白底")
 except Exception as error:  # noqa: BLE001
-    failures.append(f"启动图标还原失败: {error}")
+    failures.append(f"品牌资产还原失败: {error}")
 
 if failures:
     print("\n修补失败：", file=sys.stderr)
