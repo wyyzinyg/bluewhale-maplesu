@@ -181,8 +181,13 @@ patch_text("manager/src/main/java/dev/maplesu/manager/soter/SoterTargetProvider.
 
 # —— 8. 品牌资产还原：overlay 把图标换成了矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像 ——
 # 直接从 CloudBase 更新通道上的 3.16 APK 里取原图，避免把二进制塞进仓库。
+# 3.16 APK 的身份（update.json 同源）：size 8687501、sha256 476de708…。
+# run-33 就是 CDN 只给了 8686948 字节（IncompleteRead，差 553 字节）把整轮打挂的，
+# 所以下载必须按大小 + 哈希校验并重试，不能裸 read() 一次定生死。
 ICON_APK_URL = ("https://bluewhale-update-d8e0r9wc21f00b8-1541568372.tcloudbaseapp.com/"
                 "bluewhale-manager-v3.16.0-bw-32730.apk")
+ICON_APK_SIZE = 8687501
+ICON_APK_SHA256 = "476de70854b41f46b5271c01cd334f23780fe6dc6424b54c835fe428cd0f6f8a"
 ICON_MEMBERS = {
     "mdpi": "res/x5.png",
     "hdpi": "res/uK.png",
@@ -190,12 +195,38 @@ ICON_MEMBERS = {
     "xxhdpi": "res/DR.png",
     "xxxhdpi": "res/nV.png",
 }
+
+
+def fetch_bytes(url: str, size: int, sha256: str, attempts: int = 6) -> bytes:
+    """整包下载后按大小与哈希校验：短读、脏包都重试，次数用尽才抛错。"""
+    import hashlib
+    import time
+    import urllib.request
+
+    last: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent": "bluewhale-ci"})
+            with urllib.request.urlopen(request, timeout=180) as response:
+                payload = response.read()
+            if len(payload) != size:
+                raise IOError(f"大小不符 {len(payload)} != {size}")
+            digest = hashlib.sha256(payload).hexdigest()
+            if digest != sha256:
+                raise IOError(f"sha256 不符 {digest[:12]} != {sha256[:12]}")
+            return payload
+        except Exception as error:  # noqa: BLE001
+            last = error
+            print(f"3.16 APK 第 {attempt}/{attempts} 次下载失败: {error}", file=sys.stderr)
+            time.sleep(min(5 * attempt, 30))
+    raise RuntimeError(f"3.16 APK 下载失败（已试 {attempts} 次）: {last}")
+
+
 try:
     import io
-    import urllib.request
     import zipfile
 
-    archive = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(ICON_APK_URL, timeout=180).read()))
+    archive = zipfile.ZipFile(io.BytesIO(fetch_bytes(ICON_APK_URL, ICON_APK_SIZE, ICON_APK_SHA256)))
     for density, member in ICON_MEMBERS.items():
         target = ROOT / f"manager/src/main/res/mipmap-{density}/ic_launcher_foreground_bluewhale.png"
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -211,7 +242,9 @@ try:
         ('<color name="ic_splash_background">#FF774F6F</color>',
          '<color name="ic_splash_background">#FFFFFFFF</color>'),
     ])
-    # 启动页：3.16 用一张 ic_app_brand 位图（白底蓝鱼），3.17 默认是上游方块动画矢量，一并还原。
+    # 启动页：3.16 的 drawable/ic_launcher_splash 就是一个 bitmap(center, @drawable/ic_app_brand)，
+    # 主题 windowSplashScreenAnimatedIcon 指向它、底色纯白。3.17 上游改成方块动画 + 品红底，
+    # 只换资源不换主题等于没换（主题指向 maplesu_splash_brand），必须两处一起改回。
     brand = ROOT / "manager/src/main/res/drawable-nodpi/ic_app_brand.png"
     brand.parent.mkdir(parents=True, exist_ok=True)
     brand.write_bytes(archive.read("res/lK.png"))
@@ -223,7 +256,13 @@ try:
         '    android:src="@drawable/ic_app_brand" />\n',
         encoding="utf-8",
     )
-    print("还原启动页: ic_app_brand 位图 + 白底")
+    patch_text("manager/src/main/res/values/themes.xml", [
+        ('<item name="windowSplashScreenBackground">@color/maple_window_background</item>',
+         '<item name="windowSplashScreenBackground">@color/ic_splash_background</item>'),
+        ('<item name="windowSplashScreenAnimatedIcon">@drawable/maplesu_splash_brand</item>',
+         '<item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_splash</item>'),
+    ])
+    print("还原启动页: ic_app_brand 位图 + 白底 + 主题指向")
 except Exception as error:  # noqa: BLE001
     failures.append(f"品牌资产还原失败: {error}")
 
