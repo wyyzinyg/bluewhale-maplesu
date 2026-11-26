@@ -1,7 +1,7 @@
 name: build-bluewhale
 
 # 在 GitHub 的 16G 跑构建机上出包：本机只有 4G，Kotlin 编译这个体量的 App 会被内存上限杀掉。
-# 构建日志通过 Contents API 写回 ci-logs/last-build.md（GITHUB_TOKEN 提交不会触发新 workflow）。
+# 构建日志通过 Contents API 写回 ci-logs/last-build.md。
 on:
   workflow_dispatch:
   push:
@@ -97,7 +97,13 @@ jobs:
             echo "- 作业结论: ${{ job.status }}";
             echo;
             echo '```';
-            tail -800 build.log 2>/dev/null || echo "(无 build.log)";
+            echo "#### provider 子构建日志（CMake 报错常只写在这里）";
+            find src -name "build.log" -size -4M 2>/dev/null | head -3 | while read -r f; do
+              echo "===== $f =====";
+              tail -120 "$f";
+            done;
+            echo "#### 主构建日志尾";
+            tail -400 build.log 2>/dev/null || echo "(无 build.log)";
             echo '```';
           } > ci-logs/last-build.md
           wc -c ci-logs/last-build.md
