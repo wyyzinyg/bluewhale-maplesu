@@ -1,9 +1,11 @@
-# 最近一次构建结果
+# 构建结果
 
-- 触发: run 6
-- 提交: b5002e73210a59b91e52933389cb15a5c94d89c9
+- run: 8  提交: 2ee952a0b6c142519f8519df9af8fb3326f739d0
+- 作业结论: failure
 
 ```
+
+8. Using Google APIs
 
 8.1 Google APIs
 
@@ -451,15 +453,13 @@ android-37.2
 android-37.2-beta1
 android-37.2-beta2
 android-37.2-beta3
-+ echo ANDROID_HOME=/usr/local/lib/android/sdk
-+ echo ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
 + python3 -m pip install --upgrade pip
 Defaulting to user installation because normal site-packages is not writeable
 Requirement already satisfied: pip in /usr/lib/python3/dist-packages (25.1.1)
 Collecting pip
   Downloading pip-26.3-py3-none-any.whl.metadata (4.6 kB)
 Downloading pip-26.3-py3-none-any.whl (2.0 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 76.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 44.2 MB/s eta 0:00:00
 Installing collected packages: pip
 Successfully installed pip-26.3
 + python3 -m pip install pyelftools==0.32 unicorn==2.1.4
@@ -470,7 +470,7 @@ Collecting unicorn==2.1.4
   Downloading unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
 Downloading pyelftools-0.32-py3-none-any.whl (188 kB)
 Downloading unicorn-2.1.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.4 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 82.8 MB/s  0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 81.2 MB/s  0:00:00
 Installing collected packages: pyelftools, unicorn
 
 Successfully installed pyelftools-0.32 unicorn-2.1.4
@@ -532,11 +532,11 @@ TRACELESS INVARIANTS OK checks=26 points=19
 
 > Task :libsu-service:compileReleaseAidl
 > Task :libsu-service:generateReleaseResources
+> Task :libsu-service:packageReleaseResources
+> Task :libsu-service:processReleaseNavigationResources
 > Task :installer-core:compileJava
 > Task :installer-core:processResources NO-SOURCE
 > Task :installer-core:classes
-> Task :libsu-service:packageReleaseResources
-> Task :libsu-service:processReleaseNavigationResources
 > Task :installer-core:jar
 > Task :image-core:compileJava
 > Task :image-core:processResources
@@ -550,13 +550,11 @@ TRACELESS INVARIANTS OK checks=26 points=19
 > Task :libsu-service:compileReleaseLibraryResources
 > Task :libsu-service:writeReleaseAarMetadata
 > Task :libsu-service:extractDeepLinksRelease
-> Task :libsu-service:generateReleaseAssets UP-TO-DATE
 > Task :libsu-service:generateReleaseRFile
-> Task :libsu-service:mergeReleaseAssets
 > Task :libsu-service:compileReleaseKotlin NO-SOURCE
 > Task :libsu-service:processReleaseManifest
 
-> Task :manager:buildJailbreakProviders FAILED
+> Task :manager:buildJailbreakProviders
 MAPLESU: module build failed for android15-6.6; keeping its stock payload
 MAPLESU: module build failed for android15-6.6; keeping its stock payload
 MAPLESU: module build failed for android12-5.10; keeping its stock payload
@@ -565,6 +563,8 @@ MAPLESU: module build failed for android14-6.1; keeping its stock payload
 MAPLESU: module build failed for android16-6.12; keeping its stock payload
 MAPLESU: module build failed for android17-6.18; keeping its stock payload
 MAPLESU: per-KMI modules for none
+
+> Task :manager:buildJailbreakProviders FAILED
 
 > Task :libsu-service:compileReleaseJavaWithJavac
 Java compiler version 21 has deprecated support for compiling with source/target version 8.
@@ -602,6 +602,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 56s
-26 actionable tasks: 26 executed
+BUILD FAILED in 54s
+25 actionable tasks: 25 executed
 ```
