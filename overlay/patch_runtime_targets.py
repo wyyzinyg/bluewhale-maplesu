@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """蓝鱼 · 构建期修补（在上游源码树上就地应用）
 
-修六件事：
+修七件事：
   1. MapleSU runtime 的 CMake 目标集：公开快照里的 Ultra SDK 静态库还是 skroot 时代产物
      （导出 skroot_env:: 符号，0 个 maplesu::sdk::），libmaplesu_ultra_bridge.so 链接必挂。
      探针不进 APK，桥库由 bluewhaleSkipUltraBridge 决定要不要构建。
@@ -13,6 +13,8 @@
   5. Release 的 Ultra claim 世代同样属于专有链路，跳桥时一并放行。
   6. Soter 内容提供者的 authority 写死了 dev.maplesu.manager.soter，会和官方 MapleSU
      抢授权，安装报 -13（INSTALL_FAILED_CONFLICTING_PROVIDER）。改成蓝鱼自己的 authority。
+  7. 启动图标还原：overlay 会把图标换成矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像，
+     这里从 CloudBase 上的 3.16 APK 取回五个密度的原图并改回引用。
 
 用法：python3 patch_runtime_targets.py <上游源码根目录>
 """
@@ -176,6 +178,39 @@ patch_text("manager/src/main/java/dev/maplesu/manager/soter/SoterTargetProvider.
     ('const val AUTHORITY = "dev.maplesu.manager.soter"',
      'const val AUTHORITY = "com.blue.whale.mask.soter"'),
 ])
+
+# —— 8. 启动图标还原：overlay 把图标换成了矢量鲸鱼，用户要求保留 3.16 的蓝鱼女仆头像 ——
+# 直接从 CloudBase 更新通道上的 3.16 APK 里取 5 个密度的原图，避免把二进制塞进仓库。
+ICON_APK_URL = ("https://bluewhale-update-d8e0r9wc21f00b8-1541568372.tcloudbaseapp.com/"
+                "bluewhale-manager-v3.16.0-bw-32730.apk")
+ICON_MEMBERS = {
+    "mdpi": "res/x5.png",
+    "hdpi": "res/uK.png",
+    "xhdpi": "res/iO.png",
+    "xxhdpi": "res/DR.png",
+    "xxxhdpi": "res/nV.png",
+}
+try:
+    import io
+    import urllib.request
+    import zipfile
+
+    archive = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(ICON_APK_URL, timeout=180).read()))
+    for density, member in ICON_MEMBERS.items():
+        target = ROOT / f"manager/src/main/res/mipmap-{density}/ic_launcher_foreground_bluewhale.png"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(archive.read(member))
+    print("还原蓝鱼启动图标: 5 个密度")
+    patch_text("manager/src/main/res/mipmap-anydpi/ic_launcher.xml", [
+        ('<foreground android:drawable="@drawable/ic_launcher_foreground" />',
+         '<foreground android:drawable="@mipmap/ic_launcher_foreground_bluewhale" />'),
+    ])
+    patch_text("manager/src/main/res/values/colors.xml", [
+        ('<color name="ic_launcher_background">#FF08101F</color>',
+         '<color name="ic_launcher_background">#FFFFFFFF</color>'),
+    ])
+except Exception as error:  # noqa: BLE001
+    failures.append(f"启动图标还原失败: {error}")
 
 if failures:
     print("\n修补失败：", file=sys.stderr)
