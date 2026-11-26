@@ -1,0 +1,276 @@
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.4.20/kotlin-stdlib-2.4.20.jar
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0.jar
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-jvm/1.11.0/kotlinx-serialization-json-jvm-1.11.0.jar
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-core-jvm/1.11.0/kotlinx-serialization-core-jvm-1.11.0.jar
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/2.4.20/kotlin-compiler-embeddable-2.4.20.jar
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.11.0/kotlinx-coroutines-core-jvm-1.11.0.jar
+maplesu_l3: measured legacy Clang CFI (5.10.226-android12-9-o-gb4f7990ee2d5)
+  initCheckSite: 0x02b3a43e29242445 at 0x215f4
+  exitCheckSite: 0x7e04a0fb7ad8bcd5 at 0x2aa1d4
+  preHandler: 0x6d27ac3c3f910100 at 0x2f323c
+  postHandler: 0xae77aa8d3946233d at 0x2f3ac8
+build (maplesu_l3)
+  [c]   jailbreak-providers/root-loader/module/maplesu_l3.c -> out/l3/staging/maplesu_l3.o (35620 bytes)
+  [asm] out/l3/staging/l3_glue.s     -> out/l3/staging/l3_glue.o (2552 bytes)
+  [ld]  ld.lld -r -o out/l3/staging/maplesu_l3.ko (81384 bytes, sha256 e81a65d1b1288005...)
+[G1] layout             PASS  ELF is ET_REL; ELF is AArch64; section headers are 64 bytes; section name table is addressable; section '.text' stays inside the file; section '.gn...
+[G2] PLT sections       PASS  .plt exists exactly once; .plt is PROGBITS; .plt is allocated and executable; .plt carries the kbuild placeholder byte; .init.plt exists exactly on...
+[G3] importability      PASS  no unexpected undefined symbol; all 3 deliberate imports are present (printk, register_kprobe, unregister_kprobe); no compiler-runtime or libc help...
+[G4] cleanup_module     PASS  cleanup_module is defined; cleanup_module lives in a section; cleanup_module lives in executable text; cleanup_module is not in .init.text; cleanup...
+[G5] patch plan         PASS  the L3 image facts were derived; no .ir_spec section; no #maplesu-ir-spec banner anywhere in the file; no kernel virtual address in any allocated s...
+[G6] legacy Clang CFI   FAIL  trap is confined to compiler CFI check/failure handlers -> section=.text offset=0x2028 imm=0x5502 check=(1,0x5000,600) fail=(1,0x38,80)
+[G7] struct shim vs measured instructions/reference PASS  maplesu_kprobe size agrees with measured ABI; maplesu_kprobe.addr agrees with measured ABI; maplesu_kprobe.symbol_name agrees with measured ABI; ma...
+[L3-1] 64-bit callback CFI FAIL  trap is confined to compiler CFI check/failure handlers -> section=.text offset=0x2028 imm=0x5502 check=(1,0x5000,600) fail=(1,0x38,80)
+[L3-2] import set         PASS  the undefined set is exactly the measured three-import set; no fourth import
+[L3-3] no data-path literal PASS  no forbidden string anywhere in the module; 0 "/data/" literals in .rodata; the source names no kernel-image write primitive
+[L3-4] handler is permanent text PASS  cleanup_module implementation is resident; maplesu_l3_pre implementation is resident; maplesu_avc_pre implementation is resident; maplesu_status_re...
+[L3-5] CFI failure trap only FAIL  trap is confined to compiler CFI check/failure handlers -> section=.text offset=0x2028 imm=0x5502 check=(1,0x5000,600) fail=(1,0x38,80)
+[L3-6] cleanup unregisters the kprobe PASS  cleanup_module has a definition in the source; init_module has a definition in the source; init_module registers the gate's kprobe; the registratio...
+[L3-7] ABI v2 constants and image facts PASS  the L3 image facts were derived; the ABI is v2: option 4 is PR_SET_DUMPABLE and its two accepted arg2 values (0 = ARM, 1 = SU) are the ops; the poo...
+[L3-8] no token in printk PASS  the module has at least one printk (the evidence line); no printk argument mentions the token; the ARM evidence line is one of those printks and ca...
+[L3-9] registered symbol name PASS  the source defines MAPLESU_L3_SYMBOL as a string; MAPLESU_L3_SYMBOL is '__arm64_sys_prctl'; the source registers exactly resolver, avc_denied and c...
+[L3-10] ARM enforcing gate PASS  the callback has a definition in the source; ARM requires the permissive window (enforcing == 0); ARM requires the caller to be uid 0; ARM requires...
+[L3-11] prctl callback writes no frame, changes no return PASS  the callback has a definition in the source; MAPLESU_L3_MAGIC is a macro definition; MAPLESU_L3_MAGIC names the ABI's two token arguments (arg3, ar...
+[L3-12] root-subject SELinux data path PASS  MAPLESU_TASK_CRED_OFF equals measured image ABI; MAPLESU_CRED_UID_OFF equals measured image ABI; MAPLESU_CRED_EUID_OFF equals measured image ABI; M...
+ERROR: legacy gates failed: G6, L3-1, L3-5
+RESULT: FAILED
+builderExit=1
+maplesu_l3: measured legacy Clang CFI (5.10.226-android12-9-o-gb4f7990ee2d5)
+  initCheckSite: 0x02b3a43e29242445 at 0x215f4
+  exitCheckSite: 0x7e04a0fb7ad8bcd5 at 0x2aa1d4
+  preHandler: 0x6d27ac3c3f910100 at 0x2f323c
+  postHandler: 0xae77aa8d3946233d at 0x2f3ac8
+build (maplesu_l3)
+  [c]   jailbreak-providers/root-loader/module/maplesu_l3.c -> out/l3/staging/maplesu_l3.o (35620 bytes)
+  [asm] out/l3/staging/l3_glue.s     -> out/l3/staging/l3_glue.o (2552 bytes)
+  [ld]  ld.lld -r -o out/l3/staging/maplesu_l3.ko (81384 bytes, sha256 e81a65d1b1288005...)
+[G1] layout             PASS  ELF is ET_REL; ELF is AArch64; section headers are 64 bytes; section name table is addressable; section '.text' stays inside the file; section '.gn...
+[G2] PLT sections       PASS  .plt exists exactly once; .plt is PROGBITS; .plt is allocated and executable; .plt carries the kbuild placeholder byte; .init.plt exists exactly on...
+[G3] importability      PASS  no unexpected undefined symbol; all 3 deliberate imports are present (printk, register_kprobe, unregister_kprobe); no compiler-runtime or libc help...
+[G4] cleanup_module     PASS  cleanup_module is defined; cleanup_module lives in a section; cleanup_module lives in executable text; cleanup_module is not in .init.text; cleanup...
+[G5] patch plan         PASS  the L3 image facts were derived; no .ir_spec section; no #maplesu-ir-spec banner anywhere in the file; no kernel virtual address in any allocated s...
+[G6] legacy Clang CFI   FAIL  trap is confined to compiler CFI check/failure handlers -> section=.text offset=0x2028 imm=0x5502 check=(1,0x5000,600) fail=(1,0x38,80)
+[G7] struct shim vs measured instructions/reference PASS  maplesu_kprobe size agrees with measured ABI; maplesu_kprobe.addr agrees with measured ABI; maplesu_kprobe.symbol_name agrees with measured ABI; ma...
+[L3-1] 64-bit callback CFI FAIL  trap is confined to compiler CFI check/failure handlers -> section=.text offset=0x2028 imm=0x5502 check=(1,0x5000,600) fail=(1,0x38,80)
+[L3-2] import set         PASS  the undefined set is exactly the measured three-import set; no fourth import
+[L3-3] no data-path literal PASS  no forbidden string anywhere in the module; 0 "/data/" literals in .rodata; the source names no kernel-image write primitive
+[L3-4] handler is permanent text PASS  cleanup_module implementation is resident; maplesu_l3_pre implementation is resident; maplesu_avc_pre implementation is resident; maplesu_status_re...
+[L3-5] CFI failure trap only FAIL  trap is confined to compiler CFI check/failure handlers -> section=.text offset=0x2028 imm=0x5502 check=(1,0x5000,600) fail=(1,0x38,80)
+[L3-6] cleanup unregisters the kprobe PASS  cleanup_module has a definition in the source; init_module has a definition in the source; init_module registers the gate's kprobe; the registratio...
+[L3-7] ABI v2 constants and image facts PASS  the L3 image facts were derived; the ABI is v2: option 4 is PR_SET_DUMPABLE and its two accepted arg2 values (0 = ARM, 1 = SU) are the ops; the poo...
+[L3-8] no token in printk PASS  the module has at least one printk (the evidence line); no printk argument mentions the token; the ARM evidence line is one of those printks and ca...
+[L3-9] registered symbol name PASS  the source defines MAPLESU_L3_SYMBOL as a string; MAPLESU_L3_SYMBOL is '__arm64_sys_prctl'; the source registers exactly resolver, avc_denied and c...
+[L3-10] ARM enforcing gate PASS  the callback has a definition in the source; ARM requires the permissive window (enforcing == 0); ARM requires the caller to be uid 0; ARM requires...
+[L3-11] prctl callback writes no frame, changes no return PASS  the callback has a definition in the source; MAPLESU_L3_MAGIC is a macro definition; MAPLESU_L3_MAGIC names the ABI's two token arguments (arg3, ar...
+[L3-12] root-subject SELinux data path PASS  MAPLESU_TASK_CRED_OFF equals measured image ABI; MAPLESU_CRED_UID_OFF equals measured image ABI; MAPLESU_CRED_EUID_OFF equals measured image ABI; M...
+ERROR: legacy gates failed: G6, L3-1, L3-5
+RESULT: FAILED
+===== out/l3/staging/maplesu_l3.ko =====
+/home/runner/work/_temp/ce9338a6-9de9-4b13-b076-bc6763c46161.sh: line 30: : command not found
+
+out/l3/staging/maplesu_l3.ko:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000001b7c <cleanup_module.cfi>:
+		...
+
+0000000000002000 <__cfi_check.52>:
+    2000: b40001e2     	cbz	x2, 0x203c <__cfi_check.52+0x3c>
+    2004: 39400048     	ldrb	w8, [x2]
+    2008: 7100051f     	cmp	w8, #0x1
+    200c: 5400010d     	b.le	0x202c <__cfi_check.52+0x2c>
+    2010: 7100091f     	cmp	w8, #0x2
+    2014: 54000160     	b.eq	0x2040 <__cfi_check.52+0x40>
+    2018: 71000d1f     	cmp	w8, #0x3
+    201c: 54000160     	b.eq	0x2048 <__cfi_check.52+0x48>
+    2020: 7100111f     	cmp	w8, #0x4
+    2024: 540000a1     	b.ne	0x2038 <__cfi_check.52+0x38>
+    2028: d42aa040     	brk	#0x5502
+    202c: 340000c8     	cbz	w8, 0x2044 <__cfi_check.52+0x44>
+    2030: 7100051f     	cmp	w8, #0x1
+    2034: 540000c0     	b.eq	0x204c <__cfi_check.52+0x4c>
+    2038: d65f03c0     	ret
+    203c: d42aa040     	brk	#0x5502
+    2040: d42aa040     	brk	#0x5502
+    2044: d42aa040     	brk	#0x5502
+    2048: d42aa040     	brk	#0x5502
+    204c: d42aa040     	brk	#0x5502
+
+0000000000002050 <msu_policy_backend_note_error.cfi>:
+    2050: 90000008     	adrp	x8, 0x2000 <__cfi_check.52>
+    2054: 91000108     	add	x8, x8, #0x0
+    2058: c8dffd0a     	ldar	x10, [x8]
+    205c: 340002e0     	cbz	w0, 0x20b8 <msu_policy_backend_note_error.cfi+0x68>
+    2060: d2dff1ab     	mov	x11, #0xff8d00000000    // =280981055471616
+    2064: 2a0003e9     	mov	w9, w0
+    2068: f2ffffeb     	movk	x11, #0xffff, lsl #48
+    206c: aa0b0129     	orr	x9, x9, x11
+
+out/l3/staging/maplesu_l3.ko:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000005000 <__cfi_check>:
+    5000: d2848888     	mov	x8, #0x2444             // =9284
+    5004: f2a52488     	movk	x8, #0x2924, lsl #16
+    5008: f2d487c8     	movk	x8, #0xa43e, lsl #32
+    500c: f2e05668     	movk	x8, #0x2b3, lsl #48
+    5010: eb08001f     	cmp	x0, x8
+    5014: 5400038d     	b.le	0x5084 <__cfi_check+0x84>
+    5018: d29a53e8     	mov	x8, #0xd29f             // =53919
+    501c: f2b11128     	movk	x8, #0x8889, lsl #16
+    5020: f2c3c688     	movk	x8, #0x1e34, lsl #32
+    5024: f2ebab88     	movk	x8, #0x5d5c, lsl #48
+    5028: eb08001f     	cmp	x0, x8
+    502c: 5400062c     	b.gt	0x50f0 <__cfi_check+0xf0>
+    5030: d28488a8     	mov	x8, #0x2445             // =9285
+    5034: f2a52488     	movk	x8, #0x2924, lsl #16
+    5038: f2d487c8     	movk	x8, #0xa43e, lsl #32
+    503c: f2e05668     	movk	x8, #0x2b3, lsl #48
+    5040: eb08001f     	cmp	x0, x8
+    5044: 54000c80     	b.eq	0x51d4 <__cfi_check+0x1d4>
+    5048: d29d0368     	mov	x8, #0xe81b             // =59419
+    504c: f2ac29e8     	movk	x8, #0x614f, lsl #16
+    5050: f2d25f48     	movk	x8, #0x92fa, lsl #32
+    5054: f2e77a88     	movk	x8, #0x3bd4, lsl #48
+    5058: eb08001f     	cmp	x0, x8
+    505c: 540009e0     	b.eq	0x5198 <__cfi_check+0x198>
+    5060: d282fac8     	mov	x8, #0x17d6             // =6102
+    5064: f2a73ba8     	movk	x8, #0x39dd, lsl #16
+    5068: f2cf7aa8     	movk	x8, #0x7bd5, lsl #32
+    506c: f2e8d188     	movk	x8, #0x468c, lsl #48
+    5070: eb08001f     	cmp	x0, x8
+    5074: 54000ca1     	b.ne	0x5208 <__cfi_check+0x208>
+    5078: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    507c: 91000108     	add	x8, x8, #0x0
+    5080: 14000052     	b	0x51c8 <__cfi_check+0x1c8>
+    5084: d2965068     	mov	x8, #0xb283             // =45699
+    5088: f2b98d48     	movk	x8, #0xcc6a, lsl #16
+    508c: f2c3b648     	movk	x8, #0x1db2, lsl #32
+    5090: f2f9eb08     	movk	x8, #0xcf58, lsl #48
+    5094: eb08001f     	cmp	x0, x8
+    5098: 5400056d     	b.le	0x5144 <__cfi_check+0x144>
+    509c: d2965088     	mov	x8, #0xb284             // =45700
+    50a0: f2b98d48     	movk	x8, #0xcc6a, lsl #16
+    50a4: f2c3b648     	movk	x8, #0x1db2, lsl #32
+    50a8: f2f9eb08     	movk	x8, #0xcf58, lsl #48
+    50ac: eb08001f     	cmp	x0, x8
+    50b0: 54000880     	b.eq	0x51c0 <__cfi_check+0x1c0>
+    50b4: d2861868     	mov	x8, #0x30c3             // =12483
+    50b8: f2ad2508     	movk	x8, #0x6928, lsl #16
+    50bc: f2c24648     	movk	x8, #0x1232, lsl #32
+    50c0: f2fccf48     	movk	x8, #0xe67a, lsl #48
+    50c4: eb08001f     	cmp	x0, x8
+    50c8: 54000620     	b.eq	0x518c <__cfi_check+0x18c>
+    50cc: d296b5a8     	mov	x8, #0xb5ad             // =46509
+    50d0: f2af1ca8     	movk	x8, #0x78e5, lsl #16
+    50d4: f2df1788     	movk	x8, #0xf8bc, lsl #32
+    50d8: f2ffeec8     	movk	x8, #0xff76, lsl #48
+    50dc: eb08001f     	cmp	x0, x8
+    50e0: 54000941     	b.ne	0x5208 <__cfi_check+0x208>
+    50e4: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    50e8: 91000108     	add	x8, x8, #0x0
+    50ec: 14000037     	b	0x51c8 <__cfi_check+0x1c8>
+    50f0: d29a5408     	mov	x8, #0xd2a0             // =53920
+    50f4: f2b11128     	movk	x8, #0x8889, lsl #16
+    50f8: f2c3c688     	movk	x8, #0x1e34, lsl #32
+    50fc: f2ebab88     	movk	x8, #0x5d5c, lsl #48
+    5100: eb08001f     	cmp	x0, x8
+    5104: 54000760     	b.eq	0x51f0 <__cfi_check+0x1f0>
+    5108: d2802008     	mov	x8, #0x100              // =256
+    510c: f2a7f228     	movk	x8, #0x3f91, lsl #16
+    5110: f2d58788     	movk	x8, #0xac3c, lsl #32
+    5114: f2eda4e8     	movk	x8, #0x6d27, lsl #48
+    5118: eb08001f     	cmp	x0, x8
+    511c: 54000440     	b.eq	0x51a4 <__cfi_check+0x1a4>
+    5120: d2979aa8     	mov	x8, #0xbcd5             // =48341
+    5124: f2af5b08     	movk	x8, #0x7ad8, lsl #16
+    5128: f2d41f68     	movk	x8, #0xa0fb, lsl #32
+    512c: f2efc088     	movk	x8, #0x7e04, lsl #48
+    5130: eb08001f     	cmp	x0, x8
+    5134: 540006a1     	b.ne	0x5208 <__cfi_check+0x208>
+    5138: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    513c: 91000108     	add	x8, x8, #0x0
+    5140: 14000027     	b	0x51dc <__cfi_check+0x1dc>
+    5144: d28f3348     	mov	x8, #0x799a             // =31130
+    5148: f2b42388     	movk	x8, #0xa11c, lsl #16
+    514c: f2df6608     	movk	x8, #0xfb30, lsl #32
+    5150: f2f0a828     	movk	x8, #0x8541, lsl #48
+    5154: eb08001f     	cmp	x0, x8
+    5158: 54000140     	b.eq	0x5180 <__cfi_check+0x180>
+    515c: d28d60a8     	mov	x8, #0x6b05             // =27397
+    5160: f2a42c48     	movk	x8, #0x2162, lsl #16
+    5164: f2c23d68     	movk	x8, #0x11eb, lsl #32
+    5168: f2f0d728     	movk	x8, #0x86b9, lsl #48
+    516c: eb08001f     	cmp	x0, x8
+    5170: 540004c1     	b.ne	0x5208 <__cfi_check+0x208>
+    5174: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    5178: 91000108     	add	x8, x8, #0x0
+    517c: 14000013     	b	0x51c8 <__cfi_check+0x1c8>
+    5180: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    5184: 91000108     	add	x8, x8, #0x0
+    5188: 14000010     	b	0x51c8 <__cfi_check+0x1c8>
+    518c: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    5190: 91000108     	add	x8, x8, #0x0
+    5194: 1400000d     	b	0x51c8 <__cfi_check+0x1c8>
+    5198: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    519c: 91000108     	add	x8, x8, #0x0
+    51a0: 1400000a     	b	0x51c8 <__cfi_check+0x1c8>
+    51a4: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    51a8: 91000108     	add	x8, x8, #0x0
+    51ac: cb080028     	sub	x8, x1, x8
+    51b0: 93c80908     	ror	x8, x8, #0x2
+    51b4: f100151f     	cmp	x8, #0x5
+    51b8: 54000443     	b.lo	0x5240 <__cfi_check+0x240>
+    51bc: 14000013     	b	0x5208 <__cfi_check+0x208>
+    51c0: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    51c4: 91000108     	add	x8, x8, #0x0
+    51c8: eb08003f     	cmp	x1, x8
+    51cc: 540003a0     	b.eq	0x5240 <__cfi_check+0x240>
+    51d0: 1400000e     	b	0x5208 <__cfi_check+0x208>
+    51d4: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    51d8: 91000108     	add	x8, x8, #0x0
+    51dc: cb080028     	sub	x8, x1, x8
+    51e0: 93c80908     	ror	x8, x8, #0x2
+    51e4: f1000d1f     	cmp	x8, #0x3
+    51e8: 540002c3     	b.lo	0x5240 <__cfi_check+0x240>
+    51ec: 14000007     	b	0x5208 <__cfi_check+0x208>
+    51f0: 90000008     	adrp	x8, 0x5000 <__cfi_check>
+    51f4: 91000108     	add	x8, x8, #0x0
+    51f8: cb080028     	sub	x8, x1, x8
+    51fc: 93c80908     	ror	x8, x8, #0x2
+    5200: f100311f     	cmp	x8, #0xc
+    5204: 540001e3     	b.lo	0x5240 <__cfi_check+0x240>
+    5208: b40001e2     	cbz	x2, 0x5244 <__cfi_check+0x244>
+    520c: 39400048     	ldrb	w8, [x2]
+    5210: 7100051f     	cmp	w8, #0x1
+    5214: 5400010d     	b.le	0x5234 <__cfi_check+0x234>
+    5218: 7100091f     	cmp	w8, #0x2
+    521c: 54000160     	b.eq	0x5248 <__cfi_check+0x248>
+    5220: 71000d1f     	cmp	w8, #0x3
+    5224: 54000140     	b.eq	0x524c <__cfi_check+0x24c>
+    5228: 7100111f     	cmp	w8, #0x4
+    522c: 540000a1     	b.ne	0x5240 <__cfi_check+0x240>
+    5230: d42aa040     	brk	#0x5502
+    5234: 340000e8     	cbz	w8, 0x5250 <__cfi_check+0x250>
+    5238: 7100051f     	cmp	w8, #0x1
+    523c: 540000c0     	b.eq	0x5254 <__cfi_check+0x254>
+    5240: d65f03c0     	ret
+    5244: d42aa040     	brk	#0x5502
+    5248: d42aa040     	brk	#0x5502
+    524c: d42aa040     	brk	#0x5502
+    5250: d42aa040     	brk	#0x5502
+    5254: d42aa040     	brk	#0x5502
+
+0000000000005258 <msu_policy_dispatch.cfi>:
+    5258: d503233f     	paciasp
+    525c: d100c3ff     	sub	sp, sp, #0x30
+===== out/l3/cfi-check.elf =====
+/home/runner/work/_temp/ce9338a6-9de9-4b13-b076-bc6763c46161.sh: line 30: : command not found
+
+out/l3/cfi-check.elf:	file format elf64-littleaarch64
+/usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump: warning: 'out/l3/cfi-check.elf': no section overlaps the range [0x1fc0,0x2070) specified by --start-address/--stop-address
+
+out/l3/cfi-check.elf:	file format elf64-littleaarch64
+/usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump: warning: 'out/l3/cfi-check.elf': no section overlaps the range [0x5000,0x5260) specified by --start-address/--stop-address
