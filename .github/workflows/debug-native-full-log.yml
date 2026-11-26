@@ -2,7 +2,7 @@ name: debug-native-full-log
 
 on:
   workflow_run:
-    workflows: ["build-bluewhale-native"]
+    workflows: ["build-bluewhale-native", "debug-legacy-l3"]
     types: [completed]
   push:
     paths:
