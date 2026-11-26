@@ -1,1 +1,1 @@
-run 2 after sdkmanager fix
+run 3: 32737 + BlueWhale cert pin
