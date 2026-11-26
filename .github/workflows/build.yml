@@ -4,13 +4,20 @@ name: build-bluewhale
 # 构建日志通过 Contents API 写回 ci-logs/last-build.md。
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    tags:
-      - "bw-*"
-    # 日志写回本身会以 GITHUB_TOKEN 提交一次；不排除它就会自己触发自己，无限连锁。
-    paths-ignore:
-      - "ci-logs/**"
+    inputs:
+      # P1-3：目标版本显式声明，避免靠人手删行决定发 32737 还是 32738
+      target:
+        description: "32737 = 只含 3.20.1；32738 = 再加 3.21.0 第一步（更新数据层）"
+        type: choice
+        options: ["32737", "32738"]
+        default: "32737"
+      publish:
+        # 默认不发布：本 workflow 复制的是上游预编译 libksud，native 未重编前出的包不能当更新源。
+        # 只有 manual_dispatch 且显式勾选才会建 Release。
+        description: "是否发布 Release（native 未通过验收前保持 false）"
+        type: boolean
+        default: false
+  # 不再监听 push：推 main（含 CI 日志写回）不应该自动产出一个旧载荷的未签名包。
 
 permissions:
   contents: write
@@ -31,9 +38,11 @@ jobs:
         run: |
           set -euo pipefail
           exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
-          # 固定到 3.19.0 使用的上游提交，避免 main 漂移导致补丁锚点失效或行为变化。
+          # 钉 commit：补丁锚点基于这一版，跟 main 会漂。
+          UPSTREAM_COMMIT=ff3aa44850ea22717fa811a17831155a85f43445
+          echo "upstream commit=$UPSTREAM_COMMIT"
           curl -sSL -o /tmp/maplesu.tar.gz \
-            https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/ff3aa44850ea22717fa811a17831155a85f43445
+            "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/ff3aa44850ea22717fa811a17831155a85f43445"
           mkdir -p src
           tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
           echo "上游体积: $(du -sh src | cut -f1)"
@@ -42,10 +51,29 @@ jobs:
         run: |
           set -euo pipefail
           exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
+          # 6 支，顺序不能变。注意 patch_brand_skin_tail.py 内部已经 runpy 串了
+          # patch_brand_text_sweep / patch_kill_effects / patch_bluewhale_release 三支，
+          # 这里再手工跑一次会重复执行（重复改文案、重复推版本号），不要再加回去。
           python3 overlay/apply_bluewhale.py src
           python3 overlay/patch_runtime_targets.py src
-          python3 overlay/patch_brand_skin_tail.py src
+          python3 overlay/patch_brand_skin_tail.py src   # 内含 text_sweep / kill_effects / release
           python3 overlay/patch_bluewhale_320.py src
+          python3 overlay/patch_bluewhale_321.py src
+
+      - name: 应用 3.21.0 第一步（仅 target=32738）
+        if: ${{ inputs.target == '32738' }}
+        run: |
+          set -euo pipefail
+          exec > >(tee -a "$GITHUB_WORKSPACE/build.log") 2>&1
+          python3 overlay/patch_bluewhale_3210.py src
+
+      - name: 打印目标版本
+        run: |
+          set -euo pipefail
+          TARGET="${{ inputs.target }}"
+          echo "target=$TARGET"
+          grep -nE 'versionCode|versionName' src/manager/build.gradle.kts | head -4
+          grep -nE 'versionCode|versionName' src/manager/build.gradle.kts | head -4 >> "$GITHUB_WORKSPACE/build.log"
 
       - uses: actions/setup-java@v4
         with:
@@ -106,6 +134,15 @@ jobs:
             -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
             :manager:assembleRelease
 
+      - name: 生成构建回执（解压后统计 native 载荷包名）
+        if: always()
+        run: |
+          set -uo pipefail
+          APK=$(ls src/manager/build/outputs/apk/release/*.apk 2>/dev/null | head -1 || true)
+          if [ -z "$APK" ]; then echo "没有产物，跳过回执"; exit 0; fi
+          mkdir -p out
+          python3 tools/bluewhale_receipt.py "$APK" -o out/build-receipt.json || true
+
       - name: 收集产物
         if: always()
         run: |
@@ -165,8 +202,8 @@ jobs:
           curl -s -X PUT -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
             "$API" -d @/tmp/payload.json | head -c 300
 
-      - name: 发布 APK（成功才发）
-        if: success()
+      - name: 发布 APK（仅手动勾选 publish 时）
+        if: ${{ success() && inputs.publish }}
         uses: softprops/action-gh-release@v2
         with:
           tag_name: bw-${{ github.run_number }}
@@ -174,7 +211,7 @@ jobs:
           body: |
             蓝色大肥鱼 · MapleSU 基座构建
             - 包名 com.blue.whale.mask
-            - 版本以包内 BuildConfig 为准（3.20 线为 3.20.0-bw / 32736）
+            - 版本 ${{ inputs.target }}
             - 未签名包，本地用 bluewhale-release.p12 签名后安装
           files: |
             out/*.apk
