@@ -1,1 +1,1 @@
-run 6: cmake aliases + jb log
+run 7: prefetch extractor deps
