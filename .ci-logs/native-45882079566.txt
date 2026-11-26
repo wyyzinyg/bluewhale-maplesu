@@ -1,0 +1,1417 @@
+run=45882079566 conclusion=failure
+== files ==
+artifact/bluewhale-native-8/tmp/jni.log
+artifact/bluewhale-native-8/tmp/payload-gate.log
+artifact/bluewhale-native-8/tmp/userland.log
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/out/gradle.log
+Fetching distribution.
+Downloading https://services.gradle.org/distributions/gradle-9.8.1-bin.zip
+..............10%..............20%...............30%..............40%...............50%..............60%...............70%..............80%...............90%..............100%
+
+Welcome to Gradle 9.8.1!
+
+Here are the highlights of this release:
+ - Java 27 support
+ - Maven mirror settings reuse
+ - Linked problem locations in build output
+
+For more details see https://docs.gradle.org/9.8.1/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :libsu-service
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/libsu-service/build.gradle.kts:22:39: 'fun RegisteringDomainObjectDelegateProviderWithAction<out TaskContainer, Task>.provideDelegate(receiver: Any?, property: KProperty<*>): ExistingDomainObjectDelegate<TaskProvider<Task>>' is deprecated. Use 'val task = tasks.register(name) { }' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/libsu-service/build.gradle.kts:22:39: 'fun <T : Any, C : NamedDomainObjectContainer<T>> C.registering(action: T.() -> Unit): RegisteringDomainObjectDelegateProviderWithAction<out C, T>' is deprecated. Use 'val element = register(name) { }' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/libsu-service/build.gradle.kts:22:39: 'fun <T> ExistingDomainObjectDelegate<out T>.getValue(receiver: Any?, property: KProperty<*>): T' is deprecated. Use the named() API instead. See the Gradle 9.6 upgrading guide.
+
+> Configure project :manager
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:208:29: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:209:29: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:216:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:220:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:222:29: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:223:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:228:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:229:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:849:39: 'fun setSrcDirs(srcDirs: Iterable<*>): Any' is deprecated. Use `directories` mutable set instead.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:1127:37: 'fun <U : Task> RegisteringDomainObjectDelegateProviderWithTypeAndAction<out TaskContainer, U>.provideDelegate(receiver: Any?, property: KProperty<*>): ExistingDomainObjectDelegate<TaskProvider<U>>' is deprecated. Use 'val task = tasks.register<Type>(name) { }' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:1127:37: 'fun <T : Any, C : PolymorphicDomainObjectContainer<T>, U : T> C.registering(type: KClass<U>, action: U.() -> Unit): RegisteringDomainObjectDelegateProviderWithTypeAndAction<out C, U>' is deprecated. Use 'val element = register<Type>(name) { }' instead. See the Gradle 9.6 upgrading guide.
+w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:1127:37: 'fun <T> ExistingDomainObjectDelegate<out T>.getValue(receiver: Any?, property: KProperty<*>): T' is deprecated. Use the named() API instead. See the Gradle 9.6 upgrading guide.
+
+> Task :libsu-service:verifyOfficialTrampoline
+> Task :libsu-service:preBuild
+> Task :libsu-service:preReleaseBuild
+> Task :libsu-service:mergeReleaseJniLibFolders
+> Task :libsu-service:mergeReleaseNativeLibs NO-SOURCE
+> Task :libsu-service:copyReleaseJniLibsProjectOnly
+
+> Task :manager:checkProviderTracelessInvariants
+TRACELESS INVARIANTS OK checks=26 points=19
+
+> Task :installer-core:compileJava
+> Task :installer-core:processResources NO-SOURCE
+> Task :installer-core:classes
+> Task :installer-core:jar
+> Task :libsu-service:generateReleaseResources
+> Task :libsu-service:packageReleaseResources
+> Task :libsu-service:processReleaseNavigationResources
+> Task :libsu-service:compileReleaseAidl
+> Task :image-core:compileJava
+> Task :image-core:processResources
+> Task :image-core:classes
+> Task :image-core:jar
+> Task :libsu-service:javaPreCompileRelease
+> Task :libsu-service:extractReleaseSupportedLocales
+> Task :libsu-service:prepareReleaseArtProfile
+> Task :libsu-service:mapReleaseSourceSetPaths
+> Task :libsu-service:parseReleaseLocalResources
+> Task :libsu-service:compileReleaseLibraryResources
+> Task :libsu-service:writeReleaseAarMetadata
+> Task :libsu-service:extractDeepLinksRelease
+> Task :libsu-service:generateReleaseAssets UP-TO-DATE
+> Task :libsu-service:generateReleaseRFile
+> Task :libsu-service:mergeReleaseAssets
+> Task :libsu-service:compileReleaseKotlin NO-SOURCE
+> Task :libsu-service:processReleaseManifest
+
+> Task :libsu-service:compileReleaseJavaWithJavac
+Java compiler version 21 has deprecated support for compiling with source/target version 8.
+Try one of the following options:
+    1. [Recommended] Use Java toolchain with a lower language version
+    2. Set a higher source/target version
+    3. Use a lower version of the JDK running the build (if you're not using Java toolchain)
+For more details on how to configure these settings, see https://developer.android.com/build/jdks.
+To suppress this warning, set android.javaCompile.suppressSourceTargetDeprecationWarning=true in gradle.properties.
+Add android.sync.suppressAgpWarnings=JAVA_COMPILE_DEPRECATED_SOURCE_TARGET to the gradle.properties file to suppress this warning.
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+3 warnings
+
+> Task :libsu-service:mergeReleaseGeneratedProguardFiles
+> Task :libsu-service:exportReleaseConsumerProguardFiles
+> Task :libsu-service:processReleaseJavaRes NO-SOURCE
+> Task :libsu-service:extractProguardFiles
+> Task :libsu-service:bundleLibRuntimeToJarRelease
+> Task :libsu-service:bundleLibCompileToJarRelease
+> Task :libsu-service:generateReleaseLintVitalModel
+> Task :libsu-service:createFullJarRelease
+> Task :libsu-service:prepareLintJarForPublish
+> Task :libsu-service:generateReleaseLintModel
+> Task :libsu-service:checkReleaseAarMetadata
+> Task :libsu-service:extractDeepLinksForAarRelease
+> Task :libsu-service:extractReleaseAnnotations
+> Task :libsu-service:mergeReleaseConsumerProguardFiles
+> Task :libsu-service:writeReleaseLintModelMetadata
+> Task :libsu-service:mergeReleaseJavaResource
+> Task :libsu-service:syncReleaseLibJars
+> Task :libsu-service:bundleReleaseLocalLintAar
+> Task :libsu-service:lintVitalAnalyzeRelease
+> Task :manager:buildJailbreakProviders
+MAPLESU: module build failed for android12-5.10; keeping its stock payload
+MAPLESU: module build failed for android13-5.15; keeping its stock payload
+MAPLESU: per-KMI modules for android15-6.6, android15-6.6, android14-6.1, android16-6.12, android17-6.18
+{"exitCode": 1, "inputsStable": true, "deviceExecuted": false, "managerPackaged": false, "targets": ["maplesu-root-consumer", "maplesu-ghostlock-adapter", "maplesu-dirtyfrag-native", "maplesu-dirtyfrag-bootstrap"]}
+
+> Task :manager:buildJailbreakProviders FAILED
+
+[Incubating] Problems report is available at: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':manager:buildJailbreakProviders' (registered in build file 'manager/build.gradle.kts').
+> Process 'command '/usr/bin/python3'' finished with non-zero exit value 1
+
+* Try:
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':manager:buildJailbreakProviders' (registered in build file 'manager/build.gradle.kts').
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.lambda$doExecute$1(DefaultTaskNodeExecutor.java:367)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.doExecute(DefaultTaskNodeExecutor.java:365)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeTrackingTaskIdentity(DefaultTaskNodeExecutor.java:332)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeFinalizingProperties(DefaultTaskNodeExecutor.java:318)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeSkippingWithNoActions(DefaultTaskNodeExecutor.java:289)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeSkippingOnlyIf(DefaultTaskNodeExecutor.java:272)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeCatchingFailures(DefaultTaskNodeExecutor.java:228)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeWithFallbackOperationId(DefaultTaskNodeExecutor.java:197)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeWithLifecycle(DefaultTaskNodeExecutor.java:171)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.access$000(DefaultTaskNodeExecutor.java:67)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor$1.run(DefaultTaskNodeExecutor.java:136)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:30)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:27)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:48)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.execute(DefaultTaskNodeExecutor.java:133)
+	at org.gradle.execution.plan.LocalTaskNode.execute(LocalTaskNode.java:229)
+	at org.gradle.execution.DefaultBuildWorkExecutor.lambda$executePlan$0(DefaultBuildWorkExecutor.java:153)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.lambda$execute$0(DefaultPlanExecutor.java:476)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:475)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:392)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:65)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+Caused by: org.gradle.process.ProcessExecutionException: Process 'command '/usr/bin/python3'' finished with non-zero exit value 1
+	at org.gradle.process.internal.DefaultExecHandle$ExecResultImpl.assertNormalExitValue(DefaultExecHandle.java:461)
+	at org.gradle.process.internal.DefaultExecAction.execute(DefaultExecAction.java:57)
+	at org.gradle.api.tasks.AbstractExecTask.exec(AbstractExecTask.java:82)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:268)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:30)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:27)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:48)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:253)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:236)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:219)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:185)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:167)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:47)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:137)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:134)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:134)
+	at org.gradle.internal.execution.steps.ExecuteStep$Mutable.execute(ExecuteStep.java:80)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:51)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:29)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:39)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:42)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:24)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:28)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:76)
+	at org.gradle.internal.Either$Right.fold(Either.java:176)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:74)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:49)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:70)
+	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:32)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:37)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:63)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:34)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:79)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:65)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:105)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.execute(ValidateStep.java:65)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.executeMutable(CaptureMutableStateBeforeExecutionStep.java:86)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:65)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:45)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeWithNonEmptySources(SkipEmptyMutableWorkStep.java:210)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:85)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:53)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:77)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:43)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$executeMutable$0(AssignMutableWorkspaceStep.java:34)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:314)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:30)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:21)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:56)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:38)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:68)
+	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.doExecute(DefaultTaskNodeExecutor.java:364)
+	... 25 more
+
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 1m 23s
+44 actionable tasks: 44 executed
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/build.log
+-- The C compiler identification is Clang 21.0.0
+-- The CXX compiler identification is Clang 21.0.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: /usr/bin/python3 (found version "3.14.4") found components: Interpreter 
+-- The ASM compiler identification is Clang with GNU-like command-line
+-- Found assembler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+-- dirtyfrag: android15-6.6 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/maplesu_root.ko
+-- dirtyfrag(product): android14-6.1 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android14-6.1.ko
+-- dirtyfrag(product): android15-6.6 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android15-6.6.ko
+-- dirtyfrag(product): android16-6.12 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android16-6.12.ko
+-- dirtyfrag(product): android17-6.18 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android17-6.18.ko
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/build
+[1/39] Building C object lease/CMakeFiles/maplesu-root-consumer.dir/src/lease_contract.c.o
+[2/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/address_space.cpp.o
+[3/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/race/pi_race.cpp.o
+[4/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/profile/entry.cpp.o
+[5/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/heap_context.cpp.o
+[6/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/route_controller.cpp.o
+[7/39] Building CXX object lease/CMakeFiles/maplesu-root-consumer.dir/src/root_consumer.cpp.o
+[8/39] Linking CXX executable lease/libmaplesu_root_consumer.so
+[9/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/route_middleware.cpp.o
+[10/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/race/threads.cpp.o
+[11/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/tcp_zerocopy_route.cpp.o
+[12/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/select_stack_route.cpp.o
+[13/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/payload_builder.cpp.o
+[14/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/profile/binary.cpp.o
+[15/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/multicast_waiter_route.cpp.o
+[16/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/runtime_config.cpp.o
+[17/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/handoff_probe.cpp.o
+[18/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/exploit_session.cpp.o
+[19/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/victim_context.cpp.o
+[20/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/util.cpp.o
+[21/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/backend/cve_2026_43499_backend.cpp.o
+[22/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/run_state.cpp.o
+[23/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/native_resource.cpp.o
+[24/39] Building C object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/__/lease/src/lease_contract.c.o
+[25/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/victim_process.cpp.o
+[26/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/main.cpp.o
+[27/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/maplesu-overlay/src/core/attack/ops.cpp.o
+[28/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/maplesu-overlay/src/core/main.cpp.o
+[29/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/frontend.cpp.o
+[30/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-bootstrap.dir/__/lease/src/lease_contract.c.o
+[31/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/handoff.cpp.o
+[32/39] Linking CXX executable ghostlock/libmaplesu_ghostlock_provider.so
+[33/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-bootstrap.dir/adapter/bootstrap.c.o
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:3812:13: warning: unused function 'handover_sha256_hex' [-Wunused-function]
+ 3812 | static void handover_sha256_hex(const unsigned char digest[32], char out[HANDOVER_HEX + 1]) {
+      |             ^~~~~~~~~~~~~~~~~~~
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:4110:12: warning: unused function 'handover_file_contains' [-Wunused-function]
+ 4110 | static int handover_file_contains(const char *path, const char *needle) {
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:4171:12: warning: unused function 'handover_wait_for_carrier' [-Wunused-function]
+ 4171 | static int handover_wait_for_carrier(int ultra, const char *attempt, const char *boot) {
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.
+[34/39] Linking C executable jailbreak-product/libmaplesu_dirtyfrag_bootstrap.so
+[35/39] Generating product-stage/splicehelper
+[36/39] Building ASM object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/libcxx.S.o
+[37/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/elf_parser.c.o
+[38/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/exp.c.o
+[39/39] Linking C executable jailbreak-product/libdfroot.so
+   Compiling libc v0.2.189
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.25
+   Compiling quote v1.0.47
+   Compiling find-msvc-tools v0.1.12
+   Compiling anyhow v1.0.104
+error[E0463]: can't find crate for `core`
+  |
+  = note: the `aarch64-linux-android` target may not be installed
+  = help: consider downloading the target with `rustup target add aarch64-linux-android`
+
+   Compiling shlex v2.0.1
+For more information about this error, try `rustc --explain E0463`.
+error: could not compile `libc` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+Traceback (most recent call last):
+  File "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/build_extractor.py", line 93, in <module>
+    build(args.ndk.resolve(), args.output.resolve())
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/build_extractor.py", line 67, in build
+    subprocess.run(command, env=env, check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/home/runner/.cargo/bin/cargo', '+stable', 'build', '--offline', '--locked', '--release', '--target', 'aarch64-linux-android', '--target-dir', '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/extractor/cargo', '--manifest-path', '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native/Cargo.toml']' returned non-zero exit status 101.
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android12-5.10_kernelsu.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android12-5.10
+   ddk:      ghcr.io/ylarod/ddk-min:android12-5.10-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android12-5.10 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android12-5.10 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 0
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/core/init.o
+  CC [M]  /out/feature/kernel_umount.o
+  CC [M]  /out/feature/module_blacklist.o
+  CC [M]  /out/feature/sulog.o
+  CC [M]  /out/feature/sucompat.o
+  CC [M]  /out/hook/lsm_hook.o
+  CC [M]  /out/hook/setuid_hook.o
+  CC [M]  /out/hook/syscall_event_bridge.o
+  CC [M]  /out/hook/syscall_hook_manager.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/tp_marker.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/hook/arm64/syscall_hook.o
+  CC [M]  /out/infra/file_wrapper.o
+  CC [M]  /out/infra/event_queue.o
+  CC [M]  /out/infra/seccomp_cache.o
+  CC [M]  /out/infra/su_mount_ns.o
+  CC [M]  /out/infra/symbol_resolver.o
+  CC [M]  /out/manager/app_lock.o
+  CC [M]  /out/manager/stealth.o
+  CC [M]  /out/manager/apk_sign.o
+  CC [M]  /out/manager/pkg_observer.o
+  CC [M]  /out/manager/throne_tracker.o
+  CC [M]  /out/policy/allowlist.o
+  CC [M]  /out/policy/app_profile.o
+  CC [M]  /out/policy/feature.o
+  CC [M]  /out/runtime/boot_event.o
+  CC [M]  /out/runtime/ksud_integration.o
+  CC [M]  /out/infra/btf_parser.o
+  CC [M]  /out/selinux/inode.o
+  CC [M]  /out/selinux/selinux.o
+  CC [M]  /out/selinux/rules.o
+  CC [M]  /out/selinux/sepolicy.o
+  CC [M]  /out/sulog/event.o
+  CC [M]  /out/sulog/fd.o
+  CC [M]  /out/supercall/dispatch.o
+  CC [M]  /out/supercall/perm.o
+  CC [M]  /out/supercall/supercall.o
+  CC [M]  /out/feature/adb_root.o
+  CC [M]  /out/feature/selinux_hide.o
+  CC [M]  /out/feature/shell_su_adb_only.o
+  CC [M]  /out/preinit/preinit.o
+  RUNNER  /out/preinit/runner.elf
+  AS [M]  /out/preinit/blob.o
+  AR [M]  /out/kernelsu.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 0
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  LTO [M] /out/kernelsu.lto.o
+  MODPOST /out/Module.symvers
+  CC [M]  /out/kernelsu.mod.o
+  LD [M]  /out/kernelsu.ko
+size=8153448 sha256=d77f00d53f007be6b3755ea79c5123cdaba6fb6018f825bb94b8015255ff5975
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android12-5.10_kernelsu.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android12-5.10_maplesu_vr.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android12-5.10
+   ddk:      ghcr.io/ylarod/ddk-min:android12-5.10-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android12-5.10 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android12-5.10 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 0
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/vr_companion.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/infra/symbol_resolver.o
+  AR [M]  /out/maplesu_vr.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 0
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  LTO [M] /out/maplesu_vr.lto.o
+  MODPOST /out/Module.symvers
+  CC [M]  /out/maplesu_vr.mod.o
+  LD [M]  /out/maplesu_vr.ko
+size=626400 sha256=9ef4bb688a0108ff8b8507f45ba5de126c69e1b032e39aa9a4b80c42e8b8fe2e
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android12-5.10_maplesu_vr.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android13-5.15_kernelsu.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android13-5.15
+   ddk:      ghcr.io/ylarod/ddk-min:android13-5.15-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android13-5.15 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android13-5.15 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/core/init.o
+  CC [M]  /out/feature/kernel_umount.o
+  CC [M]  /out/feature/module_blacklist.o
+  CC [M]  /out/feature/sulog.o
+  CC [M]  /out/feature/sucompat.o
+  CC [M]  /out/hook/lsm_hook.o
+  CC [M]  /out/hook/setuid_hook.o
+  CC [M]  /out/hook/syscall_event_bridge.o
+  CC [M]  /out/hook/syscall_hook_manager.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/tp_marker.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/hook/arm64/syscall_hook.o
+  CC [M]  /out/infra/file_wrapper.o
+  CC [M]  /out/infra/event_queue.o
+  CC [M]  /out/infra/seccomp_cache.o
+  CC [M]  /out/infra/su_mount_ns.o
+  CC [M]  /out/infra/symbol_resolver.o
+  CC [M]  /out/manager/app_lock.o
+  CC [M]  /out/manager/stealth.o
+  CC [M]  /out/manager/apk_sign.o
+  CC [M]  /out/manager/pkg_observer.o
+  CC [M]  /out/manager/throne_tracker.o
+  CC [M]  /out/policy/allowlist.o
+  CC [M]  /out/policy/app_profile.o
+  CC [M]  /out/policy/feature.o
+  CC [M]  /out/runtime/boot_event.o
+  CC [M]  /out/runtime/ksud_integration.o
+  CC [M]  /out/infra/btf_parser.o
+  CC [M]  /out/selinux/inode.o
+  CC [M]  /out/selinux/selinux.o
+  CC [M]  /out/selinux/rules.o
+  CC [M]  /out/selinux/sepolicy.o
+  CC [M]  /out/sulog/event.o
+  CC [M]  /out/sulog/fd.o
+  CC [M]  /out/supercall/dispatch.o
+  CC [M]  /out/supercall/perm.o
+  CC [M]  /out/supercall/supercall.o
+  CC [M]  /out/feature/adb_root.o
+  CC [M]  /out/feature/selinux_hide.o
+  CC [M]  /out/feature/shell_su_adb_only.o
+  CC [M]  /out/preinit/preinit.o
+  RUNNER  /out/preinit/runner.elf
+  AS [M]  /out/preinit/blob.o
+  AR [M]  /out/kernelsu.o
+  LTO [M] /out/kernelsu.lto.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/kernelsu.mod.o
+  LD [M]  /out/kernelsu.ko
+  BTF [M] /out/kernelsu.ko
+size=8302264 sha256=0ee9bc8122713ef493982d9326f205be463eb246b011d335adb463dc750475e3
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android13-5.15_kernelsu.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android13-5.15_maplesu_vr.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android13-5.15
+   ddk:      ghcr.io/ylarod/ddk-min:android13-5.15-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android13-5.15 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android13-5.15 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/vr_companion.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/infra/symbol_resolver.o
+  AR [M]  /out/maplesu_vr.o
+  LTO [M] /out/maplesu_vr.lto.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/maplesu_vr.mod.o
+  LD [M]  /out/maplesu_vr.ko
+  BTF [M] /out/maplesu_vr.ko
+size=635984 sha256=f0654029a769dc9e095267108dcef09f0977569f1afdabff6d31b643d20b9542
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android13-5.15_maplesu_vr.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android14-6.1_kernelsu.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android14-6.1
+   ddk:      ghcr.io/ylarod/ddk-min:android14-6.1-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android14-6.1 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android14-6.1 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/core/init.o
+  CC [M]  /out/feature/kernel_umount.o
+  CC [M]  /out/feature/module_blacklist.o
+  CC [M]  /out/feature/sulog.o
+  CC [M]  /out/feature/sucompat.o
+  CC [M]  /out/hook/lsm_hook.o
+  CC [M]  /out/hook/setuid_hook.o
+  CC [M]  /out/hook/syscall_event_bridge.o
+  CC [M]  /out/hook/syscall_hook_manager.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/tp_marker.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/hook/arm64/syscall_hook.o
+  CC [M]  /out/infra/file_wrapper.o
+  CC [M]  /out/infra/event_queue.o
+  CC [M]  /out/infra/seccomp_cache.o
+  CC [M]  /out/infra/su_mount_ns.o
+  CC [M]  /out/infra/symbol_resolver.o
+  CC [M]  /out/manager/app_lock.o
+  CC [M]  /out/manager/stealth.o
+  CC [M]  /out/manager/apk_sign.o
+  CC [M]  /out/manager/pkg_observer.o
+  CC [M]  /out/manager/throne_tracker.o
+  CC [M]  /out/policy/allowlist.o
+  CC [M]  /out/policy/app_profile.o
+  CC [M]  /out/policy/feature.o
+  CC [M]  /out/runtime/boot_event.o
+  CC [M]  /out/runtime/ksud_integration.o
+  CC [M]  /out/infra/btf_parser.o
+  CC [M]  /out/selinux/inode.o
+  CC [M]  /out/selinux/selinux.o
+  CC [M]  /out/selinux/rules.o
+  CC [M]  /out/selinux/sepolicy.o
+  CC [M]  /out/sulog/event.o
+  CC [M]  /out/sulog/fd.o
+  CC [M]  /out/supercall/dispatch.o
+  CC [M]  /out/supercall/perm.o
+  CC [M]  /out/supercall/supercall.o
+  CC [M]  /out/feature/adb_root.o
+  CC [M]  /out/feature/selinux_hide.o
+  CC [M]  /out/feature/shell_su_adb_only.o
+  CC [M]  /out/preinit/preinit.o
+  RUNNER  /out/preinit/runner.elf
+  AS [M]  /out/preinit/blob.o
+  LD [M]  /out/kernelsu.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/kernelsu.mod.o
+  LD [M]  /out/kernelsu.ko
+  BTF [M] /out/kernelsu.ko
+size=6999960 sha256=ac102cd837659cb990be9664a28986597f4e7b1ac2def60708be3f6e43d52985
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android14-6.1_kernelsu.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android14-6.1_maplesu_vr.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android14-6.1
+   ddk:      ghcr.io/ylarod/ddk-min:android14-6.1-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android14-6.1 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android14-6.1 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/vr_companion.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/infra/symbol_resolver.o
+  LD [M]  /out/maplesu_vr.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/maplesu_vr.mod.o
+  LD [M]  /out/maplesu_vr.ko
+  BTF [M] /out/maplesu_vr.ko
+size=552824 sha256=f71110058d45de5c5387670cc014186d237074b09d23a3195a0cc41b351f64bc
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android14-6.1_maplesu_vr.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android15-6.6_kernelsu.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android15-6.6
+   ddk:      ghcr.io/ylarod/ddk-min:android15-6.6-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android15-6.6 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android15-6.6 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+make: Entering directory '/opt/ddk/kdir/android15-6.6'
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/core/init.o
+  CC [M]  /out/feature/kernel_umount.o
+  CC [M]  /out/feature/module_blacklist.o
+  CC [M]  /out/feature/sulog.o
+  CC [M]  /out/feature/sucompat.o
+  CC [M]  /out/hook/lsm_hook.o
+  CC [M]  /out/hook/setuid_hook.o
+  CC [M]  /out/hook/syscall_event_bridge.o
+  CC [M]  /out/hook/syscall_hook_manager.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/tp_marker.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/hook/arm64/syscall_hook.o
+  CC [M]  /out/infra/file_wrapper.o
+  CC [M]  /out/infra/event_queue.o
+  CC [M]  /out/infra/seccomp_cache.o
+  CC [M]  /out/infra/su_mount_ns.o
+  CC [M]  /out/infra/symbol_resolver.o
+  CC [M]  /out/manager/app_lock.o
+  CC [M]  /out/manager/stealth.o
+  CC [M]  /out/manager/apk_sign.o
+  CC [M]  /out/manager/pkg_observer.o
+  CC [M]  /out/manager/throne_tracker.o
+  CC [M]  /out/policy/allowlist.o
+  CC [M]  /out/policy/app_profile.o
+  CC [M]  /out/policy/feature.o
+  CC [M]  /out/runtime/boot_event.o
+  CC [M]  /out/runtime/ksud_integration.o
+  CC [M]  /out/infra/btf_parser.o
+  CC [M]  /out/selinux/inode.o
+  CC [M]  /out/selinux/selinux.o
+  CC [M]  /out/selinux/rules.o
+  CC [M]  /out/selinux/sepolicy.o
+  CC [M]  /out/sulog/event.o
+  CC [M]  /out/sulog/fd.o
+  CC [M]  /out/supercall/dispatch.o
+  CC [M]  /out/supercall/perm.o
+  CC [M]  /out/supercall/supercall.o
+  CC [M]  /out/feature/adb_root.o
+  CC [M]  /out/feature/selinux_hide.o
+  CC [M]  /out/feature/shell_su_adb_only.o
+  CC [M]  /out/preinit/preinit.o
+  RUNNER  /out/preinit/runner.elf
+  AS [M]  /out/preinit/blob.o
+  LD [M]  /out/kernelsu.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/kernelsu.mod.o
+  LD [M]  /out/kernelsu.ko
+  BTF [M] /out/kernelsu.ko
+make: Leaving directory '/opt/ddk/kdir/android15-6.6'
+size=4306792 sha256=7f4f1aae67c96c91d05c29ffab8b7c60bb17f08f0d0544a7867eaa4f36d326b8
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android15-6.6_kernelsu.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android15-6.6_maplesu_vr.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android15-6.6
+   ddk:      ghcr.io/ylarod/ddk-min:android15-6.6-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android15-6.6 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android15-6.6 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+make: Entering directory '/opt/ddk/kdir/android15-6.6'
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/vr_companion.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/infra/symbol_resolver.o
+  LD [M]  /out/maplesu_vr.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/maplesu_vr.mod.o
+  LD [M]  /out/maplesu_vr.ko
+  BTF [M] /out/maplesu_vr.ko
+make: Leaving directory '/opt/ddk/kdir/android15-6.6'
+size=372480 sha256=9a804901de40ced95d81f3ed4cc1c6fbd436a19b01751b43c1452d7fb8ff1427
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android15-6.6_maplesu_vr.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android16-6.12_kernelsu.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android16-6.12
+   ddk:      ghcr.io/ylarod/ddk-min:android16-6.12-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android16-6.12 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android16-6.12 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+make: Entering directory '/opt/ddk/kdir/android16-6.12'
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/core/init.o
+  CC [M]  /out/feature/kernel_umount.o
+  CC [M]  /out/feature/module_blacklist.o
+  CC [M]  /out/feature/sulog.o
+  CC [M]  /out/feature/sucompat.o
+  CC [M]  /out/hook/lsm_hook.o
+  CC [M]  /out/hook/setuid_hook.o
+  CC [M]  /out/hook/syscall_event_bridge.o
+  CC [M]  /out/hook/syscall_hook_manager.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/tp_marker.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/hook/arm64/syscall_hook.o
+  CC [M]  /out/infra/file_wrapper.o
+  CC [M]  /out/infra/event_queue.o
+  CC [M]  /out/infra/seccomp_cache.o
+  CC [M]  /out/infra/su_mount_ns.o
+  CC [M]  /out/infra/symbol_resolver.o
+  CC [M]  /out/manager/app_lock.o
+  CC [M]  /out/manager/stealth.o
+  CC [M]  /out/manager/apk_sign.o
+  CC [M]  /out/manager/pkg_observer.o
+  CC [M]  /out/manager/throne_tracker.o
+  CC [M]  /out/policy/allowlist.o
+  CC [M]  /out/policy/app_profile.o
+  CC [M]  /out/policy/feature.o
+  CC [M]  /out/runtime/boot_event.o
+  CC [M]  /out/runtime/ksud_integration.o
+  CC [M]  /out/infra/btf_parser.o
+  CC [M]  /out/selinux/inode.o
+  CC [M]  /out/selinux/selinux.o
+  CC [M]  /out/selinux/rules.o
+  CC [M]  /out/selinux/sepolicy.o
+  CC [M]  /out/sulog/event.o
+  CC [M]  /out/sulog/fd.o
+  CC [M]  /out/supercall/dispatch.o
+  CC [M]  /out/supercall/perm.o
+  CC [M]  /out/supercall/supercall.o
+  CC [M]  /out/feature/adb_root.o
+  CC [M]  /out/feature/selinux_hide.o
+  CC [M]  /out/feature/shell_su_adb_only.o
+  CC [M]  /out/preinit/preinit.o
+  RUNNER  /out/preinit/runner.elf
+  AS [M]  /out/preinit/blob.o
+  LD [M]  /out/kernelsu.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/kernelsu.mod.o
+  CC [M]  /out/.module-common.o
+  LD [M]  /out/kernelsu.ko
+  BTF [M] /out/kernelsu.ko
+make: Leaving directory '/opt/ddk/kdir/android16-6.12'
+size=5315544 sha256=77bb38e89eca84ef8d5fc322e2551bd72835d18038214353474ed34ede3cdd2d
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android16-6.12_kernelsu.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android16-6.12_maplesu_vr.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android16-6.12
+   ddk:      ghcr.io/ylarod/ddk-min:android16-6.12-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android16-6.12 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android16-6.12 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+make: Entering directory '/opt/ddk/kdir/android16-6.12'
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/vr_companion.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/infra/symbol_resolver.o
+  LD [M]  /out/maplesu_vr.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/maplesu_vr.mod.o
+  CC [M]  /out/.module-common.o
+  LD [M]  /out/maplesu_vr.ko
+  BTF [M] /out/maplesu_vr.ko
+make: Leaving directory '/opt/ddk/kdir/android16-6.12'
+size=399024 sha256=1ba532185f72652c1acf485f78a22b53629e2d0b3dc30453323f0251094ef94d
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android16-6.12_maplesu_vr.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android17-6.18_kernelsu.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android17-6.18
+   ddk:      ghcr.io/ylarod/ddk-min:android17-6.18-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android17-6.18 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android17-6.18 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+make: Entering directory '/opt/ddk/kdir/android17-6.18'
+make[1]: Entering directory '/out'
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  core/init.o
+  CC [M]  feature/kernel_umount.o
+  CC [M]  feature/module_blacklist.o
+  CC [M]  feature/sulog.o
+  CC [M]  feature/sucompat.o
+  CC [M]  hook/lsm_hook.o
+  CC [M]  hook/setuid_hook.o
+  CC [M]  hook/syscall_event_bridge.o
+  CC [M]  hook/syscall_hook_manager.o
+  CC [M]  hook/init_module_filter.o
+  CC [M]  hook/tp_marker.o
+  CC [M]  hook/arm64/patch_memory.o
+  CC [M]  hook/arm64/syscall_hook.o
+  CC [M]  infra/file_wrapper.o
+  CC [M]  infra/event_queue.o
+  CC [M]  infra/seccomp_cache.o
+  CC [M]  infra/su_mount_ns.o
+  CC [M]  infra/symbol_resolver.o
+  CC [M]  manager/app_lock.o
+  CC [M]  manager/stealth.o
+  CC [M]  manager/apk_sign.o
+  CC [M]  manager/pkg_observer.o
+  CC [M]  manager/throne_tracker.o
+  CC [M]  policy/allowlist.o
+  CC [M]  policy/app_profile.o
+  CC [M]  policy/feature.o
+  CC [M]  runtime/boot_event.o
+  CC [M]  runtime/ksud_integration.o
+  CC [M]  infra/btf_parser.o
+  CC [M]  selinux/inode.o
+  CC [M]  selinux/selinux.o
+  CC [M]  selinux/rules.o
+  CC [M]  selinux/sepolicy.o
+  CC [M]  sulog/event.o
+  CC [M]  sulog/fd.o
+  CC [M]  supercall/dispatch.o
+  CC [M]  supercall/perm.o
+  CC [M]  supercall/supercall.o
+  CC [M]  feature/adb_root.o
+  CC [M]  feature/selinux_hide.o
+  CC [M]  feature/shell_su_adb_only.o
+  CC [M]  preinit/preinit.o
+  RUNNER  preinit/runner.elf
+  AS [M]  preinit/blob.o
+  LD [M]  kernelsu.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST Module.symvers
+  CC [M]  kernelsu.mod.o
+  CC [M]  .module-common.o
+  LD [M]  kernelsu.ko
+  BTF [M] kernelsu.ko
+make[1]: Leaving directory '/out'
+make: Leaving directory '/opt/ddk/kdir/android17-6.18'
+size=5657776 sha256=2c3463587efe9dafca4601de215f2e478d633be4fda65f8a84cfea8296cc315d
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android17-6.18_kernelsu.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android17-6.18_maplesu_vr.log
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android17-6.18
+   ddk:      ghcr.io/ylarod/ddk-min:android17-6.18-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android17-6.18 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android17-6.18 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+make: Entering directory '/opt/ddk/kdir/android17-6.18'
+make[1]: Entering directory '/out'
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  vr_companion.o
+  CC [M]  hook/init_module_filter.o
+  CC [M]  hook/arm64/patch_memory.o
+  CC [M]  infra/symbol_resolver.o
+  LD [M]  maplesu_vr.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST Module.symvers
+  CC [M]  maplesu_vr.mod.o
+  CC [M]  .module-common.o
+  LD [M]  maplesu_vr.ko
+  BTF [M] maplesu_vr.ko
+make[1]: Leaving directory '/out'
+make: Leaving directory '/opt/ddk/kdir/android17-6.18'
+size=417192 sha256=84007e2eb0a6d82632bc1a0e86dca0fc13c843dbb5feccabc1eb5182733bd563
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android17-6.18_maplesu_vr.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
+===== artifact/bluewhale-native-8/tmp/jni.log
+== KSU JNI build
+   source:   /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied/manager/app/src/main/cpp
+   ndk:      /usr/local/lib/android/sdk/ndk/29.0.14206865
+   symbols:  25 (expect 25)
+   cmd:      /usr/local/lib/android/sdk/cmake/3.22.1/bin/cmake -S /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied/manager/app/src/main/cpp -B /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/jni-build -G Ninja -DCMAKE_TOOLCHAIN_FILE=/usr/local/lib/android/sdk/ndk/29.0.14206865/build/cmake/android.toolchain.cmake -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-z,max-page-size=16384 -DCMAKE_EXE_LINKER_FLAGS=-Wl,-z,max-page-size=16384 -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-31 -DANDROID_STL=c++_static -DCMAKE_BUILD_TYPE=Release && /usr/local/lib/android/sdk/cmake/3.22.1/bin/cmake --build /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/jni-build
+-- The C compiler identification is Clang 21.0.0
+-- The CXX compiler identification is Clang 21.0.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/jni-build
+[1/5] Building CXX object CMakeFiles/maplesu_ksu.dir/ksu.cc.o
+[2/5] Building CXX object CMakeFiles/maplesu_ksu.dir/jni.cc.o
+[3/5] Linking CXX shared library libmaplesu_ksu.so
+[4/5] Building CXX object CMakeFiles/adbroot.dir/adbroot.cc.o
+[5/5] Linking CXX shared library libadbroot.so
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/jniLibs/arm64-v8a/libmaplesu_ksu.so
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/jniLibs/arm64-v8a/libadbroot.so
+设备断言（03 §7.3）：KsuNatives.version>0 && isManager && kernelUAPIVersion==7
+下一步：python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/scripts/gen_payload.py
+===== artifact/bluewhale-native-8/tmp/payload-gate.log
+NOTE: rustfmt syntax gate: 34 files, 0 failed
+NOTE: artifacts: present=19, pending=['android13-5.10_kernelsu.ko', 'android14-5.15_kernelsu.ko']
+NOTE: lkm KMI matrix: present=6/8 ['android12-5.10', 'android13-5.15', 'android14-6.1', 'android15-6.6', 'android16-6.12', 'android17-6.18'] pending=['android13-5.10', 'android14-5.15']
+OK: commit + patch series + UAPI7 + applied tree + artifacts consistent
+===== artifact/bluewhale-native-8/tmp/userland.log
+== KSU userland build
+   applied: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   build:   /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/userland-build
+   ndk:     /usr/local/lib/android/sdk/ndk/29.0.14206865 (linux-x86_64)
+   cargo:   cargo
+   version: pin=32650 (git count 2650)
+   synthetic git history: 2650 commits (VERSION_CODE=32650)
+== 1/3 ksuinit
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling libc v0.2.189 (https://github.com/rust-lang/libc?rev=1a661633f11a261ff9c00b40875ef72f1cbec818#1a661633)
+   Compiling syscalls v0.8.1
+   Compiling log v0.4.34
+   Compiling rustix v0.38.34 (https://github.com/KernelSU2/rustix.git?rev=4a53fbc#4a53fbc7)
+   Compiling anyhow v1.0.104
+   Compiling ksuinit v2.0.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/userland-build/userspace/ksuinit)
+   Compiling plain v0.2.3
+   Compiling linux-raw-sys v0.4.15
+   Compiling bitflags v2.13.2
+   Compiling syn v3.0.6
+   Compiling kernlog v0.3.1 (https://github.com/kstep/kernlog.rs#68caa7bf)
+   Compiling scroll_derive v0.13.2
+   Compiling scroll v0.13.0
+   Compiling goblin v0.10.7
+warning: function `vr_init` is never used
+   --> userspace/ksuinit/src/init.rs:189:8
+    |
+189 | pub fn vr_init() -> Result<()> {
+    |        ^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `ksuinit` (bin "ksuinit") generated 1 warning
+    Finished `release` profile [optimized] target(s) in 17.26s
+   embedded LKM: android12-5.10_kernelsu.ko (8153448 bytes)
+   embedded LKM: android13-5.15_kernelsu.ko (8302264 bytes)
+   embedded LKM: android14-6.1_kernelsu.ko (6999960 bytes)
+   embedded LKM: android15-6.6_kernelsu.ko (4306792 bytes)
+   embedded LKM: android16-6.12_kernelsu.ko (5315544 bytes)
+   embedded LKM: android17-6.18_kernelsu.ko (5657776 bytes)
+   embedded KMI count: 6（ksud boot-info supported-kmis 应列出同样数量）
+== 3/3 ksud
+   Compiling libc v0.2.189 (https://github.com/rust-lang/libc?rev=1a661633f11a261ff9c00b40875ef72f1cbec818#1a661633)
+   Compiling shlex v2.0.1
+   Compiling cfg-if v1.0.5
+   Compiling find-msvc-tools v0.1.14
+   Compiling syn v3.0.6
+   Compiling typenum v1.20.1
+   Compiling pkg-config v0.3.34
+   Compiling memchr v2.8.3
+   Compiling jobserver v0.1.35
+   Compiling equivalent v1.0.2
+   Compiling syn v2.0.119
+   Compiling cc v1.6.0
+   Compiling log v0.4.34
+   Compiling crc32fast v1.5.2
+   Compiling zstd-safe v7.3.0
+   Compiling crossbeam-utils v0.8.23
+   Compiling zstd-sys v2.1.0+zstd.1.5.7
+   Compiling hybrid-array v0.4.15
+   Compiling version_check v0.9.5
+   Compiling generic-array v0.14.7
+   Compiling crossbeam-epoch v0.9.21
+   Compiling crypto-common v0.2.2
+   Compiling block-buffer v0.12.1
+   Compiling const-oid v0.10.2
+   Compiling allocator-api2 v0.2.21
+   Compiling rustversion v1.0.23
+   Compiling foldhash v0.2.0
+   Compiling crossbeam-deque v0.8.8
+   Compiling hashbrown v0.16.1
+   Compiling digest v0.11.3
+   Compiling no_std_io2 v0.9.4
+   Compiling cpufeatures v0.3.1
+   Compiling glob v0.3.4
+   Compiling rle-decode-fast v1.0.3
+   Compiling libflate_lz77 v2.3.0
+   Compiling clang-sys v1.9.1
+   Compiling hashbrown v0.17.1
+   Compiling winnow v1.0.4
+   Compiling prettyplease v0.3.0
+   Compiling dary_heap v0.3.9
+   Compiling adler32 v1.2.0
+   Compiling simd-adler32 v0.3.10
+   Compiling libflate v2.3.2
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling indexmap v2.14.2
+   Compiling sha2 v0.11.0
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling anyhow v1.0.104
+   Compiling proc-macro-error-attr3 v3.1.1
+   Compiling adler2 v2.0.1
+   Compiling bytes v1.12.1
+   Compiling rand_core v0.10.1
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling either v1.18.0
+   Compiling minimal-lexical v0.2.1
+   Compiling regex-syntax v0.8.11
+   Compiling getrandom v0.4.3
+   Compiling autocfg v1.5.1
+   Compiling unicase v2.9.0
+   Compiling same-file v1.0.6
+   Compiling walkdir v2.5.0
+   Compiling mime_guess v2.0.5
+   Compiling num-traits v0.2.19
+   Compiling regex-automata v0.4.18
+   Compiling nom v7.1.3
+   Compiling itertools v0.14.0
+   Compiling toml_edit v0.25.15+spec-1.1.0
+   Compiling miniz_oxide v0.9.1
+   Compiling proc-macro-error3 v3.1.1
+   Compiling digest v0.10.7
+   Compiling lz4-sys v1.11.1+lz4-1.10.0
+   Compiling aho-corasick v1.1.5
+   Compiling libloading v0.8.9
+   Compiling cpufeatures v0.2.17
+   Compiling bitflags v2.13.2
+   Compiling zlib-rs v0.6.8
+   Compiling bindgen v0.73.2
+   Compiling rayon-core v1.13.0
+   Compiling utf8parse v0.2.2
+   Compiling bumpalo v3.20.3
+   Compiling zopfli v0.8.3
+   Compiling anstyle-parse v1.0.0
+   Compiling flate2 v1.1.10
+   Compiling sha2 v0.10.9
+   Compiling prost-derive v0.13.5
+   Compiling proc-macro-crate v3.5.0
+   Compiling cexpr v0.6.0
+   Compiling regex v1.13.1
+   Compiling encoding_rs v0.8.42
+   Compiling scroll_derive v0.13.2
+   Compiling bstr v1.13.1
+   Compiling anstyle-query v1.1.5
+   Compiling time-core v0.1.9
+   Compiling num-conv v0.2.2
+   Compiling serde_core v1.0.228
+   Compiling rustc-hash v2.1.3
+   Compiling deranged v0.5.8
+   Compiling rustix v1.1.4
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling thiserror v2.0.21
+   Compiling mime v0.3.17
+   Compiling paste v1.0.15
+   Compiling colorchoice v1.0.5
+   Compiling powerfmt v0.2.0
+   Compiling zmij v1.0.23
+   Compiling anstyle v1.0.14
+   Compiling libm v0.2.16
+   Compiling time v0.3.55
+   Compiling anstream v1.0.0
+   Compiling rustix v0.38.34 (https://github.com/KernelSU2/rustix.git?rev=4a53fbc#4a53fbc7)
+   Compiling zstd v0.13.3
+   Compiling syscalls v0.8.1
+   Compiling globset v0.4.20
+   Compiling include-flate-compress v0.3.4
+   Compiling scroll v0.13.0
+   Compiling include-flate-codegen v0.3.4
+   Compiling num_enum_derive v0.7.6
+   Compiling include-flate v0.3.4
+   Compiling prost v0.13.5
+   Compiling rust-embed-utils v8.12.0
+   Compiling chacha20 v0.10.2
+   Compiling lzma-rust2 v0.16.5
+   Compiling thiserror-impl v2.0.21
+   Compiling crossbeam-queue v0.3.14
+   Compiling crossbeam-channel v0.5.17
+   Compiling errno v0.3.14
+   Compiling android_system_properties v0.1.6
+   Compiling heck v0.5.0
+   Compiling serde_json v1.0.151
+   Compiling deflate64 v0.1.12
+   Compiling clap_lex v1.1.1
+   Compiling typed-path v0.12.3
+   Compiling scopeguard v1.2.0
+   Compiling plain v0.2.3
+   Compiling konst_macro_rules v0.2.19
+   Compiling linux-raw-sys v0.12.1
+   Compiling unicode-xid v0.2.6
+   Compiling libbz2-rs-sys v0.2.5
+   Compiling strsim v0.11.1
+   Compiling multiversion_no_op v1.0.0
+   Compiling simdutf8 v0.1.5
+   Compiling linux-raw-sys v0.4.15
+   Compiling pin-project-lite v0.2.17
+   Compiling tokio v1.53.2
+   Compiling ksud v0.1.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/userland-build/userspace/ksud)
+   Compiling clap_builder v4.6.7
+   Compiling zip v8.6.0
+   Compiling bzip2 v0.6.1
+   Compiling const_format_proc_macros v0.2.34
+   Compiling konst v0.2.20
+   Compiling goblin v0.10.7
+   Compiling ksuinit v2.0.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/userland-build/userspace/ksuinit)
+   Compiling clap_derive v4.6.7
+   Compiling iana-time-zone v0.1.65
+   Compiling crossbeam v0.8.5
+   Compiling rayon v1.12.0
+   Compiling rand v0.10.3
+   Compiling prop-rs v0.2.0 (https://github.com/KernelSU2/ksu_props?rev=ddb6ee7294467f7f25bad2118e9e24eee104144b#ddb6ee72)
+   Compiling num_enum v0.7.6
+   Compiling rust-embed-impl v8.12.0
+   Compiling ignore v0.4.33
+   Compiling lz4 v1.28.1
+   Compiling lzma-rust2 v0.15.8
+   Compiling async-trait v0.1.92
+   Compiling env_filter v0.1.4
+   Compiling kernlog v0.3.1 (https://github.com/kstep/kernlog.rs#68caa7bf)
+   Compiling errno v0.2.8
+   Compiling memmap2 v0.9.11
+   Compiling android_log-sys v0.3.2
+   Compiling fastrand v2.5.0
+   Compiling lazy_static v1.5.1
+   Compiling hex v0.4.3
+   Compiling byteorder v1.5.0
+   Compiling bytemuck v1.25.2
+   Compiling bitflags v1.3.2
+   Compiling itoa v1.0.18
+   Compiling unicode-width v0.2.2
+   Compiling regex-lite v0.1.9
+   Compiling once_cell v1.21.4
+   Compiling getopts v0.2.24
+   Compiling tempfile v3.27.0
+   Compiling java-properties v2.0.0 (https://github.com/KernelSU2/java-properties.git?branch=master#42a4aa94)
+   Compiling extattr v1.0.0
+   Compiling adb_client v3.1.1 (https://github.com/KernelSU2/adb_client#d97a9664)
+   Compiling sha256 v1.6.0
+   Compiling android-bootimg v0.1.0 (https://github.com/5ec1cff/android_bootimg?rev=150425b027c76ea104c82e408571651f2181b2c2#150425b0)
+   Compiling prop-rs-android v0.2.0 (https://github.com/KernelSU2/ksu_props?rev=ddb6ee7294467f7f25bad2118e9e24eee104144b#ddb6ee72)
+   Compiling android_logger v0.15.1
+   Compiling humansize v2.1.3
+   Compiling zip-extensions v0.14.1
+   Compiling jwalk v0.9.0
+   Compiling rust-embed v8.12.0
+   Compiling clap v4.6.7
+   Compiling chrono v0.4.45
+   Compiling const_format v0.2.36
+   Compiling sha1 v0.11.0
+   Compiling derive-new v0.7.0
+   Compiling nom v8.0.0
+   Compiling which v8.0.6
+   Compiling base16ct v1.0.0
+   Compiling is_executable v1.0.6
+warning: unused import: `rust_embed::Embed`
+  --> userspace/ksud/src/webadmin.rs:58:5
+   |
+58 | use rust_embed::Embed;
+   |     ^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `ensure_symlink` is never used
+   --> userspace/ksud/src/metamodule.rs:124:8
+    |
+124 | pub fn ensure_symlink(module_path: &Path) -> Result<()> {
+    |        ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `remove_symlink` is never used
+   --> userspace/ksud/src/metamodule.rs:155:8
+    |
+155 | pub fn remove_symlink() -> Result<()> {
+    |        ^^^^^^^^^^^^^^
+
+warning: function `remove_dir_all_checked` is never used
+   --> userspace/ksud/src/utils.rs:577:4
+    |
+577 | fn remove_dir_all_checked(dir: &str) -> Result<()> {
+    |    ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_file_checked` is never used
+   --> userspace/ksud/src/utils.rs:611:4
+    |
+611 | fn remove_file_checked(file: &str) -> Result<()> {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_dir_if_empty` is never used
+   --> userspace/ksud/src/utils.rs:624:4
+    |
+624 | fn remove_dir_if_empty(dir: &str) -> Result<()> {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `start_if_enabled` is never used
+   --> userspace/ksud/src/webadmin_ksud.rs:838:8
+    |
+838 | pub fn start_if_enabled() -> bool {
+    |        ^^^^^^^^^^^^^^^^
+
+warning: function `is_temp_name` is never used
+  --> userspace/ksud/src/atomic.rs:86:8
+   |
+86 | pub fn is_temp_name(name: &str) -> bool {
+   |        ^^^^^^^^^^^^
+
+warning: function `script_work_dir` is never used
+  --> userspace/ksud/src/script_path.rs:29:8
+   |
+29 | pub fn script_work_dir(path: &Path) -> Result<PathBuf> {
+   |        ^^^^^^^^^^^^^^^
+
+warning: `ksud` (bin "ksud") generated 9 warnings
+    Finished `release` profile [optimized] target(s) in 1m 27s
+== artifacts
+   /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/artifacts/ksuinit size=608896 sha256=a782e2b083ac631a02ec0c9afa30d8983eb9bf11017cd7cd042a06be90d9e675
+   /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/artifacts/maplesu_vrinit size=605088 sha256=d8b72aee185d5e038a82cac83944ae18d5587a4564123e5a2b27455d53852498
+   /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/jniLibs/arm64-v8a/libksud_ksu.so size=21541144 sha256=5babad0d96ca618c6f2d6b43a2c5df897da7bedfddbb6942ffc2b90b3526b2f4
+OK: ksuinit + libksud_ksu.so built（下一步：python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/scripts/gen_payload.py）
