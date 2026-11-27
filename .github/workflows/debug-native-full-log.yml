@@ -17,9 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      RUN_ID: ${{ github.event.workflow_run.id || '45912736915' }}
+      RUN_ID: ${{ github.event.workflow_run.id || '' }}
     steps:
       - uses: actions/checkout@v4
+      - name: 解析 RUN_ID
+        run: |
+          set -euo pipefail
+          RUN_ID="${RUN_ID:-}"
+          if [ -f .debug-trigger/native-run-id ]; then
+            RUN_ID="$(tr -d '[:space:]' < .debug-trigger/native-run-id)"
+          fi
+          if [ -z "$RUN_ID" ]; then
+            echo "no run id provided" >&2
+            exit 1
+          fi
+          echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
+          echo "resolved run id: $RUN_ID"
       - name: 取完整 job 日志并写回仓库
         run: |
           set -euo pipefail
@@ -33,4 +46,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$F"
           git commit -m "ci: full native log $RUN_ID" || true
-          git push || true
+          git push origin HEAD:feat/32739-bluefishsu || true
