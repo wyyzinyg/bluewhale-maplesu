@@ -53,6 +53,21 @@ jobs:
       - name: 取本仓库
         uses: actions/checkout@v4
 
+      - name: 解析目标版本（push 触发读 .ci-trigger/target）
+        id: target
+        run: |
+          if [ -f .ci-trigger/target ]; then
+            TARGET=$(tr -d '[:space:]' < .ci-trigger/target)
+          else
+            TARGET="${{ inputs.target || '32737' }}"
+          fi
+          case "$TARGET" in
+            32737|32738) ;;
+            *) echo "FATAL: invalid target=$TARGET"; exit 1 ;;
+          esac
+          echo "resolved target=$TARGET"
+          echo "target=$TARGET" >> "$GITHUB_OUTPUT"
+
       - name: 取上游 MapleSU 源码
         run: |
           set -euo pipefail
@@ -71,10 +86,11 @@ jobs:
           python3 overlay/patch_brand_skin_tail.py src
           python3 overlay/patch_bluewhale_320.py src
           python3 overlay/patch_bluewhale_321.py src
-          if [ "${{ inputs.target }}" = "32738" ]; then
+          python3 overlay/patch_bluewhale_323.py src
+          if [ "${{ steps.target.outputs.target }}" = "32738" ]; then
             python3 overlay/patch_bluewhale_3210.py src
           else
-            echo "target=${{ inputs.target }}：跳过 3210，构建 32737"
+            echo "target=${{ steps.target.outputs.target }}：跳过 3210，构建 32737"
           fi
           echo "== 关键身份确认 =="
           python3 - <<'PY'
@@ -229,9 +245,13 @@ jobs:
           if [ -z "$APK" ]; then echo "没有产物，跳过回执"; exit 0; fi
           cp "$APK" out/
           python3 tools/bluewhale_receipt.py "$APK" -o out/build-receipt.json
-          python3 - "$APK" <<'PY'
+          python3 - "$APK" "${{ steps.target.outputs.target }}" <<'PY'
           import json, sys, zipfile, hashlib
           apk_path = sys.argv[1]
+          requested_target = sys.argv[2] or "32737"
+          expected = {"32737": (32737, "3.20.1-bw"), "32738": (32738, "3.21.0-bw")}.get(requested_target)
+          if expected is None:
+              raise SystemExit(f"FATAL: unsupported target {requested_target}")
           receipt = json.load(open("out/build-receipt.json"))
           native = receipt["native"]
           required = ["android12-5.10", "android13-5.15", "android14-6.1", "android15-6.6", "android16-6.12", "android17-6.18"]
@@ -239,8 +259,8 @@ jobs:
           rows = native["kmis"]
           bad = [row for row in rows if row["oldPackageCount"] > 0 or row["newPackageCount"] == 0]
           identity_ok = (receipt.get("packageName") == "com.blue.whale.mask"
-                         and receipt.get("versionCode") == 32737
-                         and receipt.get("versionName") == "3.20.1-bw")
+                         and receipt.get("versionCode") == expected[0]
+                         and receipt.get("versionName") == expected[1])
           print(f"identity={identity_ok} coverageOk={native['coverageOk']} soOldPackageCount={so_old} 主KO异常={len(bad)}")
           provider = json.load(open("src/manager/build/jailbreakProviders/build.json"))
           if provider.get("exitCode") != 0:
