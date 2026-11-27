@@ -1,0 +1,297 @@
+-- The C compiler identification is Clang 21.0.0
+-- The CXX compiler identification is Clang 21.0.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: /usr/bin/python3 (found version "3.14.4") found components: Interpreter 
+-- The ASM compiler identification is Clang with GNU-like command-line
+-- Found assembler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+-- dirtyfrag: android15-6.6 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/maplesu_root.ko
+-- dirtyfrag(product): android12-5.10 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android12-5.10.ko
+-- dirtyfrag(product): android13-5.15 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android13-5.15.ko
+-- dirtyfrag(product): android14-6.1 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android14-6.1.ko
+-- dirtyfrag(product): android15-6.6 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android15-6.6.ko
+-- dirtyfrag(product): android16-6.12 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android16-6.12.ko
+-- dirtyfrag(product): android17-6.18 embeds /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root/per-kmi/android17-6.18.ko
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/build
+[1/39] Building C object lease/CMakeFiles/maplesu-root-consumer.dir/src/lease_contract.c.o
+[2/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/address_space.cpp.o
+[3/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/race/pi_race.cpp.o
+[4/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/profile/entry.cpp.o
+[5/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/heap_context.cpp.o
+[6/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/route_controller.cpp.o
+[7/39] Building CXX object lease/CMakeFiles/maplesu-root-consumer.dir/src/root_consumer.cpp.o
+[8/39] Linking CXX executable lease/libmaplesu_root_consumer.so
+[9/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/route_middleware.cpp.o
+[10/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/race/threads.cpp.o
+[11/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/tcp_zerocopy_route.cpp.o
+[12/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/select_stack_route.cpp.o
+[13/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/memory/payload_builder.cpp.o
+[14/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/profile/binary.cpp.o
+[15/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/route/multicast_waiter_route.cpp.o
+[16/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/runtime_config.cpp.o
+[17/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/handoff_probe.cpp.o
+[18/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/exploit_session.cpp.o
+[19/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/util.cpp.o
+[20/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/victim_context.cpp.o
+[21/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/backend/cve_2026_43499_backend.cpp.o
+[22/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/native_resource.cpp.o
+[23/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/session/victim_process.cpp.o
+[24/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/upstream/src/core/support/run_state.cpp.o
+[25/39] Building C object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/__/lease/src/lease_contract.c.o
+[26/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/main.cpp.o
+[27/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/maplesu-overlay/src/core/attack/ops.cpp.o
+[28/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/maplesu-overlay/src/core/main.cpp.o
+[29/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-bootstrap.dir/__/lease/src/lease_contract.c.o
+[30/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/handoff.cpp.o
+[31/39] Building CXX object ghostlock/CMakeFiles/maplesu-ghostlock-adapter.dir/adapter/frontend.cpp.o
+[32/39] Linking CXX executable ghostlock/libmaplesu_ghostlock_provider.so
+[33/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-bootstrap.dir/adapter/bootstrap.c.o
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:3812:13: warning: unused function 'handover_sha256_hex' [-Wunused-function]
+ 3812 | static void handover_sha256_hex(const unsigned char digest[32], char out[HANDOVER_HEX + 1]) {
+      |             ^~~~~~~~~~~~~~~~~~~
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:4110:12: warning: unused function 'handover_file_contains' [-Wunused-function]
+ 4110 | static int handover_file_contains(const char *path, const char *needle) {
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/dirtyfrag/adapter/bootstrap.c:4171:12: warning: unused function 'handover_wait_for_carrier' [-Wunused-function]
+ 4171 | static int handover_wait_for_carrier(int ultra, const char *attempt, const char *boot) {
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.
+[34/39] Linking C executable jailbreak-product/libmaplesu_dirtyfrag_bootstrap.so
+[35/39] Generating product-stage/splicehelper
+[36/39] Building ASM object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/libcxx.S.o
+[37/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/elf_parser.c.o
+[38/39] Building C object dirtyfrag/CMakeFiles/maplesu-dirtyfrag-native.dir/product-stage/exp.c.o
+[39/39] Linking C executable jailbreak-product/libdfroot.so
+   Compiling libc v0.2.189
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.25
+   Compiling quote v1.0.47
+   Compiling find-msvc-tools v0.1.12
+   Compiling anyhow v1.0.104
+   Compiling shlex v2.0.1
+   Compiling pkg-config v0.3.34
+   Compiling either v1.18.0
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling itertools v0.14.0
+   Compiling jobserver v0.1.35
+   Compiling cc v1.4.6
+   Compiling crossbeam-utils v0.8.23
+   Compiling rustix v1.1.5
+   Compiling crossbeam-epoch v0.9.21
+   Compiling serde_core v1.0.229
+   Compiling zstd-sys v2.1.0+zstd.1.5.7
+   Compiling memchr v2.8.3
+   Compiling prettyplease v0.2.37
+   Compiling linux-raw-sys v0.12.1
+   Compiling foldhash v0.1.5
+   Compiling typenum v1.20.1
+   Compiling bitflags v2.13.2
+   Compiling bytes v1.12.1
+   Compiling crossbeam-deque v0.8.8
+   Compiling hashbrown v0.17.1
+   Compiling regex-syntax v0.8.11
+   Compiling heck v0.5.0
+   Compiling equivalent v1.0.2
+   Compiling indexmap v2.14.2
+   Compiling hybrid-array v0.4.15
+   Compiling prost-derive v0.14.4
+   Compiling hashbrown v0.15.5
+   Compiling regex-automata v0.4.18
+   Compiling prost v0.14.4
+   Compiling errno v0.3.14
+   Compiling utf8parse v0.2.2
+   Compiling once_cell v1.21.4
+   Compiling fastrand v2.5.0
+   Compiling cfg-if v1.0.5
+   Compiling fixedbitset v0.5.7
+   Compiling crc32fast v1.5.2
+   Compiling alloc-no-stdlib v2.0.4
+   Compiling serde v1.0.229
+   Compiling autocfg v1.5.1
+   Compiling rayon-core v1.13.0
+   Compiling num-traits v0.2.19
+   Compiling alloc-stdlib v0.2.4
+   Compiling petgraph v0.8.3
+   Compiling tempfile v3.27.0
+   Compiling regex v1.13.1
+   Compiling anstyle-parse v1.0.0
+   Compiling prost-types v0.14.4
+   Compiling serde_derive v1.0.229
+   Compiling lzma-sys v0.1.20
+   Compiling anstyle-query v1.1.5
+   Compiling radium v0.7.0
+   Compiling protoc-bin-vendored-macos-x86_64 v3.2.0
+   Compiling protoc-bin-vendored-macos-aarch_64 v3.2.0
+   Compiling colorchoice v1.0.5
+   Compiling anstyle v1.0.14
+   Compiling protoc-bin-vendored-linux-x86_64 v3.2.0
+   Compiling protoc-bin-vendored-linux-x86_32 v3.2.0
+   Compiling zstd-safe v7.3.0
+   Compiling protoc-bin-vendored-win32 v3.2.0
+   Compiling protoc-bin-vendored-linux-s390_64 v3.2.0
+   Compiling protoc-bin-vendored-linux-ppcle_64 v3.2.0
+   Compiling protoc-bin-vendored-linux-aarch_64 v3.2.0
+   Compiling portable-atomic v1.15.0
+   Compiling zmij v1.0.23
+   Compiling multimap v0.10.1
+   Compiling log v0.4.34
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling anstream v1.0.0
+   Compiling prost-build v0.14.4
+   Compiling protoc-bin-vendored v3.2.0
+   Compiling terminal_size v0.4.4
+   Compiling brotli-decompressor v5.0.3
+   Compiling block-buffer v0.12.1
+   Compiling crypto-common v0.2.2
+   Compiling unicode-width v0.2.2
+   Compiling tap v1.0.1
+   Compiling strsim v0.11.1
+   Compiling clap_lex v1.1.1
+   Compiling serde_json v1.0.151
+   Compiling libbz2-rs-sys v0.2.5
+   Compiling thiserror v2.0.20
+   Compiling bzip2 v0.6.1
+   Compiling rayon v1.12.0
+   Compiling clap_builder v4.6.7
+   Compiling console v0.16.6
+   Compiling wyz v0.5.1
+   Compiling digest v0.11.3
+   Compiling brotli v8.0.4
+   Compiling payload-extract v0.1.1 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native/vendor/payload-extract)
+   Compiling clap_derive v4.6.7
+   Compiling thiserror-impl v2.0.20
+   Compiling aho-corasick v1.1.5
+   Compiling cpufeatures v0.3.1
+   Compiling unit-prefix v0.5.2
+   Compiling adler2 v2.0.1
+   Compiling typed-path v0.12.3
+   Compiling funty v2.0.0
+   Compiling itoa v1.0.18
+   Compiling simd-adler32 v0.3.10
+   Compiling miniz_oxide v0.9.1
+   Compiling zip v8.6.0
+   Compiling xz2 v0.1.7
+   Compiling bitvec v1.1.1
+   Compiling clap v4.6.7
+   Compiling indicatif v0.18.6
+   Compiling sha2 v0.11.0
+   Compiling zstd v0.13.3
+   Compiling bsdiff-android v0.0.2
+   Compiling yaxpeax-arch v0.3.2
+   Compiling memmap2 v0.9.11
+   Compiling hex v0.4.3
+   Compiling lz4_flex v0.14.0
+   Compiling yaxpeax-arm v0.5.0
+   Compiling flate2 v1.1.10
+   Compiling ghostlock-extract v0.1.0 (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ghostlock/extractor-native)
+    Finished `release` profile [optimized] target(s) in 35.05s
+{
+  "module": "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/ir/maplesu_ir.ko",
+  "sha256": "6c300062a4e3684726a1a0c281fc3a5c0a304645bc1fdfe64d30fc5f50603e34",
+  "bytes": 15192,
+  "contract": "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/ir-loader/contract.json",
+  "facts": {
+    "vermagic": "6.6.89-android15-8-g7e1f3c083cc6-abogki467167594-4k SMP preempt mod_unload modversions aarch64",
+    "vermagicSuffix": " SMP preempt mod_unload modversions aarch64",
+    "versionEntries": 1,
+    "thisModuleName": "maplesu_ir",
+    "initReloc": "init_module",
+    "exitReloc": "cleanup_module",
+    "specBytes": 4096,
+    "imports": [],
+    "kcfiInitTypeId": "0x36b1c5a6",
+    "initSection": ".init.text",
+    "initSize": 3572,
+    "definedSymbols": [
+      "$d",
+      "$x",
+      "__ir_spec",
+      "__this_module",
+      "cleanup_module",
+      "init_module",
+      "init_module.ctx",
+      "ir_verify_patched",
+      "maplesu_ir.c"
+    ]
+  }
+}
+canary: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/ir/maplesu_ir-canary.ko
+$ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/build_root_module.py --ndk-dir /usr/local/lib/android/sdk/ndk/29.0.14206865 --out-dir /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/root --contract /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/contracts/6.6.89-android15-8-g7e1f3c083cc6-abogki467167594-4k.json --quiet
+$ /usr/bin/python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/build_root_module.py --module maplesu_l3 --ndk-dir /usr/local/lib/android/sdk/ndk/29.0.14206865 --out-dir /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build/jailbreakProviders/l3 --contract /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/jailbreak-providers/root-loader/contracts/6.6.89-android15-8-g7e1f3c083cc6-abogki467167594-4k.json
+maplesu_l3 -- kprobe magic gate on prctl (ABI v2)
+  project    src
+  contract   jailbreak-providers/root-loader/contracts/6.6.89-android15-8-g7e1f3c083cc6-abogki467167594-4k.json (sha256 79369642e9d531fb...)
+  kernel     6.6.89-android15-8-g7e1f3c083cc6-abogki467167594-4k
+  image      native-inputs/kernels/android15-6.6-346d51ea/Image (36661760 bytes, sha256 346d51ea1f63413f...)
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-jvm/1.11.0/kotlinx-serialization-json-jvm-1.11.0.jar
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-core-jvm/1.11.0/kotlinx-serialization-core-jvm-1.11.0.jar
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/2.4.20/kotlin-compiler-embeddable-2.4.20.jar
+补拉 Maven 依赖 https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.11.0/kotlinx-coroutines-core-jvm-1.11.0.jar
+  l3 anchors {'preHandler': ['aggr_pre_handler', 'kprobe_breakpoint_handler'], 'postHandler': ['aggr_post_handler', 'post_kprobe_handler', 'kprobe_breakpoint_handler']} pre=['aggr_pre_handler', 'kprobe_breakpoint_handler'] post=['aggr_post_handler', 'kprobe_breakpoint_handler']
+             preHandler  id=0xa6be5dd9 member=pre_handler@0x40 attributed=['aggr_pre_handler@0x1e33b8', 'kprobe_breakpoint_handler@0x1068774'] absent=[]
+             postHandler id=0x6e21b9c7 member=post_handler@0x48 attributed=['aggr_post_handler@0x1e3470', 'kprobe_breakpoint_handler@0x1068860', 'kprobe_breakpoint_handler@0x10688a0'] absent=['post_kprobe_handler']
+             primary kprobe_breakpoint_handler @ 0x106864c compares 3 cfi id(s): 0x36183889, 0x6e21b9c7, 0xa6be5dd9
+             probe target __arm64_sys_prctl @ 0xcdbbc entry=0xd503233f
+             credSource=1 (init_task) selinux enforcing@0 kprobe.size=0x80
+  kcfi       reference TU: pre=0xa6be5dd9 post=0x6e21b9c7 (the pinned toolchain pair)
+             image dispatch: pre=0xa6be5dd9 post=0x6e21b9c7
+build (maplesu_l3)
+  [c]   jailbreak-providers/root-loader/module/maplesu_l3.c -> manager/build/jailbreakProviders/l3/l3-staging/maplesu_l3.o (31952 bytes)
+  [asm] manager/build/jailbreakProviders/l3/l3-staging/l3_glue.s -> manager/build/jailbreakProviders/l3/l3-staging/l3_glue.o (3080 bytes)
+  [ld]  ld.lld -r -o manager/build/jailbreakProviders/l3/l3-staging/maplesu_l3.ko (103232 bytes, sha256 2a07922e128d5923...)
+  tools      Android (13989888, +pgo, +bolt, +lto, +mlgo, based on r563880c) clang version 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f06077099aa41290cdb4c5e6fa0f59349)
+             LLD 21.0.0 (/mnt/disks/build-disk/src/googleplex-android/llvm-r563880-release/out/llvm-project/llvm 5e96669f06077099aa41290cdb4c5e6fa0f59349) (compatible with GNU linkers)
+             python 3.14.4 (Linux-7.0.0-1020-azure-x86_64-with-glibc2.43)
+  kcfi       maplesu_l3_pre emits 0xa6be5dd9 (before the image write)
+  [kcfi] every prefix already equals this image's compare sites
+  kcfi       maplesu_l3_pre ships 0xa6be5dd9 (image dispatch id 0xa6be5dd9; policy none; rewritten=False)
+
+module     manager/build/jailbreakProviders/l3/l3-staging/maplesu_l3.ko (103232 bytes, sha256 2a07922e128d59236ce443a243b6d2ae8be393a9abb964dbad65384b54a1707f)
+
+undefined symbols (3): _printk, register_kprobe, unregister_kprobe
+
+gates
+[G1] layout             PASS  ELF is ET_REL; ELF is AArch64; section headers are 64 bytes; section name table is addressable; section '.text' stays inside the file; section '.re...
+[G2] PLT sections       PASS  .plt exists exactly once; .plt is PROGBITS; .plt is allocated and executable; .plt carries the kbuild placeholder byte; .init.plt exists exactly on...
+[G3] importability      PASS  no unexpected undefined symbol; all 3 deliberate imports are present (_printk, register_kprobe, unregister_kprobe); no compiler-runtime or libc hel...
+[G4] cleanup_module     PASS  cleanup_module is defined; cleanup_module lives in a section; cleanup_module lives in executable text; cleanup_module is not in .init.text; cleanup...
+[G5] patch plan         PASS  the L3 image facts were derived; no .ir_spec section; no #maplesu-ir-spec banner anywhere in the file; no kernel virtual address in any allocated s...
+[G6] KCFI               PASS  init_module is defined; init_module has room for its KCFI prefix; init_module KCFI prefix == the id do_one_initcall compares; cleanup_module is def...
+[G7] struct shim vs BTF PASS  kernel_compat.h still carries _Static_asserts; all BTF struct module definitions agree on size; sizeof(struct module) from BTF == this_module secti...
+[L3-1] handler KCFI prefix PASS  the image attributes at least one compare site to the preHandler; every preHandler dispatch site the image attributes agrees on one id; the preHand...
+[L3-2] import set         PASS  the undefined set is exactly the measured three-import set; no fourth import
+[L3-3] no data-path literal PASS  no forbidden string anywhere in the module; 0 "/data/" literals in .rodata; the source names no kernel-image write primitive
+[L3-4] handler is permanent text PASS  maplesu_l3_pre is defined; maplesu_l3_pre lives in a section; the callback is in .text exactly; the callback's section is allocated and executable;...
+[L3-5] zero traps, zero check sites PASS  zero BRK instructions in every SHF_EXECINSTR section; no kCFI compare site is left in module text
+[L3-6] cleanup unregisters the kprobe PASS  cleanup_module has a definition in the source; init_module has a definition in the source; init_module registers the gate's kprobe; the registratio...
+[L3-7] ABI v2 constants and image facts PASS  the L3 image facts were derived; the ABI is v2: option 4 is PR_SET_DUMPABLE and its two accepted arg2 values (0 = ARM, 1 = SU) are the ops; the poo...
+[L3-8] no token in printk PASS  the module has at least one printk (the evidence line); no printk argument mentions the token; the ARM evidence line is one of those printks and ca...
+[L3-9] registered symbol name PASS  the source defines MAPLESU_L3_SYMBOL as a string; MAPLESU_L3_SYMBOL is '__arm64_sys_prctl'; the source registers exactly resolver, avc_denied and c...
+[L3-10] ARM enforcing gate PASS  the callback has a definition in the source; ARM requires the permissive window (enforcing == 0); ARM requires the caller to be uid 0; ARM requires...
+[L3-11] prctl callback writes no frame, changes no return PASS  the callback has a definition in the source; MAPLESU_L3_MAGIC is a macro definition; MAPLESU_L3_MAGIC names the ABI's two token arguments (arg3, ar...
+[L3-12] root-subject SELinux data path PASS  MAPLESU_TASK_CRED_OFF equals measured image ABI; MAPLESU_CRED_UID_OFF equals measured image ABI; MAPLESU_CRED_EUID_OFF equals measured image ABI; M...
+       imports: {_printk, register_kprobe, unregister_kprobe}
+       ok   import set equals {_printk, register_kprobe, unregister_kprobe}
+       loader_contract.run_gates(root=False, module=maplesu_l3): PASS (all gates pass)
+       [G3] not applicable to maplesu_l3: skipped (root=False): this gate encodes the resident-root design; the IR module is governed by the legacy check(); covered by internal G3 (ksymtab row and export range per import) + L3-2 (the set is exactly three names)
+       [G5] not applicable to maplesu_l3: skipped (root=False): this gate encodes the resident-root design; the IR module is governed by the legacy check(); covered by internal G5 with the L3 plan body (no kernel VA, no GOT, no write primitive, whitelisted lookups, the kprobe registration target)
+       [G7] not applicable to maplesu_l3: skipped (root=False): this gate encodes the resident-root design; the IR module is governed by the legacy check(); covered by internal G7 (kernel_compat.h asserts and the glue's struct-module offsets against this image's BTF)
+
+imports: _printk, register_kprobe, unregister_kprobe
+RESULT: all gates pass
+
+published (all gates green): manager/build/jailbreakProviders/l3/maplesu_l3.ko, manager/build/jailbreakProviders/l3/maplesu_l3.o, manager/build/jailbreakProviders/l3/maplesu_policy_hook.o, manager/build/jailbreakProviders/l3/policy_hook_dispatch.o, manager/build/jailbreakProviders/l3/policy_hook_original.o, manager/build/jailbreakProviders/l3/maplesu_boot_sdk.o, manager/build/jailbreakProviders/l3/boot_sdk_call.o, manager/build/jailbreakProviders/l3/l3_glue.o, manager/build/jailbreakProviders/l3/l3_glue.s, manager/build/jailbreakProviders/l3/kernel_compat_family.h
+
+wrote manager/build/jailbreakProviders/l3/build.json
+transcript: manager/build/jailbreakProviders/l3/verify-build.txt

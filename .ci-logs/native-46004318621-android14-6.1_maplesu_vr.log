@@ -1,0 +1,35 @@
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android14-6.1
+   ddk:      ghcr.io/ylarod/ddk-min:android14-6.1-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android14-6.1 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android14-6.1 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  /out/vr_companion.o
+  CC [M]  /out/hook/init_module_filter.o
+  CC [M]  /out/hook/arm64/patch_memory.o
+  CC [M]  /out/infra/symbol_resolver.o
+  LD [M]  /out/maplesu_vr.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST /out/Module.symvers
+  CC [M]  /out/maplesu_vr.mod.o
+  LD [M]  /out/maplesu_vr.ko
+  BTF [M] /out/maplesu_vr.ko
+size=552824 sha256=f71110058d45de5c5387670cc014186d237074b09d23a3195a0cc41b351f64bc
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android14-6.1_maplesu_vr.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
