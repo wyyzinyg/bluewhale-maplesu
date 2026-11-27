@@ -81,6 +81,12 @@ jobs:
           if [ -n "$PROVIDER" ]; then
             cp "$PROVIDER" ".ci-logs/native-${RUN_ID}-provider.json"
           fi
+          APK_TO_VERIFY=$(find artifact -type f -name '*.apk' | head -1)
+          ORIGINAL_COMMIT=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("commit", ""))' "$RECEIPT")
+          python3 tools/bluewhale_receipt.py "$APK_TO_VERIFY" \
+            -o ".ci-logs/native-${RUN_ID}-verified-receipt.json" \
+            --commit "$ORIGINAL_COMMIT" --ci-run-id "$RUN_ID"
+          git add ".ci-logs/native-${RUN_ID}-verified-receipt.json"
           while IFS= read -r LOG; do
             cp "$LOG" ".ci-logs/native-${RUN_ID}-$(basename "$LOG")"
           done < <(find artifact -type f -name '*.log')

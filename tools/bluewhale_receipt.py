@@ -7,8 +7,8 @@
 
 做什么：
   1. 从 APK 取 `lib/arm64-v8a/libksud_ksu.so`（以及 libmaplesu_ksu.so 等同类），算大小与 SHA-256；
-  2. 按 4 字节对齐扫 raw DEFLATE 流，解压出以 ELF 魔数开头、且大于 min-size 的载荷（就是 6 个 ko）；
-  3. 每个载荷统计 `com.blue.whale.mask` / `dev.maplesu.manager` 次数；
+  2. 逐字节扫 raw DEFLATE 流；rust-embed 的真实流不保证 4 字节对齐；
+  3. 只把 ET_REL 且含有效 vermagic / 模块名的 ELF 识别为 KO，排除 ksuinit 等用户态程序；
   4. 对 so 本体也统计一次（可执行段里的旧包名同样算残留）；
   5. 输出人类可读表格 + `build-receipt.json`。
 
@@ -35,9 +35,13 @@ SO_NAMES = (
     "lib/arm64-v8a/libksud_ksu.so",
     "lib/arm64-v8a/libmaplesu_ksu.so",
 )
+REQUIRED_KMIS = (
+    "android12-5.10", "android13-5.15", "android14-6.1",
+    "android15-6.6", "android16-6.12", "android17-6.18",
+)
 
 
-def find_elf_streams(data: bytes, min_size: int, step: int = 4):
+def find_elf_streams(data: bytes, min_size: int, step: int = 1):
     """扫 raw DEFLATE 流，返回解压后以 ELF 开头的 (offset, payload)。"""
     found = []
     n = len(data)
@@ -63,10 +67,8 @@ def find_elf_streams(data: bytes, min_size: int, step: int = 4):
                 total += len(chunks[-1])
                 cursor += len(block)
             payload = b"".join(chunks)
-            if len(payload) >= min_size:
+            if len(payload) >= min_size and engine.eof:
                 found.append((offset, payload))
-                offset += len(payload) // 8  # 跳过这段，避免同一载荷的重复命中
-                continue
         except zlib.error:
             pass
         offset += step
@@ -157,38 +159,46 @@ def read_manifest_identity(apk_path: str) -> dict:
     return result
 
 
+def read_vermagic(payload: bytes) -> str:
+    """只接受 vermagic 起始处的合法内核 release，绝不把相邻二进制当 KMI。"""
+    match = re.search(rb"vermagic=([0-9]+\.[0-9]+\.[0-9]+[^\x00\s]*)", payload)
+    return match.group(1).decode("ascii") if match else ""
+
+
 def guess_kmi(payload: bytes) -> str:
-    """从 vermagic 里的 androidNN-M.m 标记取 KMI；认不出就留空。"""
-    match = re.search(rb"android(\d{2})-(\d+\.\d+)", payload)
+    release = read_vermagic(payload)
+    match = re.search(r"android(\d{2})-(\d+\.\d+)", release)
     if match:
-        return f"android{match.group(1).decode()}-{match.group(2).decode()}"
-    # 没有 androidNN 标记的老 ko：按内核版本映射回 KMI（与上游 KMI_MATRIX 一致）。
+        return f"android{match.group(1)}-{match.group(2)}"
     table = {(5, 10): "android12-5.10", (5, 15): "android13-5.15", (6, 1): "android14-6.1",
              (6, 6): "android15-6.6", (6, 12): "android16-6.12", (6, 18): "android17-6.18"}
-    version = re.search(rb"(\d+)\.(\d+)\.\d+", payload)
+    version = re.match(r"(\d+)\.(\d+)\.\d+", release)
     if version:
-        key = (int(version.group(1)), int(version.group(2)))
-        if key in table:
-            return table[key]
-    marker = payload.find(b"vermagic=")
-    if marker < 0:
-        return ""
-    text = payload[marker + len(b"vermagic="):marker + 160].decode("latin-1", "ignore")
-    return text.split()[0] if text.strip() else ""
+        return table.get((int(version.group(1)), int(version.group(2))), "")
+    return ""
 
 
 def summarize(payload: bytes) -> dict:
-    # 6 个 kernelsu.ko 都在 4 MB 上下；小的 ELF（600 KB 级）是别的内嵌工具，不是 ko。
-    # 判据用「是不是内核模块」而不是体积：老内核的 ko 只有 600 KB 级，按体积会误判成其它 ELF。
-    kind = "ko" if (b"vermagic=" in payload or len(payload) >= 1_000_000) else "elf-other"
+    is_elf = payload.startswith(b"\x7fELF") and len(payload) >= 20
+    # Linux LKM 是 ET_REL(1)；ksuinit / maplesu_vrinit 是 ET_EXEC(2)，不能按 vermagic 字符串误判。
+    is_rel = is_elf and int.from_bytes(payload[16:18], "little") == 1
+    vermagic = read_vermagic(payload) if is_rel else ""
+    if is_rel and vermagic and b"kernelsu\x00" in payload:
+        role = "kernelsu"
+    elif is_rel and vermagic and b"maplesu_vr\x00" in payload:
+        role = "maplesu_vr"
+    else:
+        role = ""
     return {
-        "kind": kind,
-        "kmi": guess_kmi(payload) if kind == "ko" else "",
+        "kind": role or "elf-other",
+        "role": role,
+        "kmi": guess_kmi(payload) if role else "",
+        "vermagic": vermagic,
         "size": len(payload),
         "sha256": hashlib.sha256(payload).hexdigest(),
         "newPkgCount": payload.count(NEW_PKG),
         "oldPkgCount": payload.count(OLD_PKG),
-        "isElf": payload.startswith(b"\x7fELF"),
+        "isElf": is_elf,
     }
 
 
@@ -202,6 +212,7 @@ def analyze(apk_path: str, min_size: int, gate_flags: dict, commit: str, run_id:
         "generatedAt": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
         "commit": commit,
         "ciRunId": run_id,
+        "packageName": identity["packageName"],
         "versionCode": identity["versionCode"],
         "versionName": identity["versionName"],
         "apk": {
@@ -211,7 +222,11 @@ def analyze(apk_path: str, min_size: int, gate_flags: dict, commit: str, run_id:
             # v2/v3 签名没有 META-INF/*.RSA，证书指纹由发布侧 apksigner 填
             "certSha256": "",
         },
-        "native": {"libksudSha256": "", "libksudSize": 0, "kmis": []},
+        "native": {
+            "libksudSha256": "", "libksudSize": 0, "soOldPackageCount": 0,
+            "requiredKmis": list(REQUIRED_KMIS), "kmis": [], "companionKmis": [],
+            "missingKmis": [], "duplicateKmis": [], "coverageOk": False,
+        },
         "gates": {
             "buildChain": gate_flags.get("buildChain", False),
             "verifyPayload": gate_flags.get("verifyPayload", False),
@@ -230,26 +245,40 @@ def analyze(apk_path: str, min_size: int, gate_flags: dict, commit: str, run_id:
         except KeyError:
             continue
         digest = hashlib.sha256(lib).hexdigest()
+        receipt["native"]["soOldPackageCount"] += lib.count(OLD_PKG)
         if name.endswith("libksud_ksu.so"):
             receipt["native"]["libksudSha256"] = digest
             receipt["native"]["libksudSize"] = len(lib)
-            receipt["native"]["soOldPackageCount"] = lib.count(OLD_PKG)
-        for _, payload in find_elf_streams(lib, min_size):
+        for offset, payload in find_elf_streams(lib, min_size):
             payload_sha = hashlib.sha256(payload).hexdigest()
             if payload_sha in seen:
                 continue
             seen.add(payload_sha)
             info = summarize(payload)
-            if info["kind"] != "ko":
+            if info["kind"] not in ("kernelsu", "maplesu_vr"):
                 continue
-            receipt["native"]["kmis"].append({
+            row = {
                 "kmi": info["kmi"] or "unknown",
+                "role": info["role"],
+                "vermagic": info["vermagic"],
                 "newPackageCount": info["newPkgCount"],
                 "oldPackageCount": info["oldPkgCount"],
                 "koSha256": payload_sha,
                 "size": info["size"],
-            })
-    receipt["native"]["kmis"].sort(key=lambda row: row["kmi"])
+                "soOffset": offset,
+            }
+            target = "kmis" if info["role"] == "kernelsu" else "companionKmis"
+            receipt["native"][target].append(row)
+    native = receipt["native"]
+    native["kmis"].sort(key=lambda row: row["kmi"])
+    native["companionKmis"].sort(key=lambda row: row["kmi"])
+    counts = {kmi: sum(row["kmi"] == kmi for row in native["kmis"]) for kmi in REQUIRED_KMIS}
+    native["missingKmis"] = [kmi for kmi, count in counts.items() if count == 0]
+    native["duplicateKmis"] = [kmi for kmi, count in counts.items() if count > 1]
+    native["coverageOk"] = (not native["missingKmis"] and not native["duplicateKmis"]
+                            and len(native["kmis"]) == len(REQUIRED_KMIS)
+                            and all(row["newPackageCount"] > 0 and row["oldPackageCount"] == 0
+                                    for row in native["kmis"]))
     receipt["elapsedSeconds"] = round(time.time() - started, 1)
     return receipt
 
@@ -265,12 +294,17 @@ def render(receipt: dict) -> str:
     if not kmis:
         lines.append("  ko 载荷：未找到（so 里没有可解压的内核模块）")
     for row in kmis:
-        state = "OK" if row["oldPackageCount"] == 0 else "⚠ 旧包名"
+        state = "OK" if row["oldPackageCount"] == 0 and row["newPackageCount"] > 0 else "⚠ 包名异常"
         lines.append(
             f"  {row['kmi']:<20} size={row['size']:<9} 新 {row['newPackageCount']} / 旧 {row['oldPackageCount']}  {state}"
         )
-    bad = [row for row in kmis if row["oldPackageCount"] > 0] or receipt["native"].get("soOldPackageCount", 0) > 0
-    lines.append("  结论：" + ("仍有旧包名载荷，不能据此发布" if bad else "载荷里已无旧包名"))
+    native = receipt["native"]
+    lines.append(f"  maplesu_vr 伴生模块：{len(native['companionKmis'])} 份（独立识别，不冒充主 KO）")
+    bad = (not native["coverageOk"] or native.get("soOldPackageCount", 0) > 0
+           or any(row["oldPackageCount"] > 0 for row in native["companionKmis"]))
+    if native["missingKmis"] or native["duplicateKmis"]:
+        lines.append(f"  缺失={native['missingKmis']} 重复={native['duplicateKmis']}")
+    lines.append("  结论：" + ("六 KMI 主 KO 覆盖及包名门禁通过" if not bad else "native 覆盖或包名门禁失败，不能据此发布"))
     return "\n".join(lines)
 
 
