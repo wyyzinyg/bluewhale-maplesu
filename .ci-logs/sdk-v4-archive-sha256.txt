@@ -1,0 +1,1 @@
+8c9b9112e6f64fabc0e33077544a860afe3c3717806f52b9afde1a1801425ee0  runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
