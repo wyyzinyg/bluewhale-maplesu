@@ -104,6 +104,7 @@ jobs:
             python3 overlay/patch_bluewhale_322.py src
             python3 overlay/patch_bluewhale_32739.py src
             python3 overlay/patch_bluewhale_32739_root.py src
+            python3 overlay/patch_bluewhale_32739_advisor.py src
           fi
           echo "== 关键身份确认 =="
           python3 - <<'PY'
