@@ -16,21 +16,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: 安装修正版并提交
+      - name: 安装 advisor 加固版
         run: |
           set -u
           mkdir -p .ci-logs
           L=.ci-logs/selfpatch.log
           : > "$L"
-          step() { echo "== $* ==" >> "$L"; "$@" >> "$L" 2>&1; echo "rc=$?" >> "$L"; }
-          step curl -fsSL -o .github/workflows/build-bluewhale-native.yml https://aka.doubaocdn.com/s/0eg0eOS6AG
-          step curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/Vrym3VJW0k
-          step sha256sum .github/workflows/build-bluewhale-native.yml overlay/patch_bluewhale_32739_advisor.py
-          step python3 -m py_compile overlay/patch_bluewhale_32739_advisor.py
+          curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/Vrym3VJW0k >> "$L" 2>&1
+          echo "curl rc=$?" >> "$L"
+          sha256sum overlay/patch_bluewhale_32739_advisor.py >> "$L" 2>&1
           git config user.name "bluewhale-ci"
           git config user.email "ci@bluewhale.local"
-          git add .github/workflows/build-bluewhale-native.yml overlay/patch_bluewhale_32739_advisor.py "$L"
-          git commit -m "ci: install hardened native workflow + advisor import guard" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
+          git add overlay/patch_bluewhale_32739_advisor.py "$L"
+          git commit -m "ci: harden advisor fillMaxWidth import" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
           git push origin "HEAD:${GITHUB_REF_NAME}" >> "$L" 2>&1 || echo PUSHFAIL >> "$L"
-          echo "--- 结果 ---"
-          tail -50 "$L"
+          tail -30 "$L"
