@@ -1,0 +1,38 @@
+name: apply-native-advisor
+
+on:
+  push:
+    paths:
+      - ".native-advisor-trigger/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 在 native 32739 链中加入 advisor 空状态补丁
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('.github/workflows/build-bluewhale-native.yml')
+          s = p.read_text(encoding='utf-8')
+          old = '            python3 overlay/patch_bluewhale_32739_root.py src\n'
+          new = old + '            python3 overlay/patch_bluewhale_32739_advisor.py src\n'
+          if 'patch_bluewhale_32739_advisor.py src' in s:
+              print('already patched')
+          else:
+              assert old in s, 'root patch marker not found'
+              p.write_text(s.replace(old, new, 1), encoding='utf-8')
+              print('inserted advisor patch')
+          PY
+          git diff -- .github/workflows/build-bluewhale-native.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/build-bluewhale-native.yml
+          git commit -m "ci: apply 32739 advisor empty-state patch in native chain" || true
+          git push || true
