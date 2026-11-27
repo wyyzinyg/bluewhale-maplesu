@@ -4,6 +4,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else "src")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from patch_bluewhale_32740 import patch_32740
 
 
 def patch_advisor(root: Path) -> None:
@@ -143,7 +145,8 @@ def main() -> int:
     patch_diagnostics(ROOT)
     patch_diag_v3_literal(ROOT)
     patch_legacy_claim_gate(ROOT)
-    print("32739 advisor + compile fixes applied")
+    patch_32740(ROOT)
+    print("32739 advisor + compile fixes + 32739-r2 dual entries applied")
     return 0
 
 
