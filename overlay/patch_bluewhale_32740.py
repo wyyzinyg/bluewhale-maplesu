@@ -7,8 +7,8 @@ def patch_home_patch_entry(root: Path) -> None:
     rel = "manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt"
     path = root / rel
     text = path.read_text(encoding="utf-8")
-    if "PatchBootEntryCardMiuix" in text:
-        print(f"skip: {rel} already patched")
+    if "RootAccessCardMiuix" in text:
+        print(f"skip: {rel} already combined")
         return
     old = """                        if (showNoRootEntry) {
                             Column(modifier = sideInset) {
@@ -22,14 +22,9 @@ def patch_home_patch_entry(root: Path) -> None:
 """
     new = """                        if (showNoRootEntry) {
                             Column(modifier = sideInset) {
-                                NoRootEntryCardMiuix(
-                                    onClick = actions.onJailbreakClick,
-                                    modifier = Modifier.fillMaxWidth(),
-                                    flat = flatHome,
-                                )
-                                Spacer(Modifier.height(12.dp))
-                                PatchBootEntryCardMiuix(
-                                    onClick = actions.onInstallClick,
+                                RootAccessCardMiuix(
+                                    onNoRootClick = actions.onJailbreakClick,
+                                    onPatchBootClick = actions.onInstallClick,
                                     modifier = Modifier.fillMaxWidth(),
                                     flat = flatHome,
                                 )
@@ -42,12 +37,53 @@ def patch_home_patch_entry(root: Path) -> None:
     marker = """@Composable
 private fun About7kCard("""
     func = """@Composable
-private fun PatchBootEntryCardMiuix(
-    onClick: () -> Unit,
+private fun RootAccessCardMiuix(
+    onNoRootClick: () -> Unit,
+    onPatchBootClick: () -> Unit,
     modifier: Modifier = Modifier,
     flat: Boolean = false,
 ) {
     HomeCard(flat = flat, modifier = modifier) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp, top = 14.dp, bottom = 4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.home_root_access_title),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = colorScheme.onBackground,
+                )
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    text = stringResource(R.string.home_root_access_summary),
+                    fontSize = 13.sp,
+                    color = colorScheme.onSurfaceVariantSummary,
+                )
+            }
+            Spacer(Modifier.width(12.dp))
+            StatusTag(
+                label = stringResource(R.string.home_root_access_status),
+                contentColor = colorScheme.onPrimary,
+                backgroundColor = colorScheme.primary,
+            )
+        }
+        ArrowPreference(
+            title = stringResource(R.string.home_no_root_entry_title),
+            summary = stringResource(R.string.home_no_root_entry_summary),
+            startAction = {
+                Icon(
+                    imageVector = Icons.Filled.Security,
+                    contentDescription = stringResource(R.string.home_no_root_entry_title),
+                    modifier = Modifier.padding(end = 6.dp),
+                    tint = colorScheme.onBackground,
+                )
+            },
+            onClick = onNoRootClick,
+        )
         ArrowPreference(
             title = stringResource(R.string.home_patch_boot_entry_title),
             summary = stringResource(R.string.home_patch_boot_entry_summary),
@@ -59,7 +95,7 @@ private fun PatchBootEntryCardMiuix(
                     tint = colorScheme.onBackground,
                 )
             },
-            onClick = onClick,
+            onClick = onPatchBootClick,
         )
     }
 }
@@ -69,28 +105,41 @@ private fun PatchBootEntryCardMiuix(
         raise SystemExit("FATAL: About7kCard marker not found")
     text = text.replace(marker, func + marker, 1)
     path.write_text(text, encoding="utf-8")
-    print(f"patched {rel}: patch-boot entry beside no-root")
+    print(f"patched {rel}: combined root entry card")
 
 
 def patch_patch_entry_strings(root: Path) -> None:
-    for rel, title, summary in [
-        ("manager/src/main/res/values/strings.xml", "Patch boot image", "BootLoader unlocked: pick a boot or init_boot image to patch and flash"),
-        ("manager/src/main/res/values-zh-rCN/strings.xml", "修补 Boot 镜像", "已解锁 BootLoader：选择 boot / init_boot 镜像修补并刷入"),
-    ]:
+    resources = [
+        ("manager/src/main/res/values/strings.xml", [
+            ("home_patch_boot_entry_title", "Patch boot image"),
+            ("home_patch_boot_entry_summary", "BootLoader unlocked: patch boot / init_boot and flash"),
+            ("home_root_access_title", "Root access"),
+            ("home_root_access_summary", "Choose how to get root on this device"),
+            ("home_root_access_status", "Inactive"),
+        ]),
+        ("manager/src/main/res/values-zh-rCN/strings.xml", [
+            ("home_patch_boot_entry_title", "修补 Boot 镜像"),
+            ("home_patch_boot_entry_summary", "已解锁 BootLoader：修补 boot / init_boot 镜像后刷入"),
+            ("home_root_access_title", "Root 权限"),
+            ("home_root_access_summary", "选择适合这台设备的获取方式"),
+            ("home_root_access_status", "未激活"),
+        ]),
+    ]
+    for rel, strings in resources:
         path = root / rel
         text = path.read_text(encoding="utf-8")
-        if "home_patch_boot_entry_title" in text:
-            print(f"skip: {rel} already patched")
-            continue
-        strings = (
-            '    <string name="home_patch_boot_entry_title">' + title + "</string>\n"
-            '    <string name="home_patch_boot_entry_summary">' + summary + "</string>\n"
-        )
-        if "</resources>" not in text:
-            raise SystemExit(f"FATAL: {rel}: resources end not found")
-        text = text.replace("</resources>", strings + "</resources>", 1)
+        for name, value in strings:
+            if f'<string name="{name}">' in text:
+                continue
+            if "</resources>" not in text:
+                raise SystemExit(f"FATAL: {rel}: resources end not found")
+            text = text.replace(
+                "</resources>",
+                f'    <string name="{name}">{value}</string>\n</resources>',
+                1,
+            )
         path.write_text(text, encoding="utf-8")
-        print(f"patched {rel}: patch-boot entry strings")
+        print(f"patched {rel}: combined root entry strings")
 
 
 def patch_native_package(root: Path) -> None:
@@ -123,4 +172,4 @@ def patch_32740(root: Path) -> None:
     patch_home_patch_entry(root)
     patch_patch_entry_strings(root)
     patch_native_package(root)
-    print("32739-r2: dual home entries + native package applied")
+    print("32739-r3: combined home root entry + native package applied")
