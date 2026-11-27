@@ -1,8 +1,8 @@
 name: build-bluewhale-quick
 
-# Fast 32739 Kotlin/APK build: uses the precompiled libksud payload and skips the
-# broken Ultra bridge. The root transport under test is /system/bin/su (sucompat),
-# which does not depend on either of them.
+# 32739 APK build: rebuild KMI modules for jailbreak providers, then assemble the
+# manager APK. The Ultra bridge is intentionally skipped; the root transport under
+# test is /system/bin/su (sucompat), which does not depend on it.
 
 on:
   workflow_dispatch:
@@ -16,7 +16,10 @@ permissions:
 jobs:
   quick:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
+    env:
+      DDK_RELEASE: "20260828"
+      KMI_MATRIX: "android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18"
     steps:
       - uses: actions/checkout@v4
 
@@ -71,6 +74,27 @@ jobs:
           test -d "$SDK/ndk/28.2.13676358"
           echo "ANDROID_NDK_HOME=$SDK/ndk/26.1.10909125" >> "$GITHUB_ENV"
 
+      - name: Build KMI modules for jailbreak providers
+        run: |
+          set -euo pipefail
+          cd src
+          for kmi in $KMI_MATRIX; do
+            echo "===== $kmi ====="
+            image="ghcr.io/ylarod/ddk-min:${kmi}-${DDK_RELEASE}"
+            docker pull "$image"
+            bash third_party/kernelsu/scripts/build_lkm.sh --kmi "$kmi" --ddk-image "$image" \
+              2>&1 | tee "third_party/kernelsu/lkm/${kmi}_kernelsu.log"
+            if KMI="$kmi" python3 -c 'import os,sys; sys.path.insert(0,"third_party/kernelsu/scripts"); import ksu_common as C; sys.exit(0 if os.environ["KMI"] in C.COMPATIBILITY_KMI_MATRIX else 1)'; then
+              bash third_party/kernelsu/scripts/build_lkm.sh --kmi "$kmi" --ddk-image "$image" --vr-only \
+                2>&1 | tee "third_party/kernelsu/lkm/${kmi}_maplesu_vr.log"
+            fi
+          done
+          ls -l third_party/kernelsu/lkm/*.ko
+          for ko in third_party/kernelsu/lkm/*.ko; do
+            old=$(grep -a -c "dev.maplesu.manager" "$ko" || true)
+            [ "$old" = "0" ] || { echo "FATAL: $ko still has old package"; exit 1; }
+          done
+
       - name: Assemble release APK
         run: |
           set -euo pipefail
@@ -97,8 +121,8 @@ jobs:
           NAME="bluewhale-manager-v3.22.0-bw-32739-unsigned.apk.bin"
           SIZE=$(stat -c%s "$APK")
           SHA=$(sha256sum "$APK" | awk '{print $1}')
-          RESP=$(curl --fail -sS --retry 3 --retry-delay 3 -X POST --data-binary @"$APK" \
-            -H "filename: $NAME" "https://filebin.net/bw32739-quick-${GITHUB_RUN_ID}/${NAME}")
+          curl --fail -sS --retry 3 --retry-delay 3 -X POST --data-binary @"$APK" \
+            -H "filename: $NAME" "https://filebin.net/bw32739-quick-${GITHUB_RUN_ID}/${NAME}" > /tmp/filebin-resp.json
           URL="https://filebin.net/bw32739-quick-${GITHUB_RUN_ID}/${NAME}"
           printf '%s\n%s\n%s\n' "$URL" "$SHA" "$SIZE" > out/link.txt
           cat out/link.txt
