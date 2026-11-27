@@ -46,10 +46,12 @@ jobs:
           from pathlib import Path
           p = Path("runtime/maplesu-sdk/sdk/build.py")
           s = p.read_text(encoding="utf-8")
-          needle = 'flags = _step_flags(argv, drop)\n        flags.insert(0, "--target=aarch64-linux-android21")'
-          if s.count(needle) != 1:
-              raise SystemExit(f"FATAL: compose -Werror marker count={s.count(needle)}")
-          s = s.replace(needle, 'flags = _step_flags(argv, drop)\n        flags = [flag for flag in flags if flag != "-Werror"]\n        flags.insert(0, "--target=aarch64-linux-android21")')
+          needle = 'flags = _step_flags(argv, drop)\n'
+          count = s.count(needle)
+          if count != 1:
+              raise SystemExit(f"FATAL: compose flags marker count={count}")
+          insert = '        flags = [flag for flag in flags if flag != "-Werror"]\n'
+          s = s.replace(needle, needle + insert, 1)
           p.write_text(s, encoding="utf-8")
           print("compose -Werror relaxed")
           PY
