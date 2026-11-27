@@ -1,0 +1,840 @@
+run=46048166683
+native	Set up job	﻿2026-11-27T18:16:10.1395478Z Current runner version: '2.338.2'
+native	Set up job	2026-11-27T18:16:10.1435971Z ##[group]Runner Image Provisioner
+native	Set up job	2026-11-27T18:16:10.1436790Z Hosted Compute Agent
+native	Set up job	2026-11-27T18:16:10.1437214Z Version: 20261111.635
+native	Set up job	2026-11-27T18:16:10.1437763Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+native	Set up job	2026-11-27T18:16:10.1438548Z Build Date: 2026-11-11T01:49:01Z
+native	Set up job	2026-11-27T18:16:10.1439060Z Worker ID: {18dbe26f-1527-4ee8-a1c1-d11812fb6796}
+native	Set up job	2026-11-27T18:16:10.1439601Z Region: centralus
+native	Set up job	2026-11-27T18:16:10.1440017Z Cloud: Azure
+native	Set up job	2026-11-27T18:16:10.1440392Z ##[endgroup]
+native	Set up job	2026-11-27T18:16:10.1441436Z ##[group]Operating System
+native	Set up job	2026-11-27T18:16:10.1441916Z Ubuntu
+native	Set up job	2026-11-27T18:16:10.1442315Z 26.04.1
+native	Set up job	2026-11-27T18:16:10.1442719Z LTS
+native	Set up job	2026-11-27T18:16:10.1443069Z ##[endgroup]
+native	Set up job	2026-11-27T18:16:10.1443484Z ##[group]Runner Image
+native	Set up job	2026-11-27T18:16:10.1443898Z Image: ubuntu-26.04
+native	Set up job	2026-11-27T18:16:10.1444305Z Version: 20261116.202.1
+native	Set up job	2026-11-27T18:16:10.1445149Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.202/images/ubuntu/Ubuntu2604-Readme.md
+native	Set up job	2026-11-27T18:16:10.1446515Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.202
+native	Set up job	2026-11-27T18:16:10.1447240Z ##[endgroup]
+native	Set up job	2026-11-27T18:16:10.1448082Z ##[group]GITHUB_TOKEN Permissions
+native	Set up job	2026-11-27T18:16:10.1450031Z Contents: read
+native	Set up job	2026-11-27T18:16:10.1450487Z Metadata: read
+native	Set up job	2026-11-27T18:16:10.1450894Z ##[endgroup]
+native	Set up job	2026-11-27T18:16:10.1452395Z Secret source: Actions
+native	Set up job	2026-11-27T18:16:10.1453088Z Cache mode: write
+native	Set up job	2026-11-27T18:16:10.1453885Z Prepare workflow directory
+native	Set up job	2026-11-27T18:16:10.1769834Z Prepare all required actions
+native	Set up job	2026-11-27T18:16:10.1807531Z Getting action download info
+native	Set up job	2026-11-27T18:16:10.4511384Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+native	Set up job	2026-11-27T18:16:10.5176741Z Download action repository 'actions/setup-java@v4' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+native	Set up job	2026-11-27T18:16:11.0298946Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+native	Set up job	2026-11-27T18:16:11.2189190Z Complete job name: native
+native	取本仓库	﻿2026-11-27T18:16:11.2815005Z ##[group]Run actions/checkout@v4
+native	取本仓库	2026-11-27T18:16:11.2815673Z with:
+native	取本仓库	2026-11-27T18:16:11.2816099Z   repository: wyyzinyg/bluewhale-maplesu
+native	取本仓库	2026-11-27T18:16:11.2819501Z   token: ***
+native	取本仓库	2026-11-27T18:16:11.2819876Z   ssh-strict: true
+native	取本仓库	2026-11-27T18:16:11.2820284Z   ssh-user: git
+native	取本仓库	2026-11-27T18:16:11.2820672Z   persist-credentials: true
+native	取本仓库	2026-11-27T18:16:11.2821099Z   clean: true
+native	取本仓库	2026-11-27T18:16:11.2821499Z   sparse-checkout-cone-mode: true
+native	取本仓库	2026-11-27T18:16:11.2821970Z   fetch-depth: 1
+native	取本仓库	2026-11-27T18:16:11.2822386Z   fetch-tags: false
+native	取本仓库	2026-11-27T18:16:11.2822824Z   show-progress: true
+native	取本仓库	2026-11-27T18:16:11.2823211Z   lfs: false
+native	取本仓库	2026-11-27T18:16:11.2823602Z   submodules: false
+native	取本仓库	2026-11-27T18:16:11.2823988Z   set-safe-directory: true
+native	取本仓库	2026-11-27T18:16:11.2824429Z   allow-unsafe-pr-checkout: false
+native	取本仓库	2026-11-27T18:16:11.2824997Z env:
+native	取本仓库	2026-11-27T18:16:11.2825354Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	取本仓库	2026-11-27T18:16:11.2825883Z   KSU_EXPECTED_SIZE: 1355
+native	取本仓库	2026-11-27T18:16:11.2826518Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	取本仓库	2026-11-27T18:16:11.2827316Z   DDK_RELEASE: 20260828
+native	取本仓库	2026-11-27T18:16:11.2827714Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	取本仓库	2026-11-27T18:16:11.2828573Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	取本仓库	2026-11-27T18:16:11.2829053Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	取本仓库	2026-11-27T18:16:11.2829758Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	取本仓库	2026-11-27T18:16:11.2830533Z ##[endgroup]
+native	取本仓库	2026-11-27T18:16:11.5117874Z Syncing repository: wyyzinyg/bluewhale-maplesu
+native	取本仓库	2026-11-27T18:16:11.5120454Z ##[group]Getting Git version info
+native	取本仓库	2026-11-27T18:16:11.5121727Z Working directory is '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+native	取本仓库	2026-11-27T18:16:11.5123302Z [command]/usr/bin/git version
+native	取本仓库	2026-11-27T18:16:11.5127545Z git version 2.56.1
+native	取本仓库	2026-11-27T18:16:11.5146375Z ##[endgroup]
+native	取本仓库	2026-11-27T18:16:11.5153193Z Temporarily overriding HOME='/home/runner/work/_temp/0237f098-936e-45f5-8edf-c7af502fc592' before making global git config changes
+native	取本仓库	2026-11-27T18:16:11.5159600Z Adding repository directory to the temporary git global config as a safe directory
+native	取本仓库	2026-11-27T18:16:11.5161016Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+native	取本仓库	2026-11-27T18:16:11.5211763Z Deleting the contents of '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+native	取本仓库	2026-11-27T18:16:11.5216761Z ##[group]Initializing the repository
+native	取本仓库	2026-11-27T18:16:11.5218991Z [command]/usr/bin/git init /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+native	取本仓库	2026-11-27T18:16:11.5299498Z hint: Using 'master' as the name for the initial branch. This default branch name
+native	取本仓库	2026-11-27T18:16:11.5301897Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+native	取本仓库	2026-11-27T18:16:11.5304324Z hint: to use in all of your new repositories, which will suppress this warning,
+native	取本仓库	2026-11-27T18:16:11.5306306Z hint: call:
+native	取本仓库	2026-11-27T18:16:11.5307185Z hint:
+native	取本仓库	2026-11-27T18:16:11.5308442Z hint: 	git config --global init.defaultBranch <name>
+native	取本仓库	2026-11-27T18:16:11.5309842Z hint:
+native	取本仓库	2026-11-27T18:16:11.5310526Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+native	取本仓库	2026-11-27T18:16:11.5311399Z hint: 'development'. The just-created branch can be renamed via this command:
+native	取本仓库	2026-11-27T18:16:11.5312024Z hint:
+native	取本仓库	2026-11-27T18:16:11.5312381Z hint: 	git branch -m <name>
+native	取本仓库	2026-11-27T18:16:11.5312793Z hint:
+native	取本仓库	2026-11-27T18:16:11.5313334Z hint: Disable this message with "git config set advice.defaultBranchName false"
+native	取本仓库	2026-11-27T18:16:11.5314283Z Initialized empty Git repository in /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/.git/
+native	取本仓库	2026-11-27T18:16:11.5323122Z [command]/usr/bin/git remote add origin https://github.com/wyyzinyg/bluewhale-maplesu
+native	取本仓库	2026-11-27T18:16:11.5366752Z ##[endgroup]
+native	取本仓库	2026-11-27T18:16:11.5368402Z ##[group]Disabling automatic garbage collection
+native	取本仓库	2026-11-27T18:16:11.5369606Z [command]/usr/bin/git config --local gc.auto 0
+native	取本仓库	2026-11-27T18:16:11.5392664Z ##[endgroup]
+native	取本仓库	2026-11-27T18:16:11.5393688Z ##[group]Setting up auth
+native	取本仓库	2026-11-27T18:16:11.5397199Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+native	取本仓库	2026-11-27T18:16:11.5420239Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+native	取本仓库	2026-11-27T18:16:11.5783558Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+native	取本仓库	2026-11-27T18:16:11.5807789Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+native	取本仓库	2026-11-27T18:16:11.5978583Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+native	取本仓库	2026-11-27T18:16:11.6001811Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+native	取本仓库	2026-11-27T18:16:11.6178707Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+native	取本仓库	2026-11-27T18:16:11.6212562Z ##[endgroup]
+native	取本仓库	2026-11-27T18:16:11.6213698Z ##[group]Fetching the repository
+native	取本仓库	2026-11-27T18:16:11.6221035Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +215b87bd714c355e3693fbcd33465006f9b1ad35:refs/remotes/origin/feat/32739-bluefishsu
+native	取本仓库	2026-11-27T18:16:13.3395726Z From https://github.com/wyyzinyg/bluewhale-maplesu
+native	取本仓库	2026-11-27T18:16:13.3396450Z  * [new ref]         215b87bd714c355e3693fbcd33465006f9b1ad35 -> origin/feat/32739-bluefishsu
+native	取本仓库	2026-11-27T18:16:13.3399750Z ##[endgroup]
+native	取本仓库	2026-11-27T18:16:13.3402508Z ##[group]Determining the checkout info
+native	取本仓库	2026-11-27T18:16:13.3402916Z ##[endgroup]
+native	取本仓库	2026-11-27T18:16:13.3408420Z [command]/usr/bin/git sparse-checkout disable
+native	取本仓库	2026-11-27T18:16:13.3458626Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+native	取本仓库	2026-11-27T18:16:13.3484356Z ##[group]Checking out the ref
+native	取本仓库	2026-11-27T18:16:13.3487823Z [command]/usr/bin/git checkout --progress --force -B feat/32739-bluefishsu refs/remotes/origin/feat/32739-bluefishsu
+native	取本仓库	2026-11-27T18:16:13.4937133Z Switched to a new branch 'feat/32739-bluefishsu'
+native	取本仓库	2026-11-27T18:16:13.4940783Z branch 'feat/32739-bluefishsu' set up to track 'origin/feat/32739-bluefishsu'.
+native	取本仓库	2026-11-27T18:16:13.4948421Z ##[endgroup]
+native	取本仓库	2026-11-27T18:16:13.4985878Z [command]/usr/bin/git log -1 --format=%H
+native	取本仓库	2026-11-27T18:16:13.5004320Z 215b87bd714c355e3693fbcd33465006f9b1ad35
+native	应用 DSH 32739 源码（排除 workflow）	﻿2026-11-27T18:16:13.5178989Z ##[group]Run set -euo pipefail
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5179462Z ^[[36;1mset -euo pipefail^[[0m
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5179842Z ^[[36;1mcurl -fsSL -o /tmp/32739-dsh.patch https://aka.doubaocdn.com/s/MmSBQklfMU^[[0m
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5180368Z ^[[36;1mecho "ea8f4d00f7a6088298e4d44646070604d340d7395f17c54b8ffd924c4dc1dc24  /tmp/32739-dsh.patch" | sha256sum -c -^[[0m
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5180864Z ^[[36;1mgit apply --whitespace=nowarn --exclude='.github/**' /tmp/32739-dsh.patch^[[0m
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5204187Z shell: /usr/bin/bash -e {0}
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5204454Z env:
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5204660Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5204905Z   KSU_EXPECTED_SIZE: 1355
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5205246Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5205585Z   DDK_RELEASE: 20260828
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5205793Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5206027Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5206252Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5206662Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:13.5207045Z ##[endgroup]
+native	应用 DSH 32739 源码（排除 workflow）	2026-11-27T18:16:16.1294017Z /tmp/32739-dsh.patch: OK
+native	解析目标版本（push 触发读 .ci-trigger/target）	﻿2026-11-27T18:16:16.1370541Z ##[group]Run if [ -f .ci-trigger/target ]; then
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1370859Z ^[[36;1mif [ -f .ci-trigger/target ]; then^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1371101Z ^[[36;1m  TARGET=$(tr -d '[:space:]' < .ci-trigger/target)^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1371344Z ^[[36;1melse^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1371497Z ^[[36;1m  TARGET="32737"^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1371662Z ^[[36;1mfi^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1371817Z ^[[36;1mcase "$TARGET" in^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1371990Z ^[[36;1m  32737|32738|32739) ;;^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1372206Z ^[[36;1m  *) echo "FATAL: invalid target=$TARGET"; exit 1 ;;^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1372429Z ^[[36;1mesac^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1372632Z ^[[36;1mecho "resolved target=$TARGET"^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1372849Z ^[[36;1mecho "target=$TARGET" >> "$GITHUB_OUTPUT"^[[0m
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1390528Z shell: /usr/bin/bash -e {0}
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1390742Z env:
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1390923Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1391131Z   KSU_EXPECTED_SIZE: 1355
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1391405Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1391754Z   DDK_RELEASE: 20260828
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1391925Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1392123Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1392315Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1392637Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1392953Z ##[endgroup]
+native	解析目标版本（push 触发读 .ci-trigger/target）	2026-11-27T18:16:16.1449276Z resolved target=32739
+native	取上游 MapleSU 源码	﻿2026-11-27T18:16:16.1495014Z ##[group]Run set -euo pipefail
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1495255Z ^[[36;1mset -euo pipefail^[[0m
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1495435Z ^[[36;1mmkdir -p src^[[0m
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1495666Z ^[[36;1mUPSTREAM_COMMIT=ff3aa44850ea22717fa811a17831155a85f43445^[[0m
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1496026Z ^[[36;1mecho "upstream commit=$UPSTREAM_COMMIT"^[[0m
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1496426Z ^[[36;1mcurl -sSL -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${UPSTREAM_COMMIT}"^[[0m
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1496836Z ^[[36;1mtar xzf /tmp/maplesu.tar.gz -C src --strip-components=1^[[0m
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1497109Z ^[[36;1mecho "上游体积: $(du -sh src | cut -f1)"^[[0m
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1511047Z shell: /usr/bin/bash -e {0}
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1511244Z env:
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1511411Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1511611Z   KSU_EXPECTED_SIZE: 1355
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1511881Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1512174Z   DDK_RELEASE: 20260828
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1512384Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1512565Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1512754Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1513064Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1513368Z ##[endgroup]
+native	取上游 MapleSU 源码	2026-11-27T18:16:16.1559892Z upstream commit=ff3aa44850ea22717fa811a17831155a85f43445
+native	取上游 MapleSU 源码	2026-11-27T18:16:47.0721136Z 上游体积: 703M
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	﻿2026-11-27T18:16:47.0748707Z ##[group]Run set -euo pipefail
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0748968Z ^[[36;1mset -euo pipefail^[[0m
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0749242Z ^[[36;1mSRC=runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a^[[0m
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0749595Z ^[[36;1mDST=src/runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a^[[0m
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0749935Z ^[[36;1mtest -s "$SRC" || { echo "FATAL: 本仓库缺少 SDK archive: $SRC"; exit 1; }^[[0m
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0750204Z ^[[36;1mmkdir -p "$(dirname "$DST")"^[[0m
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0750393Z ^[[36;1mcp "$SRC" "$DST"^[[0m
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0750562Z ^[[36;1msha256sum "$SRC" "$DST"^[[0m
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0768042Z shell: /usr/bin/bash -e {0}
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0768369Z env:
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0768553Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0768766Z   KSU_EXPECTED_SIZE: 1355
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0769046Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0769345Z   DDK_RELEASE: 20260828
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0769513Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0769743Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0769930Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0770274Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.0770618Z ##[endgroup]
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.1653670Z 713853d546f359e234c7a7fec2f7042a32b44a4deceed8aeeda74f9f3cb929c6  runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
+native	覆盖 Ultra SDK archive（本仓库 32739 分支）	2026-11-27T18:16:47.1774328Z 713853d546f359e234c7a7fec2f7042a32b44a4deceed8aeeda74f9f3cb929c6  src/runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
+native	按 32739 完整链打补丁	﻿2026-11-27T18:16:47.1805913Z ##[group]Run set -euo pipefail
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1806204Z ^[[36;1mset -euo pipefail^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1806410Z ^[[36;1mpython3 overlay/apply_bluewhale.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1806661Z ^[[36;1mpython3 overlay/patch_runtime_targets.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1806913Z ^[[36;1mpython3 overlay/patch_brand_skin_tail.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1807153Z ^[[36;1mpython3 overlay/patch_bluewhale_320.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1807392Z ^[[36;1mpython3 overlay/patch_bluewhale_321.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1807645Z ^[[36;1mpython3 overlay/patch_bluewhale_323.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1807896Z ^[[36;1mif [ "32739" = "32738" ] || [ "32739" = "32739" ]; then^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1808442Z ^[[36;1m  python3 overlay/patch_bluewhale_3210.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1808680Z ^[[36;1melse^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1808846Z ^[[36;1m  echo "target=32739：跳过 3210"^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1809033Z ^[[36;1mfi^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1809189Z ^[[36;1mif [ "32739" = "32739" ]; then^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1809536Z ^[[36;1m  python3 overlay/patch_bluewhale_322.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1809782Z ^[[36;1m  python3 overlay/patch_bluewhale_32739.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1810037Z ^[[36;1m  python3 overlay/patch_bluewhale_32739_root.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1810309Z ^[[36;1m  python3 overlay/patch_bluewhale_32739_advisor.py src^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1810663Z ^[[36;1mfi^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1810825Z ^[[36;1mecho "== 关键身份确认 =="^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1811139Z ^[[36;1mpython3 - <<'PY'^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1811319Z ^[[36;1mimport json^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1811545Z ^[[36;1mm = json.load(open('src/third_party/kernelsu/manifest.json'))^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1811800Z ^[[36;1mident = m['identity']^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1812092Z ^[[36;1massert ident['packageName'] == ident['managerPackage'] == 'com.blue.whale.mask', ident^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1812411Z ^[[36;1mident['expectedSize'] = 1355^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1812730Z ^[[36;1mident['expectedHash'] = '863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581'^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1813126Z ^[[36;1mident['expectedNote'] = 'BlueWhale release cert DER (1355 bytes)'^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1813650Z ^[[36;1mimport sys^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1813813Z ^[[36;1mfrom pathlib import Path^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1814049Z ^[[36;1msys.path.insert(0, 'src/third_party/kernelsu/scripts')^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1814297Z ^[[36;1mimport ksu_common as C^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1814528Z ^[[36;1mm['applied']['treeSha256'] = C.tree_sha256(C.APPLIED_DIR)^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1814925Z ^[[36;1mm['applied']['fileCount'] = len(C.iter_tree_files(C.APPLIED_DIR))^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1815231Z ^[[36;1mm['upstream']['treeSha256'] = C.tree_sha256(C.UPSTREAM_DIR)^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1815563Z ^[[36;1mm['upstream']['fileCount'] = len(C.iter_tree_files(C.UPSTREAM_DIR))^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1815891Z ^[[36;1mpj = Path('src/third_party/kernelsu/patches/7k/patches.json')^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1816185Z ^[[36;1mpt = pj.read_text(encoding='utf-8')^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1816455Z ^[[36;1mpt = pt.replace('"KSU_MANAGER_PACKAGE ?= dev.maplesu.manager"',^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1816756Z ^[[36;1m                '"KSU_MANAGER_PACKAGE ?= com.blue.whale.mask"')^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1817078Z ^[[36;1mpt = pt.replace('"cargo:rustc-env=KSU_PACKAGE_NAME=dev.maplesu.manager"',^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1817426Z ^[[36;1m                '"cargo:rustc-env=KSU_PACKAGE_NAME=com.blue.whale.mask"')^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1817701Z ^[[36;1mpj.write_text(pt, encoding='utf-8')^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1818013Z ^[[36;1mopen('src/third_party/kernelsu/manifest.json', 'w', encoding='utf-8').write(^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1818534Z ^[[36;1m    json.dumps(m, ensure_ascii=False, indent=2) + '\n')^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1818899Z ^[[36;1mprint('identity ok:', ident['packageName'], ident['expectedSize'], ident['expectedHash'][:16])^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1819337Z ^[[36;1mprint('appliedTreeSha256:', m['applied']['treeSha256'], 'files:', m['applied']['fileCount'])^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1819642Z ^[[36;1mPY^[[0m
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1837158Z shell: /usr/bin/bash -e {0}
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1837487Z env:
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1837660Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1837864Z   KSU_EXPECTED_SIZE: 1355
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1838273Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1838644Z   DDK_RELEASE: 20260828
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1838821Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1839004Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1839202Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1839519Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.1839830Z ##[endgroup]
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2142258Z 改好 manager/build.gradle.kts
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2142601Z 改好 manager/build.gradle.kts
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2142849Z 改好 manager/build.gradle.kts
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2143125Z 改好 manager/src/main/res/values/maplesu_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2143595Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2143963Z 插入 BLUEWHALE_KEY_COLOR 常量
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2144171Z 改好 manager/src/main/res/values/colors.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2144394Z 移除位图 drawable-xxhdpi
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2144573Z 移除位图 drawable-hdpi
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2144793Z 移除位图 drawable-mdpi
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2144960Z 移除位图 drawable-xxxhdpi
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2145144Z 移除位图 drawable-xhdpi
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2145311Z 放入矢量图标
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2145651Z 改好 manager/build.gradle.kts
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2145869Z 修好 build.py: cmake 可执行名跨平台
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2146062Z 修好 build.py: ninja 可执行名跨平台
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2146287Z 修好 build.py: ir spec 路径反斜杠归一（带 basename 回退）
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2146527Z 修好 build.py: L3 构建保留完整门禁日志
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2146734Z 修好 build.py: 附加 KMI 的 L3 失败回传主日志
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2146950Z 修好 build.py: L3 全 KMI 诊断后统一失败
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2147168Z 改好 build.gradle.kts: policy bundle 固定 ultra
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2147417Z 改好 build.gradle.kts: bundle 同源校验随自检开关跳过
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2147665Z policy bundle 自检：18 个源，缺 0，漂 0
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2147918Z 修好 prepare_host_dependencies.py: 插入 _retry_urlopen
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2148333Z 修好 prepare_host_dependencies.py: 下载走重试
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2148649Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2148939Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2149198Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2149468Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2149617Z 
+native	按 32739 完整链打补丁	2026-11-27T18:16:47.2149707Z 蓝鱼品牌化补丁已全部应用。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4253045Z 改好 build.gradle.kts: runtime 目标集按开关决定 bridge
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4253972Z 改好 manager/build.gradle.kts: @get:InputFile abstract val ultraBridgeLibrary: 
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4254787Z 改好 manager/build.gradle.kts: ultraBridgeLibrary.get().asFile.copyTo(jniDirect
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4273138Z 改好 manager/build.gradle.kts: ultraBridgeLibrary.set(runtimeBuild.map { it.fil
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4273886Z 改好 build.gradle.kts: bridge 不再作为硬性输出
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4274346Z 改好 product.py: cached_jar 缺缓存时从 Maven 补拉
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4274721Z 改好 build.gradle.kts: Ultra claim 门槛随跳过开关放行
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4275139Z 改好 gradle.properties: 落 bluewhaleSkipUltraBridge
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4275669Z 改好 manager/src/main/AndroidManifest.xml: android:authorities="dev.maplesu.manager.soter"
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4276366Z 改好 manager/src/main/java/dev/maplesu/manager/soter/SoterTargetProvider.kt: const val AUTHORITY = "dev.maplesu.manager.soter
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4276904Z 还原蓝鱼图标与启动页位图: 6 个文件，与 3.16 逐字节一致
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4277317Z 改好 manager/src/main/res/mipmap-anydpi/ic_launcher.xml: <foreground android:drawable="@drawable/ic_launc
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4277877Z 改好 manager/src/main/res/values/colors.xml: <color name="ic_launcher_background">#FF08101F</
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4278647Z 改好 manager/src/main/res/values/colors.xml: <color name="ic_splash_background">#FF774F6F</co
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4279156Z 改好 manager/src/main/res/values/themes.xml: <item name="windowSplashScreenBackground">@color
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4279910Z 改好 manager/src/main/res/values/themes.xml: <item name="windowSplashScreenAnimatedIcon">@dra
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4280437Z 改好 manager/src/main/res/values-night/themes.xml: <item name="windowSplashScreenBackground">@color
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4280976Z 改好 manager/src/main/res/values-night/themes.xml: <item name="windowSplashScreenAnimatedIcon">@dra
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4281377Z 还原启动页: ic_app_brand 位图 + 白底 + 主题指向
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4281899Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt: get() = if (ThemeLock.ENABLED) ThemeLock.THEME_M
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4282510Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: init {
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4282868Z         prefs.registerOnSharedPreferenceC
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4283301Z 改好 manager/src/main/java/com/maplesu/core/ui/util/AppearancePrefsPolicy.kt: "snow_enabled" to enabled,
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4283949Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if ((skin.appliedScene && uiState.snowEnabled) |
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4284607Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeBetaBanner.kt: internal const val MAPLESU_FEEDBACK_URL = "https
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4285185Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: Text(
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4285544Z             text = aboutCommunityText(stri
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4286045Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: AdvisorWallMiuix(Modifier.padding(top = 4.dp))
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4287010Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: kind = BrandBannerKind.MAPLE,
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4287843Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: Text(
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4288469Z             text = aboutCommunityText(stri
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4289245Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: AdvisorWallMaterial(Modifier.padding(top = 4.dp)
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4290287Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: kind = BrandBannerKind.MAPLE,
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4291172Z 改好 manager/src/main/res/values/themes.xml: <style name="Theme.KernelSU" parent="android:The
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4291933Z 改好 manager/src/main/res/values/themes.xml: <item name="android:windowLightStatusBar">true</
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4292703Z 改好 manager/src/main/res/values/themes.xml: <item name="android:windowLightNavigationBar">tr
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4293472Z 改好 manager/src/main/res/values/colors.xml: <color name="maple_window_background">#FFF7F7F7<
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4294339Z 改好 manager/src/main/res/values-night/colors.xml: <color name="maple_window_background">#FF000000<
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4294931Z 改好 manager/build.gradle.kts: versionCode = 32731
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4295393Z 改好 manager/build.gradle.kts: versionName = "3.17.0-bw"
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4296146Z 改好 manager/src/main/res/values/maplesu_release_strings.xml: <string name="home_public_beta_notice">公测版本非正式版本
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4297033Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_title">About MapleSU</
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4297838Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_entry_summary">Develop
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4298884Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_overview">Overview: an
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4299753Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_overview_plain">Overvi
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4300519Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_developers">Developer:
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4301337Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_title">关于 MapleSU</str
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4302149Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_entry_summary">开发者、开源致
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4302956Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_overview">简介：一款 Androi
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4303512Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_overview_plain">简介：一款 
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4304067Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_developers">开发者：MapleA
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4304680Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_failed">Env
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4305271Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_timeout_sum
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4305837Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_failed_summ
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4306402Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_unconfirmed
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4306995Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_failed">环境检
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4307611Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_timeout_sum
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4308436Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_failed_summ
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4309071Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_unconfirmed
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4309727Z 改好 manager/src/main/res/values/strings_workmode.xml: <string name="work_mode_superuser_unresolved">Th
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4310297Z 改好 manager/src/main/res/values-zh-rCN/strings_workmode.xml: <string name="work_mode_superuser_unresolved">还没
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4310868Z 改好 manager/src/main/res/values-zh-rCN/strings_workmode.xml: <string name="work_mode_superuser_unavailable">当
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4311426Z 改好 manager/src/main/res/values/maplesu_strings.xml: <string name="module_load_failed">Failed to load
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4311994Z 改好 manager/src/main/res/values-zh-rCN/maplesu_strings.xml: <string name="module_load_failed">加载模块失败，请重试</st
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4312432Z 品牌皮肤已应用：深色默认 + 去枫叶 + 蓝鱼文案
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.4312648Z 构建期修补已全部应用。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5528979Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt: appearance.getBoolean("snow_enabled", true)
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5530735Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: 2 处 AppearancePreferences.INTRO_COMIC, t
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5531774Z 改好 manager/src/main/java/com/maplesu/core/ui/util/AppearancePrefsPolicy.kt: "snow_enabled" to false,
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5532679Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_appearance_summary">界面风格 
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5533499Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_fall_title">枫叶飘落</string>
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5534303Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_fall_summary">让枫叶轻轻飘落，可随时
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5535106Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_appearance_summary">Style
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5535886Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_fall_title">Falling maple
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5536667Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_fall_summary">Gentle fall
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5537453Z 改好 manager/src/main/res/values-zh-rCN/maplesu_strings.xml: <string name="maplesu_backend_version">Maple
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5538650Z 改好 manager/src/main/res/values/maplesu_strings.xml: <string name="maplesu_backend_version">Maple
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5539944Z 改好 manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialogMaterial.kt: internal fun BrandDialogMaterial(
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5541258Z     kind: 
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5542033Z 改好 manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialogMaterial.kt: icon = { BrandBanner(kind = kind, accent = M
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5543708Z 文案统一完成: 346 条
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5544059Z 文案总清已应用，版本 3.18.1-bw (32733)。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5544395Z 删掉启动页上游人物位图: 5 个
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5544907Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if (uiState.snowEnabled) {
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5545818Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if (skin.appliedScene && uiState.trollRainEnab
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5547044Z 删掉 manager/src/main/java/com/maplesu/core/ui/screen/settings/AppearanceSettingsBody.kt: AppearanceGroup(stringResource(R.string.theme_section_effect
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5548799Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: .putBoolean("snow_enabled", false).apply()
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5550104Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_appearance_summary">界面风格 · 
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5551115Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_appearance_summary">Style ·
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5551731Z 改好 manager/build.gradle.kts: versionCode = 32733
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5552232Z 改好 manager/build.gradle.kts: versionName = "3.18.1-bw"
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5552654Z 特效收口已应用，版本 3.18.2-bw (32734)。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5553397Z 更新通道 → 蓝鱼 update.json（CloudBase 主站 + GitHub raw 兜底）
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5553827Z 文案总清：改写 35 个资源文件
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5554089Z 版本 → 3.19.0-bw / 32735
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5554355Z 3.19.0 收口已应用。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.5554600Z 皮肤收尾已应用。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6148114Z 版本 → 3.20.0-bw / 32736
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6149286Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 内测横幅移到 InfoCard 之前（状态卡前置）
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6149906Z 无 Root 口径：改写 19 个资源文件
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6150489Z 改好 manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdate.kt: 更新通道加 Tiana 备用镜像位（默认留空=跳过）
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6150916Z 
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6151070Z 3.20.0 补丁已应用：改动 22 个文件。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6151394Z   · manager/build.gradle.kts
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6151848Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6152459Z   · manager/src/main/res/values/hook_environment_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6152925Z   · manager/src/main/res/values/jailbreak_logs.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6153358Z   · manager/src/main/res/values/jailbreak_workmode.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6153818Z   · manager/src/main/res/values/maplesu_93260.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6154272Z   · manager/src/main/res/values/maplesu_jailbreak.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6154686Z   · manager/src/main/res/values/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6155118Z   · manager/src/main/res/values-fr/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6155522Z   · manager/src/main/res/values-in/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6156037Z   · manager/src/main/res/values-tr/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6156474Z   · manager/src/main/res/values-vi/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6156975Z   · manager/src/main/res/values-zh-rCN/hook_environment_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6157791Z   · manager/src/main/res/values-zh-rCN/hook_su_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6158657Z   · manager/src/main/res/values-zh-rCN/jailbreak_logs.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6159470Z   · manager/src/main/res/values-zh-rCN/jailbreak_workmode.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6159976Z   · manager/src/main/res/values-zh-rCN/maplesu_93260.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6160474Z   · manager/src/main/res/values-zh-rCN/maplesu_jailbreak.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6160923Z   · manager/src/main/res/values-zh-rCN/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6161357Z   · manager/src/main/res/values-zh-rHK/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6162029Z   · …… 其余 2 个
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6527971Z 改好 third_party/kernelsu/manifest.json: 身份 / sources / checks / 摘要 共 7 处包名
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6529630Z 改好 third_party/kernelsu/applied/kernel/Kbuild: KSU_MANAGER_PACKAGE 默认值
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6530717Z 改好 third_party/kernelsu/applied/kernel/Kbuild: KSU_PACKAGE_NAME 的 .pr 变体
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6531701Z 改好 third_party/kernelsu/applied/userspace/ksud/build.rs: ksud 的包名兜底默认值
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6532744Z 改好 third_party/kernelsu/applied/userspace/ksud/src/late_load.rs: late-load 重启管理器的 Activity
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6533705Z 版本 → 3.20.1-bw / 32737
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6534887Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 内测横幅移到 About7kCard 之后（首屏不再出现）
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6536039Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 加「无 Root 模式」入口卡与参数
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6537396Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt: 计算并传入无 Root 入口可见性
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6538909Z 改好 manager/src/main/res/values/strings.xml: 加 home_no_root_entry_*
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6539878Z 改好 manager/src/main/res/values-zh-rCN/strings.xml: 加 home_no_root_entry_*
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6540767Z 改好 manager/src/main/res/values-zh-rHK/strings.xml: 加 home_no_root_entry_*
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6541326Z 
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6541928Z 3.20.1 补丁已应用：改动 10 个文件。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6542351Z   · third_party/kernelsu/manifest.json
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6542774Z   · third_party/kernelsu/applied/kernel/Kbuild
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6543240Z   · third_party/kernelsu/applied/userspace/ksud/build.rs
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6543805Z   · third_party/kernelsu/applied/userspace/ksud/src/late_load.rs
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6544230Z   · manager/build.gradle.kts
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6544702Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6545293Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6545761Z   · manager/src/main/res/values/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6546175Z   · manager/src/main/res/values-zh-rCN/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6546611Z   · manager/src/main/res/values-zh-rHK/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6732984Z fixed no-root entry condition
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6733362Z removed beta banner: HomeMiuix.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6733698Z removed beta banner: HomeMaterial.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6734703Z 32738 UI hotfix applied: manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt, manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt, manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMaterial.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6935283Z 版本 → 3.21.0-bw / 32738
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6936299Z 改好 manager/src/main/java/com/maplesu/core/ui/util/module/LatestVersionInfo.kt: 加 versionName / sha256 / sizeBytes / source
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6936939Z 改好 manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdate.kt: 三渠道兜底 + 来源 + 版本元数据
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6937496Z 改好 manager/src/test/java/com/maplesu/core/ui/util/ManagerUpdateTest.kt: 端点改成 MANAGER_UPDATE_URL，期望值带上 source
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6937830Z 
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6937944Z 3.21.0 数据层补丁已应用：改动 4 个文件。
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6938365Z   · manager/build.gradle.kts
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6938753Z   · manager/src/main/java/com/maplesu/core/ui/util/module/LatestVersionInfo.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6939160Z   · manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdate.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.6939543Z   · manager/src/test/java/com/maplesu/core/ui/util/ManagerUpdateTest.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.7205782Z BlueWhale 32738 SU-log evidence export applied.
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8017784Z patched manager/build.gradle.kts: versionCode -> 32739
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8019031Z patched manager/build.gradle.kts: versionName -> 3.22.0-bw
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8019877Z patched manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBanner.kt: BrandBannerKind.MAPLE -> BLUEFISH
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8020760Z patched manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBanner.kt: brand banner fish tokens
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8021638Z patched manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBannerArt.kt: Bluefish Canvas banner
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8022509Z patched manager/src/main/java/com/maplesu/core/ui/screen/about/AboutScreen.kt: about advisor banner -> BLUEFISH (2)
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8023326Z patched manager/src/main/java/com/maplesu/core/ui/component/T3Dialogs.kt: T3 banner -> BLUEFISH
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8024328Z patched manager/src/main/java/com/maplesu/core/ui/component/T3Dialogs.kt: T3 comment brand
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8024952Z brand sweep: manager/src/main/res/values/install_boot_flow_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8025455Z brand sweep: manager/src/main/res/values/install_sources.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8025967Z brand sweep: manager/src/main/res/values/installer_lifecycle_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8026481Z brand sweep: manager/src/main/res/values/maple_appearance.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8027096Z brand sweep: manager/src/main/res/values/maple_market.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8027629Z brand sweep: manager/src/main/res/values/maple_market_runtime.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8028900Z brand sweep: manager/src/main/res/values/maplesu_93260.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8029502Z brand sweep: manager/src/main/res/values/maplesu_about.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8029963Z brand sweep: manager/src/main/res/values/maplesu_advisors.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8030427Z brand sweep: manager/src/main/res/values/maplesu_jailbreak.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8030920Z brand sweep: manager/src/main/res/values/maplesu_litehidden.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8031410Z brand sweep: manager/src/main/res/values/maplesu_migration.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8031898Z brand sweep: manager/src/main/res/values/maplesu_modules.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8032374Z brand sweep: manager/src/main/res/values/maplesu_release_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8032882Z brand sweep: manager/src/main/res/values/maplesu_status.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8033326Z brand sweep: manager/src/main/res/values/maplesu_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8033840Z brand sweep: manager/src/main/res/values/module_install_choice.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8034336Z brand sweep: manager/src/main/res/values/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8034884Z brand sweep: manager/src/main/res/values/strings_comic_preset.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8035394Z brand sweep: manager/src/main/res/values/strings_normal_hidden.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8035974Z brand sweep: manager/src/main/res/values/strings_theme.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8036410Z brand sweep: manager/src/main/res/values/strings_ui_b.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8036849Z brand sweep: manager/src/main/res/values/strings_ui_d.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8037313Z brand sweep: manager/src/main/res/values/strings_workmode.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8037813Z brand sweep: manager/src/main/res/values-ar/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8038587Z brand sweep: manager/src/main/res/values-az/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8039021Z brand sweep: manager/src/main/res/values-bg/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8039431Z brand sweep: manager/src/main/res/values-bn/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8039889Z brand sweep: manager/src/main/res/values-bn-rBD/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8040323Z brand sweep: manager/src/main/res/values-bs/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8040735Z brand sweep: manager/src/main/res/values-da/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8041149Z brand sweep: manager/src/main/res/values-de/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8041566Z brand sweep: manager/src/main/res/values-es/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8041973Z brand sweep: manager/src/main/res/values-et/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8042382Z brand sweep: manager/src/main/res/values-fa/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8043040Z brand sweep: manager/src/main/res/values-fil/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8043459Z brand sweep: manager/src/main/res/values-fr/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8043934Z brand sweep: manager/src/main/res/values-gl/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8044347Z brand sweep: manager/src/main/res/values-hi/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8044759Z brand sweep: manager/src/main/res/values-hr/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8045196Z brand sweep: manager/src/main/res/values-hu/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8045778Z brand sweep: manager/src/main/res/values-in/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8046199Z brand sweep: manager/src/main/res/values-it/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8046611Z brand sweep: manager/src/main/res/values-iw/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8047006Z brand sweep: manager/src/main/res/values-ja/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8047472Z brand sweep: manager/src/main/res/values-km/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8047903Z brand sweep: manager/src/main/res/values-kn/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8048648Z brand sweep: manager/src/main/res/values-ko/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8049100Z brand sweep: manager/src/main/res/values-lt/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8049579Z brand sweep: manager/src/main/res/values-lv/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8049987Z brand sweep: manager/src/main/res/values-mr/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8050414Z brand sweep: manager/src/main/res/values-ms/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8051042Z brand sweep: manager/src/main/res/values-my/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8051454Z brand sweep: manager/src/main/res/values-nl/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8051874Z brand sweep: manager/src/main/res/values-pl/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8052272Z brand sweep: manager/src/main/res/values-pt/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8052707Z brand sweep: manager/src/main/res/values-pt-rBR/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8053117Z brand sweep: manager/src/main/res/values-ro/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8053474Z brand sweep: manager/src/main/res/values-ru/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8053858Z brand sweep: manager/src/main/res/values-sl/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8054229Z brand sweep: manager/src/main/res/values-sr/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8054642Z brand sweep: manager/src/main/res/values-te/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8055044Z brand sweep: manager/src/main/res/values-th/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8055403Z brand sweep: manager/src/main/res/values-tl/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8055727Z brand sweep: manager/src/main/res/values-tr/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8056082Z brand sweep: manager/src/main/res/values-uk/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8056440Z brand sweep: manager/src/main/res/values-vi/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8056891Z brand sweep: manager/src/main/res/values-zh-rCN/install_boot_flow_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8057390Z brand sweep: manager/src/main/res/values-zh-rCN/install_sources.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8057845Z brand sweep: manager/src/main/res/values-zh-rCN/installer_lifecycle_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8058612Z brand sweep: manager/src/main/res/values-zh-rCN/maple_appearance.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8059086Z brand sweep: manager/src/main/res/values-zh-rCN/maple_market.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8059558Z brand sweep: manager/src/main/res/values-zh-rCN/maple_market_runtime.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8060021Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_93260.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8060414Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_about.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8060776Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_advisors.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8061116Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_jailbreak.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8061455Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_litehidden.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8061791Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_migration.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8062120Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_modules.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8062443Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_status.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8062911Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8063254Z brand sweep: manager/src/main/res/values-zh-rCN/module_install_choice.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8063589Z brand sweep: manager/src/main/res/values-zh-rCN/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8063923Z brand sweep: manager/src/main/res/values-zh-rCN/strings_comic_preset.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8064274Z brand sweep: manager/src/main/res/values-zh-rCN/strings_normal_hidden.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8064615Z brand sweep: manager/src/main/res/values-zh-rCN/strings_theme.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8064929Z brand sweep: manager/src/main/res/values-zh-rCN/strings_ui_b.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8065236Z brand sweep: manager/src/main/res/values-zh-rCN/strings_ui_d.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8065554Z brand sweep: manager/src/main/res/values-zh-rCN/strings_workmode.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8065869Z brand sweep: manager/src/main/res/values-zh-rHK/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8066185Z brand sweep: manager/src/main/res/values-zh-rTW/maplesu_modules.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8066495Z brand sweep: manager/src/main/res/values-zh-rTW/maplesu_status.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8066811Z brand sweep: manager/src/main/res/values-zh-rTW/maplesu_strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8067120Z brand sweep: manager/src/main/res/values-zh-rTW/strings.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8067455Z set manager/src/main/res/values-zh-rCN/maplesu_about.xml: about_maple_title
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8067907Z set manager/src/main/res/values-zh-rCN/maplesu_about.xml: about_view_advisors
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8068684Z set manager/src/main/res/values-zh-rCN/maplesu_about.xml: about_maple_overview
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8069227Z set manager/src/main/res/values-zh-rCN/maplesu_about.xml: about_maple_developers
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8069756Z set manager/src/main/res/values-zh-rCN/maplesu_advisors.xml: advisors_title
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8070299Z added manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8070880Z added manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnosticsUi.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8071367Z added manager/src/main/res/values/root_diagnostics.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8071792Z added manager/src/main/res/values-zh-rCN/root_diagnostics.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8072400Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: insert Miuix Root diagnostics entry
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8073271Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMaterial.kt: insert Material Root diagnostics entry
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8073969Z red-card hint: manager/src/main/res/values-zh-rCN/home_environment_check.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8074505Z red-card hint: manager/src/main/res/values-zh-rCN/maplesu_litehidden.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8075058Z red-card hint: manager/src/main/res/values/home_environment_check.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8075520Z red-card hint: manager/src/main/res/values/maplesu_litehidden.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8076190Z patched manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt: HomeViewModel: import diagnostics events
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8077022Z patched manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt: HomeViewModel: record root probe start
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8077837Z patched manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt: HomeViewModel: record root probe result
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8078787Z patched manager/src/main/java/dev/maplesu/manager/jailbreak/IrImages.kt: IrImages.HELPER_PATH
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8079549Z patched client/src/main/java/dev/maplesu/client/CooperativeSuClient.kt: CooperativeSuClient doc brand
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8080345Z patched client/src/main/java/dev/maplesu/client/CooperativeSuClient.kt: CooperativeSuClient defaults
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8081138Z patched manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDiscovery.java: NativeSuDiscovery package/action
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8081949Z patched manager/src/main/java/dev/maplesu/manager/runtime/NativeSuBrokerService.kt: NativeSuBrokerService PEEK_ACTION
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8083122Z patched manager/src/main/java/dev/maplesu/manager/runtime/NativeSuBootstrapReceiver.kt: NativeSuBootstrapReceiver ACTION
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8084076Z patched manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDirectoryProvider.kt: NativeSuDirectoryProvider AUTHORITY
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8085045Z patched manager/src/main/java/dev/maplesu/manager/runtime/authorization/SuperuserControl.kt: SuperuserControl root_directory URI
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8086023Z patched manager/src/main/java/dev/maplesu/manager/runtime/RootRequestClient.kt: RootRequestClient default package
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8087010Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonManagerUninstall.kt: DaemonManagerUninstall PACKAGE
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8088055Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonNormalSuperuserPort.kt: DaemonNormalSuperuserPort protected
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8089301Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonSuperuserPort.kt: DaemonSuperuserPort default
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8090308Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/UltraSdkSuAuthRevoke.kt: UltraSdkSuAuthRevoke defaults (2)
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8091314Z patched manager/src/main/java/dev/maplesu/manager/recovery/RecoveryRestoreService.kt: RecoveryRestoreService default
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8092257Z patched manager/src/main/java/dev/maplesu/manager/workmode/migration/MigrationPaths.kt: MigrationPaths.SELF_PACKAGE
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8093328Z patched manager/src/main/java/dev/maplesu/manager/workmode/superuser/IdentityRules.kt: IdentityRules.MANAGER_PACKAGE
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8094314Z patched manager/src/main/java/dev/maplesu/manager/workmode/service/ModeSwitchRootLaunch.kt: ModeSwitchRootLaunch.PACKAGE
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8095326Z patched manager/src/main/java/dev/maplesu/manager/litehidden/ProductionHiddenModeBackend.kt: ProductionHiddenModeBackend default
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8096334Z patched manager/src/main/java/dev/maplesu/manager/litehidden/HiddenHostPolicy.kt: HiddenHostPolicy self packages
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8097269Z patched manager/src/main/java/dev/maplesu/manager/runtime/authorization/UltraAllowlistMirror.kt: UltraAllowlistMirror protected package
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8098505Z patched manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraReinstallPolicy.kt: UltraReinstallPolicy package
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8099449Z patched manager/src/main/java/dev/maplesu/manager/recovery/HiddenModeBackends.kt: HiddenModeBackends uninstall package
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8100333Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/LiteWebDaemonMain.kt: LiteWebDaemonMain pm path
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8101098Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/LiteWebDaemonMain.kt: LiteWebDaemonMain pm list
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8101953Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/LiteWebDaemonMain.kt: LiteWebDaemonMain package match
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8102836Z patched manager/src/main/java/dev/maplesu/manager/jailbreak/JailbreakStatus.kt: JailbreakStatus command package
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8103693Z patched manager/src/main/java/dev/maplesu/manager/litehidden/ParasiteScripts.kt: ParasiteScripts base.apk glob
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8104542Z patched manager/src/main/java/dev/maplesu/manager/liteweb/RecoveryWebUiControl.kt: RecoveryWebUiControl base.apk glob
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8105399Z patched manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraBugreportDiagnostics.kt: UltraBugreport pm path
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8106092Z patched manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraBugreportDiagnostics.kt: UltraBugreport pm list
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8106676Z patched manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraBugreportDiagnostics.kt: UltraBugreport resolve-activity
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8107231Z patched consumer/src/main/AndroidManifest.xml: consumer package query
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8107687Z patched third_party/kernelsu/applied/userspace/ksud/src/late_load.rs: late_load handover: am start without force-stop
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8108705Z 32739 applied: 46 changed files.
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8109127Z   · manager/build.gradle.kts
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8109483Z   · manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBanner.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8109901Z   · manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBannerArt.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8110287Z   · manager/src/main/java/com/maplesu/core/ui/screen/about/AboutScreen.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8110662Z   · manager/src/main/java/com/maplesu/core/ui/component/T3Dialogs.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8110986Z   · manager/src/main/res/values-zh-rCN/maplesu_about.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8111326Z   · manager/src/main/res/values-zh-rCN/maplesu_advisors.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8111683Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8112100Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnosticsUi.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8112456Z   · manager/src/main/res/values/root_diagnostics.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8112771Z   · manager/src/main/res/values-zh-rCN/root_diagnostics.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8113120Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8113505Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMaterial.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8113868Z   · manager/src/main/res/values-zh-rCN/home_environment_check.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8114210Z   · manager/src/main/res/values-zh-rCN/maplesu_litehidden.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8114611Z   · manager/src/main/res/values/home_environment_check.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8114919Z   · manager/src/main/res/values/maplesu_litehidden.xml
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8115262Z   · manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8115641Z   · manager/src/main/java/dev/maplesu/manager/jailbreak/IrImages.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8116014Z   · client/src/main/java/dev/maplesu/client/CooperativeSuClient.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8116400Z   · manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDiscovery.java
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8116829Z   · manager/src/main/java/dev/maplesu/manager/runtime/NativeSuBrokerService.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8117268Z   · manager/src/main/java/dev/maplesu/manager/runtime/NativeSuBootstrapReceiver.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8117716Z   · manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDirectoryProvider.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8118337Z   · manager/src/main/java/dev/maplesu/manager/runtime/authorization/SuperuserControl.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8118822Z   · manager/src/main/java/dev/maplesu/manager/runtime/RootRequestClient.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8119261Z   · manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonManagerUninstall.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8119756Z   · manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonNormalSuperuserPort.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8120234Z   · manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonSuperuserPort.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8120692Z   · manager/src/main/java/dev/maplesu/manager/liteweb/daemon/UltraSdkSuAuthRevoke.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8286249Z patched manager/src/main/java/dev/maplesu/manager/ksu/KsuRootChannel.kt: KsuRootChannel sucompat-first
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8286957Z patched manager/src/main/java/dev/maplesu/manager/ksu/KsuRootChannel.kt: KsuRootChannel lastFailure
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8287549Z patched manager/src/ksu/java/dev/maplesu/manager/ksu/KsuCommandBackend.kt: KsuCommands SUCOMPAT_PATH
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8288050Z patched manager/src/ksu/java/dev/maplesu/manager/ksu/KsuCommandBackend.kt: KsuCommands.suCompat
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8288802Z patched manager/src/main/java/dev/maplesu/manager/runtime/SuRootCandidates.kt: SuRootCandidates SUCOMPAT_PATH
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8289381Z patched manager/src/main/java/dev/maplesu/manager/runtime/SuRootCandidates.kt: SuRootCandidates sucompat candidate
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8289975Z patched manager/src/main/java/dev/maplesu/manager/runtime/SuRootCandidates.kt: SuRootCandidates avoid ksu-su duplicate
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8290576Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: RootDiagnostics imports Ksu channel
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8291238Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: snapshot sucompat fields
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8291744Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: probeSucompat
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8292246Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: call sucompat probe
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8292761Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: snapshot sucompat values
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8293284Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: report sucompat fields
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8293792Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnosticsUi.kt: UI sucompat fields
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8294230Z patched gradle.properties: build and package libmaplesu_ultra_bridge.so
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8294526Z 32739 root fix applied: 6 changed files.
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8509166Z bumped version to 32740/3.22.1-bw
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8509620Z wrote manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdateNotifier.kt
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8510142Z patched HomeViewModel: refreshUpdate -> ManagerUpdateNotifier
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.8510483Z 32740 update-push patch done: 32740/3.22.1-bw, notify-once notifier wired
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.9190371Z Traceback (most recent call last):
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.9191426Z   File "/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/overlay/patch_bluewhale_32739_advisor.py", line 9, in <module>
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.9191920Z     from patch_bluewhale_32740_update import patch_32740_update
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.9192498Z ImportError: cannot import name 'patch_32740_update' from 'patch_bluewhale_32740_update' (/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/overlay/patch_bluewhale_32740_update.py)
+native	按 32739 完整链打补丁	2026-11-27T18:16:56.9341700Z ##[error]Process completed with exit code 1.
+native	失败时打印 jailbreak 与 Gradle 日志	﻿2026-11-27T18:16:56.9405798Z ##[group]Run mkdir -p out
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9406039Z ^[[36;1mmkdir -p out^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9406218Z ^[[36;1mecho "== java =="^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9406407Z ^[[36;1mjava -version 2>&1 || true^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9406615Z ^[[36;1mecho "== gradle version =="^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9406861Z ^[[36;1m(cd src && ./gradlew --version) 2>&1 | head -30 || true^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9407128Z ^[[36;1mecho "== jailbreakProviders/build.log =="^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9407458Z ^[[36;1mcat src/manager/build/jailbreakProviders/build.log 2>/dev/null || true^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9407776Z ^[[36;1mecho "== jailbreakProviders/build.json =="^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9408084Z ^[[36;1mcat src/manager/build/jailbreakProviders/build.json 2>/dev/null || true^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9408704Z ^[[36;1mecho "== gradle tail =="^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9408932Z ^[[36;1mtail -120 /tmp/gradle.log 2>/dev/null || true^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9409206Z ^[[36;1mcp /tmp/gradle.log out/gradle.log 2>/dev/null || true^[[0m
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9427788Z shell: /usr/bin/bash -e {0}
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9427982Z env:
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9428256Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9428478Z   KSU_EXPECTED_SIZE: 1355
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9428756Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9429069Z   DDK_RELEASE: 20260828
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9429247Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9429447Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9429649Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9429978Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9430296Z ##[endgroup]
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:56.9482822Z == java ==
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:57.0478059Z openjdk version "25.0.5" 2026-10-20 LTS
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:57.0478689Z OpenJDK Runtime Environment Temurin-25.0.5+8 (build 25.0.5+8-LTS)
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:57.0489466Z OpenJDK 64-Bit Server VM Temurin-25.0.5+8 (build 25.0.5+8-LTS, mixed mode, sharing)
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:57.0526143Z == gradle version ==
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8707286Z Fetching distribution.
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8710157Z Downloading https://services.gradle.org/distributions/gradle-9.8.1-bin.zip
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8710792Z ..............10%..............20%...............30%..............40%...............50%..............60%...............70%..............80%...............90%..............100%
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8711396Z WARNING: A restricted method in java.lang.System has been called
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8718496Z WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/home/runner/.gradle/wrapper/dists/gradle-9.8.1-bin/a2l6ltp3k1vth6lwipzm5p2jp/gradle-9.8.1/lib/native-platform-0.22-milestone-29.jar)
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8719650Z WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8720074Z WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8720337Z 
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8720342Z 
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8720420Z Welcome to Gradle 9.8.1!
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8720525Z 
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8720611Z Here are the highlights of this release:
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8720840Z  - Java 27 support
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8721003Z  - Maven mirror settings reuse
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8721194Z  - Linked problem locations in build output
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8721568Z 
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8721705Z For more details see https://docs.gradle.org/9.8.1/release-notes.html
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8721897Z 
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8721899Z 
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8721994Z ------------------------------------------------------------
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8722206Z Gradle 9.8.1
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8722377Z ------------------------------------------------------------
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8722530Z 
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8722607Z Build time:    2026-10-07 16:57:46 UTC
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8722827Z Revision:      39daf39feb60a18b1b6ddccde53366522fef516f
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8723125Z 
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8723235Z Kotlin:        2.4.10
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8723571Z Groovy:        4.0.33
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8723838Z Ant:           Apache Ant(TM) version 1.10.17 compiled on April 6 2026
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8724162Z Launcher JVM:  25.0.5 (Eclipse Adoptium 25.0.5+8-LTS)
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8820601Z == jailbreakProviders/build.log ==
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8846351Z == jailbreakProviders/build.json ==
+native	失败时打印 jailbreak 与 Gradle 日志	2026-11-27T18:16:59.8866625Z == gradle tail ==
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	﻿2026-11-27T18:16:59.8931381Z ##[group]Run set -euo pipefail
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8931750Z ^[[36;1mset -euo pipefail^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8932010Z ^[[36;1mmkdir -p out^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8932359Z ^[[36;1mAPK=$(ls src/manager/build/outputs/apk/release/*.apk 2>/dev/null | head -1 || true)^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8932783Z ^[[36;1mif [ -z "$APK" ]; then echo "没有产物，跳过回执"; exit 0; fi^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8933065Z ^[[36;1mcp "$APK" out/^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8933403Z ^[[36;1mpython3 tools/bluewhale_receipt.py "$APK" -o out/build-receipt.json^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8933760Z ^[[36;1mpython3 - "$APK" "32739" <<'PY'^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8934034Z ^[[36;1mimport json, sys, zipfile, hashlib^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8934315Z ^[[36;1mapk_path = sys.argv[1]^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8934575Z ^[[36;1mrequested_target = sys.argv[2] or "32737"^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8934887Z ^[[36;1mexpected = {^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8935119Z ^[[36;1m    "32737": (32737, "3.20.1-bw"),^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8935388Z ^[[36;1m    "32738": (32738, "3.21.0-bw"),^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8935730Z ^[[36;1m    "32739": (32739, "3.22.0-bw"),^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8935990Z ^[[36;1m}.get(requested_target)^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8936266Z ^[[36;1mif expected is None:^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8936582Z ^[[36;1m    raise SystemExit(f"FATAL: unsupported target {requested_target}")^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8936954Z ^[[36;1mreceipt = json.load(open("out/build-receipt.json"))^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8937284Z ^[[36;1mnative = receipt["native"]^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8937679Z ^[[36;1mrequired = ["android12-5.10", "android13-5.15", "android14-6.1", "android15-6.6", "android16-6.12", "android17-6.18"]^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8938387Z ^[[36;1mso_old = native.get("soOldPackageCount", 0)^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8938699Z ^[[36;1mrows = native["kmis"]^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8939031Z ^[[36;1mbad = [row for row in rows if row["oldPackageCount"] > 0 or row["newPackageCount"] == 0]^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8939488Z ^[[36;1midentity_ok = (receipt.get("packageName") == "com.blue.whale.mask"^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8939869Z ^[[36;1m               and receipt.get("versionCode") == expected[0]^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8940223Z ^[[36;1m               and receipt.get("versionName") == expected[1])^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8940727Z ^[[36;1mprint(f"identity={identity_ok} coverageOk={native['coverageOk']} soOldPackageCount={so_old} 主KO异常={len(bad)}")^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8941271Z ^[[36;1mprovider = json.load(open("src/manager/build/jailbreakProviders/build.json"))^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8941665Z ^[[36;1mif provider.get("exitCode") != 0:^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8941986Z ^[[36;1m    raise SystemExit("FATAL: jailbreak provider 非零退出")^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8942308Z ^[[36;1mwith zipfile.ZipFile(apk_path) as apk:^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8942656Z ^[[36;1m    bridge = apk.read("lib/arm64-v8a/libmaplesu_ultra_bridge.so")^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8942973Z ^[[36;1m    if len(bridge) < 1024:^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8943332Z ^[[36;1m        raise SystemExit("FATAL: Ultra bridge missing or empty in APK")^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8943907Z ^[[36;1m    print(f"Ultra bridge: {len(bridge)} bytes SHA256={hashlib.sha256(bridge).hexdigest()}")^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8944277Z ^[[36;1m    for kmi in required:^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8944578Z ^[[36;1m        path = f"assets/maplesu/l3/{kmi}/maplesu_l3.ko"^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8944913Z ^[[36;1m        actual = hashlib.sha256(apk.read(path)).hexdigest()^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8945246Z ^[[36;1m        module = provider["l3"]["modules"][kmi]^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8945643Z ^[[36;1m        gate_ok = module["gateResult"]["ok"] is True^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8945991Z ^[[36;1m        print(f"L3 {kmi}: gate={gate_ok} packagedSha256={actual}")^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8946339Z ^[[36;1m        if not gate_ok or module["sha256"] != actual:^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8946660Z ^[[36;1m            raise SystemExit(f"FATAL: {kmi} L3 门禁或入包哈希不一致")^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8947023Z ^[[36;1mif not identity_ok or not native["coverageOk"] or so_old or bad:^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8947406Z ^[[36;1m    print("FATAL: native 身份、六 KMI 覆盖或包名门禁未通过", file=sys.stderr)^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8947791Z ^[[36;1m    sys.exit(1)^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8948071Z ^[[36;1mPY^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8948446Z ^[[36;1m(cd out && sha256sum *.apk > SHA256SUMS.txt)^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8948868Z ^[[36;1mhead -40 out/build-receipt.json^[[0m
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8966246Z shell: /usr/bin/bash -e {0}
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8966516Z env:
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8966776Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8967064Z   KSU_EXPECTED_SIZE: 1355
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8967401Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8967755Z   DDK_RELEASE: 20260828
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8968018Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8968430Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8968735Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8969116Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.8969490Z ##[endgroup]
+native	生成构建回执并执行六 KMI 与 L3 硬门禁	2026-11-27T18:16:59.9040918Z 没有产物，跳过回执
+native	上传产物与回执	﻿2026-11-27T18:16:59.9088102Z ##[group]Run actions/upload-artifact@v4
+native	上传产物与回执	2026-11-27T18:16:59.9088685Z with:
+native	上传产物与回执	2026-11-27T18:16:59.9088905Z   name: bluewhale-native-27
+native	上传产物与回执	2026-11-27T18:16:59.9089582Z   path: out/
+native	上传产物与回执	/tmp/payload-gate.log
+native	上传产物与回执	/tmp/userland.log
+native	上传产物与回执	/tmp/jni.log
+native	上传产物与回执	src/manager/build/jailbreakProviders/build.log
+native	上传产物与回执	src/manager/build/jailbreakProviders/build.json
+native	上传产物与回执	src/third_party/kernelsu/lkm/*.log
+native	上传产物与回执	
+native	上传产物与回执	2026-11-27T18:16:59.9090256Z   if-no-files-found: warn
+native	上传产物与回执	2026-11-27T18:16:59.9090520Z   retention-days: 14
+native	上传产物与回执	2026-11-27T18:16:59.9090774Z   compression-level: 6
+native	上传产物与回执	2026-11-27T18:16:59.9091023Z   overwrite: false
+native	上传产物与回执	2026-11-27T18:16:59.9091278Z   include-hidden-files: false
+native	上传产物与回执	2026-11-27T18:16:59.9091523Z env:
+native	上传产物与回执	2026-11-27T18:16:59.9091767Z   KSU_PACKAGE_NAME: com.blue.whale.mask
+native	上传产物与回执	2026-11-27T18:16:59.9092054Z   KSU_EXPECTED_SIZE: 1355
+native	上传产物与回执	2026-11-27T18:16:59.9092412Z   KSU_EXPECTED_HASH: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+native	上传产物与回执	2026-11-27T18:16:59.9092823Z   DDK_RELEASE: 20260828
+native	上传产物与回执	2026-11-27T18:16:59.9093066Z   RUSTUP_TOOLCHAIN: 1.99.1
+native	上传产物与回执	2026-11-27T18:16:59.9093608Z   MAPLESU_RUST_TOOLCHAIN: 1.99.1
+native	上传产物与回执	2026-11-27T18:16:59.9093873Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+native	上传产物与回执	2026-11-27T18:16:59.9094262Z   KMI_MATRIX: android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18
+native	上传产物与回执	2026-11-27T18:16:59.9094711Z ##[endgroup]
+native	上传产物与回执	2026-11-27T18:17:00.0281029Z (node:2318) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+native	上传产物与回执	2026-11-27T18:17:00.0281605Z (Use `node --trace-deprecation ...` to show where the warning was created)
+native	上传产物与回执	2026-11-27T18:17:00.0348589Z Multiple search paths detected. Calculating the least common ancestor of all paths
+native	上传产物与回执	2026-11-27T18:17:00.0351056Z The least common ancestor is /. This will be the root directory of the artifact
+native	上传产物与回执	2026-11-27T18:17:00.0371500Z ##[warning]No files were found with the provided path: out/
+native	上传产物与回执	/tmp/payload-gate.log
+native	上传产物与回执	/tmp/userland.log
+native	上传产物与回执	/tmp/jni.log
+native	上传产物与回执	src/manager/build/jailbreakProviders/build.log
+native	上传产物与回执	src/manager/build/jailbreakProviders/build.json
+native	上传产物与回执	src/third_party/kernelsu/lkm/*.log. No artifacts will be uploaded.
+native	Post 取本仓库	﻿2026-11-27T18:17:00.0504508Z Post job cleanup.
+native	Post 取本仓库	2026-11-27T18:17:00.1128322Z [command]/usr/bin/git version
+native	Post 取本仓库	2026-11-27T18:17:00.1161346Z git version 2.56.1
+native	Post 取本仓库	2026-11-27T18:17:00.1186279Z Temporarily overriding HOME='/home/runner/work/_temp/fca8a1d2-b19d-45a5-99bb-f8b2694f4b2e' before making global git config changes
+native	Post 取本仓库	2026-11-27T18:17:00.1187399Z Adding repository directory to the temporary git global config as a safe directory
+native	Post 取本仓库	2026-11-27T18:17:00.1190740Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+native	Post 取本仓库	2026-11-27T18:17:00.1229197Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+native	Post 取本仓库	2026-11-27T18:17:00.1248111Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+native	Post 取本仓库	2026-11-27T18:17:00.1437219Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+native	Post 取本仓库	2026-11-27T18:17:00.1456341Z http.https://github.com/.extraheader
+native	Post 取本仓库	2026-11-27T18:17:00.1472142Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+native	Post 取本仓库	2026-11-27T18:17:00.1511251Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+native	Post 取本仓库	2026-11-27T18:17:00.1701476Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+native	Post 取本仓库	2026-11-27T18:17:00.1726313Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+native	Complete job	﻿2026-11-27T18:17:00.2050582Z Cleaning up orphan processes
+native	Complete job	2026-11-27T18:17:00.2283439Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
