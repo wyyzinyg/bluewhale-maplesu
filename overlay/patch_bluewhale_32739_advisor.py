@@ -32,11 +32,19 @@ def patch_advisor(root: Path) -> None:
         print(f"skip: {rel} already patched")
         return
     if "import androidx.compose.foundation.layout.fillMaxWidth\n" not in text:
-        text = text.replace(
+        fmw = "import androidx.compose.foundation.layout.fillMaxWidth\n"
+        for anchor in (
             "import androidx.compose.foundation.layout.Box\n",
-            "import androidx.compose.foundation.layout.Box\nimport androidx.compose.foundation.layout.fillMaxWidth\n",
-            1,
-        )
+            "import androidx.compose.foundation.layout.Arrangement\n",
+            "import androidx.compose.foundation.background\n",
+        ):
+            if anchor in text:
+                text = text.replace(anchor, anchor + fmw, 1)
+                break
+        else:
+            idx = text.find("\nimport ")
+            if idx >= 0:
+                text = text[: idx + 1] + fmw + text[idx + 1 :]
     if "import androidx.compose.foundation.Image\n" not in text:
         text = text.replace(
             "import androidx.compose.foundation.background\n",
