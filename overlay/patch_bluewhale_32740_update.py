@@ -1,25 +1,22 @@
 #!/usr/bin/env python3
 """32740 (3.22.1-bw): KernelSU-style "notify once per new version" manager update push.
 
-What it adds on top of the 32739 chain:
-  1. ManagerUpdateNotifier.kt — a dedicated notification channel + one-shot policy:
-     the same versionCode is announced at most once; a higher version announces again.
+Adds on top of the 32739 chain:
+  1. ManagerUpdateNotifier.kt — dedicated channel + one-shot policy: the same
+     versionCode is announced at most once; a higher version announces again.
      Android 13+ without POST_NOTIFICATIONS stays silent (no permission nagging).
-  2. HomeViewModel.refreshUpdate() calls the notifier after the existing update check,
-     so the once-per-launch check doubles as the push source. No extra network calls.
-  3. Home banner click still opens the changelog / download URL; the notification lands
-     on MainActivity, where the banner is already visible.
-  4. Version bump 32739/3.22.0-bw -> 32740/3.22.1-bw so the published update.json has a
-     strictly newer versionCode than every APK already in the field.
+  2. HomeViewModel.refreshUpdate() calls the notifier after the existing check,
+     so the once-per-launch check doubles as the push source. No extra requests.
+  3. The home banner keeps its changelog / download behaviour; the notification
+     lands on MainActivity, where the banner is already visible.
+  4. Version bump 32739/3.22.0-bw -> 32740/3.22.1-bw so the published update.json
+     is strictly newer than every APK already in the field.
 
-Run after patch_bluewhale_32739.py / _root.py / _advisor.py.
+Callable as a function (advisor step) or as a script:
+    python3 overlay/patch_bluewhale_32740_update.py src
 """
 import sys
 from pathlib import Path
-
-SOURCE = Path(sys.argv[1] if len(sys.argv) > 1 else "src").resolve()
-if not SOURCE.is_dir():
-    raise SystemExit(f"FATAL: source root not found: {SOURCE}")
 
 GRADLE = "manager/build.gradle.kts"
 HOME_VM = "manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt"
@@ -159,42 +156,40 @@ internal object ManagerUpdateNotifier {
 '''
 
 
-def read(rel: str) -> str:
-    return (SOURCE / rel).read_text(encoding="utf-8")
+def _read(root: Path, rel: str) -> str:
+    return (root / rel).read_text(encoding="utf-8")
 
 
-def write(rel: str, text: str) -> None:
-    path = SOURCE / rel
+def _write(root: Path, rel: str, text: str) -> None:
+    path = root / rel
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
 
 
-def bump_version() -> None:
-    text = read(GRADLE)
+def bump_version(root: Path) -> None:
+    text = _read(root, GRADLE)
     if f"versionCode = {VERSION_CODE}" in text:
         print(f"skip: version already {VERSION_CODE}/{VERSION_NAME}")
         return
     if f"versionCode = {PREV_CODE}" not in text:
-        raise SystemExit(
-            f"FATAL: expected versionCode = {PREV_CODE} in {GRADLE}, got none"
-        )
+        raise SystemExit(f"FATAL: expected versionCode = {PREV_CODE} in {GRADLE}, got none")
     text = text.replace(f"versionCode = {PREV_CODE}", f"versionCode = {VERSION_CODE}", 1)
     text = text.replace(f'versionName = "{PREV_NAME}"', f'versionName = "{VERSION_NAME}"', 1)
-    write(GRADLE, text)
+    _write(root, GRADLE, text)
     print(f"bumped version to {VERSION_CODE}/{VERSION_NAME}")
 
 
-def add_notifier() -> None:
-    path = SOURCE / NOTIFIER
+def add_notifier(root: Path) -> None:
+    path = root / NOTIFIER
     if path.is_file() and "ManagerUpdateNotifier" in path.read_text(encoding="utf-8"):
         print(f"skip: {NOTIFIER} already present")
         return
-    write(NOTIFIER, NOTIFIER_KT)
+    _write(root, NOTIFIER, NOTIFIER_KT)
     print(f"wrote {NOTIFIER}")
 
 
-def wire_home_view_model() -> None:
-    text = read(HOME_VM)
+def wire_home_view_model(root: Path) -> None:
+    text = _read(root, HOME_VM)
     if "ManagerUpdateNotifier.notifyIfNeeded" in text:
         print("skip: HomeViewModel already wired")
         return
@@ -242,23 +237,28 @@ def wire_home_view_model() -> None:
 """
     if old not in text:
         raise SystemExit("FATAL: HomeViewModel refreshUpdate marker missing")
-    write(HOME_VM, text.replace(old, new, 1))
+    _write(root, HOME_VM, text.replace(old, new, 1))
     print("patched HomeViewModel: refreshUpdate -> ManagerUpdateNotifier")
 
 
-bump_version()
-add_notifier()
-wire_home_view_model()
+def patch_32740_update(root: Path) -> None:
+    root = Path(root).resolve()
+    if not root.is_dir():
+        raise SystemExit(f"FATAL: source root not found: {root}")
+    bump_version(root)
+    add_notifier(root)
+    wire_home_view_model(root)
+    checks = [
+        (f"versionCode = {VERSION_CODE}" in _read(root, GRADLE), "versionCode 未更新"),
+        (VERSION_NAME in _read(root, GRADLE), "versionName 未更新"),
+        ((root / NOTIFIER).is_file(), "ManagerUpdateNotifier.kt 缺失"),
+        ("ManagerUpdateNotifier.notifyIfNeeded" in _read(root, HOME_VM), "HomeViewModel 未接入通知"),
+    ]
+    for ok, message in checks:
+        if not ok:
+            raise SystemExit(f"FATAL: {message}")
+    print("32740 update-push patch done: 32740/3.22.1-bw, notify-once notifier wired")
 
-# 校验：四个点在构建前就必须全部成立
-checks = [
-    (f"versionCode = {VERSION_CODE}" in read(GRADLE), "versionCode 未更新"),
-    (VERSION_NAME in read(GRADLE), "versionName 未更新"),
-    ((SOURCE / NOTIFIER).is_file(), "ManagerUpdateNotifier.kt 缺失"),
-    ("ManagerUpdateNotifier.notifyIfNeeded" in read(HOME_VM), "HomeViewModel 未接入通知"),
-]
-for ok, message in checks:
-    if not ok:
-        raise SystemExit(f"FATAL: {message}")
 
-print("32740 update-push patch done: 32740/3.22.1-bw, notify-once notifier wired")
+if __name__ == "__main__":
+    patch_32740_update(Path(sys.argv[1] if len(sys.argv) > 1 else "src"))
