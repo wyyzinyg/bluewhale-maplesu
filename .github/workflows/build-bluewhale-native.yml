@@ -1,6 +1,6 @@
 name: build-bluewhale-native
 
-# 3.20.1 的门禁：APK 里的 native 载荷必须按新包名重编，否则 32737 只能修首页、修不到 root。
+# 3.22.0（32739）的门禁：APK 里的 native 载荷必须按新包名重编，否则管理器只能修 UI、修不到 root。
 #
 # 为什么不能只跑 :manager:assembleRelease：
 #   上游把 libksud_ksu.so 作为预编译二进制提交在 manager/src/main/jniLibs/arm64-v8a/，
@@ -18,12 +18,13 @@ on:
         type: boolean
         default: false
       target:
-        description: "构建哪一版：32737=3.20.1（root+UI）；32738=3.21.0 数据层内部版"
+        description: "构建哪一版：32737=3.20.1；32738=3.21.0 数据层；32739=3.22.0 品牌+诊断"
         type: choice
         options:
           - "32737"
           - "32738"
-        default: "32737"
+          - "32739"
+        default: "32739"
   push:
     paths:
       - ".ci-trigger/**"
@@ -53,6 +54,13 @@ jobs:
       - name: 取本仓库
         uses: actions/checkout@v4
 
+      - name: 应用 DSH 32739 源码（排除 workflow）
+        run: |
+          set -euo pipefail
+          curl -fsSL -o /tmp/32739-dsh.patch https://aka.doubaocdn.com/s/MmSBQklfMU
+          echo "ea8f4d00f7a6088298e4d44646070604d340d7395f17c54b8ffd924c4dc1dc24  /tmp/32739-dsh.patch" | sha256sum -c -
+          git apply --whitespace=nowarn --exclude='.github/**' /tmp/32739-dsh.patch
+
       - name: 解析目标版本（push 触发读 .ci-trigger/target）
         id: target
         run: |
@@ -62,7 +70,7 @@ jobs:
             TARGET="${{ inputs.target || '32737' }}"
           fi
           case "$TARGET" in
-            32737|32738) ;;
+            32737|32738|32739) ;;
             *) echo "FATAL: invalid target=$TARGET"; exit 1 ;;
           esac
           echo "resolved target=$TARGET"
@@ -78,7 +86,7 @@ jobs:
           tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
           echo "上游体积: $(du -sh src | cut -f1)"
 
-      - name: 按 6 支收尾链打补丁
+      - name: 按 32739 完整链打补丁
         run: |
           set -euo pipefail
           python3 overlay/apply_bluewhale.py src
@@ -87,10 +95,15 @@ jobs:
           python3 overlay/patch_bluewhale_320.py src
           python3 overlay/patch_bluewhale_321.py src
           python3 overlay/patch_bluewhale_323.py src
-          if [ "${{ steps.target.outputs.target }}" = "32738" ]; then
+          if [ "${{ steps.target.outputs.target }}" = "32738" ] || [ "${{ steps.target.outputs.target }}" = "32739" ]; then
             python3 overlay/patch_bluewhale_3210.py src
           else
-            echo "target=${{ steps.target.outputs.target }}：跳过 3210，构建 32737"
+            echo "target=${{ steps.target.outputs.target }}：跳过 3210"
+          fi
+          if [ "${{ steps.target.outputs.target }}" = "32739" ]; then
+            python3 overlay/patch_bluewhale_322.py src
+            python3 overlay/patch_bluewhale_32739.py src
+            python3 overlay/patch_bluewhale_32739_root.py src
           fi
           echo "== 关键身份确认 =="
           python3 - <<'PY'
@@ -249,7 +262,11 @@ jobs:
           import json, sys, zipfile, hashlib
           apk_path = sys.argv[1]
           requested_target = sys.argv[2] or "32737"
-          expected = {"32737": (32737, "3.20.1-bw"), "32738": (32738, "3.21.0-bw")}.get(requested_target)
+          expected = {
+              "32737": (32737, "3.20.1-bw"),
+              "32738": (32738, "3.21.0-bw"),
+              "32739": (32739, "3.22.0-bw"),
+          }.get(requested_target)
           if expected is None:
               raise SystemExit(f"FATAL: unsupported target {requested_target}")
           receipt = json.load(open("out/build-receipt.json"))
@@ -266,6 +283,10 @@ jobs:
           if provider.get("exitCode") != 0:
               raise SystemExit("FATAL: jailbreak provider 非零退出")
           with zipfile.ZipFile(apk_path) as apk:
+              bridge = apk.read("lib/arm64-v8a/libmaplesu_ultra_bridge.so")
+              if len(bridge) < 1024:
+                  raise SystemExit("FATAL: Ultra bridge missing or empty in APK")
+              print(f"Ultra bridge: {len(bridge)} bytes SHA256={hashlib.sha256(bridge).hexdigest()}")
               for kmi in required:
                   path = f"assets/maplesu/l3/{kmi}/maplesu_l3.ko"
                   actual = hashlib.sha256(apk.read(path)).hexdigest()
