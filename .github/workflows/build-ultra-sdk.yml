@@ -20,6 +20,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 取上游 MapleSU 源码
+        run: |
+          set -euo pipefail
+          mkdir -p src
+          UPSTREAM_COMMIT=ff3aa44850ea22717fa811a17831155a85f43445
+          curl -sSL -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${UPSTREAM_COMMIT}"
+          tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
+          test -d src/runtime/maplesu-sdk/sdk
+
       - name: 安装 NDK / CMake
         run: |
           set -euo pipefail
@@ -65,6 +74,7 @@ jobs:
       - name: 提交 archive 回分支
         run: |
           set -euo pipefail
+          mkdir -p runtime/maplesu-sdk/lib/arm64-v8a
           cp /tmp/bw-sdk/libkernel_module_kit_static.a runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
