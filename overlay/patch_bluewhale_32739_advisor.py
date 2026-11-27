@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
-"""32739 advisor dialog: hide the unpopulated beta roster and show only the BluefishSU icon."""
+"""32739 UI fixes: empty advisor state (BluefishSU icon) + compile fixes for brand/diagnostics."""
 import sys
 from pathlib import Path
 
-REL = "manager/src/main/java/com/maplesu/core/ui/screen/home/AdvisorWall.kt"
+ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else "src")
 
 
-def main() -> int:
-    root = Path(sys.argv[1] if len(sys.argv) > 1 else "src")
-    path = root / REL
-    if not path.exists():
-        print(f"FATAL: {path} not found")
-        return 1
+def patch_advisor(root: Path) -> None:
+    rel = "manager/src/main/java/com/maplesu/core/ui/screen/home/AdvisorWall.kt"
+    path = root / rel
     text = path.read_text(encoding="utf-8")
     if "BluefishAdvisorEmpty" in text:
-        print(f"skip: {REL} already patched")
-        return 0
-
+        print(f"skip: {rel} already patched")
+        return
+    if "import androidx.compose.foundation.layout.fillMaxWidth\n" not in text:
+        text = text.replace(
+            "import androidx.compose.foundation.layout.Box\n",
+            "import androidx.compose.foundation.layout.Box\nimport androidx.compose.foundation.layout.fillMaxWidth\n",
+            1,
+        )
     if "import androidx.compose.foundation.Image\n" not in text:
         text = text.replace(
             "import androidx.compose.foundation.background\n",
@@ -29,7 +31,6 @@ def main() -> int:
             "import androidx.compose.ui.platform.LocalContext\nimport androidx.compose.ui.res.painterResource\n",
             1,
         )
-
     old_return = "    if (members.isEmpty()) return\n"
     new_return = (
         "    if (members.isEmpty()) {\n"
@@ -38,10 +39,8 @@ def main() -> int:
         "    }\n"
     )
     if old_return not in text:
-        print("FATAL: AdvisorWallCard empty-return marker not found")
-        return 1
+        raise SystemExit("FATAL: AdvisorWallCard empty-return marker not found")
     text = text.replace(old_return, new_return, 1)
-
     marker = (
         "@OptIn(ExperimentalFoundationApi::class)\n"
         "@Composable\n"
@@ -63,10 +62,8 @@ def main() -> int:
         "}\n\n"
     )
     if marker not in text:
-        print("FATAL: AdvisorWallCard marker not found")
-        return 1
+        raise SystemExit("FATAL: AdvisorWallCard marker not found")
     text = text.replace(marker, empty_state + marker, 1)
-
     old_roster = (
         "private object AdvisorAssets {\n"
         "    fun roster(context: Context): List<Advisor> = runCatching {\n"
@@ -79,11 +76,43 @@ def main() -> int:
         "    fun roster(context: Context): List<Advisor> = emptyList()\n"
     )
     if old_roster not in text:
-        print("FATAL: AdvisorAssets roster marker not found")
-        return 1
+        raise SystemExit("FATAL: AdvisorAssets roster marker not found")
     text = text.replace(old_roster, new_roster, 1)
     path.write_text(text, encoding="utf-8")
-    print(f"patched {REL}: empty advisor state -> BluefishSU icon")
+    print(f"patched {rel}: empty advisor state -> BluefishSU icon")
+
+
+def patch_brand(root: Path) -> None:
+    rel = "manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBannerArt.kt"
+    path = root / rel
+    text = path.read_text(encoding="utf-8")
+    old = "addOval(RectF(20f, 41f, 27f, 48f))"
+    new = "addOval(RectF(20f, 41f, 27f, 48f), android.graphics.Path.Direction.CW)"
+    if old not in text:
+        raise SystemExit(f"FATAL: {rel}: addOval marker not found")
+    text = text.replace(old, new, 1)
+    path.write_text(text, encoding="utf-8")
+    print(f"patched {rel}: addOval direction")
+
+
+def patch_diagnostics(root: Path) -> None:
+    rel = "manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt"
+    path = root / rel
+    text = path.read_text(encoding="utf-8")
+    old = "when (state.systemInfo.seccompStatus) {"
+    new = "when (state.systemInfo.seccompStatus.toInt()) {"
+    if old not in text:
+        raise SystemExit(f"FATAL: {rel}: seccomp when marker not found")
+    text = text.replace(old, new, 1)
+    path.write_text(text, encoding="utf-8")
+    print(f"patched {rel}: seccomp int comparison")
+
+
+def main() -> int:
+    patch_advisor(ROOT)
+    patch_brand(ROOT)
+    patch_diagnostics(ROOT)
+    print("32739 advisor + compile fixes applied")
     return 0
 
 
