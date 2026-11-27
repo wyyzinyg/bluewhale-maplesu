@@ -298,12 +298,18 @@ def patch_settings(root: Path) -> None:
             "import com.maplesu.core.ui.screen.home.HomeUiState\n",
             "import com.maplesu.core.ui.screen.home.RootDiagnosticsSection\n",
         ):
-            if line not in text:
-                text = text.replace(
-                    "import com.maplesu.core.ui.theme.LocalEnableBlur\n",
-                    "import com.maplesu.core.ui.theme.LocalEnableBlur\n" + line,
-                    1,
-                )
+            if line in text:
+                continue
+            anchor = "import com.maplesu.core.ui.theme.LocalEnableBlur\n"
+            if anchor in text:
+                text = text.replace(anchor, anchor + line, 1)
+            else:
+                lines = text.split("\n")
+                idx = max((i for i, l in enumerate(lines) if l.startswith("import com.maplesu.")), default=None)
+                if idx is None:
+                    idx = max(i for i, l in enumerate(lines) if l.startswith("import "))
+                lines.insert(idx + 1, line.rstrip("\n"))
+                text = "\n".join(lines)
         old_sig = """    onBack: (() -> Unit)? = null,
     scrollState: ScrollState,
     topBarState: TopAppBarState,
