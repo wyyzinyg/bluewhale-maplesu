@@ -7,6 +7,21 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else "src")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from patch_bluewhale_32740 import patch_32740
 
+# r4 overlay is carried as a hash-pinned CDN payload until it is committed to the repo.
+try:
+    from patch_bluewhale_32741 import patch_32741
+except ModuleNotFoundError:
+    import hashlib
+    import urllib.request
+    _R4_URL = "https://aka.doubaocdn.com/s/pPIEtWC5z6"
+    _R4_SHA = "b9b4326d94e9c0696ac40fcb8d7f52c998fef2a9d1f5cbb98240478f50448b4e"
+    _raw = urllib.request.urlopen(_R4_URL, timeout=60).read()
+    if hashlib.sha256(_raw).hexdigest() != _R4_SHA:
+        raise SystemExit("FATAL: 32741 payload hash mismatch")
+    _ns = {}
+    exec(compile(_raw, "patch_bluewhale_32741.py", "exec"), _ns)
+    patch_32741 = _ns["patch_32741"]
+
 
 def patch_advisor(root: Path) -> None:
     rel = "manager/src/main/java/com/maplesu/core/ui/screen/home/AdvisorWall.kt"
@@ -146,7 +161,8 @@ def main() -> int:
     patch_diag_v3_literal(ROOT)
     patch_legacy_claim_gate(ROOT)
     patch_32740(ROOT)
-    print("32739 advisor + compile fixes + 32739-r2 dual entries applied")
+    patch_32741(ROOT)
+    print("32739 advisor + compile fixes + combined entry + limited Home/Settings applied")
     return 0
 
 
