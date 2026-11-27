@@ -48,7 +48,7 @@ jobs:
             --reference-payloads --compile --pack \
             --ndk "$ANDROID_NDK_HOME" \
             --build-dir /tmp/bw-sdk \
-            --jobs 4 | tee /tmp/sdk-v4-build.log
+            --jobs 4 2>&1 | tee /tmp/sdk-v4-build.log
           test -s /tmp/bw-sdk/out/libkernel_module_kit_static.a
           ls -lh /tmp/bw-sdk/out/libkernel_module_kit_static.a
       - name: 校验 Ultra API 符号
@@ -72,6 +72,22 @@ jobs:
           mkdir -p runtime/maplesu-sdk/lib/arm64-v8a
           cp /tmp/bw-sdk/out/libkernel_module_kit_static.a runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
           sha256sum runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a | tee .ci-logs/sdk-v4-archive-sha256.txt
+      - name: 失败时把日志写回仓库
+        if: failure()
+        run: |
+          set -euo pipefail
+          mkdir -p .ci-logs
+          cp /tmp/sdk-v4-build.log .ci-logs/sdk-v4-build.log 2>/dev/null || true
+          if [ -f /tmp/bw-sdk/report/build-report.json ]; then cp /tmp/bw-sdk/report/build-report.json .ci-logs/sdk-v4-report.json; fi
+          if [ -f /tmp/bw-sdk/report/MANIFEST-COVERAGE.md ]; then cp /tmp/bw-sdk/report/MANIFEST-COVERAGE.md .ci-logs/sdk-v4-coverage.md; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ci-logs || true
+          git commit -m "ci: sdk v4 failure diagnostics" || true
+          for i in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break
+            sleep 5
+          done
       - uses: actions/upload-artifact@v4
         with:
           name: ultra-sdk-v4
