@@ -1,6 +1,6 @@
 name: build-bluewhale-quick
 
-# 32739 APK build: rebuild KMI modules for jailbreak providers, then assemble the
+# 32739 APK build: rebuild KMI modules, userland/JNI, and payload, then assemble the
 # manager APK. The Ultra bridge is intentionally skipped; the root transport under
 # test is /system/bin/su (sucompat), which does not depend on it.
 
@@ -16,9 +16,12 @@ permissions:
 jobs:
   quick:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     env:
       DDK_RELEASE: "20260828"
+      RUSTUP_TOOLCHAIN: "1.99.1"
+      MAPLESU_RUST_TOOLCHAIN: "1.99.1"
+      CARGO_NET_GIT_FETCH_WITH_CLI: "true"
       KMI_MATRIX: "android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18"
     steps:
       - uses: actions/checkout@v4
@@ -58,7 +61,7 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - name: Android SDK 37 + NDK 26/28
+      - name: Android SDK 37 + NDK 26/29
         run: |
           set -euo pipefail
           SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
@@ -66,13 +69,25 @@ jobs:
           [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
           mkdir -p "$SDK/licenses"
           printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
-          for pkg in "platforms;android-37.0" "build-tools;37.0.0" "ndk;26.1.10909125" "ndk;28.2.13676358" "cmake;3.22.1"; do
+          for pkg in "platforms;android-37.0" "build-tools;37.0.0" "ndk;26.1.10909125" "ndk;29.0.14206865" "cmake;3.22.1"; do
             echo "--- $pkg"
             "$SM" "$pkg" < /dev/null || true
           done
           test -d "$SDK/ndk/26.1.10909125"
-          test -d "$SDK/ndk/28.2.13676358"
-          echo "ANDROID_NDK_HOME=$SDK/ndk/26.1.10909125" >> "$GITHUB_ENV"
+          test -d "$SDK/ndk/29.0.14206865"
+          echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
+
+      - name: Install Rust / libclang / payload tools
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y libclang-dev
+          python3 -m pip install --upgrade pip
+          python3 -m pip install pyelftools==0.32 unicorn==2.1.4
+          python3 -c 'import importlib.metadata; assert importlib.metadata.version("unicorn") == "2.1.4"'
+          rustup toolchain install 1.99.1 --profile minimal --component rustfmt --target aarch64-linux-android
+          cargo fetch --locked --manifest-path src/third_party/kernelsu/applied/Cargo.toml
+          cargo fetch --locked --manifest-path src/jailbreak-providers/ghostlock/extractor-native/Cargo.toml
 
       - name: Build KMI modules for jailbreak providers
         run: |
@@ -95,6 +110,24 @@ jobs:
             [ "$old" = "0" ] || { echo "FATAL: $ko still has old package"; exit 1; }
           done
 
+      - name: Rebuild ksud + JNI, generate payload
+        env:
+          CARGO_NET_OFFLINE: "true"
+        run: |
+          set -euo pipefail
+          cd src
+          bash third_party/kernelsu/scripts/build_userland.sh --kmi all 2>&1 | tee /tmp/userland.log
+          bash third_party/kernelsu/scripts/build_jni.sh 2>&1 | tee /tmp/jni.log
+          for asset in third_party/kernelsu/artifacts/{ksuinit,maplesu_vrinit} third_party/kernelsu/lkm/*.ko; do
+            [ -f "$asset" ] || continue
+            python3 third_party/kernelsu/scripts/verify_embedded_asset.py --asset "$asset" --deep
+          done
+          TREE=$(python3 -c 'import sys; sys.path.insert(0,"third_party/kernelsu/scripts"); import ksu_common as C; print(C.tree_sha256(C.APPLIED_DIR))')
+          echo "appliedTreeSha256=$TREE"
+          python3 third_party/kernelsu/scripts/gen_payload.py --built-source-tree "$TREE"
+          python3 third_party/kernelsu/scripts/verify_payload.py --quick 2>&1 | tee /tmp/payload-gate.log
+          python3 third_party/kernelsu/scripts/gen_payload.py --check
+
       - name: Assemble release APK
         run: |
           set -euo pipefail
@@ -105,7 +138,7 @@ jobs:
             -PbluewhaleSkipSdkVerify=true \
             -PbluewhaleSkipUltraBridge=true \
             -PmaplesuPython="$(command -v python3)" \
-            -PmaplesuUltraviderNdk="$ANDROID_HOME/ndk/28.2.13676358" \
+            -PmaplesuUltraviderNdk="$ANDROID_HOME/ndk/29.0.14206865" \
             -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
             :manager:assembleRelease 2>&1 | tee /tmp/gradle.log
 
