@@ -53,7 +53,37 @@ jobs:
           python3 overlay/patch_bluewhale_322.py src
           python3 overlay/patch_bluewhale_32739.py src
           python3 overlay/patch_bluewhale_32739_root.py src
+          python3 overlay/patch_bluewhale_32739_advisor.py src
           sed -i 's/bluewhaleSkipUltraBridge=false/bluewhaleSkipUltraBridge=true/' src/gradle.properties
+          echo "== 关键身份确认 =="
+          python3 - <<'PYY'
+          import json
+          m = json.load(open('src/third_party/kernelsu/manifest.json'))
+          ident = m['identity']
+          assert ident['packageName'] == ident['managerPackage'] == 'com.blue.whale.mask', ident
+          ident['expectedSize'] = 1355
+          ident['expectedHash'] = '863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581'
+          ident['expectedNote'] = 'BlueWhale release cert DER (1355 bytes)'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, 'src/third_party/kernelsu/scripts')
+          import ksu_common as C
+          m['applied']['treeSha256'] = C.tree_sha256(C.APPLIED_DIR)
+          m['applied']['fileCount'] = len(C.iter_tree_files(C.APPLIED_DIR))
+          m['upstream']['treeSha256'] = C.tree_sha256(C.UPSTREAM_DIR)
+          m['upstream']['fileCount'] = len(C.iter_tree_files(C.UPSTREAM_DIR))
+          pj = Path('src/third_party/kernelsu/patches/7k/patches.json')
+          pt = pj.read_text(encoding='utf-8')
+          pt = pt.replace('"KSU_MANAGER_PACKAGE ?= dev.maplesu.manager"',
+                          '"KSU_MANAGER_PACKAGE ?= com.blue.whale.mask"')
+          pt = pt.replace('"cargo:rustc-env=KSU_PACKAGE_NAME=dev.maplesu.manager"',
+                          '"cargo:rustc-env=KSU_PACKAGE_NAME=com.blue.whale.mask"')
+          pj.write_text(pt, encoding='utf-8')
+          open('src/third_party/kernelsu/manifest.json', 'w', encoding='utf-8').write(
+              json.dumps(m, ensure_ascii=False, indent=2) + '\n')
+          print('identity ok:', ident['packageName'], ident['expectedSize'], ident['expectedHash'][:16])
+          print('appliedTreeSha256:', m['applied']['treeSha256'], 'files:', m['applied']['fileCount'])
+          PYY
           grep -n 'bluewhaleSkipUltraBridge' src/gradle.properties
 
       - uses: actions/setup-java@v4
