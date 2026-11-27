@@ -23,13 +23,13 @@ jobs:
           L=.ci-logs/selfpatch.log
           : > "$L"
           curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/WmjjDdjaVs >> "$L" 2>&1
-          curl -fsSL -o overlay/patch_bluewhale_32741.py https://aka.doubaocdn.com/s/xtqZP3KG7L >> "$L" 2>&1
+          curl -fsSL -o overlay/patch_bluewhale_32741.py https://aka.doubaocdn.com/s/0kg8QyIXCa >> "$L" 2>&1
           echo "52d5575b6d33eb04887ed21e27dc98aaefc547f280d81e3aa1d3a2524defede4  overlay/patch_bluewhale_32739_advisor.py" | sha256sum -c - >> "$L" 2>&1
-          echo "10e9815583ec1fa82df759e845e8ad21a93585d855dcd8ca6d4a85b06e9befae  overlay/patch_bluewhale_32741.py" | sha256sum -c - >> "$L" 2>&1
+          echo "91f977892ca9e5f53ddfe86eb77eec8b02d95e259df9e9da76208dc78f2ccac9  overlay/patch_bluewhale_32741.py" | sha256sum -c - >> "$L" 2>&1
           python3 -m py_compile overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741.py >> "$L" 2>&1 && echo py-ok >> "$L"
           git config user.name "bluewhale-ci"
           git config user.email "ci@bluewhale.local"
           git add overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741.py "$L"
-          git commit -m "ci: fix r4 homeOnly definition order, pin advisor to new payload" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
+          git commit -m "ci: material settings imports fallback (HomeUiState/RootDiagnosticsSection)" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
           git push origin "HEAD:${GITHUB_REF_NAME}" >> "$L" 2>&1 || echo PUSHFAIL >> "$L"
           tail -40 "$L"
