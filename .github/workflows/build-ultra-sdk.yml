@@ -48,6 +48,8 @@ jobs:
         run: |
           set -euo pipefail
           cd src
+          # build.py 的上游默认工具链目录写死 windows-x86_64；Linux runner 用同目录软链
+          ln -sfn "$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64" "$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/windows-x86_64"
           python3 runtime/maplesu-sdk/sdk/build.py --compile --pack \
             --ndk "$ANDROID_NDK_HOME" \
             --build-dir /tmp/bw-sdk \
