@@ -1,0 +1,38 @@
+name: ci-selfpatch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/ci-selfpatch.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+      - name: 拉取修正版 workflow 与补丁
+        run: |
+          set -euo pipefail
+          curl -fsSL -o .github/workflows/build-bluewhale-native.yml https://aka.doubaocdn.com/s/0eg0eOS6AG
+          curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/Vrym3VJW0k
+          echo "415be822c51d1ad15d5b889d18bd833ed953814cf05caa789b9a46e964a30d3f  .github/workflows/build-bluewhale-native.yml" | sha256sum -c -
+          echo "8da3bb90350fef54c70c22903cc840384167bb727737da079a40f92c2a984b61  overlay/patch_bluewhale_32739_advisor.py" | sha256sum -c -
+          python3 -c "import yaml; d=yaml.safe_load(open('.github/workflows/build-bluewhale-native.yml')); print('steps', len(d['jobs']['native']['steps']))"
+          python3 -m py_compile overlay/patch_bluewhale_32739_advisor.py && echo py-ok
+      - name: 提交并推送
+        run: |
+          set -euo pipefail
+          git config user.name "bluewhale-ci"
+          git config user.email "ci@bluewhale.local"
+          git add .github/workflows/build-bluewhale-native.yml overlay/patch_bluewhale_32739_advisor.py
+          git diff --cached --stat
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "ci: kotlin gate + issue receipt + release upload + advisor import guard"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
