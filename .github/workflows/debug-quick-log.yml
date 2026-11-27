@@ -1,0 +1,31 @@
+name: debug-quick-log
+
+on:
+  push:
+    paths:
+      - ".debug-quick/**"
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dump quick run log
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: "45969343151"
+        run: |
+          set -euo pipefail
+          mkdir -p .ci-logs
+          F=".ci-logs/quick-${RUN_ID}-full.txt"
+          { echo "run=$RUN_ID"; gh run view "$RUN_ID" --log || true; } > "$F"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$F"
+          git commit -m "ci: quick full log $RUN_ID" || true
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || true
