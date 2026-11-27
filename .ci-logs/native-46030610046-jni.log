@@ -1,0 +1,29 @@
+== KSU JNI build
+   source:   /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied/manager/app/src/main/cpp
+   ndk:      /usr/local/lib/android/sdk/ndk/29.0.14206865
+   symbols:  25 (expect 25)
+   cmd:      /usr/local/lib/android/sdk/cmake/3.22.1/bin/cmake -S /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied/manager/app/src/main/cpp -B /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/jni-build -G Ninja -DCMAKE_TOOLCHAIN_FILE=/usr/local/lib/android/sdk/ndk/29.0.14206865/build/cmake/android.toolchain.cmake -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-z,max-page-size=16384 -DCMAKE_EXE_LINKER_FLAGS=-Wl,-z,max-page-size=16384 -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-31 -DANDROID_STL=c++_static -DCMAKE_BUILD_TYPE=Release && /usr/local/lib/android/sdk/cmake/3.22.1/bin/cmake --build /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/jni-build
+-- The C compiler identification is Clang 21.0.0
+-- The CXX compiler identification is Clang 21.0.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/.tmp/jni-build
+[1/5] Building CXX object CMakeFiles/maplesu_ksu.dir/ksu.cc.o
+[2/5] Building CXX object CMakeFiles/maplesu_ksu.dir/jni.cc.o
+[3/5] Linking CXX shared library libmaplesu_ksu.so
+[4/5] Building CXX object CMakeFiles/adbroot.dir/adbroot.cc.o
+[5/5] Linking CXX shared library libadbroot.so
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/jniLibs/arm64-v8a/libmaplesu_ksu.so
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/src/main/jniLibs/arm64-v8a/libadbroot.so
+设备断言（03 §7.3）：KsuNatives.version>0 && isManager && kernelUAPIVersion==7
+下一步：python3 /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/scripts/gen_payload.py

@@ -1,0 +1,170 @@
+{
+  "schema": "bluewhale-build-receipt/1",
+  "generatedAt": "2026-11-27T16:45:57+0000",
+  "commit": "bab096f5c808de8f2bf49761ab98d6d66ae56c9b",
+  "ciRunId": "46030610046",
+  "packageName": "com.blue.whale.mask",
+  "versionCode": 32739,
+  "versionName": "3.22.0-bw",
+  "apk": {
+    "path": "artifact/bluewhale-native-24/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/out/manager-release-unsigned.apk",
+    "size": 47658861,
+    "sha256": "26d8d4ec611135a5c56e561a8449fb4cab95a46cca62d3db4dd19ee57ffb002e",
+    "certSha256": ""
+  },
+  "native": {
+    "libksudSha256": "c3be9c0c4ad847ba4ee91a5dcbd5a18e471b77426d09fd42e1b5c6881ed4c51d",
+    "libksudSize": 21541384,
+    "soOldPackageCount": 0,
+    "requiredKmis": [
+      "android12-5.10",
+      "android13-5.15",
+      "android14-6.1",
+      "android15-6.6",
+      "android16-6.12",
+      "android17-6.18"
+    ],
+    "kmis": [
+      {
+        "kmi": "android12-5.10",
+        "role": "kernelsu",
+        "vermagic": "5.10.252-dirty",
+        "newPackageCount": 3,
+        "oldPackageCount": 0,
+        "koSha256": "d77f00d53f007be6b3755ea79c5123cdaba6fb6018f825bb94b8015255ff5975",
+        "size": 8153448,
+        "soOffset": 225538
+      },
+      {
+        "kmi": "android13-5.15",
+        "role": "kernelsu",
+        "vermagic": "5.15.202-android13-5.15.202_r00-dirty",
+        "newPackageCount": 3,
+        "oldPackageCount": 0,
+        "koSha256": "0ee9bc8122713ef493982d9326f205be463eb246b011d335adb463dc750475e3",
+        "size": 8302264,
+        "soOffset": 2581191
+      },
+      {
+        "kmi": "android14-6.1",
+        "role": "kernelsu",
+        "vermagic": "6.1.166-dirty",
+        "newPackageCount": 3,
+        "oldPackageCount": 0,
+        "koSha256": "ac102cd837659cb990be9664a28986597f4e7b1ac2def60708be3f6e43d52985",
+        "size": 6999960,
+        "soOffset": 5197123
+      },
+      {
+        "kmi": "android15-6.6",
+        "role": "kernelsu",
+        "vermagic": "6.6.127-4k-g46a034eca005-dirty",
+        "newPackageCount": 3,
+        "oldPackageCount": 0,
+        "koSha256": "7f4f1aae67c96c91d05c29ffab8b7c60bb17f08f0d0544a7867eaa4f36d326b8",
+        "size": 4306792,
+        "soOffset": 7511670
+      },
+      {
+        "kmi": "android16-6.12",
+        "role": "kernelsu",
+        "vermagic": "6.12.76-4k",
+        "newPackageCount": 3,
+        "oldPackageCount": 0,
+        "koSha256": "77bb38e89eca84ef8d5fc322e2551bd72835d18038214353474ed34ede3cdd2d",
+        "size": 5315544,
+        "soOffset": 9713938
+      },
+      {
+        "kmi": "android17-6.18",
+        "role": "kernelsu",
+        "vermagic": "6.18.32-4k-g47cc22554442-dirty",
+        "newPackageCount": 3,
+        "oldPackageCount": 0,
+        "koSha256": "2c3463587efe9dafca4601de215f2e478d633be4fda65f8a84cfea8296cc315d",
+        "size": 5657776,
+        "soOffset": 12378227
+      }
+    ],
+    "companionKmis": [
+      {
+        "kmi": "android12-5.10",
+        "role": "maplesu_vr",
+        "vermagic": "5.10.252-dirty",
+        "newPackageCount": 0,
+        "oldPackageCount": 0,
+        "koSha256": "9ef4bb688a0108ff8b8507f45ba5de126c69e1b032e39aa9a4b80c42e8b8fe2e",
+        "size": 626400,
+        "soOffset": 15207276
+      },
+      {
+        "kmi": "android13-5.15",
+        "role": "maplesu_vr",
+        "vermagic": "5.15.202-android13-5.15.202_r00-dirty",
+        "newPackageCount": 0,
+        "oldPackageCount": 0,
+        "koSha256": "f0654029a769dc9e095267108dcef09f0977569f1afdabff6d31b643d20b9542",
+        "size": 635984,
+        "soOffset": 4993533
+      },
+      {
+        "kmi": "android14-6.1",
+        "role": "maplesu_vr",
+        "vermagic": "6.1.166-dirty",
+        "newPackageCount": 0,
+        "oldPackageCount": 0,
+        "koSha256": "f71110058d45de5c5387670cc014186d237074b09d23a3195a0cc41b351f64bc",
+        "size": 552824,
+        "soOffset": 7324287
+      },
+      {
+        "kmi": "android15-6.6",
+        "role": "maplesu_vr",
+        "vermagic": "6.6.127-4k-g46a034eca005-dirty",
+        "newPackageCount": 0,
+        "oldPackageCount": 0,
+        "koSha256": "9a804901de40ced95d81f3ed4cc1c6fbd436a19b01751b43c1452d7fb8ff1427",
+        "size": 372480,
+        "soOffset": 9530585
+      },
+      {
+        "kmi": "android16-6.12",
+        "role": "maplesu_vr",
+        "vermagic": "6.12.76-4k",
+        "newPackageCount": 0,
+        "oldPackageCount": 0,
+        "koSha256": "1ba532185f72652c1acf485f78a22b53629e2d0b3dc30453323f0251094ef94d",
+        "size": 399024,
+        "soOffset": 12182265
+      },
+      {
+        "kmi": "android17-6.18",
+        "role": "maplesu_vr",
+        "vermagic": "6.18.32-4k-g47cc22554442-dirty",
+        "newPackageCount": 0,
+        "oldPackageCount": 0,
+        "koSha256": "84007e2eb0a6d82632bc1a0e86dca0fc13c843dbb5feccabc1eb5182733bd563",
+        "size": 417192,
+        "soOffset": 15001808
+      }
+    ],
+    "missingKmis": [],
+    "duplicateKmis": [],
+    "coverageOk": true
+  },
+  "gates": {
+    "buildChain": false,
+    "verifyPayload": false,
+    "unitTests": false,
+    "deviceRoot": false,
+    "homeUi": false
+  },
+  "channels": {
+    "cloudbase": "",
+    "cloudbaseBrand": "",
+    "githubRaw": "",
+    "tiana": ""
+  },
+  "notes": "",
+  "elapsedSeconds": 70.5
+}

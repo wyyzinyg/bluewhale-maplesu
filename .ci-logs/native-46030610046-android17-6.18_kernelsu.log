@@ -1,0 +1,80 @@
+== KSU LKM build
+   applied:  /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/applied
+   kmi:      android17-6.18
+   ddk:      ghcr.io/ylarod/ddk-min:android17-6.18-20260828
+   package:  com.blue.whale.mask (min_gen=2, version_pin=32650)
+   cmd:      ddk build android17-6.18 ODIR=/home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/out-android17-6.18 -e CONFIG_KSU=m -e KSU_PACKAGE_NAME=com.blue.whale.mask -e KSU_EXPECTED_SIZE=1355 -e KSU_EXPECTED_HASH=863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581 -e KSU_VERSION_PIN=32650 -e KSU_MANAGER_MIN_GEN=2 -e KSU_IS_PR_BUILD=0
+make: Entering directory '/opt/ddk/kdir/android17-6.18'
+make[1]: Entering directory '/out'
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  CC [M]  core/init.o
+  CC [M]  feature/kernel_umount.o
+  CC [M]  feature/module_blacklist.o
+  CC [M]  feature/sulog.o
+  CC [M]  feature/sucompat.o
+  CC [M]  hook/lsm_hook.o
+  CC [M]  hook/setuid_hook.o
+  CC [M]  hook/syscall_event_bridge.o
+  CC [M]  hook/syscall_hook_manager.o
+  CC [M]  hook/init_module_filter.o
+  CC [M]  hook/tp_marker.o
+  CC [M]  hook/arm64/patch_memory.o
+  CC [M]  hook/arm64/syscall_hook.o
+  CC [M]  infra/file_wrapper.o
+  CC [M]  infra/event_queue.o
+  CC [M]  infra/seccomp_cache.o
+  CC [M]  infra/su_mount_ns.o
+  CC [M]  infra/symbol_resolver.o
+  CC [M]  manager/app_lock.o
+  CC [M]  manager/stealth.o
+  CC [M]  manager/apk_sign.o
+  CC [M]  manager/pkg_observer.o
+  CC [M]  manager/throne_tracker.o
+  CC [M]  policy/allowlist.o
+  CC [M]  policy/app_profile.o
+  CC [M]  policy/feature.o
+  CC [M]  runtime/boot_event.o
+  CC [M]  runtime/ksud_integration.o
+  CC [M]  infra/btf_parser.o
+  CC [M]  selinux/inode.o
+  CC [M]  selinux/selinux.o
+  CC [M]  selinux/rules.o
+  CC [M]  selinux/sepolicy.o
+  CC [M]  sulog/event.o
+  CC [M]  sulog/fd.o
+  CC [M]  supercall/dispatch.o
+  CC [M]  supercall/perm.o
+  CC [M]  supercall/supercall.o
+  CC [M]  feature/adb_root.o
+  CC [M]  feature/selinux_hide.o
+  CC [M]  feature/shell_su_adb_only.o
+  CC [M]  preinit/preinit.o
+  RUNNER  preinit/runner.elf
+  AS [M]  preinit/blob.o
+  LD [M]  kernelsu.o
+-- KernelSU version (pinned by KSU_VERSION_PIN): 32650
+-- KSU_NEW_DCACHE_FLUSH: 1
+-- KernelSU manager generation gate: KSU_MANAGER_MIN_GEN=2
+-- KernelSU manager package (triple check): com.blue.whale.mask
+-- KernelSU Manager package name: com.blue.whale.mask
+-- KernelSU Manager signature size: 1355
+-- KernelSU Manager signature hash: 863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581
+-- KernelSU is PR Build: 0
+  MODPOST Module.symvers
+  CC [M]  kernelsu.mod.o
+  CC [M]  .module-common.o
+  LD [M]  kernelsu.ko
+  BTF [M] kernelsu.ko
+make[1]: Leaving directory '/out'
+make: Leaving directory '/opt/ddk/kdir/android17-6.18'
+size=5657776 sha256=2c3463587efe9dafca4601de215f2e478d633be4fda65f8a84cfea8296cc315d
+OK package name embedded
+OK: /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/kernelsu/lkm/android17-6.18_kernelsu.ko
+下一步：完整 build_all.sh --kmi all 成功后统一登记 payload；单 KMI 构建不提升源码代次
