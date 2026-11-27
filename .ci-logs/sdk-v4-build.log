@@ -263,6 +263,22 @@
 [compile]   ok m258 maplesu_private_dac.o (1 TU)
 [compile]   ok m259 maplesu_private_allowlist.o (1 TU)
 [compile] compiled 260 member(s) (278 TU object(s))
+[compose]   $ /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld -r -o /tmp/bw-sdk/obj/m0001/task_struct.o /tmp/bw-sdk/obj/tu/0001_0_task_struct.o /tmp/bw-sdk/obj/tu/0001_1_task_comm_scan.o
+[compose]   ok (1.98s)
+[compose]   $ /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld -r -o /tmp/bw-sdk/obj/m0023/module_base_kernel_request.o /tmp/bw-sdk/obj/tu/0023_0_module_base_kernel_request.o /tmp/bw-sdk/obj/tu/0023_1_request_context.o /tmp/bw-sdk/obj/tu/0023_2_kernel_read.o
+[compose]   ok (0.01s)
+[compose]   $ /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld -r -o /tmp/bw-sdk/obj/m0025/module_base_kernel_func_executor.o /tmp/bw-sdk/obj/tu/0025_0_module_base_kernel_func_executor.o /tmp/bw-sdk/obj/tu/0025_1_executor_restore.o
+[compose]   ok (0.01s)
+[compose]   $ /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld -r -o /tmp/bw-sdk/obj/m0028/module_base_kernel_btf_resolver.o /tmp/bw-sdk/obj/tu/0028_0_module_base_kernel_btf_resolver.o /tmp/bw-sdk/obj/tu/0028_1_kernel_layout.o
+[compose]   ok (0.01s)
+[compose]   $ /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld -r -o /tmp/bw-sdk/obj/m0053/maplesu_installer.o /tmp/bw-sdk/obj/tu/0053_0_lifecycle.o /tmp/bw-sdk/obj/tu/0053_1_installer_legacy.o /tmp/bw-sdk/obj/tu/0053_2_launch_guard.o /tmp/bw-sdk/obj/tu/0053_3_result_channel.o
+[compose]   ok (0.01s)
+[compose]   $ /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld -r -o /tmp/bw-sdk/obj/m0055/maplesu_module_list.o /tmp/bw-sdk/obj/tu/0055_0_list.o /tmp/bw-sdk/obj/tu/0055_1_state.o /tmp/bw-sdk/obj/tu/0055_2_bootstrap_state.o /tmp/bw-sdk/obj/tu/0055_3_executable_publish.o
+[compose]   ok (0.01s)
+[compose]   $ /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/windows-x86_64/bin/ld.lld -r /tmp/bw-sdk/obj/m0023/module_base_kernel_request.o /tmp/bw-sdk/obj/m0024/module_base_kernel_mem.o /tmp/bw-sdk/obj/m0029/module_base_kernel_func_hook.o /tmp/bw-sdk/obj/m0034/module_base_cpu_icache_sync.o -o /tmp/bw-sdk/link/sample-chain.partial.o
+[compose]   ok (0.01s)
+[compose] sample chain: /tmp/bw-sdk/link/sample-chain.partial.o (111 defined / 128 imported externals)
+[compose]   PROBLEM m081: compose step 'compile-tu1' failed (exit 1)
 
-build FAILED: 9 member object(s) missing, e.g. ['task_struct.o', 'module_base_kernel_request.o', 'module_base_kernel_func_executor.o', 'module_base_kernel_btf_resolver.o', 'maplesu_installer.o']; run --compile/--compose first (exit 5: archive / link)
+build FAILED: 1 compose problem(s) (exit 4: compile)
 [report] /tmp/bw-sdk/report/build-report.json
