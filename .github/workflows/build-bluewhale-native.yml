@@ -11,7 +11,6 @@ name: build-bluewhale-native
 # 首次运行预计 90–150 分钟（6 个 KMI 的 LKM 是主要耗时）。失败时看最后一步上传的日志。
 
 on:
-  # 只手动触发：native 通过验收前不接管主发布，否则同一提交会同时出「旧载荷快速包」和「重编包」。
   workflow_dispatch:
     inputs:
       skip_lkm:
@@ -25,7 +24,6 @@ on:
           - "32737"
           - "32738"
         default: "32737"
-  # 临时触发口：只匹配 .ci-trigger/**，用于不登录网页也能启动首跑；跑完可删。
   push:
     paths:
       - ".ci-trigger/**"
@@ -38,15 +36,11 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # P0-1：build_userland.sh 自己把 KSU_PACKAGE_NAME 默认成 dev.maplesu.manager 并传给 cargo，
-  # 而 ksud/build.rs 只在变量缺失时才写默认值——所以这里必须显式给，否则 ksud 仍是旧包名。
   KSU_PACKAGE_NAME: "com.blue.whale.mask"
-  # 内核 apk_sign.c 用这两个值校验管理器 APK 的签名证书；不换就会把蓝鱼签名版拒之门外。
   KSU_EXPECTED_SIZE: "1355"
   KSU_EXPECTED_HASH: "863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581"
   DDK_RELEASE: "20260828"
   RUSTUP_TOOLCHAIN: "1.99.1"
-  # ghostlock/build_extractor.py 默认强制 cargo +stable；显式对齐到上面已安装 Android target 的工具链。
   MAPLESU_RUST_TOOLCHAIN: "1.99.1"
   CARGO_NET_GIT_FETCH_WITH_CLI: "true"
   KMI_MATRIX: "android12-5.10 android13-5.15 android14-6.1 android15-6.6 android16-6.12 android17-6.18"
@@ -63,7 +57,6 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p src
-          # P0-3：钉 commit。补丁锚点基于这一版，不能跟着上游 main 漂。
           UPSTREAM_COMMIT=ff3aa44850ea22717fa811a17831155a85f43445
           echo "upstream commit=$UPSTREAM_COMMIT"
           curl -sSL -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${UPSTREAM_COMMIT}"
@@ -78,7 +71,6 @@ jobs:
           python3 overlay/patch_brand_skin_tail.py src
           python3 overlay/patch_bluewhale_320.py src
           python3 overlay/patch_bluewhale_321.py src
-          # target=32737 只带 3.20.1（root+UI）；32738 才叠 3.21.0 数据层。
           if [ "${{ inputs.target }}" = "32738" ]; then
             python3 overlay/patch_bluewhale_3210.py src
           else
@@ -93,19 +85,14 @@ jobs:
           ident['expectedSize'] = 1355
           ident['expectedHash'] = '863878da8763d51c8316a81bdec40b6f9fdee236ff00db987e09d4a3f0434581'
           ident['expectedNote'] = 'BlueWhale release cert DER (1355 bytes)'
-          # 6 支补丁改了 applied 树，但上游 manifest 里的 applied.treeSha256 还是旧值；
-          # gen_payload.py 会因此直接拒绝，必须在构建前重算。
           import sys
           from pathlib import Path
           sys.path.insert(0, 'src/third_party/kernelsu/scripts')
           import ksu_common as C
           m['applied']['treeSha256'] = C.tree_sha256(C.APPLIED_DIR)
           m['applied']['fileCount'] = len(C.iter_tree_files(C.APPLIED_DIR))
-          # codeload tar 与上游 git 快照的 symlink 展开方式不同，upstream 树哈希也要按
-          # 实际解压结果重算，否则 verify_payload 的 upstream 门禁会误报。
           m['upstream']['treeSha256'] = C.tree_sha256(C.UPSTREAM_DIR)
           m['upstream']['fileCount'] = len(C.iter_tree_files(C.UPSTREAM_DIR))
-          # patches.json 的 checks 里仍写旧包名；verify_payload 5b 会逐条比对。
           pj = Path('src/third_party/kernelsu/patches/7k/patches.json')
           pt = pj.read_text(encoding='utf-8')
           pt = pt.replace('"KSU_MANAGER_PACKAGE ?= dev.maplesu.manager"',
@@ -124,7 +111,6 @@ jobs:
           set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y libclang-dev
-          # legacy Clang CFI 的主机侧正/反例由 Unicorn 实际执行；与 build.yml 的已验证依赖钉版一致。
           python3 -m pip install --upgrade pip
           python3 -m pip install pyelftools==0.32 unicorn==2.1.4
           python3 -c 'import importlib.metadata; assert importlib.metadata.version("unicorn") == "2.1.4"'
@@ -134,18 +120,14 @@ jobs:
           [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
           mkdir -p "$SDK/licenses"
           printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
-          # 别一次塞多个包：其中任何一个名字不存在都会让整条 sdkmanager 退出 1。
-          # API 37 的平台包名是 platforms;android-37.0（没有 platforms;android-37）。
           for pkg in "ndk;26.1.10909125" "ndk;29.0.14206865" "cmake;3.22.1" "platforms;android-37.0" "build-tools;37.0.0"; do
             echo "--- install $pkg"
             "$SM" "$pkg" < /dev/null || true
           done
-          # runtime/patch/policy/module-tools 仍按上游固定使用 NDK 26；provider 单独使用 NDK 29。
           test -d "$SDK/ndk/26.1.10909125" || { echo "FATAL: ndk 26 未安装"; exit 1; }
           test -d "$SDK/ndk/29.0.14206865" || { echo "FATAL: ndk 29 未安装"; exit 1; }
           test -d "$SDK/build-tools/37.0.0" || { echo "FATAL: build-tools 37 未安装"; exit 1; }
           test -d "$SDK/platforms/android-37" || test -d "$SDK/platforms/android-37.0" || { echo "FATAL: platform 37 未安装"; exit 1; }
-          # AGP 的 compileSdk 37 会找 platforms/android-37；sdkmanager 实际装出的目录是 android-37.0。
           if [ -d "$SDK/platforms/android-37.0" ] && [ ! -e "$SDK/platforms/android-37" ]; then
             ln -s "$SDK/platforms/android-37.0" "$SDK/platforms/android-37"
           fi
@@ -153,14 +135,10 @@ jobs:
           echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
           echo "CMAKE_BIN=$SDK/cmake/3.22.1/bin/cmake" >> "$GITHUB_ENV"
           echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
-          # 上游 build.py 把 cmake/ninja 写成了 Windows 的 cmake.exe / ninja.exe；
-          # Linux runner 上补两个同名软链，避免 Gradle 的 buildJailbreakProviders 找不到可执行文件。
           ln -sf "$SDK/cmake/3.22.1/bin/cmake" "$SDK/cmake/3.22.1/bin/cmake.exe"
           ln -sf "$SDK/cmake/3.22.1/bin/ninja" "$SDK/cmake/3.22.1/bin/ninja.exe"
           rustup toolchain install 1.99.1 --profile minimal --component rustfmt --target aarch64-linux-android
           cargo fetch --locked --manifest-path src/third_party/kernelsu/applied/Cargo.toml
-          # buildJailbreakProviders 还会编 ghostlock/extractor-native；它用 --offline，
-          # 必须先把这份 Cargo.lock 的依赖抓下来，否则 yaxpeax-arch 会解析失败。
           cargo fetch --locked --manifest-path src/jailbreak-providers/ghostlock/extractor-native/Cargo.toml
 
       - name: 装 JDK 21（assembleRelease 用）
@@ -209,8 +187,6 @@ jobs:
           TREE=$(python3 -c 'import sys; sys.path.insert(0,"third_party/kernelsu/scripts"); import ksu_common as C; print(C.tree_sha256(C.APPLIED_DIR))')
           echo "appliedTreeSha256=$TREE"
           python3 third_party/kernelsu/scripts/gen_payload.py --built-source-tree "$TREE"
-          # 重放 upstream 补丁会把包名改回旧值（0014 补丁的 checks 是旧包名），
-          # 与蓝鱼 identity 天然冲突；CI 用 --quick 跳过重放，保留其余全部门禁。
           python3 third_party/kernelsu/scripts/verify_payload.py --quick 2>&1 | tee /tmp/payload-gate.log
           python3 third_party/kernelsu/scripts/gen_payload.py --check
 
@@ -244,27 +220,45 @@ jobs:
           tail -120 /tmp/gradle.log 2>/dev/null || true
           cp /tmp/gradle.log out/gradle.log 2>/dev/null || true
 
-      - name: 生成构建回执（解压后统计 6 个 ko 的包名）
+      - name: 生成构建回执并执行六 KMI 与 L3 硬门禁
         if: always()
         run: |
-          set -uo pipefail
+          set -euo pipefail
           mkdir -p out
           APK=$(ls src/manager/build/outputs/apk/release/*.apk 2>/dev/null | head -1 || true)
           if [ -z "$APK" ]; then echo "没有产物，跳过回执"; exit 0; fi
           cp "$APK" out/
-          # P0-4：回执当门禁。旧包名残留时这一步必须红，不能让 artifact 继续往下走。
           python3 tools/bluewhale_receipt.py "$APK" -o out/build-receipt.json
-          python3 - <<'PY'
-          import json, sys
+          python3 - "$APK" <<'PY'
+          import json, sys, zipfile, hashlib
+          apk_path = sys.argv[1]
           receipt = json.load(open("out/build-receipt.json"))
-          so_old = receipt["native"].get("soOldPackageCount", 0)
-          bad = [row for row in receipt["native"]["kmis"] if row["oldPackageCount"] > 0]
-          print(f"soOldPackageCount={so_old}  ko 残留={len(bad)}")
-          if so_old or bad:
-              print("FATAL: native 载荷仍有旧包名，不能发布", file=sys.stderr)
+          native = receipt["native"]
+          required = ["android12-5.10", "android13-5.15", "android14-6.1", "android15-6.6", "android16-6.12", "android17-6.18"]
+          so_old = native.get("soOldPackageCount", 0)
+          rows = native["kmis"]
+          bad = [row for row in rows if row["oldPackageCount"] > 0 or row["newPackageCount"] == 0]
+          identity_ok = (receipt.get("packageName") == "com.blue.whale.mask"
+                         and receipt.get("versionCode") == 32737
+                         and receipt.get("versionName") == "3.20.1-bw")
+          print(f"identity={identity_ok} coverageOk={native['coverageOk']} soOldPackageCount={so_old} 主KO异常={len(bad)}")
+          provider = json.load(open("src/manager/build/jailbreakProviders/build.json"))
+          if provider.get("exitCode") != 0:
+              raise SystemExit("FATAL: jailbreak provider 非零退出")
+          with zipfile.ZipFile(apk_path) as apk:
+              for kmi in required:
+                  path = f"assets/maplesu/l3/{kmi}/maplesu_l3.ko"
+                  actual = hashlib.sha256(apk.read(path)).hexdigest()
+                  module = provider["l3"]["modules"][kmi]
+                  gate_ok = module["gateResult"]["ok"] is True
+                  print(f"L3 {kmi}: gate={gate_ok} packagedSha256={actual}")
+                  if not gate_ok or module["sha256"] != actual:
+                      raise SystemExit(f"FATAL: {kmi} L3 门禁或入包哈希不一致")
+          if not identity_ok or not native["coverageOk"] or so_old or bad:
+              print("FATAL: native 身份、六 KMI 覆盖或包名门禁未通过", file=sys.stderr)
               sys.exit(1)
           PY
-          (cd out && sha256sum *.apk > SHA256SUMS.txt) || true
+          (cd out && sha256sum *.apk > SHA256SUMS.txt)
           head -40 out/build-receipt.json
 
       - name: 上传产物与回执
