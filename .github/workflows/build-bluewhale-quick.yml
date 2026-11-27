@@ -1,0 +1,120 @@
+name: build-bluewhale-quick
+
+# Fast 32739 Kotlin/APK build: uses the precompiled libksud payload and skips the
+# broken Ultra bridge. The root transport under test is /system/bin/su (sucompat),
+# which does not depend on either of them.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".quick-trigger/**"
+
+permissions:
+  contents: write
+
+jobs:
+  quick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply DSH 32739 source (workflow excluded)
+        run: |
+          set -euo pipefail
+          curl -fsSL -o /tmp/32739-dsh.patch https://aka.doubaocdn.com/s/MmSBQklfMU
+          echo "ea8f4d00f7a6088298e4d44646070604d340d7395f17c54b8ffd924c4dc1dc24  /tmp/32739-dsh.patch" | sha256sum -c -
+          git apply --whitespace=nowarn --exclude='.github/**' /tmp/32739-dsh.patch
+
+      - name: Fetch upstream MapleSU
+        run: |
+          set -euo pipefail
+          mkdir -p src
+          curl -sSL -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/ff3aa44850ea22717fa811a17831155a85f43445"
+          tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
+
+      - name: Apply 32739 patch chain, skip Ultra bridge
+        run: |
+          set -euo pipefail
+          python3 overlay/apply_bluewhale.py src
+          python3 overlay/patch_runtime_targets.py src
+          python3 overlay/patch_brand_skin_tail.py src
+          python3 overlay/patch_bluewhale_320.py src
+          python3 overlay/patch_bluewhale_321.py src
+          python3 overlay/patch_bluewhale_323.py src
+          python3 overlay/patch_bluewhale_3210.py src
+          python3 overlay/patch_bluewhale_322.py src
+          python3 overlay/patch_bluewhale_32739.py src
+          python3 overlay/patch_bluewhale_32739_root.py src
+          sed -i 's/bluewhaleSkipUltraBridge=false/bluewhaleSkipUltraBridge=true/' src/gradle.properties
+          grep -n 'bluewhaleSkipUltraBridge' src/gradle.properties
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Android SDK 37 + NDK 26/28
+        run: |
+          set -euo pipefail
+          SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
+          mkdir -p "$SDK/licenses"
+          printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
+          for pkg in "platforms;android-37.0" "build-tools;37.0.0" "ndk;26.1.10909125" "ndk;28.2.13676358" "cmake;3.22.1"; do
+            echo "--- $pkg"
+            "$SM" "$pkg" < /dev/null || true
+          done
+          test -d "$SDK/ndk/26.1.10909125"
+          test -d "$SDK/ndk/28.2.13676358"
+          echo "ANDROID_NDK_HOME=$SDK/ndk/26.1.10909125" >> "$GITHUB_ENV"
+
+      - name: Assemble release APK
+        run: |
+          set -euo pipefail
+          cd src
+          ./gradlew --no-daemon --max-workers=4 \
+            --dependency-verification=off \
+            --stacktrace \
+            -PbluewhaleSkipSdkVerify=true \
+            -PbluewhaleSkipUltraBridge=true \
+            -PmaplesuPython="$(command -v python3)" \
+            -PmaplesuUltraviderNdk="$ANDROID_HOME/ndk/28.2.13676358" \
+            -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
+            :manager:assembleRelease 2>&1 | tee /tmp/gradle.log
+
+      - name: Receipt, filebin link, artifact
+        if: always()
+        run: |
+          set -uo pipefail
+          mkdir -p out
+          APK=$(ls src/manager/build/outputs/apk/release/*.apk | head -1)
+          cp "$APK" out/
+          python3 tools/bluewhale_receipt.py "$APK" -o out/build-receipt.json || true
+          if [ -f out/build-receipt.json ]; then head -30 out/build-receipt.json; fi
+          NAME="bluewhale-manager-v3.22.0-bw-32739-unsigned.apk.bin"
+          SIZE=$(stat -c%s "$APK")
+          SHA=$(sha256sum "$APK" | awk '{print $1}')
+          RESP=$(curl --fail -sS --retry 3 --retry-delay 3 -X POST --data-binary @"$APK" \
+            -H "filename: $NAME" "https://filebin.net/bw32739-quick-${GITHUB_RUN_ID}/${NAME}")
+          URL="https://filebin.net/bw32739-quick-${GITHUB_RUN_ID}/${NAME}"
+          printf '%s\n%s\n%s\n' "$URL" "$SHA" "$SIZE" > out/link.txt
+          cat out/link.txt
+          printf '%s\n%s\n%s\n' "$URL" "$SHA" "$SIZE" > ".ci-logs/quick-${GITHUB_RUN_ID}.txt" || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ".ci-logs/quick-${GITHUB_RUN_ID}.txt" || true
+          git commit -m "ci: quick 32739 link ${GITHUB_RUN_ID}" || true
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || true
+
+      - name: Upload artifact and receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bluewhale-quick-${{ github.run_number }}
+          path: out/
+          if-no-files-found: warn
+          retention-days: 14
