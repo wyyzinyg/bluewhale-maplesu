@@ -23,7 +23,8 @@ jobs:
           java-version: "21"
       - name: Rebuild the pinned 32738 source
         run: |
-          set -euo pipefail
+          set -euxo pipefail
+          exec > >(tee /tmp/preflight.log) 2>&1
           mkdir -p src
           commit=ff3aa44850ea22717fa811a17831155a85f43445
           curl -fL --retry 4 -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${commit}"
@@ -39,7 +40,8 @@ jobs:
           test "$(git apply --version)"
       - name: Install Android compile dependencies
         run: |
-          set -euo pipefail
+          set -euxo pipefail
+          exec > >(tee -a /tmp/preflight.log) 2>&1
           SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
           SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
           mkdir -p "$SDK/licenses"
@@ -70,6 +72,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p .ci-logs
+          cp /tmp/preflight.log ".ci-logs/preflight-${{ github.run_number }}.log" 2>/dev/null || true
           cp /tmp/selftest-gradle.log ".ci-logs/selftest-${{ github.run_number }}.log" 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -83,6 +86,7 @@ jobs:
           set -euo pipefail
           mkdir -p out
           cp overlay/bluewhale_322.patch out/
+          cp /tmp/preflight.log out/preflight.log 2>/dev/null || true
           cp /tmp/selftest-gradle.log out/selftest-gradle.log 2>/dev/null || true
           if [ -d src/manager/build/test-results/testReleaseUnitTest ]; then
             cp -r src/manager/build/test-results/testReleaseUnitTest out/test-results
