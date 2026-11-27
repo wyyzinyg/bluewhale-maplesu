@@ -108,10 +108,41 @@ def patch_diagnostics(root: Path) -> None:
     print(f"patched {rel}: seccomp int comparison")
 
 
+def patch_diag_v3_literal(root: Path) -> None:
+    rel = "manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt"
+    path = root / rel
+    text = path.read_text(encoding="utf-8")
+    old = "0xf05368c0 -> v3 = true"
+    new = "0xf05368c0.toInt() -> v3 = true"
+    if old not in text:
+        raise SystemExit(f"FATAL: {rel}: v3 literal marker not found")
+    text = text.replace(old, new, 1)
+    path.write_text(text, encoding="utf-8")
+    print(f"patched {rel}: v3 block id Int comparison")
+
+
+def patch_legacy_claim_gate(root: Path) -> None:
+    rel = "manager/build.gradle.kts"
+    path = root / rel
+    text = path.read_text(encoding="utf-8")
+    old = '''check(ultraManagerClaimDirectory != null ||
+            providers.gradleProperty("bluewhaleSkipUltraBridge").orNull == "true") {'''
+    new = '''check(ultraManagerClaimDirectory != null ||
+            providers.gradleProperty("bluewhaleSkipUltraBridge").orNull == "true" ||
+            rootProject.file("manager/src/main/assets/ultra-manager-claim/manifest.json").isFile) {'''
+    if old not in text:
+        raise SystemExit(f"FATAL: {rel}: claim gate marker not found")
+    text = text.replace(old, new, 1)
+    path.write_text(text, encoding="utf-8")
+    print(f"patched {rel}: legacy claim assets allowed (bridge remains real)")
+
+
 def main() -> int:
     patch_advisor(ROOT)
     patch_brand(ROOT)
     patch_diagnostics(ROOT)
+    patch_diag_v3_literal(ROOT)
+    patch_legacy_claim_gate(ROOT)
     print("32739 advisor + compile fixes applied")
     return 0
 
