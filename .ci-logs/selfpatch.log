@@ -1,2 +1,3 @@
-curl rc=0
-8da3bb90350fef54c70c22903cc840384167bb727737da079a40f92c2a984b61  overlay/patch_bluewhale_32739_advisor.py
+overlay/patch_bluewhale_32739_advisor.py: OK
+overlay/patch_bluewhale_32741.py: OK
+py-ok
