@@ -26,10 +26,25 @@ jobs:
       - name: 取本仓库
         uses: actions/checkout@v4
 
+      - name: 解析 RUN_ID
+        id: resolve
+        run: |
+          set -euo pipefail
+          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id || '' }}"
+          if [ -f .artifact-trigger/run-id ]; then
+            RUN_ID="$(tr -d '[:space:]' < .artifact-trigger/run-id)"
+          fi
+          if [ -z "$RUN_ID" ]; then
+            echo "no run id" >&2
+            exit 1
+          fi
+          echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "resolved run id: $RUN_ID"
+
       - name: 下载 native 产物
         uses: actions/download-artifact@v4
         with:
-          run-id: ${{ github.event.workflow_run.id || inputs.run_id || '45910686673' }}
+          run-id: ${{ steps.resolve.outputs.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: artifact
 
@@ -47,8 +62,7 @@ jobs:
           NAME="$(basename "$APK").bin"
           SIZE=$(stat -c%s "$APK")
           SHA=$(sha256sum "$APK" | awk '{print $1}')
-          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id || '45910686673' }}"
-          BIN="bw32737-${RUN_ID}"
+          BIN="bw32737-${{ steps.resolve.outputs.run_id }}"
           echo "上传 $NAME ($SIZE bytes) 到 filebin bin=$BIN"
           RESP=$(curl --fail -sS --retry 3 --retry-delay 2 -X POST \
             --data-binary @"$APK" \
@@ -65,7 +79,7 @@ jobs:
         if: ${{ steps.upload.outputs.found == 'true' }}
         run: |
           set -euo pipefail
-          RUN_ID="${{ github.event.workflow_run.id || inputs.run_id || '45910686673' }}"
+          RUN_ID="${{ steps.resolve.outputs.run_id }}"
           mkdir -p .ci-logs
           {
             echo "run=$RUN_ID"
