@@ -17,7 +17,7 @@ jobs:
       - name: Dump quick run log
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RUN_ID: "45974738608"
+          RUN_ID: "45978258187"
         run: |
           set -euo pipefail
           mkdir -p .ci-logs
