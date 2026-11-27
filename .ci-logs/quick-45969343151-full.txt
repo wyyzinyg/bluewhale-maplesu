@@ -1,0 +1,1289 @@
+run=45969343151
+quick	Set up job	﻿2026-11-27T08:54:40.8816184Z Current runner version: '2.338.2'
+quick	Set up job	2026-11-27T08:54:40.8841363Z ##[group]Runner Image Provisioner
+quick	Set up job	2026-11-27T08:54:40.8842339Z Hosted Compute Agent
+quick	Set up job	2026-11-27T08:54:40.8842977Z Version: 20261111.635
+quick	Set up job	2026-11-27T08:54:40.8843790Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+quick	Set up job	2026-11-27T08:54:40.8844663Z Build Date: 2026-11-11T01:49:01Z
+quick	Set up job	2026-11-27T08:54:40.8845364Z Worker ID: {f11f0bc8-2c0c-4d69-871d-e4db60124a00}
+quick	Set up job	2026-11-27T08:54:40.8846125Z Region: northcentralus
+quick	Set up job	2026-11-27T08:54:40.8846813Z Cloud: Azure
+quick	Set up job	2026-11-27T08:54:40.8847342Z ##[endgroup]
+quick	Set up job	2026-11-27T08:54:40.8848842Z ##[group]Operating System
+quick	Set up job	2026-11-27T08:54:40.8849597Z Ubuntu
+quick	Set up job	2026-11-27T08:54:40.8850185Z 26.04.1
+quick	Set up job	2026-11-27T08:54:40.8850762Z LTS
+quick	Set up job	2026-11-27T08:54:40.8851279Z ##[endgroup]
+quick	Set up job	2026-11-27T08:54:40.8852305Z ##[group]Runner Image
+quick	Set up job	2026-11-27T08:54:40.8852929Z Image: ubuntu-26.04
+quick	Set up job	2026-11-27T08:54:40.8853844Z Version: 20261116.202.1
+quick	Set up job	2026-11-27T08:54:40.8855020Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.202/images/ubuntu/Ubuntu2604-Readme.md
+quick	Set up job	2026-11-27T08:54:40.8856807Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.202
+quick	Set up job	2026-11-27T08:54:40.8857779Z ##[endgroup]
+quick	Set up job	2026-11-27T08:54:40.8858955Z ##[group]GITHUB_TOKEN Permissions
+quick	Set up job	2026-11-27T08:54:40.8861133Z Contents: write
+quick	Set up job	2026-11-27T08:54:40.8861945Z Metadata: read
+quick	Set up job	2026-11-27T08:54:40.8862684Z ##[endgroup]
+quick	Set up job	2026-11-27T08:54:40.8865113Z Secret source: Actions
+quick	Set up job	2026-11-27T08:54:40.8866348Z Cache mode: write
+quick	Set up job	2026-11-27T08:54:40.8867417Z Prepare workflow directory
+quick	Set up job	2026-11-27T08:54:40.9218580Z Prepare all required actions
+quick	Set up job	2026-11-27T08:54:40.9266879Z Getting action download info
+quick	Set up job	2026-11-27T08:54:41.1389406Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+quick	Set up job	2026-11-27T08:54:41.2428543Z Download action repository 'actions/setup-java@v4' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+quick	Set up job	2026-11-27T08:54:41.5937263Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+quick	Set up job	2026-11-27T08:54:41.7852744Z Complete job name: quick
+quick	Run actions/checkout@v4	﻿2026-11-27T08:54:41.8799242Z ##[group]Run actions/checkout@v4
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8800155Z with:
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8800658Z   repository: wyyzinyg/bluewhale-maplesu
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8804559Z   token: ***
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8805021Z   ssh-strict: true
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8805480Z   ssh-user: git
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8805937Z   persist-credentials: true
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8806447Z   clean: true
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8806897Z   sparse-checkout-cone-mode: true
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8807425Z   fetch-depth: 1
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8807865Z   fetch-tags: false
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8808320Z   show-progress: true
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8808785Z   lfs: false
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8809206Z   submodules: false
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8809662Z   set-safe-directory: true
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8810178Z   allow-unsafe-pr-checkout: false
+quick	Run actions/checkout@v4	2026-11-27T08:54:41.8810958Z ##[endgroup]
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2074860Z Syncing repository: wyyzinyg/bluewhale-maplesu
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2076792Z ##[group]Getting Git version info
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2077640Z Working directory is '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2078804Z [command]/usr/bin/git version
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2110327Z git version 2.56.1
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2135439Z ##[endgroup]
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2151482Z Temporarily overriding HOME='/home/runner/work/_temp/0db0aff7-6d35-4baa-adf8-3bb3548007ff' before making global git config changes
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2154228Z Adding repository directory to the temporary git global config as a safe directory
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2158668Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2238484Z Deleting the contents of '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2241424Z ##[group]Initializing the repository
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2246962Z [command]/usr/bin/git init /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2402386Z hint: Using 'master' as the name for the initial branch. This default branch name
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2404324Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2406014Z hint: to use in all of your new repositories, which will suppress this warning,
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2407273Z hint: call:
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2407951Z hint:
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2408670Z hint: 	git config --global init.defaultBranch <name>
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2409340Z hint:
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2409969Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2410987Z hint: 'development'. The just-created branch can be renamed via this command:
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2411814Z hint:
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2412262Z hint: 	git branch -m <name>
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2412784Z hint:
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2413732Z hint: Disable this message with "git config set advice.defaultBranchName false"
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2417108Z Initialized empty Git repository in /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/.git/
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2430821Z [command]/usr/bin/git remote add origin https://github.com/wyyzinyg/bluewhale-maplesu
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2491483Z ##[endgroup]
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2492768Z ##[group]Disabling automatic garbage collection
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2496886Z [command]/usr/bin/git config --local gc.auto 0
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2533888Z ##[endgroup]
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2535530Z ##[group]Setting up auth
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2542346Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.2579398Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.3137889Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.3172295Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.3451751Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.3490596Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.3766440Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.3805813Z ##[endgroup]
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.3806846Z ##[group]Fetching the repository
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.3816122Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +49dd98d8c99f65f8880772ae660a792798a6a566:refs/remotes/origin/feat/32739-bluefishsu
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7612120Z From https://github.com/wyyzinyg/bluewhale-maplesu
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7616383Z  * [new ref]         49dd98d8c99f65f8880772ae660a792798a6a566 -> origin/feat/32739-bluefishsu
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7621481Z ##[endgroup]
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7623112Z ##[group]Determining the checkout info
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7625063Z ##[endgroup]
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7626488Z [command]/usr/bin/git sparse-checkout disable
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7685156Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7720371Z ##[group]Checking out the ref
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.7725944Z [command]/usr/bin/git checkout --progress --force -B feat/32739-bluefishsu refs/remotes/origin/feat/32739-bluefishsu
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.8020535Z Switched to a new branch 'feat/32739-bluefishsu'
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.8026683Z branch 'feat/32739-bluefishsu' set up to track 'origin/feat/32739-bluefishsu'.
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.8038478Z ##[endgroup]
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.8086746Z [command]/usr/bin/git log -1 --format=%H
+quick	Run actions/checkout@v4	2026-11-27T08:54:42.8111971Z 49dd98d8c99f65f8880772ae660a792798a6a566
+quick	Apply DSH 32739 source (workflow excluded)	﻿2026-11-27T08:54:42.8490288Z ##[group]Run set -euo pipefail
+quick	Apply DSH 32739 source (workflow excluded)	2026-11-27T08:54:42.8492874Z ^[[36;1mset -euo pipefail^[[0m
+quick	Apply DSH 32739 source (workflow excluded)	2026-11-27T08:54:42.8496421Z ^[[36;1mcurl -fsSL -o /tmp/32739-dsh.patch https://aka.doubaocdn.com/s/MmSBQklfMU^[[0m
+quick	Apply DSH 32739 source (workflow excluded)	2026-11-27T08:54:42.8502358Z ^[[36;1mecho "ea8f4d00f7a6088298e4d44646070604d340d7395f17c54b8ffd924c4dc1dc24  /tmp/32739-dsh.patch" | sha256sum -c -^[[0m
+quick	Apply DSH 32739 source (workflow excluded)	2026-11-27T08:54:42.8507180Z ^[[36;1mgit apply --whitespace=nowarn --exclude='.github/**' /tmp/32739-dsh.patch^[[0m
+quick	Apply DSH 32739 source (workflow excluded)	2026-11-27T08:54:42.8547039Z shell: /usr/bin/bash -e {0}
+quick	Apply DSH 32739 source (workflow excluded)	2026-11-27T08:54:42.8548153Z ##[endgroup]
+quick	Apply DSH 32739 source (workflow excluded)	2026-11-27T08:54:45.6827486Z /tmp/32739-dsh.patch: OK
+quick	Fetch upstream MapleSU	﻿2026-11-27T08:54:45.6907490Z ##[group]Run set -euo pipefail
+quick	Fetch upstream MapleSU	2026-11-27T08:54:45.6907897Z ^[[36;1mset -euo pipefail^[[0m
+quick	Fetch upstream MapleSU	2026-11-27T08:54:45.6908193Z ^[[36;1mmkdir -p src^[[0m
+quick	Fetch upstream MapleSU	2026-11-27T08:54:45.6908854Z ^[[36;1mcurl -sSL -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/ff3aa44850ea22717fa811a17831155a85f43445"^[[0m
+quick	Fetch upstream MapleSU	2026-11-27T08:54:45.6909630Z ^[[36;1mtar xzf /tmp/maplesu.tar.gz -C src --strip-components=1^[[0m
+quick	Fetch upstream MapleSU	2026-11-27T08:54:45.6945457Z shell: /usr/bin/bash -e {0}
+quick	Fetch upstream MapleSU	2026-11-27T08:54:45.6945775Z ##[endgroup]
+quick	Apply 32739 patch chain, skip Ultra bridge	﻿2026-11-27T08:55:16.8934436Z ##[group]Run set -euo pipefail
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8934882Z ^[[36;1mset -euo pipefail^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8935207Z ^[[36;1mpython3 overlay/apply_bluewhale.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8935571Z ^[[36;1mpython3 overlay/patch_runtime_targets.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8935937Z ^[[36;1mpython3 overlay/patch_brand_skin_tail.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8936288Z ^[[36;1mpython3 overlay/patch_bluewhale_320.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8936619Z ^[[36;1mpython3 overlay/patch_bluewhale_321.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8936975Z ^[[36;1mpython3 overlay/patch_bluewhale_323.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8937318Z ^[[36;1mpython3 overlay/patch_bluewhale_3210.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8937644Z ^[[36;1mpython3 overlay/patch_bluewhale_322.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8937967Z ^[[36;1mpython3 overlay/patch_bluewhale_32739.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8938318Z ^[[36;1mpython3 overlay/patch_bluewhale_32739_root.py src^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8938889Z ^[[36;1msed -i 's/bluewhaleSkipUltraBridge=false/bluewhaleSkipUltraBridge=true/' src/gradle.properties^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8939518Z ^[[36;1mgrep -n 'bluewhaleSkipUltraBridge' src/gradle.properties^[[0m
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8972930Z shell: /usr/bin/bash -e {0}
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.8973210Z ##[endgroup]
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9368112Z 改好 manager/build.gradle.kts
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9368998Z 改好 manager/build.gradle.kts
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9369602Z 改好 manager/build.gradle.kts
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9370398Z 改好 manager/src/main/res/values/maplesu_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9371442Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9372591Z 插入 BLUEWHALE_KEY_COLOR 常量
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9373228Z 改好 manager/src/main/res/values/colors.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9374233Z 移除位图 drawable-xxhdpi
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9374754Z 移除位图 drawable-hdpi
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9375244Z 移除位图 drawable-mdpi
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9375761Z 移除位图 drawable-xxxhdpi
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9376394Z 移除位图 drawable-xhdpi
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9376837Z 放入矢量图标
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9377246Z 改好 manager/build.gradle.kts
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9377614Z 修好 build.py: cmake 可执行名跨平台
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9377958Z 修好 build.py: ninja 可执行名跨平台
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9378361Z 修好 build.py: ir spec 路径反斜杠归一（带 basename 回退）
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9378791Z 修好 build.py: L3 构建保留完整门禁日志
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9379149Z 修好 build.py: 附加 KMI 的 L3 失败回传主日志
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9379519Z 修好 build.py: L3 全 KMI 诊断后统一失败
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9379911Z 改好 build.gradle.kts: policy bundle 固定 ultra
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9380355Z 改好 build.gradle.kts: bundle 同源校验随自检开关跳过
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9380764Z policy bundle 自检：18 个源，缺 0，漂 0
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9381181Z 修好 prepare_host_dependencies.py: 插入 _retry_urlopen
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9381863Z 修好 prepare_host_dependencies.py: 下载走重试
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9382336Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9382847Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9384082Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9384593Z 改好 jailbreak-providers/root-loader/legacy_cfi.py
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9384892Z 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:16.9385048Z 蓝鱼品牌化补丁已全部应用。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0102775Z 改好 build.gradle.kts: runtime 目标集按开关决定 bridge
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0104059Z 改好 manager/build.gradle.kts: @get:InputFile abstract val ultraBridgeLibrary: 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0105032Z 改好 manager/build.gradle.kts: ultraBridgeLibrary.get().asFile.copyTo(jniDirect
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0105968Z 改好 manager/build.gradle.kts: ultraBridgeLibrary.set(runtimeBuild.map { it.fil
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0106707Z 改好 build.gradle.kts: bridge 不再作为硬性输出
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0107230Z 改好 product.py: cached_jar 缺缓存时从 Maven 补拉
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0107766Z 改好 build.gradle.kts: Ultra claim 门槛随跳过开关放行
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0108401Z 改好 gradle.properties: 落 bluewhaleSkipUltraBridge
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0109311Z 改好 manager/src/main/AndroidManifest.xml: android:authorities="dev.maplesu.manager.soter"
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0110765Z 改好 manager/src/main/java/dev/maplesu/manager/soter/SoterTargetProvider.kt: const val AUTHORITY = "dev.maplesu.manager.soter
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0112354Z 还原蓝鱼图标与启动页位图: 6 个文件，与 3.16 逐字节一致
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0113437Z 改好 manager/src/main/res/mipmap-anydpi/ic_launcher.xml: <foreground android:drawable="@drawable/ic_launc
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0114804Z 改好 manager/src/main/res/values/colors.xml: <color name="ic_launcher_background">#FF08101F</
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0115965Z 改好 manager/src/main/res/values/colors.xml: <color name="ic_splash_background">#FF774F6F</co
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0117155Z 改好 manager/src/main/res/values/themes.xml: <item name="windowSplashScreenBackground">@color
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0118292Z 改好 manager/src/main/res/values/themes.xml: <item name="windowSplashScreenAnimatedIcon">@dra
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0119570Z 改好 manager/src/main/res/values-night/themes.xml: <item name="windowSplashScreenBackground">@color
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0120902Z 改好 manager/src/main/res/values-night/themes.xml: <item name="windowSplashScreenAnimatedIcon">@dra
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0121898Z 还原启动页: ic_app_brand 位图 + 白底 + 主题指向
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0123167Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt: get() = if (ThemeLock.ENABLED) ThemeLock.THEME_M
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0124906Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: init {
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0125777Z         prefs.registerOnSharedPreferenceC
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0126724Z 改好 manager/src/main/java/com/maplesu/core/ui/util/AppearancePrefsPolicy.kt: "snow_enabled" to enabled,
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0128139Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if ((skin.appliedScene && uiState.snowEnabled) |
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0129582Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeBetaBanner.kt: internal const val MAPLESU_FEEDBACK_URL = "https
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0130907Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: Text(
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0131808Z             text = aboutCommunityText(stri
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0133120Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: AdvisorWallMiuix(Modifier.padding(top = 4.dp))
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0135260Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMiuix.kt: kind = BrandBannerKind.MAPLE,
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0136836Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: Text(
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0137711Z             text = aboutCommunityText(stri
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0139039Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: AdvisorWallMaterial(Modifier.padding(top = 4.dp)
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0140910Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/AboutMapleDialogMaterial.kt: kind = BrandBannerKind.MAPLE,
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0142232Z 改好 manager/src/main/res/values/themes.xml: <style name="Theme.KernelSU" parent="android:The
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0143949Z 改好 manager/src/main/res/values/themes.xml: <item name="android:windowLightStatusBar">true</
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0145136Z 改好 manager/src/main/res/values/themes.xml: <item name="android:windowLightNavigationBar">tr
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0146439Z 改好 manager/src/main/res/values/colors.xml: <color name="maple_window_background">#FFF7F7F7<
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0147674Z 改好 manager/src/main/res/values-night/colors.xml: <color name="maple_window_background">#FF000000<
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0148558Z 改好 manager/build.gradle.kts: versionCode = 32731
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0149159Z 改好 manager/build.gradle.kts: versionName = "3.17.0-bw"
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0150225Z 改好 manager/src/main/res/values/maplesu_release_strings.xml: <string name="home_public_beta_notice">公测版本非正式版本
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0151561Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_title">About MapleSU</
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0152822Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_entry_summary">Develop
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0154353Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_overview">Overview: an
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0155940Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_overview_plain">Overvi
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0157173Z 改好 manager/src/main/res/values/maplesu_about.xml: <string name="about_maple_developers">Developer:
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0158433Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_title">关于 MapleSU</str
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0159739Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_entry_summary">开发者、开源致
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0161027Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_overview">简介：一款 Androi
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0162328Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_overview_plain">简介：一款 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0163921Z 改好 manager/src/main/res/values-zh-rCN/maplesu_about.xml: <string name="about_maple_developers">开发者：MapleA
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0165339Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_failed">Env
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0166737Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_timeout_sum
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0168122Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_failed_summ
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0169538Z 改好 manager/src/main/res/values/home_environment_check.xml: <string name="home_environment_check_unconfirmed
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0170969Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_failed">环境检
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0172424Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_timeout_sum
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0174096Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_failed_summ
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0175492Z 改好 manager/src/main/res/values-zh-rCN/home_environment_check.xml: <string name="home_environment_check_unconfirmed
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0177035Z 改好 manager/src/main/res/values/strings_workmode.xml: <string name="work_mode_superuser_unresolved">Th
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0178527Z 改好 manager/src/main/res/values-zh-rCN/strings_workmode.xml: <string name="work_mode_superuser_unresolved">还没
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0179934Z 改好 manager/src/main/res/values-zh-rCN/strings_workmode.xml: <string name="work_mode_superuser_unavailable">当
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0181347Z 改好 manager/src/main/res/values/maplesu_strings.xml: <string name="module_load_failed">Failed to load
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0182699Z 改好 manager/src/main/res/values-zh-rCN/maplesu_strings.xml: <string name="module_load_failed">加载模块失败，请重试</st
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0183862Z 品牌皮肤已应用：深色默认 + 去枫叶 + 蓝鱼文案
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.0184331Z 构建期修补已全部应用。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1837511Z 改好 manager/src/main/java/com/maplesu/core/data/repository/SettingsRepositoryImpl.kt: appearance.getBoolean("snow_enabled", true)
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1839429Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: 2 处 AppearancePreferences.INTRO_COMIC, t
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1840808Z 改好 manager/src/main/java/com/maplesu/core/ui/util/AppearancePrefsPolicy.kt: "snow_enabled" to false,
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1842070Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_appearance_summary">界面风格 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1843530Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_fall_title">枫叶飘落</string>
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1844751Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_fall_summary">让枫叶轻轻飘落，可随时
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1845889Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_appearance_summary">Style
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1847034Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_fall_title">Falling maple
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1848189Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_fall_summary">Gentle fall
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1849529Z 改好 manager/src/main/res/values-zh-rCN/maplesu_strings.xml: <string name="maplesu_backend_version">Maple
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1851136Z 改好 manager/src/main/res/values/maplesu_strings.xml: <string name="maplesu_backend_version">Maple
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1852539Z 改好 manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialogMaterial.kt: internal fun BrandDialogMaterial(
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1853753Z     kind: 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1854786Z 改好 manager/src/main/java/com/maplesu/core/ui/component/maple/BrandDialogMaterial.kt: icon = { BrandBanner(kind = kind, accent = M
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1855768Z 文案统一完成: 346 条
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1856161Z 文案总清已应用，版本 3.18.1-bw (32733)。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1856641Z 删掉启动页上游人物位图: 5 个
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1857425Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if (uiState.snowEnabled) {
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1858857Z 改好 manager/src/main/java/com/maplesu/core/ui/MainActivity.kt: if (skin.appliedScene && uiState.trollRainEnab
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1860684Z 删掉 manager/src/main/java/com/maplesu/core/ui/screen/settings/AppearanceSettingsBody.kt: AppearanceGroup(stringResource(R.string.theme_section_effect
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1862492Z 改好 manager/src/main/java/com/maplesu/core/ui/viewmodel/MainActivityViewModel.kt: .putBoolean("snow_enabled", false).apply()
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1864186Z 改好 manager/src/main/res/values-zh-rCN/strings_ui_d.xml: <string name="ui_d_appearance_summary">界面风格 · 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1865486Z 改好 manager/src/main/res/values/strings_ui_d.xml: <string name="ui_d_appearance_summary">Style ·
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1866330Z 改好 manager/build.gradle.kts: versionCode = 32733
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1866964Z 改好 manager/build.gradle.kts: versionName = "3.18.1-bw"
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1867615Z 特效收口已应用，版本 3.18.2-bw (32734)。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1868203Z 更新通道 → 蓝鱼 update.json（CloudBase 主站 + GitHub raw 兜底）
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1868767Z 文案总清：改写 35 个资源文件
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1869150Z 版本 → 3.19.0-bw / 32735
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1869791Z 3.19.0 收口已应用。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.1870182Z 皮肤收尾已应用。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2710784Z 版本 → 3.20.0-bw / 32736
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2711892Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 内测横幅移到 InfoCard 之前（状态卡前置）
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2712683Z 无 Root 口径：改写 19 个资源文件
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2713732Z 改好 manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdate.kt: 更新通道加 Tiana 备用镜像位（默认留空=跳过）
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2714278Z 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2714455Z 3.20.0 补丁已应用：改动 22 个文件。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2714823Z   · manager/build.gradle.kts
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2715403Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2716096Z   · manager/src/main/res/values/hook_environment_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2716671Z   · manager/src/main/res/values/jailbreak_logs.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2717208Z   · manager/src/main/res/values/jailbreak_workmode.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2717738Z   · manager/src/main/res/values/maplesu_93260.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2718324Z   · manager/src/main/res/values/maplesu_jailbreak.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2718830Z   · manager/src/main/res/values/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2719637Z   · manager/src/main/res/values-fr/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2720134Z   · manager/src/main/res/values-in/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2720617Z   · manager/src/main/res/values-tr/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2721203Z   · manager/src/main/res/values-vi/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2721813Z   · manager/src/main/res/values-zh-rCN/hook_environment_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2722478Z   · manager/src/main/res/values-zh-rCN/hook_su_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2723080Z   · manager/src/main/res/values-zh-rCN/jailbreak_logs.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2723818Z   · manager/src/main/res/values-zh-rCN/jailbreak_workmode.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2724437Z   · manager/src/main/res/values-zh-rCN/maplesu_93260.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2725042Z   · manager/src/main/res/values-zh-rCN/maplesu_jailbreak.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2725612Z   · manager/src/main/res/values-zh-rCN/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2726156Z   · manager/src/main/res/values-zh-rHK/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.2726615Z   · …… 其余 2 个
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3147139Z 改好 third_party/kernelsu/manifest.json: 身份 / sources / checks / 摘要 共 7 处包名
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3148202Z 改好 third_party/kernelsu/applied/kernel/Kbuild: KSU_MANAGER_PACKAGE 默认值
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3149119Z 改好 third_party/kernelsu/applied/kernel/Kbuild: KSU_PACKAGE_NAME 的 .pr 变体
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3150032Z 改好 third_party/kernelsu/applied/userspace/ksud/build.rs: ksud 的包名兜底默认值
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3151054Z 改好 third_party/kernelsu/applied/userspace/ksud/src/late_load.rs: late-load 重启管理器的 Activity
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3151880Z 版本 → 3.20.1-bw / 32737
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3152725Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 内测横幅移到 About7kCard 之后（首屏不再出现）
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3154217Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: 加「无 Root 模式」入口卡与参数
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3155379Z 改好 manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt: 计算并传入无 Root 入口可见性
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3156407Z 改好 manager/src/main/res/values/strings.xml: 加 home_no_root_entry_*
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3157332Z 改好 manager/src/main/res/values-zh-rCN/strings.xml: 加 home_no_root_entry_*
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3158251Z 改好 manager/src/main/res/values-zh-rHK/strings.xml: 加 home_no_root_entry_*
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3158718Z 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3158923Z 3.20.1 补丁已应用：改动 10 个文件。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3159382Z   · third_party/kernelsu/manifest.json
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3159950Z   · third_party/kernelsu/applied/kernel/Kbuild
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3160625Z   · third_party/kernelsu/applied/userspace/ksud/build.rs
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3161346Z   · third_party/kernelsu/applied/userspace/ksud/src/late_load.rs
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3161948Z   · manager/build.gradle.kts
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3162585Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3163694Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3164859Z   · manager/src/main/res/values/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3165518Z   · manager/src/main/res/values-zh-rCN/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3166175Z   · manager/src/main/res/values-zh-rHK/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3425597Z fixed no-root entry condition
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3426142Z removed beta banner: HomeMiuix.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3426699Z removed beta banner: HomeMaterial.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3428820Z 32738 UI hotfix applied: manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt, manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt, manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMaterial.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3694597Z 版本 → 3.21.0-bw / 32738
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3695894Z 改好 manager/src/main/java/com/maplesu/core/ui/util/module/LatestVersionInfo.kt: 加 versionName / sha256 / sizeBytes / source
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3697376Z 改好 manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdate.kt: 三渠道兜底 + 来源 + 版本元数据
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3698834Z 改好 manager/src/test/java/com/maplesu/core/ui/util/ManagerUpdateTest.kt: 端点改成 MANAGER_UPDATE_URL，期望值带上 source
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3699972Z 
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3700216Z 3.21.0 数据层补丁已应用：改动 4 个文件。
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3700689Z   · manager/build.gradle.kts
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3701474Z   · manager/src/main/java/com/maplesu/core/ui/util/module/LatestVersionInfo.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3702463Z   · manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdate.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.3703556Z   · manager/src/test/java/com/maplesu/core/ui/util/ManagerUpdateTest.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4037818Z BlueWhale 32738 SU-log evidence export applied.
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4840430Z patched manager/build.gradle.kts: versionCode -> 32739
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4841327Z patched manager/build.gradle.kts: versionName -> 3.22.0-bw
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4842934Z patched manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBanner.kt: BrandBannerKind.MAPLE -> BLUEFISH
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4845396Z patched manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBanner.kt: brand banner fish tokens
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4847665Z patched manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBannerArt.kt: Bluefish Canvas banner
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4849955Z patched manager/src/main/java/com/maplesu/core/ui/screen/about/AboutScreen.kt: about advisor banner -> BLUEFISH (2)
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4852004Z patched manager/src/main/java/com/maplesu/core/ui/component/T3Dialogs.kt: T3 banner -> BLUEFISH
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4853953Z patched manager/src/main/java/com/maplesu/core/ui/component/T3Dialogs.kt: T3 comment brand
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4855618Z brand sweep: manager/src/main/res/values/install_boot_flow_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4856505Z brand sweep: manager/src/main/res/values/install_sources.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4857356Z brand sweep: manager/src/main/res/values/installer_lifecycle_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4858262Z brand sweep: manager/src/main/res/values/maple_appearance.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4859034Z brand sweep: manager/src/main/res/values/maple_market.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4859862Z brand sweep: manager/src/main/res/values/maple_market_runtime.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4860664Z brand sweep: manager/src/main/res/values/maplesu_93260.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4861401Z brand sweep: manager/src/main/res/values/maplesu_about.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4862176Z brand sweep: manager/src/main/res/values/maplesu_advisors.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4862981Z brand sweep: manager/src/main/res/values/maplesu_jailbreak.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4863994Z brand sweep: manager/src/main/res/values/maplesu_litehidden.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4864804Z brand sweep: manager/src/main/res/values/maplesu_migration.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4865562Z brand sweep: manager/src/main/res/values/maplesu_modules.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4866314Z brand sweep: manager/src/main/res/values/maplesu_release_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4867091Z brand sweep: manager/src/main/res/values/maplesu_status.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4867810Z brand sweep: manager/src/main/res/values/maplesu_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4868895Z brand sweep: manager/src/main/res/values/module_install_choice.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4869622Z brand sweep: manager/src/main/res/values/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4870374Z brand sweep: manager/src/main/res/values/strings_comic_preset.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4871183Z brand sweep: manager/src/main/res/values/strings_normal_hidden.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4871971Z brand sweep: manager/src/main/res/values/strings_theme.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4872707Z brand sweep: manager/src/main/res/values/strings_ui_b.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4873601Z brand sweep: manager/src/main/res/values/strings_ui_d.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4874370Z brand sweep: manager/src/main/res/values/strings_workmode.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4875144Z brand sweep: manager/src/main/res/values-ar/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4875880Z brand sweep: manager/src/main/res/values-az/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4876817Z brand sweep: manager/src/main/res/values-bg/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4877506Z brand sweep: manager/src/main/res/values-bn/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4878496Z brand sweep: manager/src/main/res/values-bn-rBD/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4879202Z brand sweep: manager/src/main/res/values-bs/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4879895Z brand sweep: manager/src/main/res/values-da/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4880574Z brand sweep: manager/src/main/res/values-de/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4881255Z brand sweep: manager/src/main/res/values-es/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4881939Z brand sweep: manager/src/main/res/values-et/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4882633Z brand sweep: manager/src/main/res/values-fa/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4883535Z brand sweep: manager/src/main/res/values-fil/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4884228Z brand sweep: manager/src/main/res/values-fr/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4884913Z brand sweep: manager/src/main/res/values-gl/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4885608Z brand sweep: manager/src/main/res/values-hi/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4886278Z brand sweep: manager/src/main/res/values-hr/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4886963Z brand sweep: manager/src/main/res/values-hu/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4887623Z brand sweep: manager/src/main/res/values-in/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4888310Z brand sweep: manager/src/main/res/values-it/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4888982Z brand sweep: manager/src/main/res/values-iw/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4889641Z brand sweep: manager/src/main/res/values-ja/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4890287Z brand sweep: manager/src/main/res/values-km/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4890949Z brand sweep: manager/src/main/res/values-kn/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4891599Z brand sweep: manager/src/main/res/values-ko/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4892248Z brand sweep: manager/src/main/res/values-lt/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4892907Z brand sweep: manager/src/main/res/values-lv/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4893795Z brand sweep: manager/src/main/res/values-mr/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4894467Z brand sweep: manager/src/main/res/values-ms/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4895178Z brand sweep: manager/src/main/res/values-my/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4895938Z brand sweep: manager/src/main/res/values-nl/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4896780Z brand sweep: manager/src/main/res/values-pl/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4897717Z brand sweep: manager/src/main/res/values-pt/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4898460Z brand sweep: manager/src/main/res/values-pt-rBR/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4899201Z brand sweep: manager/src/main/res/values-ro/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4899890Z brand sweep: manager/src/main/res/values-ru/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4900581Z brand sweep: manager/src/main/res/values-sl/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4901138Z brand sweep: manager/src/main/res/values-sr/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4901526Z brand sweep: manager/src/main/res/values-te/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4901880Z brand sweep: manager/src/main/res/values-th/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4902468Z brand sweep: manager/src/main/res/values-tl/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4902827Z brand sweep: manager/src/main/res/values-tr/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4903173Z brand sweep: manager/src/main/res/values-uk/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4903907Z brand sweep: manager/src/main/res/values-vi/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4904354Z brand sweep: manager/src/main/res/values-zh-rCN/install_boot_flow_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4904844Z brand sweep: manager/src/main/res/values-zh-rCN/install_sources.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4905326Z brand sweep: manager/src/main/res/values-zh-rCN/installer_lifecycle_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4905818Z brand sweep: manager/src/main/res/values-zh-rCN/maple_appearance.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4906256Z brand sweep: manager/src/main/res/values-zh-rCN/maple_market.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4906694Z brand sweep: manager/src/main/res/values-zh-rCN/maple_market_runtime.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4907138Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_93260.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4907568Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_about.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4908136Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_advisors.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4908578Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_jailbreak.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4909034Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_litehidden.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4909482Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_migration.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4909913Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_modules.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4910347Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_status.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4910772Z brand sweep: manager/src/main/res/values-zh-rCN/maplesu_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4911223Z brand sweep: manager/src/main/res/values-zh-rCN/module_install_choice.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4911659Z brand sweep: manager/src/main/res/values-zh-rCN/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4912086Z brand sweep: manager/src/main/res/values-zh-rCN/strings_comic_preset.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4912555Z brand sweep: manager/src/main/res/values-zh-rCN/strings_normal_hidden.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4913010Z brand sweep: manager/src/main/res/values-zh-rCN/strings_theme.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4913589Z brand sweep: manager/src/main/res/values-zh-rCN/strings_ui_b.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4914004Z brand sweep: manager/src/main/res/values-zh-rCN/strings_ui_d.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4914422Z brand sweep: manager/src/main/res/values-zh-rCN/strings_workmode.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4914834Z brand sweep: manager/src/main/res/values-zh-rHK/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4915246Z brand sweep: manager/src/main/res/values-zh-rTW/maplesu_modules.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4915673Z brand sweep: manager/src/main/res/values-zh-rTW/maplesu_status.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4916095Z brand sweep: manager/src/main/res/values-zh-rTW/maplesu_strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4916496Z brand sweep: manager/src/main/res/values-zh-rTW/strings.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4916946Z set manager/src/main/res/values-zh-rCN/maplesu_about.xml: about_maple_title
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4917462Z set manager/src/main/res/values-zh-rCN/maplesu_about.xml: about_view_advisors
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4917974Z set manager/src/main/res/values-zh-rCN/maplesu_about.xml: about_maple_overview
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4918502Z set manager/src/main/res/values-zh-rCN/maplesu_about.xml: about_maple_developers
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4919015Z set manager/src/main/res/values-zh-rCN/maplesu_advisors.xml: advisors_title
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4919520Z added manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4920048Z added manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnosticsUi.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4920500Z added manager/src/main/res/values/root_diagnostics.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4920886Z added manager/src/main/res/values-zh-rCN/root_diagnostics.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4921462Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt: insert Miuix Root diagnostics entry
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4922397Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMaterial.kt: insert Material Root diagnostics entry
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4923057Z red-card hint: manager/src/main/res/values-zh-rCN/home_environment_check.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4923653Z red-card hint: manager/src/main/res/values-zh-rCN/maplesu_litehidden.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4924155Z red-card hint: manager/src/main/res/values/home_environment_check.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4924605Z red-card hint: manager/src/main/res/values/maplesu_litehidden.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4925236Z patched manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt: HomeViewModel: import diagnostics events
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4926052Z patched manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt: HomeViewModel: record root probe start
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4926867Z patched manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt: HomeViewModel: record root probe result
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4927600Z patched manager/src/main/java/dev/maplesu/manager/jailbreak/IrImages.kt: IrImages.HELPER_PATH
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4929212Z patched client/src/main/java/dev/maplesu/client/CooperativeSuClient.kt: CooperativeSuClient doc brand
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4930124Z patched client/src/main/java/dev/maplesu/client/CooperativeSuClient.kt: CooperativeSuClient defaults
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4930888Z patched manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDiscovery.java: NativeSuDiscovery package/action
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4931721Z patched manager/src/main/java/dev/maplesu/manager/runtime/NativeSuBrokerService.kt: NativeSuBrokerService PEEK_ACTION
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4932575Z patched manager/src/main/java/dev/maplesu/manager/runtime/NativeSuBootstrapReceiver.kt: NativeSuBootstrapReceiver ACTION
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4933756Z patched manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDirectoryProvider.kt: NativeSuDirectoryProvider AUTHORITY
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4934689Z patched manager/src/main/java/dev/maplesu/manager/runtime/authorization/SuperuserControl.kt: SuperuserControl root_directory URI
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4935575Z patched manager/src/main/java/dev/maplesu/manager/runtime/RootRequestClient.kt: RootRequestClient default package
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4936426Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonManagerUninstall.kt: DaemonManagerUninstall PACKAGE
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4937337Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonNormalSuperuserPort.kt: DaemonNormalSuperuserPort protected
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4938222Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonSuperuserPort.kt: DaemonSuperuserPort default
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4939072Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/UltraSdkSuAuthRevoke.kt: UltraSdkSuAuthRevoke defaults (2)
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4939924Z patched manager/src/main/java/dev/maplesu/manager/recovery/RecoveryRestoreService.kt: RecoveryRestoreService default
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4940749Z patched manager/src/main/java/dev/maplesu/manager/workmode/migration/MigrationPaths.kt: MigrationPaths.SELF_PACKAGE
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4941586Z patched manager/src/main/java/dev/maplesu/manager/workmode/superuser/IdentityRules.kt: IdentityRules.MANAGER_PACKAGE
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4942423Z patched manager/src/main/java/dev/maplesu/manager/workmode/service/ModeSwitchRootLaunch.kt: ModeSwitchRootLaunch.PACKAGE
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4943461Z patched manager/src/main/java/dev/maplesu/manager/litehidden/ProductionHiddenModeBackend.kt: ProductionHiddenModeBackend default
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4944333Z patched manager/src/main/java/dev/maplesu/manager/litehidden/HiddenHostPolicy.kt: HiddenHostPolicy self packages
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4945218Z patched manager/src/main/java/dev/maplesu/manager/runtime/authorization/UltraAllowlistMirror.kt: UltraAllowlistMirror protected package
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4946130Z patched manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraReinstallPolicy.kt: UltraReinstallPolicy package
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4947463Z patched manager/src/main/java/dev/maplesu/manager/recovery/HiddenModeBackends.kt: HiddenModeBackends uninstall package
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4948294Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/LiteWebDaemonMain.kt: LiteWebDaemonMain pm path
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4949072Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/LiteWebDaemonMain.kt: LiteWebDaemonMain pm list
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4949874Z patched manager/src/main/java/dev/maplesu/manager/liteweb/daemon/LiteWebDaemonMain.kt: LiteWebDaemonMain package match
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4950674Z patched manager/src/main/java/dev/maplesu/manager/jailbreak/JailbreakStatus.kt: JailbreakStatus command package
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4951471Z patched manager/src/main/java/dev/maplesu/manager/litehidden/ParasiteScripts.kt: ParasiteScripts base.apk glob
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4952279Z patched manager/src/main/java/dev/maplesu/manager/liteweb/RecoveryWebUiControl.kt: RecoveryWebUiControl base.apk glob
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4953115Z patched manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraBugreportDiagnostics.kt: UltraBugreport pm path
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4954365Z patched manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraBugreportDiagnostics.kt: UltraBugreport pm list
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4955258Z patched manager/src/main/java/dev/maplesu/manager/runtime/ultra/UltraBugreportDiagnostics.kt: UltraBugreport resolve-activity
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4955956Z patched consumer/src/main/AndroidManifest.xml: consumer package query
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4956600Z patched third_party/kernelsu/applied/userspace/ksud/src/late_load.rs: late_load handover: am start without force-stop
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4957146Z 32739 applied: 46 changed files.
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4957610Z   · manager/build.gradle.kts
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4958041Z   · manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBanner.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4958641Z   · manager/src/main/java/com/maplesu/core/ui/component/maple/BrandBannerArt.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4959215Z   · manager/src/main/java/com/maplesu/core/ui/screen/about/AboutScreen.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4959748Z   · manager/src/main/java/com/maplesu/core/ui/component/T3Dialogs.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4960201Z   · manager/src/main/res/values-zh-rCN/maplesu_about.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4960618Z   · manager/src/main/res/values-zh-rCN/maplesu_advisors.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4961105Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4961669Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnosticsUi.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4962141Z   · manager/src/main/res/values/root_diagnostics.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4962543Z   · manager/src/main/res/values-zh-rCN/root_diagnostics.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4962999Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMiuix.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4963625Z   · manager/src/main/java/com/maplesu/core/ui/screen/home/HomeMaterial.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4964122Z   · manager/src/main/res/values-zh-rCN/home_environment_check.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4964590Z   · manager/src/main/res/values-zh-rCN/maplesu_litehidden.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4965029Z   · manager/src/main/res/values/home_environment_check.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4965433Z   · manager/src/main/res/values/maplesu_litehidden.xml
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4965888Z   · manager/src/main/java/com/maplesu/core/ui/viewmodel/HomeViewModel.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4966387Z   · manager/src/main/java/dev/maplesu/manager/jailbreak/IrImages.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4966877Z   · client/src/main/java/dev/maplesu/client/CooperativeSuClient.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4967392Z   · manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDiscovery.java
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4967953Z   · manager/src/main/java/dev/maplesu/manager/runtime/NativeSuBrokerService.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4968551Z   · manager/src/main/java/dev/maplesu/manager/runtime/NativeSuBootstrapReceiver.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4969160Z   · manager/src/main/java/dev/maplesu/manager/runtime/NativeSuDirectoryProvider.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4969941Z   · manager/src/main/java/dev/maplesu/manager/runtime/authorization/SuperuserControl.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4970546Z   · manager/src/main/java/dev/maplesu/manager/runtime/RootRequestClient.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4971132Z   · manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonManagerUninstall.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4971790Z   · manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonNormalSuperuserPort.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4972433Z   · manager/src/main/java/dev/maplesu/manager/liteweb/daemon/DaemonSuperuserPort.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.4973048Z   · manager/src/main/java/dev/maplesu/manager/liteweb/daemon/UltraSdkSuAuthRevoke.kt
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5157634Z patched manager/src/main/java/dev/maplesu/manager/ksu/KsuRootChannel.kt: KsuRootChannel sucompat-first
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5158739Z patched manager/src/main/java/dev/maplesu/manager/ksu/KsuRootChannel.kt: KsuRootChannel lastFailure
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5159688Z patched manager/src/ksu/java/dev/maplesu/manager/ksu/KsuCommandBackend.kt: KsuCommands SUCOMPAT_PATH
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5160634Z patched manager/src/ksu/java/dev/maplesu/manager/ksu/KsuCommandBackend.kt: KsuCommands.suCompat
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5161800Z patched manager/src/main/java/dev/maplesu/manager/runtime/SuRootCandidates.kt: SuRootCandidates SUCOMPAT_PATH
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5162884Z patched manager/src/main/java/dev/maplesu/manager/runtime/SuRootCandidates.kt: SuRootCandidates sucompat candidate
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5164254Z patched manager/src/main/java/dev/maplesu/manager/runtime/SuRootCandidates.kt: SuRootCandidates avoid ksu-su duplicate
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5165374Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: RootDiagnostics imports Ksu channel
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5166432Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: snapshot sucompat fields
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5167364Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: probeSucompat
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5168285Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: call sucompat probe
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5169234Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: snapshot sucompat values
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5170188Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt: report sucompat fields
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5171125Z patched manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnosticsUi.kt: UI sucompat fields
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5171918Z patched gradle.properties: build and package libmaplesu_ultra_bridge.so
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5172431Z 32739 root fix applied: 6 changed files.
+quick	Apply 32739 patch chain, skip Ultra bridge	2026-11-27T08:55:26.5226145Z 10:bluewhaleSkipUltraBridge=true
+quick	Run actions/setup-java@v4	﻿2026-11-27T08:55:26.5369411Z ##[group]Run actions/setup-java@v4
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5369715Z with:
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5369914Z   distribution: temurin
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5370133Z   java-version: 21
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5370337Z   java-package: jdk
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5370556Z   check-latest: false
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5370761Z   server-id: github
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5370966Z   server-username: GITHUB_ACTOR
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5371214Z   server-password: GITHUB_TOKEN
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5371455Z   overwrite-settings: true
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5371686Z   job-status: success
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5374168Z   token: ***
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.5374379Z ##[endgroup]
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7194866Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7205669Z ##[group]Installed distributions
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7353949Z Resolved Java 21.0.13+9 from tool-cache
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7354615Z Setting Java 21.0.13+9 as the default
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7365822Z (node:2453) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7367207Z (Use `node --trace-deprecation ...` to show where the warning was created)
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7370635Z Creating toolchains.xml for JDK version 21 from temurin
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7447031Z Writing to /home/runner/.m2/toolchains.xml
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7447469Z 
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7447849Z Java configuration:
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7448275Z   Distribution: temurin
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7448699Z   Version: 21.0.13+9
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7449316Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7449864Z 
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7450405Z ##[endgroup]
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7469045Z Creating settings.xml with server-id: github
+quick	Run actions/setup-java@v4	2026-11-27T08:55:26.7515126Z Writing to /home/runner/.m2/settings.xml
+quick	Android SDK 37 + NDK 26/28	﻿2026-11-27T08:55:26.7664028Z ##[group]Run set -euo pipefail
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7664423Z ^[[36;1mset -euo pipefail^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7664748Z ^[[36;1mSDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7665140Z ^[[36;1mSM="$SDK/cmdline-tools/latest/bin/sdkmanager"^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7665579Z ^[[36;1m[ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7665987Z ^[[36;1mmkdir -p "$SDK/licenses"^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7666831Z ^[[36;1mprintf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7667940Z ^[[36;1mfor pkg in "platforms;android-37.0" "build-tools;37.0.0" "ndk;26.1.10909125" "ndk;28.2.13676358" "cmake;3.22.1"; do^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7668502Z ^[[36;1m  echo "--- $pkg"^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7668770Z ^[[36;1m  "$SM" "$pkg" < /dev/null || true^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7669058Z ^[[36;1mdone^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7669281Z ^[[36;1mtest -d "$SDK/ndk/26.1.10909125"^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7669611Z ^[[36;1mtest -d "$SDK/ndk/28.2.13676358"^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7669985Z ^[[36;1mecho "ANDROID_NDK_HOME=$SDK/ndk/26.1.10909125" >> "$GITHUB_ENV"^[[0m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7710471Z shell: /usr/bin/bash -e {0}
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7710757Z env:
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7711090Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7711634Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7712044Z ##[endgroup]
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:26.7863099Z --- platforms;android-37.0
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:33.3113016Z Loading package information...                                                  
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:33.4198124Z Loading local repository...                                                     
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:33.4199343Z [                                       ] 3% Loading local repository...        
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:35.1496116Z [                                       ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:35.6397846Z [=                                      ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:35.7294697Z [=                                      ] 4% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:35.7923956Z [=                                      ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:35.8615988Z [==                                     ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:35.9525011Z [==                                     ] 6% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:36.2334693Z [==                                     ] 7% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:36.2336032Z [==                                     ] 7% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:36.2450403Z [===                                    ] 8% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:36.2570749Z [===                                    ] 10% Computing updates...              
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:36.2571786Z [=======================================] 100% Computing updates...             
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:36.2576148Z 
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:36.2909789Z --- build-tools;37.0.0
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.1416179Z Loading package information...                                                  
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.2368740Z Loading local repository...                                                     
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.2377844Z [                                       ] 3% Loading local repository...        
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.2403654Z [                                       ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.6504912Z [=                                      ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.7347499Z [=                                      ] 4% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.7762806Z [=                                      ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.8601692Z [==                                     ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:37.9604480Z [==                                     ] 6% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:38.0514570Z [==                                     ] 7% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:38.0515381Z [==                                     ] 7% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:38.0654731Z [===                                    ] 8% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:38.0714941Z [===                                    ] 10% Computing updates...              
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:38.0717496Z [=======================================] 100% Computing updates...             
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:38.0717994Z 
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:38.1009711Z --- ndk;26.1.10909125
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:38.9340887Z Loading package information...                                                  
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.0274318Z Loading local repository...                                                     
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.0275287Z [                                       ] 3% Loading local repository...        
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.0302983Z [                                       ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.4186563Z [=                                      ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.5623847Z [=                                      ] 4% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.6020357Z [=                                      ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.6740605Z [==                                     ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.7627267Z [==                                     ] 6% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.8577435Z [==                                     ] 7% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.8626445Z [==                                     ] 7% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.8708252Z [===                                    ] 8% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:39.8941331Z [===                                    ] 10% Computing updates...              
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:40.3082643Z [===                                    ] 10% Installing NDK (Side by side) 26.1
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:40.4761310Z [===                                    ] 10% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:40.5735979Z [====                                   ] 10% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:40.6884145Z [====                                   ] 11% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:40.8210703Z [====                                   ] 12% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:40.9366489Z [=====                                  ] 13% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.0419721Z [=====                                  ] 14% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.1266521Z [=====                                  ] 15% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.1730372Z [======                                 ] 15% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.2844861Z [======                                 ] 16% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.4094031Z [======                                 ] 17% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.5110318Z [=======                                ] 18% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.6365812Z [=======                                ] 19% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.6844080Z [=======                                ] 20% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.7352224Z [========                               ] 20% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:41.9130231Z [========                               ] 21% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.0162488Z [========                               ] 22% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.1323627Z [=========                              ] 23% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.2609904Z [=========                              ] 24% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.3068684Z [=========                              ] 25% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.3613893Z [==========                             ] 25% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.5032059Z [==========                             ] 26% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.6321363Z [==========                             ] 27% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.7675726Z [===========                            ] 28% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.8764371Z [===========                            ] 29% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:42.9330801Z [===========                            ] 30% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.0170063Z [============                           ] 30% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.1270753Z [============                           ] 31% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.2327578Z [============                           ] 32% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.2337689Z [============                           ] 33% Downloading android-ndk-r26b-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.7696371Z [============                           ] 33% Unzipping...                      
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.7701398Z [============                           ] 33% Unzipping... android-ndk-r26b/    
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.7707827Z [============                           ] 33% Unzipping... android-ndk-r26b/CHAN
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.7712033Z [=============                          ] 33% Unzipping... android-ndk-r26b/CHAN
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.7724378Z [=============                          ] 33% Unzipping... android-ndk-r26b/wrap
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.8663477Z [=============                          ] 33% Unzipping... android-ndk-r26b/preb
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.8962599Z [=============                          ] 33% Unzipping... android-ndk-r26b/buil
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.8989009Z [=============                          ] 33% Unzipping... android-ndk-r26b/NOTI
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.8999800Z [=============                          ] 33% Unzipping... android-ndk-r26b/ndk-
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.9036528Z [=============                          ] 33% Unzipping... android-ndk-r26b/NOTI
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.9047310Z [=============                          ] 33% Unzipping... android-ndk-r26b/meta
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.9072722Z [=============                          ] 33% Unzipping... android-ndk-r26b/ndk-
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:43.9133889Z [=============                          ] 33% Unzipping... android-ndk-r26b/pyth
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:44.3553774Z [=============                          ] 33% Unzipping... android-ndk-r26b/sour
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:44.5672725Z [=============                          ] 33% Unzipping... android-ndk-r26b/simp
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:44.5674622Z [=============                          ] 33% Unzipping... android-ndk-r26b/ndk-
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:44.5676282Z [=============                          ] 33% Unzipping... android-ndk-r26b/READ
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:44.6106141Z [=============                          ] 33% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:45.0310724Z [=============                          ] 34% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:45.2279967Z [=============                          ] 35% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:45.4385732Z [==============                         ] 35% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:45.7657465Z [==============                         ] 36% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:46.1997097Z [==============                         ] 37% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:46.6228315Z [===============                        ] 38% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:47.0398508Z [===============                        ] 39% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:47.1971316Z [===============                        ] 40% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:47.4136244Z [================                       ] 40% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:47.7977958Z [================                       ] 41% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:48.7309400Z [================                       ] 42% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:49.3987050Z [=================                      ] 43% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:49.8961445Z [=================                      ] 44% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:50.1133617Z [=================                      ] 45% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:50.3175788Z [==================                     ] 45% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:51.5057890Z [==================                     ] 46% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:52.1070513Z [==================                     ] 47% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:52.5018116Z [===================                    ] 48% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:52.9295592Z [===================                    ] 49% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:53.1919912Z [===================                    ] 50% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:53.3414343Z [====================                   ] 50% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:53.8341620Z [====================                   ] 51% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:54.1454598Z [====================                   ] 52% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:54.5610015Z [=====================                  ] 53% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:54.9795968Z [=====================                  ] 54% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:55.0449284Z [=====================                  ] 55% Unzipping... android-ndk-r26b/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:55.0451416Z [=====================                  ] 55% Unzipping... android-ndk-r26b/ndk-
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:55.2621808Z [=====================                  ] 55% Unzipping... android-ndk-r26b/shad
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:55.2622893Z [=======================================] 100% Unzipping... android-ndk-r26b/sha
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:55.7094451Z 
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:55.7333777Z --- ndk;28.2.13676358
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:56.5764127Z Loading package information...                                                  
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:56.6712919Z Loading local repository...                                                     
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:56.6714065Z [                                       ] 3% Loading local repository...        
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:56.6794232Z [                                       ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.0914312Z [=                                      ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.1747705Z [=                                      ] 4% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.2176774Z [=                                      ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.3009189Z [==                                     ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.4021051Z [==                                     ] 6% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.4904533Z [==                                     ] 7% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.4944230Z [==                                     ] 7% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.5033972Z [===                                    ] 8% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.5205862Z [===                                    ] 10% Computing updates...              
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:57.9230865Z [===                                    ] 10% Installing NDK (Side by side) 28.2
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:58.0938942Z [===                                    ] 10% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:58.1907838Z [====                                   ] 10% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:58.3277281Z [====                                   ] 11% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:58.4990137Z [====                                   ] 12% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:58.6307075Z [=====                                  ] 13% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:58.7655517Z [=====                                  ] 14% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:58.8631866Z [=====                                  ] 15% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:58.9200432Z [======                                 ] 15% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:59.0759352Z [======                                 ] 16% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:59.2252565Z [======                                 ] 17% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:59.3646960Z [=======                                ] 18% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:59.5190883Z [=======                                ] 19% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:59.5809966Z [=======                                ] 20% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:59.6396941Z [========                               ] 20% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:59.7858449Z [========                               ] 21% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:55:59.9432984Z [========                               ] 22% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:00.1039678Z [=========                              ] 23% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:00.2737278Z [=========                              ] 24% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:00.3468906Z [=========                              ] 25% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:00.4179436Z [==========                             ] 25% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:00.7116200Z [==========                             ] 26% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:00.8817126Z [==========                             ] 27% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:01.0574666Z [===========                            ] 28% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:01.1971644Z [===========                            ] 29% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:01.2648922Z [===========                            ] 30% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:01.3749783Z [============                           ] 30% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:01.5253486Z [============                           ] 31% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:01.6643800Z [============                           ] 32% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:01.6654404Z [============                           ] 33% Downloading android-ndk-r28c-linux
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.0100530Z [============                           ] 33% Unzipping...                      
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.0101631Z [============                           ] 33% Unzipping... android-ndk-r28c/    
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.0118531Z [============                           ] 33% Unzipping... android-ndk-r28c/READ
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.0120378Z [=============                          ] 33% Unzipping... android-ndk-r28c/READ
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.0138061Z [=============                          ] 33% Unzipping... android-ndk-r28c/meta
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.1388604Z [=============                          ] 33% Unzipping... android-ndk-r28c/shad
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.1409574Z [=============                          ] 33% Unzipping... android-ndk-r28c/ndk-
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.1410555Z [=============                          ] 33% Unzipping... android-ndk-r28c/wrap
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.1412027Z [=============                          ] 33% Unzipping... android-ndk-r28c/ndk-
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.5094753Z [=============                          ] 33% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:02.9898254Z [=============                          ] 34% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:03.2048581Z [=============                          ] 35% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:03.4516161Z [==============                         ] 35% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:03.8555660Z [==============                         ] 36% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:04.3908104Z [==============                         ] 37% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:04.7426070Z [===============                        ] 38% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:05.1605231Z [===============                        ] 39% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:05.3705067Z [===============                        ] 40% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:05.6028940Z [================                       ] 40% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:06.0926206Z [================                       ] 41% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:06.5252811Z [================                       ] 42% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:07.3423586Z [=================                      ] 43% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:07.8762496Z [=================                      ] 44% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:08.1678390Z [=================                      ] 45% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:08.7679126Z [==================                     ] 45% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:09.2001958Z [==================                     ] 46% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:09.6248578Z [==================                     ] 47% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:10.0470904Z [===================                    ] 48% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:10.4933873Z [===================                    ] 49% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:10.6845906Z [===================                    ] 50% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:10.8902610Z [====================                   ] 50% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:11.3614565Z [====================                   ] 51% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:11.7459177Z [====================                   ] 52% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.1728497Z [=====================                  ] 53% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.4233581Z [=====================                  ] 54% Unzipping... android-ndk-r28c/tool
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.4364729Z [=====================                  ] 54% Unzipping... android-ndk-r28c/buil
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.6557094Z [=====================                  ] 54% Unzipping... android-ndk-r28c/sour
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.6578185Z [=====================                  ] 54% Unzipping... android-ndk-r28c/NOTI
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.6579677Z [=====================                  ] 54% Unzipping... android-ndk-r28c/ndk-
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.6593009Z [=====================                  ] 54% Unzipping... android-ndk-r28c/NOTI
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.6631639Z [=====================                  ] 54% Unzipping... android-ndk-r28c/pyth
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.7046573Z [=====================                  ] 54% Unzipping... android-ndk-r28c/preb
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.7049477Z [=====================                  ] 54% Unzipping... android-ndk-r28c/ndk-
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.7050998Z [=====================                  ] 54% Unzipping... android-ndk-r28c/sour
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.7639943Z [=====================                  ] 54% Unzipping... android-ndk-r28c/simp
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:12.9200583Z [=====================                  ] 55% Unzipping... android-ndk-r28c/simp
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:13.0611163Z [=====================                  ] 55% Unzipping... android-ndk-r28c/CHAN
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:13.0611949Z [=======================================] 100% Unzipping... android-ndk-r28c/CHA
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:13.1774763Z 
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:13.2045858Z --- cmake;3.22.1
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.0570074Z Loading package information...                                                  
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.1585370Z Loading local repository...                                                     
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.1586107Z [                                       ] 3% Loading local repository...        
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.1621427Z [                                       ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.5885130Z [=                                      ] 3% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.6725796Z [=                                      ] 4% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.7127834Z [=                                      ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.7774342Z [==                                     ] 5% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.8717594Z [==                                     ] 6% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.9674028Z [==                                     ] 7% Fetch remote repository...         
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.9678576Z [==                                     ] 7% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.9804098Z [===                                    ] 8% Computing updates...               
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:14.9953603Z [===                                    ] 10% Computing updates...              
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.4061972Z [===                                    ] 10% Installing CMake 3.22.1           
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.4466516Z [===                                    ] 10% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.4783701Z [====                                   ] 10% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.5133509Z [====                                   ] 11% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.5357831Z [====                                   ] 12% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.5544640Z [=====                                  ] 13% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.5695870Z [=====                                  ] 14% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.5766142Z [=====                                  ] 15% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.5799918Z [======                                 ] 15% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.5875815Z [======                                 ] 16% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.5982127Z [======                                 ] 17% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6073999Z [=======                                ] 18% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6166903Z [=======                                ] 19% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6203894Z [=======                                ] 20% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6244373Z [========                               ] 20% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6346154Z [========                               ] 21% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6404236Z [========                               ] 22% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6470006Z [=========                              ] 23% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6539835Z [=========                              ] 24% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6568467Z [=========                              ] 25% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6597597Z [==========                             ] 25% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6667522Z [==========                             ] 26% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6727467Z [==========                             ] 27% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6803827Z [===========                            ] 28% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6860253Z [===========                            ] 29% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6889679Z [===========                            ] 30% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6934078Z [============                           ] 30% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.6992104Z [============                           ] 31% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.7067616Z [============                           ] 32% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.7095364Z [============                           ] 33% Downloading cmake-3.22.1-linux.zip
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.8678563Z [============                           ] 33% Unzipping...                      
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.8710516Z [============                           ] 33% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.8931835Z [=============                          ] 33% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9067437Z [=============                          ] 34% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9146541Z [=============                          ] 35% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9242905Z [==============                         ] 35% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9412762Z [==============                         ] 36% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9560646Z [==============                         ] 37% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9687300Z [===============                        ] 38% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9756563Z [===============                        ] 39% Unzipping... bin/cmake            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9877685Z [===============                        ] 39% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:15.9942249Z [===============                        ] 40% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0012552Z [================                       ] 40% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0151853Z [================                       ] 41% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0306452Z [================                       ] 42% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0445138Z [=================                      ] 43% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0571409Z [=================                      ] 44% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0630883Z [=================                      ] 45% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0690388Z [==================                     ] 45% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0717176Z [==================                     ] 46% Unzipping... bin/ctest            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0847493Z [==================                     ] 46% Unzipping... bin/cpack            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.0998784Z [==================                     ] 47% Unzipping... bin/cpack            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1130367Z [===================                    ] 48% Unzipping... bin/cpack            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1281761Z [===================                    ] 49% Unzipping... bin/cpack            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1357371Z [===================                    ] 50% Unzipping... bin/cpack            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1414278Z [====================                   ] 50% Unzipping... bin/cpack            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1532752Z [====================                   ] 51% Unzipping... bin/cpack            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1602312Z [====================                   ] 52% Unzipping... bin/cpack            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1610161Z [====================                   ] 52% Unzipping... share/vim/vimfiles/in
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1627982Z [====================                   ] 52% Unzipping... share/vim/vimfiles/sy
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1632757Z [====================                   ] 52% Unzipping... share/aclocal/cmake.m
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1634287Z [====================                   ] 52% Unzipping... share/emacs/site-lisp
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.1646972Z [====================                   ] 52% Unzipping... share/cmake-3.22/incl
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.4026344Z [====================                   ] 52% Unzipping... share/cmake-3.22/Help
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.5380108Z [=====================                  ] 53% Unzipping... share/cmake-3.22/Help
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.5495832Z [=====================                  ] 53% Unzipping... share/cmake-3.22/Temp
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.5976408Z [=====================                  ] 53% Unzipping... share/cmake-3.22/Modu
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7406144Z [=====================                  ] 54% Unzipping... share/cmake-3.22/Modu
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7414629Z [=====================                  ] 54% Unzipping... share/bash-completion
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7418405Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/Copyri
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7421111Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmzlib
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7424226Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmzstd
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7427271Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmnght
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7430002Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmsys/
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7432603Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmcurl
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7510662Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmlibr
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7511694Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmliba
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7525649Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmlibl
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7526571Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmlibu
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7527484Z [=====================                  ] 54% Unzipping... doc/openssl-1.1.1l/LI
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7528398Z [=====================                  ] 54% Unzipping... source.properties    
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7529261Z [=====================                  ] 54% Unzipping... bin/ninja            
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7530079Z [=====================                  ] 54% Unzipping... doc/ninja/LICENSE    
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7530931Z [=====================                  ] 54% Unzipping... share/cmake-3.22/Modu
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7584254Z [=====================                  ] 55% Unzipping... share/cmake-3.22/Modu
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.7598081Z [=======================================] 100% Unzipping... share/cmake-3.22/Mod
+quick	Android SDK 37 + NDK 26/28	2026-11-27T08:56:16.8924066Z 
+quick	Assemble release APK	﻿2026-11-27T08:56:16.9197702Z ##[group]Run set -euo pipefail
+quick	Assemble release APK	2026-11-27T08:56:16.9198041Z ^[[36;1mset -euo pipefail^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9198281Z ^[[36;1mcd src^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9198525Z ^[[36;1m./gradlew --no-daemon --max-workers=4 \^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9198868Z ^[[36;1m  --dependency-verification=off \^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9199355Z ^[[36;1m  --stacktrace \^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9199627Z ^[[36;1m  -PbluewhaleSkipSdkVerify=true \^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9199945Z ^[[36;1m  -PbluewhaleSkipUltraBridge=true \^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9200285Z ^[[36;1m  -PmaplesuPython="$(command -v python3)" \^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9200684Z ^[[36;1m  -PmaplesuUltraviderNdk="$ANDROID_HOME/ndk/28.2.13676358" \^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9201127Z ^[[36;1m  -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9201539Z ^[[36;1m  :manager:assembleRelease 2>&1 | tee /tmp/gradle.log^[[0m
+quick	Assemble release APK	2026-11-27T08:56:16.9233715Z shell: /usr/bin/bash -e {0}
+quick	Assemble release APK	2026-11-27T08:56:16.9233977Z env:
+quick	Assemble release APK	2026-11-27T08:56:16.9234292Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Assemble release APK	2026-11-27T08:56:16.9234839Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Assemble release APK	2026-11-27T08:56:16.9235308Z   ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/26.1.10909125
+quick	Assemble release APK	2026-11-27T08:56:16.9235651Z ##[endgroup]
+quick	Assemble release APK	2026-11-27T08:56:17.0381216Z Fetching distribution.
+quick	Assemble release APK	2026-11-27T08:56:17.0384549Z Downloading https://services.gradle.org/distributions/gradle-9.8.1-bin.zip
+quick	Assemble release APK	2026-11-27T08:56:18.3901489Z ..............10%..............20%...............30%..............40%...............50%..............60%...............70%..............80%...............90%..............100%
+quick	Assemble release APK	2026-11-27T08:56:20.0191741Z 
+quick	Assemble release APK	2026-11-27T08:56:20.0193056Z Welcome to Gradle 9.8.1!
+quick	Assemble release APK	2026-11-27T08:56:20.0193766Z 
+quick	Assemble release APK	2026-11-27T08:56:20.0194294Z Here are the highlights of this release:
+quick	Assemble release APK	2026-11-27T08:56:20.0194967Z  - Java 27 support
+quick	Assemble release APK	2026-11-27T08:56:20.0195390Z  - Maven mirror settings reuse
+quick	Assemble release APK	2026-11-27T08:56:20.0196499Z  - Linked problem locations in build output
+quick	Assemble release APK	2026-11-27T08:56:20.0197053Z 
+quick	Assemble release APK	2026-11-27T08:56:20.0198480Z For more details see https://docs.gradle.org/9.8.1/release-notes.html
+quick	Assemble release APK	2026-11-27T08:56:20.0199009Z 
+quick	Assemble release APK	2026-11-27T08:56:20.1190156Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+quick	Assemble release APK	2026-11-27T08:56:21.5189910Z Daemon will be stopped at the end of the build 
+quick	Assemble release APK	2026-11-27T08:57:06.3194843Z 
+quick	Assemble release APK	2026-11-27T08:57:06.3244510Z > Configure project :libsu-service
+quick	Assemble release APK	2026-11-27T08:57:06.3268958Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/libsu-service/build.gradle.kts:22:39: 'fun RegisteringDomainObjectDelegateProviderWithAction<out TaskContainer, Task>.provideDelegate(receiver: Any?, property: KProperty<*>): ExistingDomainObjectDelegate<TaskProvider<Task>>' is deprecated. Use 'val task = tasks.register(name) { }' instead. See the Gradle 9.6 upgrading guide.
+quick	Assemble release APK	2026-11-27T08:57:06.3274369Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/libsu-service/build.gradle.kts:22:39: 'fun <T : Any, C : NamedDomainObjectContainer<T>> C.registering(action: T.() -> Unit): RegisteringDomainObjectDelegateProviderWithAction<out C, T>' is deprecated. Use 'val element = register(name) { }' instead. See the Gradle 9.6 upgrading guide.
+quick	Assemble release APK	2026-11-27T08:57:06.3279123Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/third_party/libsu-service/build.gradle.kts:22:39: 'fun <T> ExistingDomainObjectDelegate<out T>.getValue(receiver: Any?, property: KProperty<*>): T' is deprecated. Use the named() API instead. See the Gradle 9.6 upgrading guide.
+quick	Assemble release APK	2026-11-27T08:57:15.9187044Z 
+quick	Assemble release APK	2026-11-27T08:57:15.9188414Z > Configure project :manager
+quick	Assemble release APK	2026-11-27T08:57:15.9190541Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:208:29: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9199350Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:209:29: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9211608Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:216:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9214892Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:220:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9217536Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:222:29: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9221291Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:223:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9224056Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:228:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9226502Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:229:31: 'fun srcDir(srcDir: Any): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9229086Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:849:39: 'fun setSrcDirs(srcDirs: Iterable<*>): Any' is deprecated. Use `directories` mutable set instead.
+quick	Assemble release APK	2026-11-27T08:57:15.9233147Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:1127:37: 'fun <U : Task> RegisteringDomainObjectDelegateProviderWithTypeAndAction<out TaskContainer, U>.provideDelegate(receiver: Any?, property: KProperty<*>): ExistingDomainObjectDelegate<TaskProvider<U>>' is deprecated. Use 'val task = tasks.register<Type>(name) { }' instead. See the Gradle 9.6 upgrading guide.
+quick	Assemble release APK	2026-11-27T08:57:15.9241211Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:1127:37: 'fun <T : Any, C : PolymorphicDomainObjectContainer<T>, U : T> C.registering(type: KClass<U>, action: U.() -> Unit): RegisteringDomainObjectDelegateProviderWithTypeAndAction<out C, U>' is deprecated. Use 'val element = register<Type>(name) { }' instead. See the Gradle 9.6 upgrading guide.
+quick	Assemble release APK	2026-11-27T08:57:15.9245885Z w: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/manager/build.gradle.kts:1127:37: 'fun <T> ExistingDomainObjectDelegate<out T>.getValue(receiver: Any?, property: KProperty<*>): T' is deprecated. Use the named() API instead. See the Gradle 9.6 upgrading guide.
+quick	Assemble release APK	2026-11-27T08:57:20.0234347Z 
+quick	Assemble release APK	2026-11-27T08:57:20.0264841Z > Task :libsu-service:verifyOfficialTrampoline
+quick	Assemble release APK	2026-11-27T08:57:20.0289348Z > Task :libsu-service:preBuild
+quick	Assemble release APK	2026-11-27T08:57:20.0324263Z > Task :libsu-service:preReleaseBuild
+quick	Assemble release APK	2026-11-27T08:57:20.3194111Z > Task :libsu-service:mergeReleaseJniLibFolders
+quick	Assemble release APK	2026-11-27T08:57:20.3224375Z > Task :libsu-service:mergeReleaseNativeLibs NO-SOURCE
+quick	Assemble release APK	2026-11-27T08:57:20.3243930Z > Task :libsu-service:copyReleaseJniLibsProjectOnly
+quick	Assemble release APK	2026-11-27T08:57:20.4239001Z 
+quick	Assemble release APK	2026-11-27T08:57:20.4274653Z > Task :manager:checkProviderTracelessInvariants
+quick	Assemble release APK	2026-11-27T08:57:20.4304252Z TRACELESS INVARIANTS OK checks=26 points=19
+quick	Assemble release APK	2026-11-27T08:57:22.0193876Z 
+quick	Assemble release APK	2026-11-27T08:57:22.0244264Z > Task :libsu-service:compileReleaseAidl
+quick	Assemble release APK	2026-11-27T08:57:22.0274115Z > Task :libsu-service:generateReleaseResources
+quick	Assemble release APK	2026-11-27T08:57:22.1204490Z > Task :libsu-service:packageReleaseResources
+quick	Assemble release APK	2026-11-27T08:57:22.1223999Z > Task :libsu-service:processReleaseNavigationResources
+quick	Assemble release APK	2026-11-27T08:57:22.5189776Z > Task :installer-core:compileJava
+quick	Assemble release APK	2026-11-27T08:57:22.5224230Z > Task :installer-core:processResources NO-SOURCE
+quick	Assemble release APK	2026-11-27T08:57:22.5234595Z > Task :installer-core:classes
+quick	Assemble release APK	2026-11-27T08:57:22.6240312Z > Task :installer-core:jar
+quick	Assemble release APK	2026-11-27T08:57:23.7204438Z > Task :image-core:compileJava
+quick	Assemble release APK	2026-11-27T08:57:23.7234274Z > Task :image-core:processResources
+quick	Assemble release APK	2026-11-27T08:57:23.7254288Z > Task :image-core:classes
+quick	Assemble release APK	2026-11-27T08:57:23.8187939Z > Task :image-core:jar
+quick	Assemble release APK	2026-11-27T08:57:24.6244392Z > Task :libsu-service:javaPreCompileRelease
+quick	Assemble release APK	2026-11-27T08:57:24.6309660Z > Task :libsu-service:extractReleaseSupportedLocales
+quick	Assemble release APK	2026-11-27T08:57:24.6334112Z > Task :libsu-service:prepareReleaseArtProfile
+quick	Assemble release APK	2026-11-27T08:57:24.6364034Z > Task :libsu-service:mapReleaseSourceSetPaths
+quick	Assemble release APK	2026-11-27T08:57:24.7194837Z > Task :libsu-service:parseReleaseLocalResources
+quick	Assemble release APK	2026-11-27T08:57:24.9214676Z > Task :libsu-service:compileReleaseLibraryResources
+quick	Assemble release APK	2026-11-27T08:57:25.0234713Z > Task :libsu-service:writeReleaseAarMetadata
+quick	Assemble release APK	2026-11-27T08:57:25.0274067Z > Task :libsu-service:extractDeepLinksRelease
+quick	Assemble release APK	2026-11-27T08:57:25.0314796Z > Task :libsu-service:generateReleaseAssets UP-TO-DATE
+quick	Assemble release APK	2026-11-27T08:57:25.0334175Z > Task :libsu-service:generateReleaseRFile
+quick	Assemble release APK	2026-11-27T08:57:25.1215550Z > Task :libsu-service:mergeReleaseAssets
+quick	Assemble release APK	2026-11-27T08:57:25.1246861Z > Task :libsu-service:compileReleaseKotlin NO-SOURCE
+quick	Assemble release APK	2026-11-27T08:57:25.2244471Z > Task :libsu-service:processReleaseManifest
+quick	Assemble release APK	2026-11-27T08:57:27.1203728Z 
+quick	Assemble release APK	2026-11-27T08:57:27.1224527Z > Task :libsu-service:compileReleaseJavaWithJavac
+quick	Assemble release APK	2026-11-27T08:57:27.1264247Z Java compiler version 21 has deprecated support for compiling with source/target version 8.
+quick	Assemble release APK	2026-11-27T08:57:27.1265064Z Try one of the following options:
+quick	Assemble release APK	2026-11-27T08:57:27.1265597Z     1. [Recommended] Use Java toolchain with a lower language version
+quick	Assemble release APK	2026-11-27T08:57:27.1266168Z     2. Set a higher source/target version
+quick	Assemble release APK	2026-11-27T08:57:27.1266803Z     3. Use a lower version of the JDK running the build (if you're not using Java toolchain)
+quick	Assemble release APK	2026-11-27T08:57:27.1267769Z For more details on how to configure these settings, see https://developer.android.com/build/jdks.
+quick	Assemble release APK	2026-11-27T08:57:27.1268969Z To suppress this warning, set android.javaCompile.suppressSourceTargetDeprecationWarning=true in gradle.properties.
+quick	Assemble release APK	2026-11-27T08:57:27.1270406Z Add android.sync.suppressAgpWarnings=JAVA_COMPILE_DEPRECATED_SOURCE_TARGET to the gradle.properties file to suppress this warning.
+quick	Assemble release APK	2026-11-27T08:57:27.1271562Z warning: [options] source value 8 is obsolete and will be removed in a future release
+quick	Assemble release APK	2026-11-27T08:57:27.1272433Z warning: [options] target value 8 is obsolete and will be removed in a future release
+quick	Assemble release APK	2026-11-27T08:57:27.1273421Z warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+quick	Assemble release APK	2026-11-27T08:57:27.1274153Z Note: Some input files use or override a deprecated API.
+quick	Assemble release APK	2026-11-27T08:57:27.1274719Z Note: Recompile with -Xlint:deprecation for details.
+quick	Assemble release APK	2026-11-27T08:57:27.1275170Z 3 warnings
+quick	Assemble release APK	2026-11-27T08:57:27.2188683Z 
+quick	Assemble release APK	2026-11-27T08:57:27.2206869Z > Task :libsu-service:mergeReleaseGeneratedProguardFiles
+quick	Assemble release APK	2026-11-27T08:57:27.2244237Z > Task :libsu-service:exportReleaseConsumerProguardFiles
+quick	Assemble release APK	2026-11-27T08:57:27.3204553Z > Task :libsu-service:processReleaseJavaRes NO-SOURCE
+quick	Assemble release APK	2026-11-27T08:57:27.3224084Z > Task :libsu-service:extractProguardFiles
+quick	Assemble release APK	2026-11-27T08:57:27.3254050Z > Task :libsu-service:bundleLibRuntimeToJarRelease
+quick	Assemble release APK	2026-11-27T08:57:27.3254766Z > Task :libsu-service:bundleLibCompileToJarRelease
+quick	Assemble release APK	2026-11-27T08:57:28.1204622Z > Task :libsu-service:generateReleaseLintVitalModel
+quick	Assemble release APK	2026-11-27T08:57:28.1221941Z > Task :libsu-service:createFullJarRelease
+quick	Assemble release APK	2026-11-27T08:57:33.0199424Z > Task :libsu-service:prepareLintJarForPublish
+quick	Assemble release APK	2026-11-27T08:57:33.0204603Z > Task :libsu-service:generateReleaseLintModel
+quick	Assemble release APK	2026-11-27T08:57:33.0205467Z > Task :libsu-service:checkReleaseAarMetadata
+quick	Assemble release APK	2026-11-27T08:57:33.0223211Z > Task :libsu-service:extractDeepLinksForAarRelease
+quick	Assemble release APK	2026-11-27T08:57:33.1216228Z > Task :libsu-service:extractReleaseAnnotations
+quick	Assemble release APK	2026-11-27T08:57:33.1245685Z > Task :libsu-service:mergeReleaseConsumerProguardFiles
+quick	Assemble release APK	2026-11-27T08:57:33.1294184Z > Task :libsu-service:writeReleaseLintModelMetadata
+quick	Assemble release APK	2026-11-27T08:57:33.2190622Z > Task :libsu-service:mergeReleaseJavaResource
+quick	Assemble release APK	2026-11-27T08:57:33.2191641Z > Task :libsu-service:syncReleaseLibJars
+quick	Assemble release APK	2026-11-27T08:57:33.2192731Z > Task :libsu-service:bundleReleaseLocalLintAar
+quick	Assemble release APK	2026-11-27T08:57:47.5195413Z > Task :libsu-service:lintVitalAnalyzeRelease
+quick	Assemble release APK	2026-11-27T08:57:50.4224533Z > Task :manager:buildJailbreakProviders
+quick	Assemble release APK	2026-11-27T08:57:55.8187005Z MAPLESU: module build failed for android12-5.10; keeping its stock payload
+quick	Assemble release APK	2026-11-27T08:57:55.8187880Z MAPLESU: module build failed for android13-5.15; keeping its stock payload
+quick	Assemble release APK	2026-11-27T08:57:55.8189127Z MAPLESU: per-KMI modules for android15-6.6, android15-6.6, android14-6.1, android16-6.12, android17-6.18
+quick	Assemble release APK	2026-11-27T08:57:55.8190904Z {"exitCode": 1, "inputsStable": true, "deviceExecuted": false, "managerPackaged": false, "targets": ["maplesu-root-consumer", "maplesu-ghostlock-adapter", "maplesu-dirtyfrag-native", "maplesu-dirtyfrag-bootstrap"]}
+quick	Assemble release APK	2026-11-27T08:57:55.9204392Z 
+quick	Assemble release APK	2026-11-27T08:57:55.9211033Z > Task :manager:buildJailbreakProviders FAILED
+quick	Assemble release APK	2026-11-27T08:57:55.9212102Z 
+quick	Assemble release APK	2026-11-27T08:57:55.9213693Z [Incubating] Problems report is available at: file:///home/runner/work/bluewhale-maplesu/bluewhale-maplesu/src/build/reports/problems/problems-report.html
+quick	Assemble release APK	2026-11-27T08:57:56.0185818Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0218414Z FAILURE: Build failed with an exception.
+quick	Assemble release APK	2026-11-27T08:57:56.0221409Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0222250Z * What went wrong:
+quick	Assemble release APK	2026-11-27T08:57:56.0223649Z Execution failed for task ':manager:buildJailbreakProviders' (registered in build file 'manager/build.gradle.kts').
+quick	Assemble release APK	2026-11-27T08:57:56.0225203Z > Process 'command '/usr/bin/python3'' finished with non-zero exit value 1
+quick	Assemble release APK	2026-11-27T08:57:56.0225965Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0226278Z * Try:
+quick	Assemble release APK	2026-11-27T08:57:56.0226939Z > Run with --info or --debug option to get more log output.
+quick	Assemble release APK	2026-11-27T08:57:56.0227963Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+quick	Assemble release APK	2026-11-27T08:57:56.0228923Z > Get more help at https://help.gradle.org.
+quick	Assemble release APK	2026-11-27T08:57:56.0229460Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0229770Z * Exception is:
+quick	Assemble release APK	2026-11-27T08:57:56.0231091Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':manager:buildJailbreakProviders' (registered in build file 'manager/build.gradle.kts').
+quick	Assemble release APK	2026-11-27T08:57:56.0233226Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.lambda$doExecute$1(DefaultTaskNodeExecutor.java:367)
+quick	Assemble release APK	2026-11-27T08:57:56.0234973Z 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
+quick	Assemble release APK	2026-11-27T08:57:56.0236453Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.doExecute(DefaultTaskNodeExecutor.java:365)
+quick	Assemble release APK	2026-11-27T08:57:56.0238542Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeTrackingTaskIdentity(DefaultTaskNodeExecutor.java:332)
+quick	Assemble release APK	2026-11-27T08:57:56.0240770Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeFinalizingProperties(DefaultTaskNodeExecutor.java:318)
+quick	Assemble release APK	2026-11-27T08:57:56.0243003Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeSkippingWithNoActions(DefaultTaskNodeExecutor.java:289)
+quick	Assemble release APK	2026-11-27T08:57:56.0245609Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeSkippingOnlyIf(DefaultTaskNodeExecutor.java:272)
+quick	Assemble release APK	2026-11-27T08:57:56.0247461Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeCatchingFailures(DefaultTaskNodeExecutor.java:228)
+quick	Assemble release APK	2026-11-27T08:57:56.0249375Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeWithFallbackOperationId(DefaultTaskNodeExecutor.java:197)
+quick	Assemble release APK	2026-11-27T08:57:56.0251252Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.executeWithLifecycle(DefaultTaskNodeExecutor.java:171)
+quick	Assemble release APK	2026-11-27T08:57:56.0252932Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.access$000(DefaultTaskNodeExecutor.java:67)
+quick	Assemble release APK	2026-11-27T08:57:56.0254688Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor$1.run(DefaultTaskNodeExecutor.java:136)
+quick	Assemble release APK	2026-11-27T08:57:56.0256208Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:30)
+quick	Assemble release APK	2026-11-27T08:57:56.0258058Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:27)
+quick	Assemble release APK	2026-11-27T08:57:56.0259601Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+quick	Assemble release APK	2026-11-27T08:57:56.0261366Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+quick	Assemble release APK	2026-11-27T08:57:56.0262835Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+quick	Assemble release APK	2026-11-27T08:57:56.0264610Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+quick	Assemble release APK	2026-11-27T08:57:56.0266138Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:48)
+quick	Assemble release APK	2026-11-27T08:57:56.0267650Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.execute(DefaultTaskNodeExecutor.java:133)
+quick	Assemble release APK	2026-11-27T08:57:56.0268928Z 	at org.gradle.execution.plan.LocalTaskNode.execute(LocalTaskNode.java:229)
+quick	Assemble release APK	2026-11-27T08:57:56.0270141Z 	at org.gradle.execution.DefaultBuildWorkExecutor.lambda$executePlan$0(DefaultBuildWorkExecutor.java:153)
+quick	Assemble release APK	2026-11-27T08:57:56.0271479Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.lambda$execute$0(DefaultPlanExecutor.java:476)
+quick	Assemble release APK	2026-11-27T08:57:56.0272914Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+quick	Assemble release APK	2026-11-27T08:57:56.0304765Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:475)
+quick	Assemble release APK	2026-11-27T08:57:56.0306218Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:392)
+quick	Assemble release APK	2026-11-27T08:57:56.0307409Z 	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:118)
+quick	Assemble release APK	2026-11-27T08:57:56.0308607Z 	at org.gradle.execution.DefaultBuildWorkExecutor.executePlan(DefaultBuildWorkExecutor.java:143)
+quick	Assemble release APK	2026-11-27T08:57:56.0309924Z 	at org.gradle.execution.DefaultBuildWorkExecutor.displayOrExecutePlan(DefaultBuildWorkExecutor.java:128)
+quick	Assemble release APK	2026-11-27T08:57:56.0311165Z 	at org.gradle.execution.DefaultBuildWorkExecutor$1.call(DefaultBuildWorkExecutor.java:79)
+quick	Assemble release APK	2026-11-27T08:57:56.0312331Z 	at org.gradle.execution.DefaultBuildWorkExecutor$1.call(DefaultBuildWorkExecutor.java:75)
+quick	Assemble release APK	2026-11-27T08:57:56.0314005Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+quick	Assemble release APK	2026-11-27T08:57:56.0315839Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+quick	Assemble release APK	2026-11-27T08:57:56.0317650Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+quick	Assemble release APK	2026-11-27T08:57:56.0319203Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+quick	Assemble release APK	2026-11-27T08:57:56.0320741Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+quick	Assemble release APK	2026-11-27T08:57:56.0322482Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+quick	Assemble release APK	2026-11-27T08:57:56.0334439Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+quick	Assemble release APK	2026-11-27T08:57:56.0335910Z 	at org.gradle.execution.DefaultBuildWorkExecutor.execute(DefaultBuildWorkExecutor.java:75)
+quick	Assemble release APK	2026-11-27T08:57:56.0337418Z 	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$0(DefaultBuildLifecycleController.java:323)
+quick	Assemble release APK	2026-11-27T08:57:56.0339024Z 	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:324)
+quick	Assemble release APK	2026-11-27T08:57:56.0340560Z 	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$0(StateTransitionController.java:235)
+quick	Assemble release APK	2026-11-27T08:57:56.0341967Z 	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:45)
+quick	Assemble release APK	2026-11-27T08:57:56.0367195Z 	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:235)
+quick	Assemble release APK	2026-11-27T08:57:56.0368844Z 	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:314)
+quick	Assemble release APK	2026-11-27T08:57:56.0370891Z 	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:207)
+quick	Assemble release APK	2026-11-27T08:57:56.0372675Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.lambda$runAndReleaseLocks$0(DefaultWorkerLeaseService.java:296)
+quick	Assemble release APK	2026-11-27T08:57:56.0374515Z 	at org.gradle.internal.work.ResourceLockStatistics$1.measure(ResourceLockStatistics.java:43)
+quick	Assemble release APK	2026-11-27T08:57:56.0375884Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAndReleaseLocks(DefaultWorkerLeaseService.java:294)
+quick	Assemble release APK	2026-11-27T08:57:56.0376997Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocksAcquired(DefaultWorkerLeaseService.java:290)
+quick	Assemble release APK	2026-11-27T08:57:56.0377829Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:282)
+quick	Assemble release APK	2026-11-27T08:57:56.0378624Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:132)
+quick	Assemble release APK	2026-11-27T08:57:56.0379425Z 	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:182)
+quick	Assemble release APK	2026-11-27T08:57:56.0380247Z 	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:199)
+quick	Assemble release APK	2026-11-27T08:57:56.0381457Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+quick	Assemble release APK	2026-11-27T08:57:56.0382953Z 	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:199)
+quick	Assemble release APK	2026-11-27T08:57:56.0385486Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:65)
+quick	Assemble release APK	2026-11-27T08:57:56.0386756Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+quick	Assemble release APK	2026-11-27T08:57:56.0388244Z Caused by: org.gradle.process.ProcessExecutionException: Process 'command '/usr/bin/python3'' finished with non-zero exit value 1
+quick	Assemble release APK	2026-11-27T08:57:56.0389888Z 	at org.gradle.process.internal.DefaultExecHandle$ExecResultImpl.assertNormalExitValue(DefaultExecHandle.java:461)
+quick	Assemble release APK	2026-11-27T08:57:56.0391242Z 	at org.gradle.process.internal.DefaultExecAction.execute(DefaultExecAction.java:57)
+quick	Assemble release APK	2026-11-27T08:57:56.0392270Z 	at org.gradle.api.tasks.AbstractExecTask.exec(AbstractExecTask.java:82)
+quick	Assemble release APK	2026-11-27T08:57:56.0393183Z 	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+quick	Assemble release APK	2026-11-27T08:57:56.0394574Z 	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)
+quick	Assemble release APK	2026-11-27T08:57:56.0396023Z 	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+quick	Assemble release APK	2026-11-27T08:57:56.0397423Z 	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+quick	Assemble release APK	2026-11-27T08:57:56.0398704Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:268)
+quick	Assemble release APK	2026-11-27T08:57:56.0400029Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:30)
+quick	Assemble release APK	2026-11-27T08:57:56.0401548Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:27)
+quick	Assemble release APK	2026-11-27T08:57:56.0403046Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+quick	Assemble release APK	2026-11-27T08:57:56.0404708Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+quick	Assemble release APK	2026-11-27T08:57:56.0406251Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+quick	Assemble release APK	2026-11-27T08:57:56.0407775Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+quick	Assemble release APK	2026-11-27T08:57:56.0409264Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:48)
+quick	Assemble release APK	2026-11-27T08:57:56.0410984Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:253)
+quick	Assemble release APK	2026-11-27T08:57:56.0412281Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:236)
+quick	Assemble release APK	2026-11-27T08:57:56.0423842Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:219)
+quick	Assemble release APK	2026-11-27T08:57:56.0425307Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:185)
+quick	Assemble release APK	2026-11-27T08:57:56.0426503Z 	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:167)
+quick	Assemble release APK	2026-11-27T08:57:56.0427656Z 	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:47)
+quick	Assemble release APK	2026-11-27T08:57:56.0428700Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:137)
+quick	Assemble release APK	2026-11-27T08:57:56.0429716Z 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:134)
+quick	Assemble release APK	2026-11-27T08:57:56.0431213Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+quick	Assemble release APK	2026-11-27T08:57:56.0433144Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+quick	Assemble release APK	2026-11-27T08:57:56.0435032Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+quick	Assemble release APK	2026-11-27T08:57:56.0436443Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+quick	Assemble release APK	2026-11-27T08:57:56.0437913Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+quick	Assemble release APK	2026-11-27T08:57:56.0439447Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+quick	Assemble release APK	2026-11-27T08:57:56.0440910Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+quick	Assemble release APK	2026-11-27T08:57:56.0442163Z 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:134)
+quick	Assemble release APK	2026-11-27T08:57:56.0443442Z 	at org.gradle.internal.execution.steps.ExecuteStep$Mutable.execute(ExecuteStep.java:80)
+quick	Assemble release APK	2026-11-27T08:57:56.0444682Z 	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+quick	Assemble release APK	2026-11-27T08:57:56.0445964Z 	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+quick	Assemble release APK	2026-11-27T08:57:56.0447116Z 	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+quick	Assemble release APK	2026-11-27T08:57:56.0448412Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:51)
+quick	Assemble release APK	2026-11-27T08:57:56.0449932Z 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:29)
+quick	Assemble release APK	2026-11-27T08:57:56.0451496Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:67)
+quick	Assemble release APK	2026-11-27T08:57:56.0453093Z 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:39)
+quick	Assemble release APK	2026-11-27T08:57:56.0454544Z 	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+quick	Assemble release APK	2026-11-27T08:57:56.0455910Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:42)
+quick	Assemble release APK	2026-11-27T08:57:56.0457546Z 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:24)
+quick	Assemble release APK	2026-11-27T08:57:56.0459244Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+quick	Assemble release APK	2026-11-27T08:57:56.0461020Z 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+quick	Assemble release APK	2026-11-27T08:57:56.0462683Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:39)
+quick	Assemble release APK	2026-11-27T08:57:56.0465055Z 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:28)
+quick	Assemble release APK	2026-11-27T08:57:56.0466383Z 	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+quick	Assemble release APK	2026-11-27T08:57:56.0467588Z 	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+quick	Assemble release APK	2026-11-27T08:57:56.0469120Z 	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:76)
+quick	Assemble release APK	2026-11-27T08:57:56.0470099Z 	at org.gradle.internal.Either$Right.fold(Either.java:176)
+quick	Assemble release APK	2026-11-27T08:57:56.0470949Z 	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+quick	Assemble release APK	2026-11-27T08:57:56.0472023Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:74)
+quick	Assemble release APK	2026-11-27T08:57:56.0473138Z 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:49)
+quick	Assemble release APK	2026-11-27T08:57:56.0474628Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:46)
+quick	Assemble release APK	2026-11-27T08:57:56.0476198Z 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:35)
+quick	Assemble release APK	2026-11-27T08:57:56.0477514Z 	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+quick	Assemble release APK	2026-11-27T08:57:56.0478766Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+quick	Assemble release APK	2026-11-27T08:57:56.0480125Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+quick	Assemble release APK	2026-11-27T08:57:56.0481393Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+quick	Assemble release APK	2026-11-27T08:57:56.0482565Z 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+quick	Assemble release APK	2026-11-27T08:57:56.0484260Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+quick	Assemble release APK	2026-11-27T08:57:56.0486307Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+quick	Assemble release APK	2026-11-27T08:57:56.0488272Z 	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:70)
+quick	Assemble release APK	2026-11-27T08:57:56.0490138Z 	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:32)
+quick	Assemble release APK	2026-11-27T08:57:56.0491965Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:69)
+quick	Assemble release APK	2026-11-27T08:57:56.0494045Z 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:37)
+quick	Assemble release APK	2026-11-27T08:57:56.0495705Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:63)
+quick	Assemble release APK	2026-11-27T08:57:56.0497108Z 	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:34)
+quick	Assemble release APK	2026-11-27T08:57:56.0498330Z 	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+quick	Assemble release APK	2026-11-27T08:57:56.0499484Z 	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:79)
+quick	Assemble release APK	2026-11-27T08:57:56.0500735Z 	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:65)
+quick	Assemble release APK	2026-11-27T08:57:56.0501915Z 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:105)
+quick	Assemble release APK	2026-11-27T08:57:56.0503043Z 	at org.gradle.internal.execution.steps.ValidateStep$Mutable.execute(ValidateStep.java:65)
+quick	Assemble release APK	2026-11-27T08:57:56.0504967Z 	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.executeMutable(CaptureMutableStateBeforeExecutionStep.java:86)
+quick	Assemble release APK	2026-11-27T08:57:56.0510042Z 	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:65)
+quick	Assemble release APK	2026-11-27T08:57:56.0512072Z 	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:45)
+quick	Assemble release APK	2026-11-27T08:57:56.0514568Z 	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeWithNonEmptySources(SkipEmptyMutableWorkStep.java:210)
+quick	Assemble release APK	2026-11-27T08:57:56.0516306Z 	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:85)
+quick	Assemble release APK	2026-11-27T08:57:56.0518143Z 	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:53)
+quick	Assemble release APK	2026-11-27T08:57:56.0519465Z 	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+quick	Assemble release APK	2026-11-27T08:57:56.0520940Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+quick	Assemble release APK	2026-11-27T08:57:56.0522839Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:36)
+quick	Assemble release APK	2026-11-27T08:57:56.0524747Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:23)
+quick	Assemble release APK	2026-11-27T08:57:56.0526222Z 	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+quick	Assemble release APK	2026-11-27T08:57:56.0527557Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:77)
+quick	Assemble release APK	2026-11-27T08:57:56.0529148Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:43)
+quick	Assemble release APK	2026-11-27T08:57:56.0530490Z 	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+quick	Assemble release APK	2026-11-27T08:57:56.0531925Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$executeMutable$0(AssignMutableWorkspaceStep.java:34)
+quick	Assemble release APK	2026-11-27T08:57:56.0533658Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:314)
+quick	Assemble release APK	2026-11-27T08:57:56.0535167Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:30)
+quick	Assemble release APK	2026-11-27T08:57:56.0536888Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:21)
+quick	Assemble release APK	2026-11-27T08:57:56.0538295Z 	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+quick	Assemble release APK	2026-11-27T08:57:56.0539475Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+quick	Assemble release APK	2026-11-27T08:57:56.0540756Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+quick	Assemble release APK	2026-11-27T08:57:56.0542390Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+quick	Assemble release APK	2026-11-27T08:57:56.0544495Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+quick	Assemble release APK	2026-11-27T08:57:56.0546407Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+quick	Assemble release APK	2026-11-27T08:57:56.0547992Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+quick	Assemble release APK	2026-11-27T08:57:56.0549269Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+quick	Assemble release APK	2026-11-27T08:57:56.0550596Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:56)
+quick	Assemble release APK	2026-11-27T08:57:56.0551706Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:38)
+quick	Assemble release APK	2026-11-27T08:57:56.0552956Z 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:68)
+quick	Assemble release APK	2026-11-27T08:57:56.0554801Z 	at org.gradle.api.internal.tasks.execution.DefaultTaskNodeExecutor.doExecute(DefaultTaskNodeExecutor.java:364)
+quick	Assemble release APK	2026-11-27T08:57:56.0555840Z 	... 55 more
+quick	Assemble release APK	2026-11-27T08:57:56.0556039Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0556048Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0556521Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+quick	Assemble release APK	2026-11-27T08:57:56.0557200Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0557992Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+quick	Assemble release APK	2026-11-27T08:57:56.0559283Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0560216Z For more on this, please refer to https://docs.gradle.org/9.8.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+quick	Assemble release APK	2026-11-27T08:57:56.0561280Z 
+quick	Assemble release APK	2026-11-27T08:57:56.0561654Z BUILD FAILED in 1m 38s
+quick	Assemble release APK	2026-11-27T08:57:56.0562056Z 44 actionable tasks: 44 executed
+quick	Assemble release APK	2026-11-27T08:57:56.3433210Z ##[error]Process completed with exit code 1.
+quick	Receipt, filebin link, artifact	﻿2026-11-27T08:57:56.3472793Z ##[group]Run set -uo pipefail
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3473157Z ^[[36;1mset -uo pipefail^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3473666Z ^[[36;1mmkdir -p out^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3474010Z ^[[36;1mAPK=$(ls src/manager/build/outputs/apk/release/*.apk | head -1)^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3474402Z ^[[36;1mcp "$APK" out/^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3474787Z ^[[36;1mpython3 tools/bluewhale_receipt.py "$APK" -o out/build-receipt.json || true^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3475362Z ^[[36;1mif [ -f out/build-receipt.json ]; then head -30 out/build-receipt.json; fi^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3475875Z ^[[36;1mNAME="bluewhale-manager-v3.22.0-bw-32739-unsigned.apk.bin"^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3476261Z ^[[36;1mSIZE=$(stat -c%s "$APK")^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3476552Z ^[[36;1mSHA=$(sha256sum "$APK" | awk '{print $1}')^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3477012Z ^[[36;1mRESP=$(curl --fail -sS --retry 3 --retry-delay 3 -X POST --data-binary @"$APK" \^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3477670Z ^[[36;1m  -H "filename: $NAME" "https://filebin.net/bw32739-quick-${GITHUB_RUN_ID}/${NAME}")^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3478280Z ^[[36;1mURL="https://filebin.net/bw32739-quick-${GITHUB_RUN_ID}/${NAME}"^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3478740Z ^[[36;1mprintf '%s\n%s\n%s\n' "$URL" "$SHA" "$SIZE" > out/link.txt^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3479086Z ^[[36;1mcat out/link.txt^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3479470Z ^[[36;1mprintf '%s\n%s\n%s\n' "$URL" "$SHA" "$SIZE" > ".ci-logs/quick-${GITHUB_RUN_ID}.txt" || true^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3479937Z ^[[36;1mgit config user.name "github-actions[bot]"^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3480386Z ^[[36;1mgit config user.email "41898282+github-actions[bot]@users.noreply.github.com"^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3480877Z ^[[36;1mgit add ".ci-logs/quick-${GITHUB_RUN_ID}.txt" || true^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3481299Z ^[[36;1mgit commit -m "ci: quick 32739 link ${GITHUB_RUN_ID}" || true^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3481730Z ^[[36;1mgit pull --rebase origin "${GITHUB_REF_NAME}" || true^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3482129Z ^[[36;1mgit push origin "HEAD:${GITHUB_REF_NAME}" || true^[[0m
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3515608Z shell: /usr/bin/bash -e {0}
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3515879Z env:
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3516193Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3516702Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3517178Z   ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/26.1.10909125
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3517507Z ##[endgroup]
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3642146Z ls: cannot access 'src/manager/build/outputs/apk/release/*.apk': No such file or directory
+quick	Receipt, filebin link, artifact	2026-11-27T08:57:56.3656652Z ##[error]Process completed with exit code 2.
+quick	Upload artifact and receipt	﻿2026-11-27T08:57:56.3746110Z ##[group]Run actions/upload-artifact@v4
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3746444Z with:
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3746654Z   name: bluewhale-quick-1
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3746888Z   path: out/
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3747094Z   if-no-files-found: warn
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3747336Z   retention-days: 14
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3747549Z   compression-level: 6
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3747761Z   overwrite: false
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3747975Z   include-hidden-files: false
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3748207Z env:
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3748515Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3749013Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3749485Z   ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/26.1.10909125
+quick	Upload artifact and receipt	2026-11-27T08:57:56.3749820Z ##[endgroup]
+quick	Upload artifact and receipt	2026-11-27T08:57:56.5580851Z (node:3351) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+quick	Upload artifact and receipt	2026-11-27T08:57:56.5582349Z (Use `node --trace-deprecation ...` to show where the warning was created)
+quick	Upload artifact and receipt	2026-11-27T08:57:56.5649350Z ##[warning]No files were found with the provided path: out/. No artifacts will be uploaded.
+quick	Post Run actions/setup-java@v4	﻿2026-11-27T08:57:56.6002335Z Post job cleanup.
+quick	Post Run actions/setup-java@v4	2026-11-27T08:57:56.7512425Z (node:3363) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+quick	Post Run actions/setup-java@v4	2026-11-27T08:57:56.7513886Z (Use `node --trace-deprecation ...` to show where the warning was created)
+quick	Post Run actions/checkout@v4	﻿2026-11-27T08:57:56.7755812Z Post job cleanup.
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.8761180Z [command]/usr/bin/git version
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.8831366Z git version 2.56.1
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.8879079Z Temporarily overriding HOME='/home/runner/work/_temp/693d1397-b769-4629-a8b3-82b03c707c8c' before making global git config changes
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.8880643Z Adding repository directory to the temporary git global config as a safe directory
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.8885614Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.8942918Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.8990949Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.9362286Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.9395838Z http.https://github.com/.extraheader
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.9409240Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.9468542Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.9820288Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+quick	Post Run actions/checkout@v4	2026-11-27T08:57:56.9862116Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+quick	Complete job	﻿2026-11-27T08:57:57.0362553Z Cleaning up orphan processes
+quick	Complete job	2026-11-27T08:57:57.0748397Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
