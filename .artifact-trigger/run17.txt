@@ -1,2 +1,3 @@
 run=45910686673
 transfer=bin
+logs=2
