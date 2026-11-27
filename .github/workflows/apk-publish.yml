@@ -1,0 +1,60 @@
+name: apk-publish
+
+on:
+  push:
+    paths:
+      - ".apk-trigger/**"
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "native run id"
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: resolve run id
+        run: |
+          RUN_ID="$(tr -d '[:space:]' < .apk-trigger/run-id)"
+          echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
+          echo "resolved: $RUN_ID"
+      - name: download artifact
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ env.RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifact
+      - name: inspect
+        run: find artifact -type f \( -name '*.apk' -o -name '*.json' \) | head -30
+      - name: upload to github release and write link
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          APK=$(find artifact -type f -name '*.apk' | head -1 || true)
+          if [ -z "$APK" ]; then echo "no apk in artifact" >&2; find artifact -type f | head -50; exit 1; fi
+          SIZE=$(stat -c%s "$APK")
+          SHA=$(sha256sum "$APK" | awk '{print $1}')
+          echo "apk=$APK size=$SIZE sha=$SHA"
+          REL=bw32740
+          gh release view "$REL" >/dev/null 2>&1 || gh release create "$REL" -t "BlueWhale 3.22.1-bw (32740)" -n "nightly build run $RUN_ID"
+          gh release upload "$REL" "$APK#bluewhale-manager-v3.22.1-bw-32740.apk" --clobber
+          mkdir -p .ci-logs
+          {
+            echo "run=$RUN_ID"
+            echo "url=https://github.com/${{ github.repository }}/releases/download/$REL/bluewhale-manager-v3.22.1-bw-32740.apk"
+            echo "sha256=$SHA"
+            echo "size=$SIZE"
+          } > ".ci-logs/apk-${RUN_ID}.txt"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ".ci-logs/apk-${RUN_ID}.txt"
+          git commit -m "ci: apk release link ${RUN_ID}" || true
+          git push origin HEAD:main || true
