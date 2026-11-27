@@ -1,0 +1,568 @@
+--- a/manager/src/main/java/com/maplesu/core/ui/screen/sulog/SulogMaterial.kt
++++ b/manager/src/main/java/com/maplesu/core/ui/screen/sulog/SulogMaterial.kt
+@@ -26,6 +26,7 @@
+ import androidx.compose.foundation.text.selection.SelectionContainer
+ import androidx.compose.foundation.verticalScroll
+ import androidx.compose.material.icons.Icons
++import androidx.compose.material.icons.filled.Save
+ import androidx.compose.material.icons.filled.Check
+ import androidx.compose.material.icons.filled.DeleteSweep
+ import androidx.compose.material.icons.filled.FilterList
+@@ -124,6 +125,15 @@
+                     TopBarBackButton(onClick = actions.onBack)
+                 },
+                 actions = {
++                    IconButton(
++                        onClick = actions.onExport,
++                        enabled = state.selectedFilePath != null && !state.isLoading && !state.isExporting,
++                    ) {
++                        Icon(
++                            imageVector = Icons.Filled.Save,
++                            contentDescription = stringResource(R.string.sulog_export_title),
++                        )
++                    }
+                     IconButton(onClick = actions.onCleanFile) {
+                         Icon(
+                             imageVector = Icons.Filled.DeleteSweep,
+--- a/manager/src/main/java/com/maplesu/core/ui/screen/sulog/SulogMiuix.kt
++++ b/manager/src/main/java/com/maplesu/core/ui/screen/sulog/SulogMiuix.kt
+@@ -94,6 +94,7 @@
+ import top.yukonga.miuix.kmp.icon.MiuixIcons
+ import top.yukonga.miuix.kmp.icon.basic.ArrowRight
+ import top.yukonga.miuix.kmp.icon.extended.Back
++import top.yukonga.miuix.kmp.icon.extended.Download
+ import top.yukonga.miuix.kmp.icon.extended.Delete
+ import top.yukonga.miuix.kmp.icon.extended.Filter
+ import top.yukonga.miuix.kmp.overlay.OverlayDialog
+@@ -173,6 +174,20 @@
+                             }
+                         },
+                         actions = {
++                            IconButton(
++                                modifier = Modifier
++                                    .padding(end = 8.dp)
++                                    .alpha(if (state.selectedFilePath != null && !state.isLoading && !state.isExporting) 1f else 0.45f),
++                                onClick = {
++                                    if (state.selectedFilePath != null && !state.isLoading && !state.isExporting) actions.onExport()
++                                },
++                            ) {
++                                Icon(
++                                    imageVector = MiuixIcons.Download,
++                                    tint = colorScheme.onSurface,
++                                    contentDescription = stringResource(R.string.sulog_export_title),
++                                )
++                            }
+                             IconButton(
+                                 modifier = Modifier.padding(end = 8.dp),
+                                 onClick = actions.onCleanFile,
+--- a/manager/src/main/java/com/maplesu/core/ui/screen/sulog/SulogScreen.kt
++++ b/manager/src/main/java/com/maplesu/core/ui/screen/sulog/SulogScreen.kt
+@@ -1,8 +1,13 @@
+ package com.maplesu.core.ui.screen.sulog
++
++import android.widget.Toast
++import androidx.activity.compose.rememberLauncherForActivityResult
++import androidx.activity.result.contract.ActivityResultContracts
+ 
+ import androidx.compose.runtime.Composable
+ import androidx.compose.runtime.LaunchedEffect
+ import androidx.compose.runtime.getValue
++import androidx.compose.ui.platform.LocalContext
+ import androidx.compose.ui.res.stringResource
+ import androidx.compose.ui.text.SpanStyle
+ import androidx.compose.ui.text.buildAnnotatedString
+@@ -21,21 +26,44 @@
+ import com.maplesu.core.ui.util.SulogFile
+ import com.maplesu.core.ui.util.toSulogDisplayName
+ import com.maplesu.core.ui.viewmodel.SulogViewModel
++import java.time.LocalDateTime
++import java.time.format.DateTimeFormatter
+ 
+ @Composable
+ fun SulogScreen() {
+     val navigator = LocalNavigator.current
+     val uiMode = LocalUiMode.current
+     val viewModel = viewModel<SulogViewModel>()
++    val context = LocalContext.current
++    val exportSuccessText = stringResource(R.string.sulog_export_success)
++    val exportFailedText = stringResource(R.string.sulog_export_failed)
++    val exportLauncher = rememberLauncherForActivityResult(
++        ActivityResultContracts.CreateDocument("application/zip")
++    ) { uri ->
++        if (uri != null) viewModel.export(context, uri)
++    }
+     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+ 
+     LaunchedEffect(Unit) {
+         viewModel.refreshLatest()
+     }
+ 
++    LaunchedEffect(uiState.exportEvent?.id) {
++        val event = uiState.exportEvent ?: return@LaunchedEffect
++        val message = if (event.succeeded) {
++            exportSuccessText.format(event.visibleCount, event.sha256.take(16))
++        } else {
++            exportFailedText
++        }
++        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
++        viewModel.consumeExportEvent()
++    }
++
+     val state = SulogScreenState(
+         isLoading = uiState.isLoading,
+         isRefreshing = uiState.isRefreshing,
++        isExporting = uiState.isExporting,
++        exportEvent = uiState.exportEvent,
+         sulogStatus = uiState.sulogStatus,
+         isSulogEnabled = uiState.isSulogEnabled,
+         searchText = uiState.searchText,
+@@ -51,6 +79,12 @@
+         onRefresh = viewModel::refreshLatest,
+         onEnableSulog = viewModel::enableSulog,
+         onCleanFile = viewModel::cleanFile,
++        onExport = dropUnlessResumed {
++            if (!uiState.isLoading && !uiState.isExporting && uiState.selectedFilePath != null) {
++                val timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"))
++                exportLauncher.launch("BlueWhale_sulog_$timestamp.zip")
++            }
++        },
+         onSearchTextChange = viewModel::setSearchText,
+         onToggleFilter = viewModel::toggleFilter,
+         onSelectFile = viewModel::refresh,
+--- a/manager/src/main/java/com/maplesu/core/ui/screen/sulog/SulogUiState.kt
++++ b/manager/src/main/java/com/maplesu/core/ui/screen/sulog/SulogUiState.kt
+@@ -4,9 +4,18 @@
+ import com.maplesu.core.ui.util.SulogEventFilter
+ import com.maplesu.core.ui.util.SulogFile
+ 
++data class SulogExportEvent(
++    val id: Long,
++    val succeeded: Boolean,
++    val visibleCount: Int = 0,
++    val sha256: String = "",
++)
++
+ data class SulogScreenState(
+     val isLoading: Boolean = true,
+     val isRefreshing: Boolean = false,
++    val isExporting: Boolean = false,
++    val exportEvent: SulogExportEvent? = null,
+     val sulogStatus: String = "",
+     val isSulogEnabled: Boolean = false,
+     val searchText: String = "",
+@@ -23,6 +32,7 @@
+     val onRefresh: () -> Unit,
+     val onEnableSulog: () -> Unit,
+     val onCleanFile: () -> Unit,
++    val onExport: () -> Unit,
+     val onSearchTextChange: (String) -> Unit,
+     val onToggleFilter: (SulogEventFilter) -> Unit,
+     val onSelectFile: (String) -> Unit,
+--- a/manager/src/main/java/com/maplesu/core/ui/util/SulogEvidenceArchive.kt
++++ b/manager/src/main/java/com/maplesu/core/ui/util/SulogEvidenceArchive.kt
+@@ -0,0 +1,161 @@
++// SPDX-License-Identifier: GPL-3.0-or-later
++package com.maplesu.core.ui.util
++
++import org.json.JSONArray
++import org.json.JSONObject
++import java.io.ByteArrayInputStream
++import java.io.ByteArrayOutputStream
++import java.security.MessageDigest
++import java.time.Instant
++import java.util.Locale
++import java.util.zip.ZipEntry
++import java.util.zip.ZipInputStream
++import java.util.zip.ZipOutputStream
++
++/**
++ * A user-requested, offline SU-log evidence snapshot.
++ *
++ * The archive deliberately uses fixed entry names. A log file name or log contents can never
++ * become a ZIP path. Both the unfiltered, already-bounded source snapshot and the currently
++ * visible filter result are retained so a filtered export cannot be mistaken for a full log.
++ */
++object SulogEvidenceArchive {
++    const val FORMAT = "bluewhale-sulog-evidence"
++    const val SCHEMA = 1
++
++    private const val METADATA = "metadata.json"
++    private const val SOURCE = "source.log"
++    private const val FILTERED = "filtered.log"
++    private const val SUMS = "SHA256SUMS.txt"
++    private const val MAX_ENTRY_BYTES = 4 * 1024 * 1024
++    private val ENTRY_NAMES = setOf(METADATA, SOURCE, FILTERED, SUMS)
++
++    data class Request(
++        val sourceName: String,
++        val appVersion: String,
++        val searchText: String,
++        val selectedFilters: Set<SulogEventFilter>,
++        val sourceEntries: List<SulogEntry>,
++        val visibleEntries: List<SulogEntry>,
++        val createdAtEpochMillis: Long = System.currentTimeMillis(),
++    )
++
++    data class Archive(
++        val bytes: ByteArray,
++        val sha256: String,
++        val sourceCount: Int,
++        val visibleCount: Int,
++    )
++
++    data class Verification(
++        val sourceCount: Int,
++        val visibleCount: Int,
++        val sha256: String,
++    )
++
++    fun create(request: Request): Archive {
++        require(request.sourceName.isNotBlank()) { "Missing source log name" }
++        require(request.sourceEntries.size <= 1000) { "Source snapshot exceeds reader bound" }
++        require(request.visibleEntries.size <= request.sourceEntries.size) {
++            "Filtered snapshot cannot contain more rows than its source"
++        }
++
++        val metadata = JSONObject()
++            .put("format", FORMAT)
++            .put("schema", SCHEMA)
++            .put("createdAt", Instant.ofEpochMilli(request.createdAtEpochMillis).toString())
++            .put("appVersion", request.appVersion)
++            .put("sourceFile", request.sourceName)
++            .put("sourceCount", request.sourceEntries.size)
++            .put("visibleCount", request.visibleEntries.size)
++            .put("searchText", request.searchText)
++            .put("selectedFilters", JSONArray(request.selectedFilters.map { it.name }.sorted()))
++            .put("sourceReaderLimit", 1000)
++            .put("note", "source.log is the bounded source snapshot; filtered.log is the current UI filter result")
++            .toString(2) + "\n"
++        val payloads = linkedMapOf(
++            SOURCE to lines(request.sourceEntries),
++            FILTERED to lines(request.visibleEntries),
++        )
++        val sums = payloads.entries.joinToString(separator = "", postfix = "") { (name, bytes) ->
++            "${sha256(bytes)}  $name\n"
++        }
++        val files = linkedMapOf(
++            METADATA to metadata.toByteArray(Charsets.UTF_8),
++            SOURCE to payloads.getValue(SOURCE),
++            FILTERED to payloads.getValue(FILTERED),
++            SUMS to sums.toByteArray(Charsets.US_ASCII),
++        )
++        val output = ByteArrayOutputStream()
++        ZipOutputStream(output).use { zip ->
++            files.forEach { (name, bytes) ->
++                zip.putNextEntry(ZipEntry(name).apply { time = 0L })
++                zip.write(bytes)
++                zip.closeEntry()
++            }
++        }
++        val bytes = output.toByteArray()
++        return Archive(bytes, sha256(bytes), request.sourceEntries.size, request.visibleEntries.size)
++    }
++
++    /** Verify entry set, sizes, per-file hashes and metadata counts after a SAF write/read-back. */
++    fun verify(bytes: ByteArray): Verification {
++        val files = linkedMapOf<String, ByteArray>()
++        ZipInputStream(ByteArrayInputStream(bytes)).use { zip ->
++            while (true) {
++                val entry = zip.nextEntry ?: break
++                check(!entry.isDirectory && entry.name in ENTRY_NAMES) { "Unexpected archive entry" }
++                check(files.put(entry.name, readBounded(zip)) == null) { "Duplicate archive entry" }
++                zip.closeEntry()
++            }
++        }
++        check(files.keys == ENTRY_NAMES) { "Incomplete evidence archive" }
++        val metadata = JSONObject(files.getValue(METADATA).toString(Charsets.UTF_8))
++        check(metadata.optString("format") == FORMAT && metadata.optInt("schema") == SCHEMA) {
++            "Unsupported evidence format"
++        }
++        val sourceCount = metadata.optInt("sourceCount", -1)
++        val visibleCount = metadata.optInt("visibleCount", -1)
++        check(sourceCount in 0..1000 && visibleCount in 0..sourceCount) { "Invalid evidence counts" }
++        val expectedSums = buildString {
++            listOf(SOURCE, FILTERED).forEach { name ->
++                append(sha256(files.getValue(name))).append("  ").append(name).append('\n')
++            }
++        }
++        check(files.getValue(SUMS).toString(Charsets.US_ASCII) == expectedSums) {
++            "Evidence checksum mismatch"
++        }
++        check(countLines(files.getValue(SOURCE)) == sourceCount) { "Source row count mismatch" }
++        check(countLines(files.getValue(FILTERED)) == visibleCount) { "Filtered row count mismatch" }
++        return Verification(sourceCount, visibleCount, sha256(bytes))
++    }
++
++    private fun lines(entries: List<SulogEntry>): ByteArray {
++        if (entries.isEmpty()) return ByteArray(0)
++        return entries.joinToString(separator = "\n", postfix = "\n") { it.rawLine }
++            .toByteArray(Charsets.UTF_8)
++    }
++
++    private fun countLines(bytes: ByteArray): Int {
++        if (bytes.isEmpty()) return 0
++        val text = bytes.toString(Charsets.UTF_8)
++        check(text.endsWith('\n')) { "Log payload is not newline terminated" }
++        return text.dropLast(1).split('\n').size
++    }
++
++    private fun readBounded(input: ZipInputStream): ByteArray {
++        val output = ByteArrayOutputStream()
++        val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
++        while (true) {
++            val count = input.read(buffer)
++            if (count < 0) break
++            check(output.size() + count <= MAX_ENTRY_BYTES) { "Archive entry is too large" }
++            output.write(buffer, 0, count)
++        }
++        return output.toByteArray()
++    }
++
++    internal fun sha256(bytes: ByteArray): String = MessageDigest.getInstance("SHA-256")
++        .digest(bytes)
++        .joinToString(separator = "") { "%02x".format(Locale.US, it) }
++}
+--- a/manager/src/main/java/com/maplesu/core/ui/viewmodel/SulogViewModel.kt
++++ b/manager/src/main/java/com/maplesu/core/ui/viewmodel/SulogViewModel.kt
+@@ -1,5 +1,9 @@
+ package com.maplesu.core.ui.viewmodel
+ 
++import android.content.Context
++import com.maplesu.core.BuildConfig
++import android.net.Uri
++import android.util.Log
+ import androidx.lifecycle.ViewModel
+ import androidx.lifecycle.viewModelScope
+ import kotlinx.coroutines.Dispatchers
+@@ -14,7 +18,9 @@
+ import kotlinx.coroutines.launch
+ import com.maplesu.core.data.repository.SettingsRepository
+ import com.maplesu.core.data.repository.SettingsRepositoryImpl
++import com.maplesu.core.ui.screen.sulog.SulogExportEvent
+ import com.maplesu.core.ui.util.SulogEntry
++import com.maplesu.core.ui.util.SulogEvidenceArchive
+ import com.maplesu.core.ui.util.SulogEventFilter
+ import com.maplesu.core.ui.util.SulogFile
+ import com.maplesu.core.ui.util.SulogFileCleanAction
+@@ -30,6 +36,8 @@
+ data class SulogUiState(
+     val isLoading: Boolean = true,
+     val isRefreshing: Boolean = false,
++    val isExporting: Boolean = false,
++    val exportEvent: SulogExportEvent? = null,
+     val sulogStatus: String = "",
+     val isSulogEnabled: Boolean = false,
+     val searchText: String = "",
+@@ -51,6 +59,7 @@
+     private val selectedFiltersFlow = MutableStateFlow(defaultSulogEventFilters())
+ 
+     private var refreshJob: Job? = null
++    private var exportEventId = 0L
+ 
+     init {
+         val savedFilters = repo.suLogFilters
+@@ -95,6 +104,8 @@
+                 entriesFlow.value = entries
+                 SulogUiState(
+                     isLoading = false,
++                    isExporting = currentState.isExporting,
++                    exportEvent = currentState.exportEvent,
+                     sulogStatus = sulogStatus,
+                     isSulogEnabled = isSulogEnabled,
+                     searchText = currentState.searchText,
+@@ -148,6 +159,65 @@
+         }
+     }
+ 
++    /** Export only after the user picks a destination; verify the exact bytes read back from SAF. */
++    fun export(context: Context, uri: Uri) {
++        val snapshot = _uiState.value
++        if (snapshot.isLoading || snapshot.isExporting) return
++        val source = snapshot.files.firstOrNull { it.path == snapshot.selectedFilePath } ?: return
++        _uiState.update { it.copy(isExporting = true, exportEvent = null) }
++        val applicationContext = context.applicationContext
++        viewModelScope.launch(Dispatchers.IO) {
++            try {
++                val archive = SulogEvidenceArchive.create(
++                    SulogEvidenceArchive.Request(
++                        sourceName = source.name,
++                        appVersion = BuildConfig.VERSION_NAME,
++                        searchText = snapshot.searchText,
++                        selectedFilters = snapshot.selectedFilters,
++                        sourceEntries = snapshot.entries,
++                        visibleEntries = snapshot.visibleEntries,
++                    )
++                )
++                val resolver = applicationContext.contentResolver
++                resolver.openOutputStream(uri, "wt")?.use { it.write(archive.bytes) }
++                    ?: throw IllegalStateException("Cannot open export destination")
++                val readBack = resolver.openInputStream(uri)?.use { it.readBytes() }
++                    ?: throw IllegalStateException("Cannot read back export destination")
++                check(readBack.contentEquals(archive.bytes)) { "Export read-back differs" }
++                val verification = SulogEvidenceArchive.verify(readBack)
++                check(verification.sha256 == archive.sha256) { "Export digest differs" }
++                val eventId = ++exportEventId
++                _uiState.update {
++                    it.copy(
++                        isExporting = false,
++                        exportEvent = SulogExportEvent(
++                            id = eventId,
++                            succeeded = true,
++                            visibleCount = verification.visibleCount,
++                            sha256 = verification.sha256,
++                        ),
++                    )
++                }
++            } catch (cancelled: kotlinx.coroutines.CancellationException) {
++                _uiState.update { it.copy(isExporting = false) }
++                throw cancelled
++            } catch (error: Exception) {
++                Log.w("SulogViewModel", "Evidence export failed", error)
++                val eventId = ++exportEventId
++                _uiState.update {
++                    it.copy(
++                        isExporting = false,
++                        exportEvent = SulogExportEvent(id = eventId, succeeded = false),
++                    )
++                }
++            }
++        }
++    }
++
++    fun consumeExportEvent() {
++        _uiState.update { it.copy(exportEvent = null) }
++    }
++
+     fun setSearchText(searchText: String) {
+         searchTextFlow.value = searchText
+         _uiState.update { currentState ->
+--- a/manager/src/main/res/values/strings.xml
++++ b/manager/src/main/res/values/strings.xml
+@@ -44,6 +44,9 @@
+     <string name="sulog_enable_action">Enable</string>
+     <string name="sulog_filter_title">Filter by type</string>
+     <string name="sulog_clean_title">Clean log</string>
++    <string name="sulog_export_title">Export evidence snapshot</string>
++    <string name="sulog_export_success">Exported %1$d visible entries · SHA-256 %2$s…</string>
++    <string name="sulog_export_failed">Export failed or verification did not pass. Please choose another location.</string>
+     <string name="sulog_filter_root_execve">Root execve</string>
+     <string name="sulog_filter_sucompat">Classic SU</string>
+     <string name="sulog_filter_ioctl_grant_root">Grant Root</string>
+--- a/manager/src/main/res/values-zh-rCN/strings.xml
++++ b/manager/src/main/res/values-zh-rCN/strings.xml
+@@ -354,6 +354,9 @@
+     <string name="sulog_enable_action">启用</string>
+     <string name="sulog_filter_title">按类型筛选</string>
+     <string name="sulog_clean_title">清空日志</string>
++    <string name="sulog_export_title">导出授权证据快照</string>
++    <string name="sulog_export_success">已导出并校验 %1$d 条筛选记录 · SHA-256 %2$s…</string>
++    <string name="sulog_export_failed">导出失败或回读校验未通过，请重新选择保存位置</string>
+     <string name="sulog_filter_root_execve">Root 执行</string>
+     <string name="sulog_filter_sucompat">经典 SU</string>
+     <string name="sulog_filter_ioctl_grant_root">授予 Root</string>
+--- a/manager/src/test/java/com/maplesu/core/ui/util/SulogEvidenceArchiveTest.kt
++++ b/manager/src/test/java/com/maplesu/core/ui/util/SulogEvidenceArchiveTest.kt
+@@ -0,0 +1,103 @@
++// SPDX-License-Identifier: GPL-3.0-or-later
++package com.maplesu.core.ui.util
++
++import org.junit.Assert.assertEquals
++import org.junit.Assert.assertTrue
++import org.junit.Test
++import java.io.ByteArrayInputStream
++import java.io.ByteArrayOutputStream
++import java.util.zip.ZipEntry
++import java.util.zip.ZipInputStream
++import java.util.zip.ZipOutputStream
++
++class SulogEvidenceArchiveTest {
++    private fun entry(raw: String) = parseSulogLine(
++        line = raw,
++        currentTimeMillis = 1_700_000_000_000L,
++        uptimeMillis = 1_000L,
++    )
++
++    private val first = entry("type=root_execve seq=1 uid=10001 comm=sh argv=\"id -u\" retval=0")
++    private val second = entry("type=sucompat seq=2 uid=10002 comm=蓝鱼 argv=\"测试\" retval=1")
++
++    private fun request(
++        source: List<SulogEntry>,
++        visible: List<SulogEntry>,
++        query: String = "",
++        filters: Set<SulogEventFilter> = defaultSulogEventFilters(),
++    ) = SulogEvidenceArchive.Request(
++        sourceName = "sulog-2026-11-27.log",
++        appVersion = "3.21.0-bw",
++        searchText = query,
++        selectedFilters = filters,
++        sourceEntries = source,
++        visibleEntries = visible,
++        createdAtEpochMillis = 0L,
++    )
++
++    @Test
++    fun archiveRoundTripRetainsSourceAndFilteredSnapshots() {
++        val archive = SulogEvidenceArchive.create(
++            request(
++                source = listOf(first, second),
++                visible = listOf(second),
++                query = "10002",
++                filters = setOf(SulogEventFilter.SuCompat),
++            )
++        )
++        val verified = SulogEvidenceArchive.verify(archive.bytes)
++        assertEquals(2, verified.sourceCount)
++        assertEquals(1, verified.visibleCount)
++        assertEquals(archive.sha256, verified.sha256)
++        assertTrue(archive.sha256.matches(Regex("[0-9a-f]{64}")))
++    }
++
++    @Test
++    fun emptyFilterResultIsVerifiableAndDoesNotEraseSource() {
++        val archive = SulogEvidenceArchive.create(
++            request(listOf(first), emptyList(), "no-match", emptySet())
++        )
++        assertEquals(1, archive.sourceCount)
++        assertEquals(0, archive.visibleCount)
++        assertEquals(0, SulogEvidenceArchive.verify(archive.bytes).visibleCount)
++    }
++
++    @Test(expected = IllegalStateException::class)
++    fun tamperingWithPayloadFailsChecksumVerification() {
++        val archive = SulogEvidenceArchive.create(request(listOf(first), listOf(first)))
++        val files = linkedMapOf<String, ByteArray>()
++        ZipInputStream(ByteArrayInputStream(archive.bytes)).use { zip ->
++            while (true) {
++                val entry = zip.nextEntry ?: break
++                files[entry.name] = zip.readBytes()
++            }
++        }
++        files["source.log"] = files.getValue("source.log").toString(Charsets.UTF_8)
++            .replace("uid=10001", "uid=10003").toByteArray(Charsets.UTF_8)
++        val output = ByteArrayOutputStream()
++        ZipOutputStream(output).use { zip ->
++            files.forEach { (name, bytes) ->
++                zip.putNextEntry(ZipEntry(name))
++                zip.write(bytes)
++                zip.closeEntry()
++            }
++        }
++        SulogEvidenceArchive.verify(output.toByteArray())
++    }
++
++    @Test(expected = IllegalStateException::class)
++    fun archiveCannotSmuggleUnexpectedPaths() {
++        val output = ByteArrayOutputStream()
++        ZipOutputStream(output).use { zip ->
++            zip.putNextEntry(ZipEntry("../../outside"))
++            zip.write(1)
++            zip.closeEntry()
++        }
++        SulogEvidenceArchive.verify(output.toByteArray())
++    }
++
++    @Test(expected = IllegalArgumentException::class)
++    fun visibleSnapshotCannotExceedSourceSnapshot() {
++        SulogEvidenceArchive.create(request(emptyList(), listOf(first), filters = emptySet()))
++    }
++}
