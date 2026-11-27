@@ -1,0 +1,40 @@
+name: patch-native
+
+on:
+  push:
+    paths:
+      - ".native-patch/**"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch native workflow for sucompat-only build
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('.github/workflows/build-bluewhale-native.yml')
+          s = p.read_text()
+          old = """            python3 overlay/patch_bluewhale_32739_root.py src\n"""
+          new = """            python3 overlay/patch_bluewhale_32739_root.py src\n            # 32739 root uses /system/bin/su; do not link the Ultra bridge\n            sed -i 's/bluewhaleSkipUltraBridge=false/bluewhaleSkipUltraBridge=true/' src/gradle.properties\n            grep -n 'bluewhaleSkipUltraBridge' src/gradle.properties\n"""
+          if old not in s:
+              raise SystemExit('patch marker 1 not found')
+          s = s.replace(old, new, 1)
+          old2 = '''              bridge = apk.read("lib/arm64-v8a/libmaplesu_ultra_bridge.so")\n              if len(bridge) < 1024:\n                  raise SystemExit("FATAL: Ultra bridge missing or empty in APK")\n              print(f"Ultra bridge: {len(bridge)} bytes SHA256={hashlib.sha256(bridge).hexdigest()}")\n'''
+          new2 = '''              try:\n                  bridge = apk.read("lib/arm64-v8a/libmaplesu_ultra_bridge.so")\n              except KeyError:\n                  bridge = b""\n              if bridge:\n                  if len(bridge) < 1024:\n                      raise SystemExit("FATAL: Ultra bridge missing or empty in APK")\n                  print(f"Ultra bridge: {len(bridge)} bytes SHA256={hashlib.sha256(bridge).hexdigest()}")\n              else:\n                  print("Ultra bridge: skipped (bluewhaleSkipUltraBridge=true); root transport is /system/bin/su")\n'''
+          if old2 not in s:
+              raise SystemExit('patch marker 2 not found')
+          s = s.replace(old2, new2, 1)
+          p.write_text(s)
+          print('patched', len(s))
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/build-bluewhale-native.yml
+          git commit -m "ci: native 32739 skip Ultra bridge + optional bridge gate" || true
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || true
