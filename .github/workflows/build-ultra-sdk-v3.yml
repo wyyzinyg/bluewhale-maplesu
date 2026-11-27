@@ -1,0 +1,86 @@
+name: build-ultra-sdk-v3
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".ultra-sdk-v3-trigger/**"
+
+permissions:
+  contents: write
+
+jobs:
+  sdk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: 取上游 MapleSU 源码
+        run: |
+          set -euo pipefail
+          mkdir -p src
+          UPSTREAM_COMMIT=ff3aa44850ea22717fa811a17831155a85f43445
+          curl -sSL --retry 3 -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${UPSTREAM_COMMIT}"
+          tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
+          test -d src/runtime/maplesu-sdk/sdk
+      - name: 安装 NDK / CMake
+        run: |
+          set -euo pipefail
+          SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
+          mkdir -p "$SDK/licenses"
+          printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
+          for pkg in "ndk;29.0.14206865" "cmake;3.22.1"; do
+            "$SM" "$pkg" < /dev/null || true
+          done
+          test -d "$SDK/ndk/29.0.14206865"
+          echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
+          echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
+      - name: 重建 Ultra SDK archive（记录 manifest 缺陷）
+        run: |
+          set -euo pipefail
+          cd src
+          ln -sfn "$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64" "$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/windows-x86_64"
+          mkdir -p /tmp/bw-sdk
+          set +e
+          python3 runtime/maplesu-sdk/sdk/build.py --skip-invalid --payloads --compile --pack \
+            --ndk "$ANDROID_NDK_HOME" \
+            --build-dir /tmp/bw-sdk \
+            --archive /tmp/bw-sdk/libkernel_module_kit_static.a \
+            --jobs 4 > /tmp/sdk-build.log 2>&1
+          STATUS=$?
+          set -e
+          cd "$GITHUB_WORKSPACE"
+          mkdir -p .ci-logs
+          cp /tmp/sdk-build.log .ci-logs/sdk-v3-build.log || true
+          if [ -f /tmp/bw-sdk/report/build-report.json ]; then cp /tmp/bw-sdk/report/build-report.json .ci-logs/sdk-v3-report.json; fi
+          if [ -f /tmp/bw-sdk/report/MANIFEST-COVERAGE.md ]; then cp /tmp/bw-sdk/report/MANIFEST-COVERAGE.md .ci-logs/sdk-v3-coverage.md; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ci-logs || true
+          git commit -m "ci: sdk v3 build diagnostics" || true
+          git push || true
+          if [ $STATUS -ne 0 ]; then echo "SDK BUILD FAILED status=$STATUS"; exit $STATUS; fi
+          ls -lh /tmp/bw-sdk/libkernel_module_kit_static.a
+      - name: 校验 Ultra API 符号
+        run: |
+          set -euo pipefail
+          NM=$(find "$ANDROID_NDK_HOME" -name llvm-nm -type f | head -1)
+          echo "llvm-nm=$NM"
+          "$NM" -C --defined-only /tmp/bw-sdk/libkernel_module_kit_static.a > /tmp/sdk-symbols.txt
+          for sym in 'kernel_module::maplesu_request_auth_state()' 'maplesu::sdk::get_sdk_version()' 'maplesu::sdk::install_maplesu_environment' 'maplesu::su_auth::add' 'maplesu::su_auth::get_uid_profiles_with_cb'; do
+            grep -F "$sym" /tmp/sdk-symbols.txt > /dev/null || { echo "FATAL: missing $sym"; exit 1; }
+          done
+          echo "Ultra SDK symbols OK"
+      - name: 提交 archive 回分支
+        run: |
+          set -euo pipefail
+          mkdir -p runtime/maplesu-sdk/lib/arm64-v8a
+          cp /tmp/bw-sdk/libkernel_module_kit_static.a runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
+          git commit -m "sdk: rebuild Ultra SDK archive with maplesu::sdk and su_auth symbols" || true
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}"
