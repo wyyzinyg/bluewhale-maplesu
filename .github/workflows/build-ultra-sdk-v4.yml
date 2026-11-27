@@ -45,7 +45,7 @@ jobs:
           ln -sfn "$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64" "$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/windows-x86_64"
           mkdir -p /tmp/bw-sdk
           python3 runtime/maplesu-sdk/sdk/build.py \
-            --reference-payloads --compile --pack \
+            --reference-payloads --compile --compose --pack \
             --ndk "$ANDROID_NDK_HOME" \
             --build-dir /tmp/bw-sdk \
             --jobs 4 2>&1 | tee /tmp/sdk-v4-build.log
