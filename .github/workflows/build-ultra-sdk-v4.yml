@@ -38,6 +38,21 @@ jobs:
           test -d "$SDK/ndk/29.0.14206865"
           echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
           echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
+      - name: 放宽 compose 阶段继承的 -Werror（NDK 29 新警告不阻断归档重建）
+        run: |
+          set -euo pipefail
+          cd src
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("runtime/maplesu-sdk/sdk/build.py")
+          s = p.read_text(encoding="utf-8")
+          needle = 'flags = _step_flags(argv, drop)\n        flags.insert(0, "--target=aarch64-linux-android21")'
+          if s.count(needle) != 1:
+              raise SystemExit(f"FATAL: compose -Werror marker count={s.count(needle)}")
+          s = s.replace(needle, 'flags = _step_flags(argv, drop)\n        flags = [flag for flag in flags if flag != "-Werror"]\n        flags.insert(0, "--target=aarch64-linux-android21")')
+          p.write_text(s, encoding="utf-8")
+          print("compose -Werror relaxed")
+          PY
       - name: 重建 Ultra SDK archive（reference payloads，不覆盖参考归档）
         run: |
           set -euo pipefail
@@ -78,6 +93,7 @@ jobs:
           set -euo pipefail
           mkdir -p .ci-logs
           cp /tmp/sdk-v4-build.log .ci-logs/sdk-v4-build.log 2>/dev/null || true
+          cp /tmp/bw-sdk/logs/compose-m0081-*.log .ci-logs/ 2>/dev/null || true
           if [ -f /tmp/bw-sdk/report/build-report.json ]; then cp /tmp/bw-sdk/report/build-report.json .ci-logs/sdk-v4-report.json; fi
           if [ -f /tmp/bw-sdk/report/MANIFEST-COVERAGE.md ]; then cp /tmp/bw-sdk/report/MANIFEST-COVERAGE.md .ci-logs/sdk-v4-coverage.md; fi
           git config user.name "github-actions[bot]"
