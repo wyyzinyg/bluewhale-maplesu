@@ -37,7 +37,6 @@ jobs:
           python3 overlay/patch_bluewhale_3210.py src
           python3 overlay/patch_bluewhale_322.py src
           python3 overlay/patch_bluewhale_322.py src
-          test "$(git apply --version)"
       - name: Install Android compile dependencies
         run: |
           set -euxo pipefail
