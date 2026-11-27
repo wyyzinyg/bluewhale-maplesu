@@ -54,7 +54,7 @@ def patch_advisor(root: Path) -> None:
         "        contentAlignment = Alignment.Center,\n"
         "    ) {\n"
         "        Image(\n"
-        "            painter = painterResource(R.mipmap.ic_launcher_foreground_bluewhale),\n"
+        "            painter = painterResource(R.drawable.ic_launcher_foreground),\n"
         "            contentDescription = null,\n"
         "            modifier = Modifier.size(96.dp),\n"
         "        )\n"
