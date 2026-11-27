@@ -1,0 +1,100 @@
+name: bluewhale-feature-selftest
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "overlay/bluewhale_322.patch"
+      - "overlay/patch_bluewhale_322.py"
+      - ".github/workflows/bluewhale-feature-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Rebuild the pinned 32738 source
+        run: |
+          set -euo pipefail
+          mkdir -p src
+          commit=ff3aa44850ea22717fa811a17831155a85f43445
+          curl -fL --retry 4 -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${commit}"
+          tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
+          python3 overlay/apply_bluewhale.py src
+          python3 overlay/patch_runtime_targets.py src
+          python3 overlay/patch_brand_skin_tail.py src
+          python3 overlay/patch_bluewhale_320.py src
+          python3 overlay/patch_bluewhale_321.py src
+          python3 overlay/patch_bluewhale_3210.py src
+          python3 overlay/patch_bluewhale_322.py src
+          python3 overlay/patch_bluewhale_322.py src
+          test "$(git apply --version)"
+      - name: Install Android compile dependencies
+        run: |
+          set -euo pipefail
+          SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          mkdir -p "$SDK/licenses"
+          printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
+          for pkg in "ndk;29.0.14206865" "cmake;3.22.1" "platforms;android-37.0" "build-tools;37.0.0"; do
+            "$SM" "$pkg" < /dev/null || true
+          done
+          test -d "$SDK/ndk/29.0.14206865"
+          test -d "$SDK/build-tools/37.0.0"
+          test -d "$SDK/platforms/android-37" || test -d "$SDK/platforms/android-37.0"
+      - name: Run focused JVM tests and compile the release APK
+        run: |
+          set -euo pipefail
+          SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          cd src
+          ./gradlew --no-daemon --stacktrace \
+            -PbluewhaleSkipSdkVerify=true \
+            -PmaplesuPython="$(command -v python3)" \
+            -PmaplesuUltraviderNdk="$SDK/ndk/29.0.14206865" \
+            -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1g" \
+            :manager:testReleaseUnitTest \
+            --tests "com.maplesu.core.ui.util.SulogEvidenceArchiveTest" \
+            --tests "com.maplesu.core.ui.util.SulogModePathTest" \
+            --tests "com.maplesu.core.ui.util.ManagerUpdateTest" \
+            :manager:assembleRelease 2>&1 | tee /tmp/selftest-gradle.log
+      - name: Verify identity and collect non-APK evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          cp overlay/bluewhale_322.patch out/
+          cp /tmp/selftest-gradle.log out/selftest-gradle.log 2>/dev/null || true
+          if [ -d src/manager/build/test-results/testReleaseUnitTest ]; then
+            cp -r src/manager/build/test-results/testReleaseUnitTest out/test-results
+          fi
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, xml.etree.ElementTree as ET
+          root=Path('src/manager/build/test-results/testReleaseUnitTest')
+          rows=[]
+          for path in sorted(root.glob('*.xml')):
+              suite=ET.parse(path).getroot()
+              rows.append({'file':path.name,'tests':int(suite.attrib['tests']),
+                           'failures':int(suite.attrib['failures']),'errors':int(suite.attrib['errors'])})
+          receipt={'target':32738,'versionName':'3.21.0-bw','testSuites':rows,
+                   'scope':'JVM tests and release compile only; no real Root/device claim',
+                   'apkDeliveredFromThisWorkflow':False}
+          Path('out/selftest-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          if not rows or any(r['failures'] or r['errors'] for r in rows):
+              raise SystemExit('Missing or failed JVM test results')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bluewhale-feature-selftest-${{ github.run_number }}
+          path: out/
+          if-no-files-found: warn
+          retention-days: 14
