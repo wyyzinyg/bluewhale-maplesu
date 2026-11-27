@@ -24,7 +24,7 @@ jobs:
           tar xzf /tmp/maplesu.tar.gz -C src --strip-components=1
           test -d src/runtime/maplesu-sdk/sdk
           test -f src/runtime/maplesu-sdk/sdk/manifest.jsonl
-      - name: 安装 NDK / CMake
+      - name: 安装 NDK 26 / CMake（与 App 链接器保持一致）
         run: |
           set -euo pipefail
           SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
@@ -32,13 +32,13 @@ jobs:
           [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
           mkdir -p "$SDK/licenses"
           printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
-          for pkg in "ndk;29.0.14206865" "cmake;3.22.1"; do
+          for pkg in "ndk;26.1.10909125" "cmake;3.22.1"; do
             "$SM" "$pkg" < /dev/null || true
           done
-          test -d "$SDK/ndk/29.0.14206865"
-          echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
+          test -d "$SDK/ndk/26.1.10909125"
+          echo "ANDROID_NDK_HOME=$SDK/ndk/26.1.10909125" >> "$GITHUB_ENV"
           echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
-      - name: 放宽 compose 阶段继承的 -Werror（NDK 29 新警告不阻断归档重建）
+      - name: 放宽 compose 阶段继承的 -Werror（兼容 NDK 26/29 编译告警）
         run: |
           set -euo pipefail
           cd src
