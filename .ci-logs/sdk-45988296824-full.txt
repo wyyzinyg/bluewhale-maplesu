@@ -1,0 +1,304 @@
+run=45988296824
+sdk	Set up job	﻿2026-11-27T11:10:44.0004631Z Current runner version: '2.338.2'
+sdk	Set up job	2026-11-27T11:10:44.0041758Z ##[group]Runner Image Provisioner
+sdk	Set up job	2026-11-27T11:10:44.0043230Z Hosted Compute Agent
+sdk	Set up job	2026-11-27T11:10:44.0044449Z Version: 20261111.635
+sdk	Set up job	2026-11-27T11:10:44.0045555Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+sdk	Set up job	2026-11-27T11:10:44.0046662Z Build Date: 2026-11-11T01:49:01Z
+sdk	Set up job	2026-11-27T11:10:44.0047357Z Worker ID: {24279624-0658-4eec-a838-1d87f2f7f20c}
+sdk	Set up job	2026-11-27T11:10:44.0048104Z Region: centralus
+sdk	Set up job	2026-11-27T11:10:44.0048725Z Cloud: Azure
+sdk	Set up job	2026-11-27T11:10:44.0049263Z ##[endgroup]
+sdk	Set up job	2026-11-27T11:10:44.0051187Z ##[group]Operating System
+sdk	Set up job	2026-11-27T11:10:44.0051857Z Ubuntu
+sdk	Set up job	2026-11-27T11:10:44.0052350Z 26.04.1
+sdk	Set up job	2026-11-27T11:10:44.0052992Z LTS
+sdk	Set up job	2026-11-27T11:10:44.0053502Z ##[endgroup]
+sdk	Set up job	2026-11-27T11:10:44.0054140Z ##[group]Runner Image
+sdk	Set up job	2026-11-27T11:10:44.0054787Z Image: ubuntu-26.04
+sdk	Set up job	2026-11-27T11:10:44.0055339Z Version: 20261116.202.1
+sdk	Set up job	2026-11-27T11:10:44.0056498Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.202/images/ubuntu/Ubuntu2604-Readme.md
+sdk	Set up job	2026-11-27T11:10:44.0058276Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.202
+sdk	Set up job	2026-11-27T11:10:44.0059244Z ##[endgroup]
+sdk	Set up job	2026-11-27T11:10:44.0060724Z ##[group]GITHUB_TOKEN Permissions
+sdk	Set up job	2026-11-27T11:10:44.0062958Z Contents: write
+sdk	Set up job	2026-11-27T11:10:44.0063551Z Metadata: read
+sdk	Set up job	2026-11-27T11:10:44.0064606Z ##[endgroup]
+sdk	Set up job	2026-11-27T11:10:44.0066644Z Secret source: Actions
+sdk	Set up job	2026-11-27T11:10:44.0067735Z Cache mode: write
+sdk	Set up job	2026-11-27T11:10:44.0068764Z Prepare workflow directory
+sdk	Set up job	2026-11-27T11:10:44.0472052Z Prepare all required actions
+sdk	Set up job	2026-11-27T11:10:44.0546320Z Getting action download info
+sdk	Set up job	2026-11-27T11:10:44.3048111Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+sdk	Set up job	2026-11-27T11:10:44.5123623Z Complete job name: sdk
+sdk	Run actions/checkout@v4	﻿2026-11-27T11:10:44.6120843Z ##[group]Run actions/checkout@v4
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6121790Z with:
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6122285Z   repository: wyyzinyg/bluewhale-maplesu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6126392Z   token: ***
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6126836Z   ssh-strict: true
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6127291Z   ssh-user: git
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6127745Z   persist-credentials: true
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6128243Z   clean: true
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6128694Z   sparse-checkout-cone-mode: true
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6129216Z   fetch-depth: 1
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6129654Z   fetch-tags: false
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6130263Z   show-progress: true
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6130728Z   lfs: false
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6131149Z   submodules: false
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6131602Z   set-safe-directory: true
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6132119Z   allow-unsafe-pr-checkout: false
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.6132883Z ##[endgroup]
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8679367Z Syncing repository: wyyzinyg/bluewhale-maplesu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8682250Z ##[group]Getting Git version info
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8683385Z Working directory is '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8685003Z [command]/usr/bin/git version
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8685613Z git version 2.56.1
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8698054Z ##[endgroup]
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8712391Z Temporarily overriding HOME='/home/runner/work/_temp/2103dafc-a44e-4c39-8403-a3a62d70aa5f' before making global git config changes
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8714887Z Adding repository directory to the temporary git global config as a safe directory
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8717651Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8785261Z Deleting the contents of '/home/runner/work/bluewhale-maplesu/bluewhale-maplesu'
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8788274Z ##[group]Initializing the repository
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8793863Z [command]/usr/bin/git init /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8946561Z hint: Using 'master' as the name for the initial branch. This default branch name
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8947968Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8949161Z hint: to use in all of your new repositories, which will suppress this warning,
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8950583Z hint: call:
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8951056Z hint:
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8951651Z hint: 	git config --global init.defaultBranch <name>
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8952355Z hint:
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8953126Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8954132Z hint: 'development'. The just-created branch can be renamed via this command:
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8955031Z hint:
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8955538Z hint: 	git branch -m <name>
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8956098Z hint:
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8956865Z hint: Disable this message with "git config set advice.defaultBranchName false"
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8960114Z Initialized empty Git repository in /home/runner/work/bluewhale-maplesu/bluewhale-maplesu/.git/
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.8972923Z [command]/usr/bin/git remote add origin https://github.com/wyyzinyg/bluewhale-maplesu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9026947Z ##[endgroup]
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9028282Z ##[group]Disabling automatic garbage collection
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9031155Z [command]/usr/bin/git config --local gc.auto 0
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9067358Z ##[endgroup]
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9068610Z ##[group]Setting up auth
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9075127Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9112108Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9597582Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9636048Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9922642Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+sdk	Run actions/checkout@v4	2026-11-27T11:10:44.9959972Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.0238867Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.0284318Z ##[endgroup]
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.0285132Z ##[group]Fetching the repository
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.0299558Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +65e6c2c1ea3c477d9a26b2a3a992b93fb337686d:refs/remotes/origin/feat/32739-bluefishsu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5236145Z From https://github.com/wyyzinyg/bluewhale-maplesu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5237637Z  * [new ref]         65e6c2c1ea3c477d9a26b2a3a992b93fb337686d -> origin/feat/32739-bluefishsu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5241431Z ##[endgroup]
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5242847Z ##[group]Determining the checkout info
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5244606Z ##[endgroup]
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5250183Z [command]/usr/bin/git sparse-checkout disable
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5303071Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5333675Z ##[group]Checking out the ref
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5337997Z [command]/usr/bin/git checkout --progress --force -B feat/32739-bluefishsu refs/remotes/origin/feat/32739-bluefishsu
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5682640Z Switched to a new branch 'feat/32739-bluefishsu'
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5688438Z branch 'feat/32739-bluefishsu' set up to track 'origin/feat/32739-bluefishsu'.
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5698597Z ##[endgroup]
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5746853Z [command]/usr/bin/git log -1 --format=%H
+sdk	Run actions/checkout@v4	2026-11-27T11:10:45.5772133Z 65e6c2c1ea3c477d9a26b2a3a992b93fb337686d
+sdk	取上游 MapleSU 源码	﻿2026-11-27T11:10:45.6011046Z ##[group]Run set -euo pipefail
+sdk	取上游 MapleSU 源码	2026-11-27T11:10:45.6011773Z ^[[36;1mset -euo pipefail^[[0m
+sdk	取上游 MapleSU 源码	2026-11-27T11:10:45.6012298Z ^[[36;1mmkdir -p src^[[0m
+sdk	取上游 MapleSU 源码	2026-11-27T11:10:45.6012913Z ^[[36;1mUPSTREAM_COMMIT=ff3aa44850ea22717fa811a17831155a85f43445^[[0m
+sdk	取上游 MapleSU 源码	2026-11-27T11:10:45.6014089Z ^[[36;1mcurl -sSL --retry 3 -o /tmp/maplesu.tar.gz "https://codeload.github.com/FengQiuFQ/MapleSU/tar.gz/${UPSTREAM_COMMIT}"^[[0m
+sdk	取上游 MapleSU 源码	2026-11-27T11:10:45.6015455Z ^[[36;1mtar xzf /tmp/maplesu.tar.gz -C src --strip-components=1^[[0m
+sdk	取上游 MapleSU 源码	2026-11-27T11:10:45.6016175Z ^[[36;1mtest -d src/runtime/maplesu-sdk/sdk^[[0m
+sdk	取上游 MapleSU 源码	2026-11-27T11:10:45.6052537Z shell: /usr/bin/bash -e {0}
+sdk	取上游 MapleSU 源码	2026-11-27T11:10:45.6053105Z ##[endgroup]
+sdk	安装 NDK / CMake	﻿2026-11-27T11:11:23.9514226Z ##[group]Run set -euo pipefail
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9514655Z ^[[36;1mset -euo pipefail^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9515012Z ^[[36;1mSDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9515432Z ^[[36;1mSM="$SDK/cmdline-tools/latest/bin/sdkmanager"^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9515874Z ^[[36;1m[ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9516310Z ^[[36;1mmkdir -p "$SDK/licenses"^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9517143Z ^[[36;1mprintf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9518056Z ^[[36;1mfor pkg in "ndk;29.0.14206865" "cmake;3.22.1"; do^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9518431Z ^[[36;1m  "$SM" "$pkg" < /dev/null || true^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9518749Z ^[[36;1mdone^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9519005Z ^[[36;1mtest -d "$SDK/ndk/29.0.14206865"^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9519471Z ^[[36;1mecho "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9520184Z ^[[36;1mecho "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"^[[0m
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9553974Z shell: /usr/bin/bash -e {0}
+sdk	安装 NDK / CMake	2026-11-27T11:11:23.9554293Z ##[endgroup]
+sdk	安装 NDK / CMake	2026-11-27T11:11:31.3923388Z Loading package information...                                                  
+sdk	安装 NDK / CMake	2026-11-27T11:11:31.4831285Z Loading local repository...                                                     
+sdk	安装 NDK / CMake	2026-11-27T11:11:31.4832093Z [                                       ] 3% Loading local repository...        
+sdk	安装 NDK / CMake	2026-11-27T11:11:33.1930766Z [                                       ] 3% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:33.7473146Z [=                                      ] 3% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:33.8659066Z [=                                      ] 4% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.0062117Z [=                                      ] 5% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.0671825Z [==                                     ] 5% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.1440919Z [==                                     ] 6% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.2761373Z [==                                     ] 7% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.2762742Z [==                                     ] 7% Computing updates...               
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.2883083Z [===                                    ] 8% Computing updates...               
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.2951676Z [===                                    ] 10% Computing updates...              
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.2953030Z [=======================================] 100% Computing updates...             
+sdk	安装 NDK / CMake	2026-11-27T11:11:34.2953845Z 
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.1545508Z Loading package information...                                                  
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.2370017Z Loading local repository...                                                     
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.2370977Z [                                       ] 3% Loading local repository...        
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.2396836Z [                                       ] 3% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.6884320Z [=                                      ] 3% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.7727929Z [=                                      ] 4% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.8144444Z [=                                      ] 5% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.8776304Z [==                                     ] 5% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:35.9687251Z [==                                     ] 6% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.0608637Z [==                                     ] 7% Fetch remote repository...         
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.0631203Z [==                                     ] 7% Computing updates...               
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.0775143Z [===                                    ] 8% Computing updates...               
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.1034838Z [===                                    ] 10% Computing updates...              
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.5573421Z [===                                    ] 10% Installing CMake 3.22.1           
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.6435239Z [===                                    ] 10% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.6852456Z [====                                   ] 10% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7192712Z [====                                   ] 11% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7405377Z [====                                   ] 12% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7533943Z [=====                                  ] 13% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7635233Z [=====                                  ] 14% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7679765Z [=====                                  ] 15% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7720749Z [======                                 ] 15% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7800913Z [======                                 ] 16% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7890576Z [======                                 ] 17% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7931949Z [=======                                ] 18% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.7970692Z [=======                                ] 19% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8000674Z [=======                                ] 20% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8030456Z [========                               ] 20% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8076945Z [========                               ] 21% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8120582Z [========                               ] 22% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8131019Z [=========                              ] 23% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8170732Z [=========                              ] 24% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8210538Z [=========                              ] 25% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8211826Z [==========                             ] 25% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8248817Z [==========                             ] 26% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8280668Z [==========                             ] 27% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8321481Z [===========                            ] 28% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8360707Z [===========                            ] 29% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8380613Z [===========                            ] 30% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8487560Z [============                           ] 30% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8488883Z [============                           ] 31% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8490017Z [============                           ] 32% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:36.8490968Z [============                           ] 33% Downloading cmake-3.22.1-linux.zip
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.2450798Z [============                           ] 33% Unzipping...                      
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.2481320Z [============                           ] 33% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.2689054Z [=============                          ] 33% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.2881303Z [=============                          ] 34% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.2984432Z [=============                          ] 35% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.3114135Z [==============                         ] 35% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.3299750Z [==============                         ] 36% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.3451309Z [==============                         ] 37% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.3630873Z [===============                        ] 38% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.3787755Z [===============                        ] 39% Unzipping... bin/cmake            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.3915903Z [===============                        ] 39% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.3988578Z [===============                        ] 40% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4051542Z [================                       ] 40% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4186301Z [================                       ] 41% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4325016Z [================                       ] 42% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4457608Z [=================                      ] 43% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4578222Z [=================                      ] 44% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4634948Z [=================                      ] 45% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4690348Z [==================                     ] 45% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4733301Z [==================                     ] 46% Unzipping... bin/ctest            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4856849Z [==================                     ] 46% Unzipping... bin/cpack            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.4987553Z [==================                     ] 47% Unzipping... bin/cpack            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5112464Z [===================                    ] 48% Unzipping... bin/cpack            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5258548Z [===================                    ] 49% Unzipping... bin/cpack            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5331065Z [===================                    ] 50% Unzipping... bin/cpack            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5388057Z [====================                   ] 50% Unzipping... bin/cpack            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5514316Z [====================                   ] 51% Unzipping... bin/cpack            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5579318Z [====================                   ] 52% Unzipping... bin/cpack            
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5585952Z [====================                   ] 52% Unzipping... share/vim/vimfiles/in
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5597313Z [====================                   ] 52% Unzipping... share/vim/vimfiles/sy
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5600951Z [====================                   ] 52% Unzipping... share/aclocal/cmake.m
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5606299Z [====================                   ] 52% Unzipping... share/emacs/site-lisp
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.5611718Z [====================                   ] 52% Unzipping... share/cmake-3.22/incl
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.7802040Z [====================                   ] 52% Unzipping... share/cmake-3.22/Help
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.9274407Z [=====================                  ] 53% Unzipping... share/cmake-3.22/Help
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.9400519Z [=====================                  ] 53% Unzipping... share/cmake-3.22/Temp
+sdk	安装 NDK / CMake	2026-11-27T11:11:37.9789385Z [=====================                  ] 53% Unzipping... share/cmake-3.22/Modu
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1088529Z [=====================                  ] 54% Unzipping... share/cmake-3.22/Modu
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1095341Z [=====================                  ] 54% Unzipping... share/bash-completion
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1098167Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/Copyri
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1100539Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmzlib
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1102823Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmzstd
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1105253Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmnght
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1107457Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmsys/
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1110010Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmcurl
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1123519Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmlibr
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1124928Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmliba
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1125888Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmlibl
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1127182Z [=====================                  ] 54% Unzipping... doc/cmake-3.22/cmlibu
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1128203Z [=====================                  ] 54% Unzipping... doc/openssl-1.1.1l/LI
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1129218Z [=====================                  ] 54% Unzipping... source.properties    
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1156087Z [=====================                  ] 54% Unzipping... bin/ninja            
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1158942Z [=====================                  ] 54% Unzipping... doc/ninja/LICENSE    
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1163472Z [=====================                  ] 54% Unzipping... share/cmake-3.22/Modu
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1302509Z [=====================                  ] 55% Unzipping... share/cmake-3.22/Modu
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.1303233Z [=======================================] 100% Unzipping... share/cmake-3.22/Mod
+sdk	安装 NDK / CMake	2026-11-27T11:11:38.6950697Z 
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	﻿2026-11-27T11:11:38.7209301Z ##[group]Run set -euo pipefail
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7209659Z ^[[36;1mset -euo pipefail^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7210477Z ^[[36;1mcd src^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7211021Z ^[[36;1mln -sfn "$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64" "$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/windows-x86_64"^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7211665Z ^[[36;1mmkdir -p /tmp/bw-sdk^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7211918Z ^[[36;1mset +e^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7212322Z ^[[36;1mpython3 runtime/maplesu-sdk/sdk/build.py --skip-invalid --payloads --compile --pack \^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7212804Z ^[[36;1m  --ndk "$ANDROID_NDK_HOME" \^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7213083Z ^[[36;1m  --build-dir /tmp/bw-sdk \^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7213427Z ^[[36;1m  --archive /tmp/bw-sdk/libkernel_module_kit_static.a \^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7213810Z ^[[36;1m  --jobs 4 > /tmp/sdk-build.log 2>&1^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7214089Z ^[[36;1mSTATUS=$?^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7214296Z ^[[36;1mset -e^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7214504Z ^[[36;1mcd "$GITHUB_WORKSPACE"^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7214792Z ^[[36;1mmkdir -p .ci-logs^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7215115Z ^[[36;1mcp /tmp/sdk-build.log .ci-logs/sdk-v3-build.log || true^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7215765Z ^[[36;1mif [ -f /tmp/bw-sdk/report/build-report.json ]; then cp /tmp/bw-sdk/report/build-report.json .ci-logs/sdk-v3-report.json; fi^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7216646Z ^[[36;1mif [ -f /tmp/bw-sdk/report/MANIFEST-COVERAGE.md ]; then cp /tmp/bw-sdk/report/MANIFEST-COVERAGE.md .ci-logs/sdk-v3-coverage.md; fi^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7217290Z ^[[36;1mgit config user.name "github-actions[bot]"^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7217750Z ^[[36;1mgit config user.email "41898282+github-actions[bot]@users.noreply.github.com"^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7218183Z ^[[36;1mgit add .ci-logs || true^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7218498Z ^[[36;1mgit commit -m "ci: sdk v3 build diagnostics" || true^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7218827Z ^[[36;1mgit push || true^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7219198Z ^[[36;1mif [ $STATUS -ne 0 ]; then echo "SDK BUILD FAILED status=$STATUS"; exit $STATUS; fi^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7219671Z ^[[36;1mls -lh /tmp/bw-sdk/libkernel_module_kit_static.a^[[0m
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7254177Z shell: /usr/bin/bash -e {0}
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7254439Z env:
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7254709Z   ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/29.0.14206865
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:38.7255233Z ##[endgroup]
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.0528386Z [feat/32739-bluefishsu 2f14a8e] ci: sdk v3 build diagnostics
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.0528822Z  2 files changed, 6608 insertions(+)
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.0529114Z  create mode 100644 .ci-logs/sdk-v3-build.log
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.0529566Z  create mode 100644 .ci-logs/sdk-v3-report.json
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5758621Z To https://github.com/wyyzinyg/bluewhale-maplesu
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5759309Z  ! [rejected]        feat/32739-bluefishsu -> feat/32739-bluefishsu (fetch first)
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5760384Z error: failed to push some refs to 'https://github.com/wyyzinyg/bluewhale-maplesu'
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5773317Z hint: Updates were rejected because the remote contains work that you do not
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5774111Z hint: have locally. This is usually caused by another repository pushing to
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5774997Z hint: the same ref. If you want to integrate the remote changes, use
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5775728Z hint: 'git pull' before pushing again.
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5776477Z hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5777480Z SDK BUILD FAILED status=3
+sdk	重建 Ultra SDK archive（记录 manifest 缺陷）	2026-11-27T11:11:43.5790364Z ##[error]Process completed with exit code 3.
+sdk	Post Run actions/checkout@v4	﻿2026-11-27T11:11:43.5931333Z Post job cleanup.
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.6802951Z [command]/usr/bin/git version
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.6851438Z git version 2.56.1
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.6892166Z Temporarily overriding HOME='/home/runner/work/_temp/7759d7fa-d614-49ed-963c-d5456efe641a' before making global git config changes
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.6893571Z Adding repository directory to the temporary git global config as a safe directory
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.6897197Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bluewhale-maplesu/bluewhale-maplesu
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.6944904Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.6985219Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.7288642Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.7314084Z http.https://github.com/.extraheader
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.7344558Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.7372580Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.7720984Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+sdk	Post Run actions/checkout@v4	2026-11-27T11:11:43.7772246Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+sdk	Complete job	﻿2026-11-27T11:11:43.8272000Z Cleaning up orphan processes
+sdk	Complete job	2026-11-27T11:11:43.8658674Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
