@@ -1,0 +1,4 @@
+run=45951287310
+url=https://filebin.net/bw32737-45951287310/manager-release-unsigned.apk.bin
+sha256=c1cf9d5b7d7dd2c21992ef7cddb80e013c3582d1739e9c2d382eb051171fd83c
+size=44114003
