@@ -1,0 +1,74 @@
+name: build-ultra-sdk
+
+# 从 maplesu-sdk 源码重建 Ultra SDK 静态库，补齐当前预编译 archive 缺失的
+# maplesu::sdk / maplesu::su_auth / kernel_module::maplesu_request_auth_state 符号。
+# 产物直接提交回当前分支，供 build-bluewhale-native 链接 libmaplesu_ultra_bridge.so。
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".ultra-sdk-trigger/**"
+
+permissions:
+  contents: write
+
+jobs:
+  sdk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 NDK / CMake
+        run: |
+          set -euo pipefail
+          SDK="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          SM="$SDK/cmdline-tools/latest/bin/sdkmanager"
+          [ -x "$SM" ] || SM=$(find "$SDK" -name sdkmanager -type f | head -1)
+          mkdir -p "$SDK/licenses"
+          printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee\n' > "$SDK/licenses/android-sdk-license"
+          for pkg in "ndk;29.0.14206865" "cmake;3.22.1"; do
+            "$SM" "$pkg" < /dev/null || true
+          done
+          test -d "$SDK/ndk/29.0.14206865"
+          echo "ANDROID_NDK_HOME=$SDK/ndk/29.0.14206865" >> "$GITHUB_ENV"
+          echo "$SDK/cmake/3.22.1/bin" >> "$GITHUB_PATH"
+
+      - name: 重建 Ultra SDK archive
+        run: |
+          set -euo pipefail
+          cd src
+          python3 runtime/maplesu-sdk/sdk/build.py --compile --pack \
+            --ndk "$ANDROID_NDK_HOME" \
+            --build-dir /tmp/bw-sdk \
+            --archive /tmp/bw-sdk/libkernel_module_kit_static.a \
+            --jobs 4
+          ls -lh /tmp/bw-sdk/libkernel_module_kit_static.a
+
+      - name: 校验 Ultra API 符号
+        run: |
+          set -euo pipefail
+          NM=$(find "$ANDROID_NDK_HOME" -name llvm-nm -type f | head -1)
+          echo "llvm-nm=$NM"
+          "$NM" -C --defined-only /tmp/bw-sdk/libkernel_module_kit_static.a > /tmp/sdk-symbols.txt
+          for sym in \
+            'kernel_module::maplesu_request_auth_state()' \
+            'maplesu::sdk::get_sdk_version()' \
+            'maplesu::sdk::install_maplesu_environment' \
+            'maplesu::su_auth::add' \
+            'maplesu::su_auth::get_uid_profiles_with_cb'; do
+            grep -F "$sym" /tmp/sdk-symbols.txt > /dev/null || { echo "FATAL: missing $sym"; exit 1; }
+          done
+          echo "Ultra SDK symbols OK"
+
+      - name: 提交 archive 回分支
+        run: |
+          set -euo pipefail
+          cp /tmp/bw-sdk/libkernel_module_kit_static.a runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runtime/maplesu-sdk/lib/arm64-v8a/libkernel_module_kit_static.a
+          git commit -m "sdk: rebuild Ultra SDK archive with maplesu::sdk and su_auth symbols" || true
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}"
