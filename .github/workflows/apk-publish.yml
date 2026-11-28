@@ -32,29 +32,30 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: artifact
       - name: inspect
-        run: |
-          echo "--- all files ---"
-          find artifact -type f | head -40
-          echo "--- apks ---"
-          find artifact -type f -name '*.apk' -exec ls -l {} \;
-      - name: upload catbox and write receipt
+        run: find artifact -type f -name '*.apk' -exec ls -l {} \;
+      - name: publish apk
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -uo pipefail
           APK=$(find artifact -type f -name '*.apk' | head -1 || true)
-          if [ -z "$APK" ]; then echo "NO_APK" >&2; exit 1; fi
+          [ -z "$APK" ] && { echo NO_APK; exit 1; }
           SIZE=$(stat -c%s "$APK")
           SHA=$(sha256sum "$APK" | awk '{print $1}')
-          echo "apk=$APK size=$SIZE sha=$SHA"
-          URL=$(curl -fsS --max-time 600 -F "reqtype=fileupload" \
-            -F "fileToUpload=@${APK};filename=bluewhale-manager-v3.22.1-bw-32740.apk" \
-            https://catbox.moe/user/api.php 2>&1 || true)
-          echo "catbox: $URL"
-          if [ -z "$URL" ] || ! echo "$URL" | grep -qE '^https?://'; then
-            echo "catbox failed, trying litterbox"
-            URL=$(curl -fsS --max-time 600 -F "reqtype=fileupload" -F "time=72h" \
-              -F "fileToUpload=@${APK};filename=bluewhale-manager-v3.22.1-bw-32740.apk" \
-              https://litterbox.catbox.moe/resources/internals/api.php 2>&1 || true)
-            echo "litterbox: $URL"
+          NAME=bluewhale-manager-v3.22.1-bw-32740.apk
+          cp "$APK" "/tmp/$NAME"
+          REL=bw32740
+          echo "--- release ---"
+          gh release view "$REL" >/dev/null 2>&1 || gh release create "$REL" -t "BlueWhale 3.22.1-bw 32740" -n "build run $RUN_ID" || true
+          gh release upload "$REL" "/tmp/$NAME" --clobber && echo RELEASE_OK || echo RELEASE_FAIL
+          URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${REL}/${NAME}"
+          code=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 60 "$URL" || echo 000)
+          echo "release url http: $code"
+          if [ "$code" != "200" ]; then
+            echo "--- catbox ---"
+            URL=$(curl -fsS --max-time 900 -A "Mozilla/5.0" -F "reqtype=fileupload" \
+              -F "fileToUpload=@/tmp/${NAME};filename=${NAME}" https://catbox.moe/user/api.php 2>&1 || true)
+            echo "catbox: $URL"
           fi
           mkdir -p .ci-logs
           {
@@ -68,4 +69,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ".ci-logs/apk-${RUN_ID}.txt"
           git commit -m "ci: apk link ${RUN_ID}" || true
-          git push origin HEAD:${GITHUB_REF_NAME} || git push origin HEAD:main || true
+          git push origin HEAD:${GITHUB_REF_NAME} || true
