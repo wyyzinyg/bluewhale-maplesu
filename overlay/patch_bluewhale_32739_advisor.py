@@ -14,6 +14,7 @@ from patch_bluewhale_32743_clean import patch_32743_clean
 from patch_bluewhale_32744_diaglog import patch_32744_diaglog
 from patch_bluewhale_32745_clean import patch_32745_clean
 from patch_bluewhale_32746_statcard import patch_32746_statcard
+from patch_bluewhale_32747_diag2 import patch_32747_diag2
 
 # r4 overlay is carried as a hash-pinned CDN payload until it is committed to the repo.
 try:
@@ -186,6 +187,7 @@ def main() -> int:
     patch_32744_diaglog(ROOT)
     patch_32745_clean(ROOT)
     patch_32746_statcard(ROOT)
+    patch_32747_diag2(ROOT)
     print("32739 advisor + compile fixes + combined entry + limited Home/Settings applied")
     return 0
 
