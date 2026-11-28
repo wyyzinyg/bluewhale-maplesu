@@ -20,6 +20,21 @@ from patch_bluewhale_32749_home4 import patch_32749_home4
 from patch_bluewhale_32750_nojb import main as patch_32750_nojb
 from patch_bluewhale_32751_introbrand import main as patch_32751_introbrand
 
+try:
+    from patch_bluewhale_32752_notice import main as patch_32752_notice
+except ModuleNotFoundError:
+    # 32752 走 CDN 直接拉取，不依赖 selfpatch 是否已把文件落进 overlay。
+    import hashlib
+    import urllib.request
+    _N52_URL = "https://aka.doubaocdn.com/s/JfSuXalBVu"
+    _N52_SHA = "59d02cc12f9e7736aee64703d6a513e414421c0f6b001f6b0e2fc7cfaea6a25f"
+    _n52 = urllib.request.urlopen(_N52_URL, timeout=90).read()
+    if hashlib.sha256(_n52).hexdigest() != _N52_SHA:
+        raise SystemExit("FATAL: 32752 payload hash mismatch")
+    _ns52 = {}
+    exec(compile(_n52, "patch_bluewhale_32752_notice.py", "exec"), _ns52)
+    patch_32752_notice = _ns52["main"]
+
 # r4 overlay is carried as a hash-pinned CDN payload until it is committed to the repo.
 try:
     from patch_bluewhale_32741 import patch_32741
@@ -196,6 +211,7 @@ def main() -> int:
     patch_32749_home4(ROOT)
     patch_32750_nojb()
     patch_32751_introbrand()
+    patch_32752_notice()
     print("32739 advisor + compile fixes + combined entry + limited Home/Settings applied")
     return 0
 
