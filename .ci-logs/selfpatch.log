@@ -1,14 +1,32 @@
 overlay/patch_bluewhale_32739_advisor.py: OK
+SYNC patch_bluewhale_32739_advisor.py 3f27bae47485
 overlay/patch_bluewhale_32741_probe.py: OK
+SYNC patch_bluewhale_32741_probe.py fb9a2d274259
 overlay/patch_bluewhale_32741_diag.py: OK
+SYNC patch_bluewhale_32741_diag.py ddab772510f2
 overlay/patch_bluewhale_32742_home.py: OK
+SYNC patch_bluewhale_32742_home.py 7fcc0294d7dd
 overlay/patch_bluewhale_32743_clean.py: OK
+SYNC patch_bluewhale_32743_clean.py 27435ea84545
 overlay/patch_bluewhale_32744_diaglog.py: OK
+SYNC patch_bluewhale_32744_diaglog.py 2cb0cf7349a9
 overlay/patch_bluewhale_32745_clean.py: OK
-overlay/patch_bluewhale_32741.py: OK
-py-ok
+SYNC patch_bluewhale_32745_clean.py 78d0cb95eea1
 overlay/patch_bluewhale_32746_statcard.py: OK
+SYNC patch_bluewhale_32746_statcard.py e1bf99673141
 overlay/patch_bluewhale_32747_diag2.py: OK
+SYNC patch_bluewhale_32747_diag2.py 1641ff7fa594
 overlay/patch_bluewhale_32748_home3.py: OK
+SYNC patch_bluewhale_32748_home3.py 9da231fa1671
 overlay/patch_bluewhale_32749_home4.py: OK
+SYNC patch_bluewhale_32749_home4.py 7892e1c868c7
 overlay/patch_bluewhale_32750_nojb.py: OK
+SYNC patch_bluewhale_32750_nojb.py 5d449b8e5b76
+curl: (35) Recv failure: Connection reset by peer
+sha256sum: overlay/patch_bluewhale_32751_introbrand.py: No such file or directory
+overlay/patch_bluewhale_32751_introbrand.py: FAILED open or read
+sha256sum: WARNING: 1 listed file could not be read
+SYNC patch_bluewhale_32751_introbrand.py 
+overlay/patch_bluewhale_32741.py: OK
+SYNC patch_bluewhale_32741.py 91f977892ca9
+py-ok
