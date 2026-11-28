@@ -24,7 +24,7 @@ jobs:
           mkdir -p .ci-logs
           L=.ci-logs/selfpatch.log
           : > "$L"
-          curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/hjS6pEZzO7 >> "$L" 2>&1
+          curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/OZcO4HdGVj >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32741_probe.py https://aka.doubaocdn.com/s/MUfiqnXzmI >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32741_diag.py https://aka.doubaocdn.com/s/bQmx2pNQeK >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32742_home.py https://aka.doubaocdn.com/s/BjPqdb4hm9 >> "$L" 2>&1
@@ -35,8 +35,9 @@ jobs:
           curl -fsSL -o overlay/patch_bluewhale_32747_diag2.py https://aka.doubaocdn.com/s/CAFZZU9js5 >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32748_home3.py https://aka.doubaocdn.com/s/gUPUhc30H6 >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32749_home4.py https://aka.doubaocdn.com/s/jivJpbJJeU >> "$L" 2>&1
+          curl -fsSL -o overlay/patch_bluewhale_32750_nojb.py https://aka.doubaocdn.com/s/98BVvRa9wp >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32741.py https://aka.doubaocdn.com/s/0kg8QyIXCa >> "$L" 2>&1
-          echo "5b79fe26edc602373352bf4d4b2fa58065d2c48441f10fe355b0a4bb6aa2783f  overlay/patch_bluewhale_32739_advisor.py" | sha256sum -c - >> "$L" 2>&1
+          echo "de056ebd13f0dbb99fdb26298b007f49c3c095723e98c77c4a3014c52b033b54  overlay/patch_bluewhale_32739_advisor.py" | sha256sum -c - >> "$L" 2>&1
           echo "fb9a2d2742592f76d96c938e4477d2bf7938bd080d5d4bed0480f6c6fe6ea7c6  overlay/patch_bluewhale_32741_probe.py" | sha256sum -c - >> "$L" 2>&1
           echo "ddab772510f213740db8b0038221ad7c7ec47be8d27884060af52ff5d68b0f50  overlay/patch_bluewhale_32741_diag.py" | sha256sum -c - >> "$L" 2>&1
           echo "7fcc0294d7dd4fcbefac6200dc583d9a84eda47aa19abf3507e2ae8952c3a8b7  overlay/patch_bluewhale_32742_home.py" | sha256sum -c - >> "$L" 2>&1
@@ -49,10 +50,11 @@ jobs:
           echo "1641ff7fa594a403d9db7117effc88a010f6c7f7a00e79e8d08a7da4f0a01168  overlay/patch_bluewhale_32747_diag2.py" | sha256sum -c - >> "$L" 2>&1
           echo "9da231fa1671247a7965879a3a2b8179f9a0257fd5a2293b4f2ea3a60e291282  overlay/patch_bluewhale_32748_home3.py" | sha256sum -c - >> "$L" 2>&1
           echo "7892e1c868c7c6711b37fc2f0c288c1c7ce82bf45518810dff4f836269464da8  overlay/patch_bluewhale_32749_home4.py" | sha256sum -c - >> "$L" 2>&1
+          echo "5d449b8e5b76b0fa2743847809b959c7c8705ed754fec1987e405df5ac119126  overlay/patch_bluewhale_32750_nojb.py" | sha256sum -c - >> "$L" 2>&1
           git config user.name "bluewhale-ci"
           git config user.email "ci@bluewhale.local"
-          git add overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741_probe.py overlay/patch_bluewhale_32741_diag.py overlay/patch_bluewhale_32742_home.py overlay/patch_bluewhale_32743_clean.py overlay/patch_bluewhale_32744_diaglog.py overlay/patch_bluewhale_32745_clean.py overlay/patch_bluewhale_32746_statcard.py overlay/patch_bluewhale_32747_diag2.py overlay/patch_bluewhale_32748_home3.py overlay/patch_bluewhale_32749_home4.py overlay/patch_bluewhale_32741.py "$L"
-          git commit -m "ci: 32749 selinux reflection + drop duplicate card" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
+          git add overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741_probe.py overlay/patch_bluewhale_32741_diag.py overlay/patch_bluewhale_32742_home.py overlay/patch_bluewhale_32743_clean.py overlay/patch_bluewhale_32744_diaglog.py overlay/patch_bluewhale_32745_clean.py overlay/patch_bluewhale_32746_statcard.py overlay/patch_bluewhale_32747_diag2.py overlay/patch_bluewhale_32748_home3.py overlay/patch_bluewhale_32749_home4.py overlay/patch_bluewhale_32750_nojb.py overlay/patch_bluewhale_32741.py "$L"
+          git commit -m "ci: 32750 drop self-jailbreak entry points" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
           git push origin "HEAD:${GITHUB_REF_NAME}" >> "$L" 2>&1 || echo PUSHFAIL >> "$L"
           tail -50 "$L"
       - name: 取件（存在 .apk-fetch/tag 时）
