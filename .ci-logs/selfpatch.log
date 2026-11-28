@@ -1,5 +1,5 @@
 overlay/patch_bluewhale_32739_advisor.py: OK
-SYNC patch_bluewhale_32739_advisor.py 22db596875bb
+SYNC patch_bluewhale_32739_advisor.py 6921b0fe1734
 overlay/patch_bluewhale_32741_probe.py: OK
 SYNC patch_bluewhale_32741_probe.py fb9a2d274259
 overlay/patch_bluewhale_32741_diag.py: OK
@@ -26,12 +26,13 @@ overlay/patch_bluewhale_32751_introbrand.py: OK
 SYNC patch_bluewhale_32751_introbrand.py a85ae65c56b6
 overlay/patch_bluewhale_32752_notice.py: OK
 SYNC patch_bluewhale_32752_notice.py 59d02cc12f9e
+curl: (35) Recv failure: Connection reset by peer
 overlay/patch_bluewhale_32753_theme.py: OK
 SYNC patch_bluewhale_32753_theme.py c586112dbd45
 overlay/patch_bluewhale_32754_update_prompt.py: OK
 SYNC patch_bluewhale_32754_update_prompt.py 6604b033918a
 overlay/patch_bluewhale_32755_settings_fix.py: OK
-SYNC patch_bluewhale_32755_settings_fix.py 6d8d880d5ed2
+SYNC patch_bluewhale_32755_settings_fix.py 6efa083c6f39
 overlay/patch_bluewhale_32741.py: OK
 SYNC patch_bluewhale_32741.py 91f977892ca9
 py-ok

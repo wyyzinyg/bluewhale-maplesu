@@ -31,7 +31,7 @@ GRADLE = "manager/build.gradle.kts"
 
 failures = []
 
-DEVICE_SOURCE = '''package com.maplesu.core.ui.util
+DEVICE_SOURCE = r'''package com.maplesu.core.ui.util
 
 import android.annotation.SuppressLint
 import android.os.Build

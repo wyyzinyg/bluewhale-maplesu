@@ -227,9 +227,9 @@ def _load_32755() -> None:
     except Exception:
         payload = None
     if payload is None:
-        url = "https://aka.doubaocdn.com/s/zPrKCObQBQ"
+        url = "https://aka.doubaocdn.com/s/nxZ6ZURfUg"
         payload = urllib.request.urlopen(url, timeout=90).read()
-    expect = "6d8d880d5ed24e9712c3d01d3c02f1cf99873c8edb684553b7e1e52069b4817a"
+    expect = "6efa083c6f39afa8f4616826d4e5cea8f50dde96a7fd2deab8db96300ec5048a"
     if hashlib.sha256(payload).hexdigest() != expect:
         raise SystemExit("FATAL: 32755 payload hash mismatch")
     ns = {"__name__": "patch_bluewhale_32755_settings_fix", "__file__": "patch_bluewhale_32755_settings_fix.py"}
