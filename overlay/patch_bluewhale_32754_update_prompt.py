@@ -18,6 +18,7 @@ PROMPT_KT = "manager/src/main/java/com/maplesu/core/ui/util/ManagerUpdatePrompt.
 HOME_SCREEN = "manager/src/main/java/com/maplesu/core/ui/screen/home/HomeScreen.kt"
 ZH = "manager/src/main/res/values-zh-rCN/strings.xml"
 EN = "manager/src/main/res/values/strings.xml"
+GRADLE = "manager/build.gradle.kts"
 
 failures = []
 
@@ -118,6 +119,20 @@ def swap(rel: str, pairs, label: str) -> None:
     print(f"patched: {label} ({hits})")
 
 
+def bump() -> None:
+    path = ROOT / GRADLE
+    if not path.is_file():
+        failures.append("missing gradle")
+        return
+    text = path.read_text(encoding="utf-8")
+    if "32753" not in text or "3.22.14-bw" not in text:
+        print("SKIP bump: 32753/3.22.14-bw not found")
+        return
+    text = text.replace("32753", "32754", 1).replace("3.22.14-bw", "3.22.15-bw", 1)
+    path.write_text(text, encoding="utf-8")
+    print("bumped manager version -> 32754/3.22.15-bw")
+
+
 def main() -> int:
     create_file(PROMPT_KT, PROMPT_SOURCE)
 
@@ -154,6 +169,8 @@ def main() -> int:
             '    <string name="update_prompt_no_changelog">A new version is available. Updating is recommended.</string>',
         ),
     ], "en 文案")
+
+    bump()
 
     if failures:
         print("FAIL:", failures)

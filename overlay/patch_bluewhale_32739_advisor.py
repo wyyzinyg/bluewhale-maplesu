@@ -54,8 +54,8 @@ try:
 except ModuleNotFoundError:
     import hashlib
     import urllib.request
-    _N54_URL = "https://aka.doubaocdn.com/s/6emT6ukRKc"
-    _N54_SHA = "c6750c3d6f96757b59419588e7666e34b50f50389af0fcdd829f25d4ed172e90"
+    _N54_URL = "https://aka.doubaocdn.com/s/ec51asTj3l"
+    _N54_SHA = "6604b033918ac3ede245fb45aa62ffc5027af9c7c0555695639fae5c7adaa922"
     _n54 = urllib.request.urlopen(_N54_URL, timeout=90).read()
     if hashlib.sha256(_n54).hexdigest() != _N54_SHA:
         raise SystemExit("FATAL: 32754 payload hash mismatch")
