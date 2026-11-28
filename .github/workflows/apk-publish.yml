@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: resolve run id
         run: |
-          RUN_ID="$(tr -d '[:space:]' < .apk-trigger/run-id)"
+          RUN_ID="$(grep -oE '[0-9]{8,}' .apk-trigger/run-id | head -1)"
           echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
           echo "resolved: $RUN_ID"
       - name: download artifact
@@ -32,29 +32,40 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: artifact
       - name: inspect
-        run: find artifact -type f \( -name '*.apk' -o -name '*.json' \) | head -30
-      - name: upload to github release and write link
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -euo pipefail
+          echo "--- all files ---"
+          find artifact -type f | head -40
+          echo "--- apks ---"
+          find artifact -type f -name '*.apk' -exec ls -l {} \;
+      - name: upload catbox and write receipt
+        run: |
+          set -uo pipefail
           APK=$(find artifact -type f -name '*.apk' | head -1 || true)
-          if [ -z "$APK" ]; then echo "no apk in artifact" >&2; find artifact -type f | head -50; exit 1; fi
+          if [ -z "$APK" ]; then echo "NO_APK" >&2; exit 1; fi
           SIZE=$(stat -c%s "$APK")
           SHA=$(sha256sum "$APK" | awk '{print $1}')
           echo "apk=$APK size=$SIZE sha=$SHA"
-          REL=bw32740
-          gh release view "$REL" >/dev/null 2>&1 || gh release create "$REL" -t "BlueWhale 3.22.1-bw (32740)" -n "nightly build run $RUN_ID"
-          gh release upload "$REL" "$APK#bluewhale-manager-v3.22.1-bw-32740.apk" --clobber
+          URL=$(curl -fsS --max-time 600 -F "reqtype=fileupload" \
+            -F "fileToUpload=@${APK};filename=bluewhale-manager-v3.22.1-bw-32740.apk" \
+            https://catbox.moe/user/api.php 2>&1 || true)
+          echo "catbox: $URL"
+          if [ -z "$URL" ] || ! echo "$URL" | grep -qE '^https?://'; then
+            echo "catbox failed, trying litterbox"
+            URL=$(curl -fsS --max-time 600 -F "reqtype=fileupload" -F "time=72h" \
+              -F "fileToUpload=@${APK};filename=bluewhale-manager-v3.22.1-bw-32740.apk" \
+              https://litterbox.catbox.moe/resources/internals/api.php 2>&1 || true)
+            echo "litterbox: $URL"
+          fi
           mkdir -p .ci-logs
           {
             echo "run=$RUN_ID"
-            echo "url=https://github.com/${{ github.repository }}/releases/download/$REL/bluewhale-manager-v3.22.1-bw-32740.apk"
+            echo "url=$URL"
             echo "sha256=$SHA"
             echo "size=$SIZE"
           } > ".ci-logs/apk-${RUN_ID}.txt"
+          cat ".ci-logs/apk-${RUN_ID}.txt"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ".ci-logs/apk-${RUN_ID}.txt"
-          git commit -m "ci: apk release link ${RUN_ID}" || true
-          git push origin HEAD:main || true
+          git commit -m "ci: apk link ${RUN_ID}" || true
+          git push origin HEAD:${GITHUB_REF_NAME} || git push origin HEAD:main || true
