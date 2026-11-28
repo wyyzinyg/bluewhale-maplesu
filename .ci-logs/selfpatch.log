@@ -9,3 +9,4 @@ overlay/patch_bluewhale_32741.py: OK
 py-ok
 overlay/patch_bluewhale_32746_statcard.py: OK
 overlay/patch_bluewhale_32747_diag2.py: OK
+overlay/patch_bluewhale_32748_home3.py: OK
