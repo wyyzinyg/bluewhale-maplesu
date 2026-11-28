@@ -16,13 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: rid
-        run: echo "runid=$(cat .apk-trigger/run-id | tr -d ' \n')" >> "$GITHUB_OUTPUT"
+        run: echo "runid=$(grep -o '[0-9][0-9]*' .apk-trigger/run-id | head -1)" >> "$GITHUB_OUTPUT"
       - name: 下载构建产物
         uses: actions/download-artifact@v4
         with:
           run-id: ${{ steps.rid.outputs.runid }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          name: bluewhale-native-37
+          name: bluewhale-native-38
           path: out
       - name: 校验并上传到 Release
         env:
@@ -32,18 +32,18 @@ jobs:
           mkdir -p tmp .ci-logs
           R="${{ steps.rid.outputs.runid }}"
           cd out
-          APK=$(ls *.apk | head -1)
+          APK=$(ls *.apk *.apk.zip 2>/dev/null | head -1)
+          ls -la
+          echo "apk=$APK"
           SIZE=$(stat -c%s "$APK")
           SHA=$(sha256sum "$APK" | cut -d' ' -f1)
-          cp "$APK" ../tmp/bluewhale-manager-v3.22.5-bw-32744.apk
+          cp "$APK" "../tmp/bluewhale-manager-v3.22.6-bw-32745.apk"
           cd ..
-          echo "unsigned-sha=$SHA size=$SIZE" > ".ci-logs/apk-${R}.txt"
-          gh release create bw32744 --title "32744 / 3.22.5-bw" --notes "diagnostics log" 2>/dev/null || true
-          gh release upload bw32744 "tmp/bluewhale-manager-v3.22.5-bw-32744.apk" --clobber
-          URL=$(gh release view bw32744 --json assets -q '.assets[0].url')
-          echo "url=$URL" >> ".ci-logs/apk-${R}.txt"
-          echo "sha256=$SHA" >> ".ci-logs/apk-${R}.txt"
-          echo "size=$SIZE" >> ".ci-logs/apk-${R}.txt"
+          printf 'unsigned-sha=%s size=%s\n' "$SHA" "$SIZE" > ".ci-logs/apk-${R}.txt"
+          gh release create bw32745 --title "32745 / 3.22.6-bw" --notes "home cleanup + runtime evidence" 2>/dev/null || true
+          gh release upload bw32745 "tmp/bluewhale-manager-v3.22.6-bw-32745.apk" --clobber
+          URL=$(gh release view bw32745 --json assets -q '.assets[0].url')
+          printf 'url=%s\nsha256=%s\nsize=%s\n' "$URL" "$SHA" "$SIZE" >> ".ci-logs/apk-${R}.txt"
           git config user.name "bluewhale-ci"
           git config user.email "ci@bluewhale.local"
           git add ".ci-logs/apk-${R}.txt"
