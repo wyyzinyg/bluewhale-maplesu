@@ -5,68 +5,48 @@ on:
     paths:
       - ".apk-trigger/**"
   workflow_dispatch:
-    inputs:
-      run_id:
-        description: "native run id"
-        required: true
 
 permissions:
-  contents: write
   actions: read
+  contents: write
 
 jobs:
-  publish:
+  fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: resolve run id
-        run: |
-          RUN_ID="$(grep -oE '[0-9]{8,}' .apk-trigger/run-id | head -1)"
-          echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
-          echo "resolved: $RUN_ID"
-      - name: download artifact
+      - id: rid
+        run: echo "runid=$(cat .apk-trigger/run-id | tr -d ' \n')" >> "$GITHUB_OUTPUT"
+      - name: 下载构建产物
         uses: actions/download-artifact@v4
         with:
-          run-id: ${{ env.RUN_ID }}
+          run-id: ${{ steps.rid.outputs.runid }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: artifact
-      - name: inspect
-        run: find artifact -type f -name '*.apk' -exec ls -l {} \;
-      - name: publish apk
+          name: bluewhale-native-36
+          path: out
+      - name: 校验并上传到 Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -uo pipefail
-          APK=$(find artifact -type f -name '*.apk' | head -1 || true)
-          [ -z "$APK" ] && { echo NO_APK; exit 1; }
+          set -u
+          mkdir -p tmp .ci-logs
+          R="${{ steps.rid.outputs.runid }}"
+          cd out
+          APK=$(ls *.apk | head -1)
           SIZE=$(stat -c%s "$APK")
-          SHA=$(sha256sum "$APK" | awk '{print $1}')
-          NAME=bluewhale-manager-v3.22.4-bw-32743.apk
-          cp "$APK" "/tmp/$NAME"
-          REL=bw32743
-          echo "--- release ---"
-          gh release view "$REL" >/dev/null 2>&1 || gh release create "$REL" -t "BlueWhale 3.22.4-bw 32743" -n "build run $RUN_ID" || true
-          gh release upload "$REL" "/tmp/$NAME" --clobber && echo RELEASE_OK || echo RELEASE_FAIL
-          URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${REL}/${NAME}"
-          code=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 60 "$URL" || echo 000)
-          echo "release url http: $code"
-          if [ "$code" != "200" ]; then
-            echo "--- catbox ---"
-            URL=$(curl -fsS --max-time 900 -A "Mozilla/5.0" -F "reqtype=fileupload" \
-              -F "fileToUpload=@/tmp/${NAME};filename=${NAME}" https://catbox.moe/user/api.php 2>&1 || true)
-            echo "catbox: $URL"
-          fi
-          mkdir -p .ci-logs
-          {
-            echo "run=$RUN_ID"
-            echo "url=$URL"
-            echo "sha256=$SHA"
-            echo "size=$SIZE"
-          } > ".ci-logs/apk-${RUN_ID}.txt"
-          cat ".ci-logs/apk-${RUN_ID}.txt"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ".ci-logs/apk-${RUN_ID}.txt"
-          git commit -m "ci: apk link ${RUN_ID}" || true
-          git push origin HEAD:${GITHUB_REF_NAME} || true
+          SHA=$(sha256sum "$APK" | cut -d' ' -f1)
+          cp "$APK" ../tmp/bluewhale-manager-v3.22.5-bw-32744.apk
+          cd ..
+          echo "unsigned-sha=$SHA size=$SIZE" > ".ci-logs/apk-${R}.txt"
+          gh release create bw32744 --title "32744 / 3.22.5-bw" --notes "diagnostics log" 2>/dev/null || true
+          gh release upload bw32744 "tmp/bluewhale-manager-v3.22.5-bw-32744.apk" --clobber
+          URL=$(gh release view bw32744 --json assets -q '.assets[0].url')
+          echo "url=$URL" >> ".ci-logs/apk-${R}.txt"
+          echo "sha256=$SHA" >> ".ci-logs/apk-${R}.txt"
+          echo "size=$SIZE" >> ".ci-logs/apk-${R}.txt"
+          git config user.name "bluewhale-ci"
+          git config user.email "ci@bluewhale.local"
+          git add ".ci-logs/apk-${R}.txt"
+          git commit -m "ci: apk receipt ${R}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || true
+          cat ".ci-logs/apk-${R}.txt"
