@@ -22,11 +22,8 @@ overlay/patch_bluewhale_32749_home4.py: OK
 SYNC patch_bluewhale_32749_home4.py 7892e1c868c7
 overlay/patch_bluewhale_32750_nojb.py: OK
 SYNC patch_bluewhale_32750_nojb.py 5d449b8e5b76
-curl: (35) Recv failure: Connection reset by peer
-sha256sum: overlay/patch_bluewhale_32751_introbrand.py: No such file or directory
-overlay/patch_bluewhale_32751_introbrand.py: FAILED open or read
-sha256sum: WARNING: 1 listed file could not be read
-SYNC patch_bluewhale_32751_introbrand.py 
+overlay/patch_bluewhale_32751_introbrand.py: OK
+SYNC patch_bluewhale_32751_introbrand.py a85ae65c56b6
 overlay/patch_bluewhale_32741.py: OK
 SYNC patch_bluewhale_32741.py 91f977892ca9
 py-ok
