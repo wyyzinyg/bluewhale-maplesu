@@ -1,1 +1,2 @@
-32740: advisor import guard then native rebuild
+build 32742/3.22.3-bw: probe queue retry, diagnostics UX (save report only, no recheck, no resume recheck, extra fields), KSU-shaped home root entry (tap->patch boot + 越狱 button)
+triggered 2026-11-28T13:37+08:00
