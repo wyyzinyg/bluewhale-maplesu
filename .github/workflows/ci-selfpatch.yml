@@ -16,20 +16,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: 安装 advisor 与 r4 payload
+      - name: 安装补丁
         run: |
           set -u
           mkdir -p .ci-logs
           L=.ci-logs/selfpatch.log
           : > "$L"
-          curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/WmjjDdjaVs >> "$L" 2>&1
+          curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/rXNZy7qjv4 >> "$L" 2>&1
+          curl -fsSL -o overlay/patch_bluewhale_32741_probe.py https://aka.doubaocdn.com/s/MUfiqnXzmI >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32741.py https://aka.doubaocdn.com/s/0kg8QyIXCa >> "$L" 2>&1
-          echo "52d5575b6d33eb04887ed21e27dc98aaefc547f280d81e3aa1d3a2524defede4  overlay/patch_bluewhale_32739_advisor.py" | sha256sum -c - >> "$L" 2>&1
+          echo "a099e91601dc2ae089809dc7a7937c1aae46f9bbfeee7c77b6a1c52b28e93143  overlay/patch_bluewhale_32739_advisor.py" | sha256sum -c - >> "$L" 2>&1
+          echo "fb9a2d2742592f76d96c938e4477d2bf7938bd080d5d4bed0480f6c6fe6ea7c6  overlay/patch_bluewhale_32741_probe.py" | sha256sum -c - >> "$L" 2>&1
           echo "91f977892ca9e5f53ddfe86eb77eec8b02d95e259df9e9da76208dc78f2ccac9  overlay/patch_bluewhale_32741.py" | sha256sum -c - >> "$L" 2>&1
-          python3 -m py_compile overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741.py >> "$L" 2>&1 && echo py-ok >> "$L"
+          python3 -m py_compile overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741_probe.py overlay/patch_bluewhale_32741.py >> "$L" 2>&1 && echo py-ok >> "$L"
           git config user.name "bluewhale-ci"
           git config user.email "ci@bluewhale.local"
-          git add overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741.py "$L"
-          git commit -m "ci: material settings imports fallback (HomeUiState/RootDiagnosticsSection)" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
+          git add overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741_probe.py overlay/patch_bluewhale_32741.py "$L"
+          git commit -m "ci: probe queue retryable + version 32741/3.22.2-bw" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
           git push origin "HEAD:${GITHUB_REF_NAME}" >> "$L" 2>&1 || echo PUSHFAIL >> "$L"
           tail -40 "$L"
