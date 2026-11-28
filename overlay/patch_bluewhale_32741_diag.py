@@ -87,6 +87,32 @@ def _drop_recheck_buttons(text: str):
     return "\n".join(out), removed
 
 
+EXTRA_DIAG_ANCHOR = '    appendLine("/dev/dfme2=${snapshot.dfme2}")\n'
+EXTRA_DIAG_LINES = (
+    '    appendLine("/dev/df* entries=" + runCatching { File("/dev").list()?.filter { it.startsWith("df") }?.sorted()?.joinToString(",") ?: "none" }.getOrDefault("error"))\n'
+    '    appendLine("data/adb entries=" + runCatching { File("/data/adb").list()?.sorted()?.joinToString(",") ?: "none" }.getOrDefault("error"))\n'
+    '    appendLine("mounts(df/ksu)=" + runCatching { File("/proc/mounts").readLines().filter { it.contains("df") || it.contains("ksu") }.take(5).joinToString(" | ") }.getOrDefault("error"))\n'
+    '    appendLine("kernel=" + runCatching { File("/proc/version").readText().trim() }.getOrDefault("error"))\n'
+)
+
+
+def _extra_diag_lines(root: Path) -> None:
+    path = root / "manager/src/main/java/com/maplesu/core/ui/screen/home/RootDiagnostics.kt"
+    if not path.is_file():
+        print("skip: RootDiagnostics.kt missing for extra fields")
+        return
+    text = path.read_text(encoding="utf-8")
+    if "/dev/df* entries=" in text:
+        print("skip: extra diag fields already present")
+        return
+    if EXTRA_DIAG_ANCHOR not in text:
+        print("skip: dfme2 anchor missing")
+        return
+    text = text.replace(EXTRA_DIAG_ANCHOR, EXTRA_DIAG_ANCHOR + EXTRA_DIAG_LINES, 1)
+    path.write_text(text, encoding="utf-8")
+    print("patched RootDiagnostics.kt: extra device/mount/kernel fields")
+
+
 def _rename_copy_labels(root: Path) -> None:
     targets = (
         ("manager/src/main/res/values-zh-rCN/root_diagnostics.xml", "复制诊断报告", "保存诊断报告"),
@@ -108,6 +134,7 @@ def _rename_copy_labels(root: Path) -> None:
 
 def patch_32741_diag(root: Path) -> None:
     _rename_copy_labels(root)
+    _extra_diag_lines(root)
     path = root / REL
     if not path.is_file():
         print("skip: RootDiagnostics.kt missing (upstream payload not applied)")
