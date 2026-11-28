@@ -7,6 +7,7 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else "src")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from patch_bluewhale_32740 import patch_32740
 from patch_bluewhale_32740_update import patch_32740_update
+from patch_bluewhale_32741_probe import patch_32741_probe
 
 # r4 overlay is carried as a hash-pinned CDN payload until it is committed to the repo.
 try:
@@ -14,8 +15,8 @@ try:
 except ModuleNotFoundError:
     import hashlib
     import urllib.request
-    _R4_URL = "https://aka.doubaocdn.com/s/xtqZP3KG7L"
-    _R4_SHA = "10e9815583ec1fa82df759e845e8ad21a93585d855dcd8ca6d4a85b06e9befae"
+    _R4_URL = "https://aka.doubaocdn.com/s/0kg8QyIXCa"
+    _R4_SHA = "91f977892ca9e5f53ddfe86eb77eec8b02d95e259df9e9da76208dc78f2ccac9"
     _raw = urllib.request.urlopen(_R4_URL, timeout=60).read()
     if hashlib.sha256(_raw).hexdigest() != _R4_SHA:
         raise SystemExit("FATAL: 32741 payload hash mismatch")
@@ -172,6 +173,7 @@ def main() -> int:
     patch_32740(ROOT)
     patch_32741(ROOT)
     patch_32740_update(ROOT)
+    patch_32741_probe(ROOT)
     print("32739 advisor + compile fixes + combined entry + limited Home/Settings applied")
     return 0
 

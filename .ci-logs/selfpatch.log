@@ -1,3 +1,4 @@
 overlay/patch_bluewhale_32739_advisor.py: OK
+overlay/patch_bluewhale_32741_probe.py: OK
 overlay/patch_bluewhale_32741.py: OK
 py-ok
