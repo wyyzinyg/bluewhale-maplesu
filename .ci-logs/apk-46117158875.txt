@@ -1,0 +1,4 @@
+run=46117158875
+url=https://github.com/wyyzinyg/bluewhale-maplesu/releases/download/bw32743/bluewhale-manager-v3.22.4-bw-32743.apk
+sha256=c80a33823c2276afec05fbdf13b1fa3c90b37cc5af5026e0a5c84211377cb69e
+size=47661521
