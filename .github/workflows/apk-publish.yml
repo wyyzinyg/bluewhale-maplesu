@@ -22,7 +22,7 @@ jobs:
         with:
           run-id: ${{ steps.rid.outputs.runid }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          name: bluewhale-native-36
+          name: bluewhale-native-37
           path: out
       - name: 校验并上传到 Release
         env:
