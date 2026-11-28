@@ -22,8 +22,11 @@ overlay/patch_bluewhale_32749_home4.py: OK
 SYNC patch_bluewhale_32749_home4.py 7892e1c868c7
 overlay/patch_bluewhale_32750_nojb.py: OK
 SYNC patch_bluewhale_32750_nojb.py 5d449b8e5b76
+curl: (28) Connection timed out after 300527 milliseconds
 overlay/patch_bluewhale_32751_introbrand.py: OK
 SYNC patch_bluewhale_32751_introbrand.py a85ae65c56b6
+overlay/patch_bluewhale_32752_notice.py: OK
+SYNC patch_bluewhale_32752_notice.py 59d02cc12f9e
 overlay/patch_bluewhale_32741.py: OK
 SYNC patch_bluewhale_32741.py 91f977892ca9
 py-ok
