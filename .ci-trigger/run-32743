@@ -1,1 +1,2 @@
-32743: r4 homeOnly order fixed, native rebuild
+build 32743/3.22.4-bw: remove stale environment notice card on home, merge send-log row into Root diagnostics card
+triggered 2026-11-28T14:33+08:00
