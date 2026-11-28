@@ -1,5 +1,5 @@
 overlay/patch_bluewhale_32739_advisor.py: OK
-SYNC patch_bluewhale_32739_advisor.py f7438b218156
+SYNC patch_bluewhale_32739_advisor.py 22db596875bb
 overlay/patch_bluewhale_32741_probe.py: OK
 SYNC patch_bluewhale_32741_probe.py fb9a2d274259
 overlay/patch_bluewhale_32741_diag.py: OK
@@ -30,6 +30,8 @@ overlay/patch_bluewhale_32753_theme.py: OK
 SYNC patch_bluewhale_32753_theme.py c586112dbd45
 overlay/patch_bluewhale_32754_update_prompt.py: OK
 SYNC patch_bluewhale_32754_update_prompt.py 6604b033918a
+overlay/patch_bluewhale_32755_settings_fix.py: OK
+SYNC patch_bluewhale_32755_settings_fix.py 6d8d880d5ed2
 overlay/patch_bluewhale_32741.py: OK
 SYNC patch_bluewhale_32741.py 91f977892ca9
 py-ok

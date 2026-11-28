@@ -218,6 +218,29 @@ def patch_legacy_claim_gate(root: Path) -> None:
     print(f"patched {rel}: legacy claim assets allowed (bridge remains real)")
 
 
+# 32755：设备型号 + 设置页「检查管理器更新」。脚本式补丁（顶层执行），幂等。
+def _load_32755() -> None:
+    import hashlib, urllib.request
+    try:
+        path = Path(__file__).resolve().parent / "patch_bluewhale_32755_settings_fix.py"
+        payload = path.read_bytes() if path.is_file() else None
+    except Exception:
+        payload = None
+    if payload is None:
+        url = "https://aka.doubaocdn.com/s/zPrKCObQBQ"
+        payload = urllib.request.urlopen(url, timeout=90).read()
+    expect = "6d8d880d5ed24e9712c3d01d3c02f1cf99873c8edb684553b7e1e52069b4817a"
+    if hashlib.sha256(payload).hexdigest() != expect:
+        raise SystemExit("FATAL: 32755 payload hash mismatch")
+    ns = {"__name__": "patch_bluewhale_32755_settings_fix", "__file__": "patch_bluewhale_32755_settings_fix.py"}
+    ns["__builtins__"] = __builtins__
+    exec(compile(payload, "patch_bluewhale_32755_settings_fix.py", "exec"), ns)
+
+
+def patch_32755_settings_fix() -> None:
+    _load_32755()
+
+
 def main() -> int:
     patch_advisor(ROOT)
     patch_brand(ROOT)
@@ -242,7 +265,8 @@ def main() -> int:
     patch_32752_notice()
     patch_32753_theme()
     patch_32754_update_prompt()
-    print("32739 advisor + compile fixes + combined entry + 32753 theme store + 32754 update prompt applied")
+    patch_32755_settings_fix()
+    print("32739 advisor + compile fixes + combined entry + 32753 theme + 32754 update prompt + 32755 device name/settings applied")
     return 0
 
 
