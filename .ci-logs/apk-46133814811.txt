@@ -1,0 +1,4 @@
+run=46133814811
+artifact=bluewhale-native-42
+unsigned-sha=318771c67990bcf51e637fe503c204649ef5fee36746606c07a25c7104cba287 size=47671957
+url=https://github.com/wyyzinyg/bluewhale-maplesu/releases/download/bw32746/bluewhale-manager-v3.22.7-bw-32746.apk
