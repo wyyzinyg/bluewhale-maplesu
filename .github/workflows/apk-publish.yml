@@ -42,11 +42,11 @@ jobs:
           [ -z "$APK" ] && { echo NO_APK; exit 1; }
           SIZE=$(stat -c%s "$APK")
           SHA=$(sha256sum "$APK" | awk '{print $1}')
-          NAME=bluewhale-manager-v3.22.3-bw-32742.apk
+          NAME=bluewhale-manager-v3.22.4-bw-32743.apk
           cp "$APK" "/tmp/$NAME"
-          REL=bw32742
+          REL=bw32743
           echo "--- release ---"
-          gh release view "$REL" >/dev/null 2>&1 || gh release create "$REL" -t "BlueWhale 3.22.3-bw 32742" -n "build run $RUN_ID" || true
+          gh release view "$REL" >/dev/null 2>&1 || gh release create "$REL" -t "BlueWhale 3.22.4-bw 32743" -n "build run $RUN_ID" || true
           gh release upload "$REL" "/tmp/$NAME" --clobber && echo RELEASE_OK || echo RELEASE_FAIL
           URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${REL}/${NAME}"
           code=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 60 "$URL" || echo 000)
