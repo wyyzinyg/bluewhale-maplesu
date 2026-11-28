@@ -24,7 +24,7 @@ jobs:
           mkdir -p .ci-logs
           L=.ci-logs/selfpatch.log
           : > "$L"
-          curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/9J85HXVVsP >> "$L" 2>&1
+          curl -fsSL -o overlay/patch_bluewhale_32739_advisor.py https://aka.doubaocdn.com/s/o5r2JYYi0r >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32741_probe.py https://aka.doubaocdn.com/s/MUfiqnXzmI >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32741_diag.py https://aka.doubaocdn.com/s/bQmx2pNQeK >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32742_home.py https://aka.doubaocdn.com/s/BjPqdb4hm9 >> "$L" 2>&1
@@ -32,8 +32,9 @@ jobs:
           curl -fsSL -o overlay/patch_bluewhale_32744_diaglog.py https://aka.doubaocdn.com/s/wSwYxgR8ZW >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32745_clean.py https://aka.doubaocdn.com/s/uA8FJZVQf9 >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32746_statcard.py https://aka.doubaocdn.com/s/qrgpYfKAnn >> "$L" 2>&1
+          curl -fsSL -o overlay/patch_bluewhale_32747_diag2.py https://aka.doubaocdn.com/s/CAFZZU9js5 >> "$L" 2>&1
           curl -fsSL -o overlay/patch_bluewhale_32741.py https://aka.doubaocdn.com/s/0kg8QyIXCa >> "$L" 2>&1
-          echo "2f1eec46ee807c6c825734902eee83bd72290237edcf1234785e3a089ec9f6d1  overlay/patch_bluewhale_32739_advisor.py" | sha256sum -c - >> "$L" 2>&1
+          echo "af787fad0e2128171825f69c1b80ae94ede94913fdb9081dd0b4c83403bc657c  overlay/patch_bluewhale_32739_advisor.py" | sha256sum -c - >> "$L" 2>&1
           echo "fb9a2d2742592f76d96c938e4477d2bf7938bd080d5d4bed0480f6c6fe6ea7c6  overlay/patch_bluewhale_32741_probe.py" | sha256sum -c - >> "$L" 2>&1
           echo "ddab772510f213740db8b0038221ad7c7ec47be8d27884060af52ff5d68b0f50  overlay/patch_bluewhale_32741_diag.py" | sha256sum -c - >> "$L" 2>&1
           echo "7fcc0294d7dd4fcbefac6200dc583d9a84eda47aa19abf3507e2ae8952c3a8b7  overlay/patch_bluewhale_32742_home.py" | sha256sum -c - >> "$L" 2>&1
@@ -43,10 +44,11 @@ jobs:
           echo "91f977892ca9e5f53ddfe86eb77eec8b02d95e259df9e9da76208dc78f2ccac9  overlay/patch_bluewhale_32741.py" | sha256sum -c - >> "$L" 2>&1
           python3 -m py_compile overlay/*.py >> "$L" 2>&1 && echo py-ok >> "$L"
           echo "e1bf996731418e209b16e93e324228901160bf8e665325ff0814d8f8978fd538  overlay/patch_bluewhale_32746_statcard.py" | sha256sum -c - >> "$L" 2>&1
+          echo "1641ff7fa594a403d9db7117effc88a010f6c7f7a00e79e8d08a7da4f0a01168  overlay/patch_bluewhale_32747_diag2.py" | sha256sum -c - >> "$L" 2>&1
           git config user.name "bluewhale-ci"
           git config user.email "ci@bluewhale.local"
-          git add overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741_probe.py overlay/patch_bluewhale_32741_diag.py overlay/patch_bluewhale_32742_home.py overlay/patch_bluewhale_32743_clean.py overlay/patch_bluewhale_32744_diaglog.py overlay/patch_bluewhale_32745_clean.py overlay/patch_bluewhale_32746_statcard.py overlay/patch_bluewhale_32741.py "$L"
-          git commit -m "ci: 32746 narrow environment status card gate" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
+          git add overlay/patch_bluewhale_32739_advisor.py overlay/patch_bluewhale_32741_probe.py overlay/patch_bluewhale_32741_diag.py overlay/patch_bluewhale_32742_home.py overlay/patch_bluewhale_32743_clean.py overlay/patch_bluewhale_32744_diaglog.py overlay/patch_bluewhale_32745_clean.py overlay/patch_bluewhale_32746_statcard.py overlay/patch_bluewhale_32747_diag2.py overlay/patch_bluewhale_32741.py "$L"
+          git commit -m "ci: 32747 provider evidence + retry convergence" >> "$L" 2>&1 || echo COMMITFAIL >> "$L"
           git push origin "HEAD:${GITHUB_REF_NAME}" >> "$L" 2>&1 || echo PUSHFAIL >> "$L"
           tail -50 "$L"
       - name: 取件（存在 .apk-fetch/tag 时）
