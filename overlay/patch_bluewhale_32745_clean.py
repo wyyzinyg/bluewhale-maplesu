@@ -85,7 +85,7 @@ private fun logcatGrep(needle: String, limit: Int): String = runCatching {
     val text = p.inputStream.bufferedReader().use { it.readText() }
     p.waitFor()
     val hits = text.lineSequence().filter { it.contains(needle, ignoreCase = true) }
-        .takeLast(limit).map { it.trim() }.toList()
+        .toList().takeLast(limit).map { it.trim() }
     if (hits.isEmpty()) "none" else hits.joinToString(" ~ ")
 }.getOrDefault("error")
 
