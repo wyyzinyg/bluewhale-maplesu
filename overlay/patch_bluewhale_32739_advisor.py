@@ -35,6 +35,34 @@ except ModuleNotFoundError:
     exec(compile(_n52, "patch_bluewhale_32752_notice.py", "exec"), _ns52)
     patch_32752_notice = _ns52["main"]
 
+try:
+    from patch_bluewhale_32753_theme import main as patch_32753_theme
+except ModuleNotFoundError:
+    import hashlib
+    import urllib.request
+    _N53_URL = "https://aka.doubaocdn.com/s/rmONdUlosb"
+    _N53_SHA = "c586112dbd4557e302f29c50f3fd5e6ee766f7e51cd2c4df50aa7b290ff845f0"
+    _n53 = urllib.request.urlopen(_N53_URL, timeout=90).read()
+    if hashlib.sha256(_n53).hexdigest() != _N53_SHA:
+        raise SystemExit("FATAL: 32753 payload hash mismatch")
+    _ns53 = {"__name__": "patch_bluewhale_32753_theme"}
+    exec(compile(_n53, "patch_bluewhale_32753_theme.py", "exec"), _ns53)
+    patch_32753_theme = _ns53["main"]
+
+try:
+    from patch_bluewhale_32754_update_prompt import main as patch_32754_update_prompt
+except ModuleNotFoundError:
+    import hashlib
+    import urllib.request
+    _N54_URL = "https://aka.doubaocdn.com/s/6emT6ukRKc"
+    _N54_SHA = "c6750c3d6f96757b59419588e7666e34b50f50389af0fcdd829f25d4ed172e90"
+    _n54 = urllib.request.urlopen(_N54_URL, timeout=90).read()
+    if hashlib.sha256(_n54).hexdigest() != _N54_SHA:
+        raise SystemExit("FATAL: 32754 payload hash mismatch")
+    _ns54 = {"__name__": "patch_bluewhale_32754_update_prompt"}
+    exec(compile(_n54, "patch_bluewhale_32754_update_prompt.py", "exec"), _ns54)
+    patch_32754_update_prompt = _ns54["main"]
+
 # r4 overlay is carried as a hash-pinned CDN payload until it is committed to the repo.
 try:
     from patch_bluewhale_32741 import patch_32741
@@ -212,7 +240,9 @@ def main() -> int:
     patch_32750_nojb()
     patch_32751_introbrand()
     patch_32752_notice()
-    print("32739 advisor + compile fixes + combined entry + limited Home/Settings applied")
+    patch_32753_theme()
+    patch_32754_update_prompt()
+    print("32739 advisor + compile fixes + combined entry + 32753 theme store + 32754 update prompt applied")
     return 0
 
 
